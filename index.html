@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>MW_Apps – Apps für deinen Alltag</title>
+  <meta name="description" content="TerminKompass – der Terminplaner, der einfach funktioniert. Offline, kein Konto, kein Abo.">
+  <meta property="og:title" content="Termine, die du nicht vergisst.">
+  <meta property="og:description" content="TerminKompass – Offline. Kein Konto. Kein Abo. Einfach starten.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/terminkompass/icon.png">
+  <style>
+
+/* ─── RESET & BASE ────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display',
+               'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #fff;
+  color: #1a0f0a;
+  overflow-x: hidden;
+  /* safe area for iPhones with notch */
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+img { max-width: 100%; display: block; }
+
+/* ─── TOKENS ──────────────────────────────────────── */
+:root {
+  --orange:   #e0674a;
+  --orange2:  #c94050;
+  --dark:     #0e0608;
+  --cream:    #faf7f2;
+  --border:   #ede3d0;
+  --text:     #1a0f0a;
+  --muted:    #7e6456;
+  --blue:     #1a5adb;
+}
+
+/* ─── HERO ────────────────────────────────────────── */
+.hero {
+  position: relative;
+  background: var(--dark);
+  overflow: hidden;
+  padding-bottom: 56px;
+}
+
+/* Animated bokeh glow blobs */
+.bokeh { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.bokeh span {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  animation: drift linear infinite alternate;
+  will-change: transform;
+}
+.b1 { width: 260px; height: 260px; background: rgba(224,103,74,.45);
+      top: -80px; left: -60px; animation-duration: 9s; }
+.b2 { width: 200px; height: 200px; background: rgba(201,64,80,.35);
+      bottom: 0; right: -40px; animation-duration: 12s; animation-delay: -4s; }
+.b3 { width: 140px; height: 140px; background: rgba(240,160,90,.25);
+      top: 35%; right: 15%; animation-duration: 7s; animation-delay: -2s; }
+
+@keyframes drift {
+  from { transform: translateY(0) scale(1); }
+  to   { transform: translateY(-40px) scale(1.12); }
+}
+
+/* Nav */
+.nav {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 20px 0;
+  max-width: 540px; margin: 0 auto;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 9px;
+  text-decoration: none;
+}
+.nav-logo {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  object-fit: cover; object-position: 50% 22%;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.15);
+}
+.nav-wordmark {
+  font-size: 15px; font-weight: 800; letter-spacing: -.01em;
+  color: #fff;
+}
+.nav-contact {
+  font-size: 13px; color: rgba(255,255,255,.42);
+  text-decoration: none;
+  padding: 6px 0 6px 8px;
+  transition: color .2s;
+}
+.nav-contact:hover { color: rgba(255,255,255,.75); }
+
+/* Hero Content */
+.hero-body {
+  position: relative; z-index: 2;
+  max-width: 540px; margin: 0 auto;
+  padding: 40px 20px 0;
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center;
+}
+
+/* Floating icon */
+.hero-icon {
+  width: 90px; height: 90px;
+  border-radius: 20px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.12),
+    0 0 56px rgba(224,103,74,.55),
+    0 12px 36px rgba(0,0,0,.55);
+  animation: iconPop .55s cubic-bezier(.34,1.56,.64,1) both,
+             iconFloat 3.8s ease-in-out .6s infinite;
+  will-change: transform;
+}
+@keyframes iconPop {
+  from { opacity: 0; transform: scale(.6) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-7px); }
+}
+
+/* Tag line above headline */
+.hero-tag {
+  margin-top: 22px;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  animation: fadeUp .5s .15s ease both;
+}
+
+/* Main headline */
+.hero-h1 {
+  margin-top: 10px;
+  font-size: clamp(32px, 9vw, 46px);
+  font-weight: 900;
+  letter-spacing: -.04em;
+  line-height: 1.07;
+  color: #fff;
+  animation: fadeUp .5s .22s ease both;
+}
+.hero-h1 em {
+  font-style: normal;
+  background: linear-gradient(92deg, #f4a06c 20%, #e85a3a 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Sub */
+.hero-sub {
+  margin-top: 14px;
+  font-size: 16px; line-height: 1.55;
+  color: rgba(255,255,255,.52);
+  animation: fadeUp .5s .3s ease both;
+}
+
+/* Pills */
+.hero-pills {
+  display: flex; flex-wrap: wrap; gap: 7px;
+  justify-content: center;
+  margin-top: 18px;
+  animation: fadeUp .5s .37s ease both;
+}
+.pill {
+  font-size: 12px; font-weight: 600;
+  color: rgba(255,255,255,.52);
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  padding: 5px 11px;
+  border-radius: 100px;
+}
+
+/* Store badges */
+.hero-badges {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  justify-content: center;
+  margin-top: 24px;
+  animation: fadeUp .5s .44s ease both;
+}
+.store-btn {
+  display: flex; align-items: center;
+  transition: transform .15s, opacity .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.store-btn:active { transform: scale(.96); }
+.store-btn.dimmed { opacity: .3; }
+.badge-apple  { height: 44px; width: auto; border-radius: 8px; }
+.badge-google { height: 52px; width: auto; margin: -4px 0; }
+
+/* ─── SCREENSHOTS ─────────────────────────────────── */
+.screenshots {
+  background: #fff;
+  padding: 48px 0 12px;
+}
+.section-inner {
+  max-width: 540px; margin: 0 auto;
+  padding: 0 20px;
+}
+.section-eyebrow {
+  font-size: 11px; font-weight: 800;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 5px;
+}
+.section-h2 {
+  font-size: 26px; font-weight: 900;
+  letter-spacing: -.03em; line-height: 1.15;
+  color: var(--text);
+}
+
+/* Carousel */
+.carousel-wrap { position: relative; margin-top: 22px; }
+.carousel-fade {
+  position: absolute; right: 0; top: 0; bottom: 0; width: 56px;
+  background: linear-gradient(to right, transparent, #fff);
+  pointer-events: none; z-index: 2;
+}
+.carousel-track {
+  display: flex;
+  gap: 14px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 10px calc(50% - 81px) 20px;
+  /* suppress momentum-based over-scroll shift on Safari */
+  overscroll-behavior-x: contain;
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+
+/* Each item */
+.c-item {
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  transition: transform .38s cubic-bezier(.25,.46,.45,.94),
+              opacity .38s ease;
+  transform: scale(.87);
+  opacity: .52;
+  cursor: pointer;
+}
+.c-item.active { transform: scale(1); opacity: 1; }
+
+/* Phone frame */
+.phone {
+  width: 162px;
+  background: #1a1a1e;
+  border-radius: 34px;
+  padding: 8px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.07),
+    0 8px 24px rgba(0,0,0,.14),
+    0 20px 60px rgba(0,0,0,.18),
+    0 40px 80px rgba(0,0,0,.08);
+}
+/* Tiny dynamic-island dot */
+.phone-top {
+  height: 10px; display: flex; align-items: center; justify-content: center;
+  margin-bottom: 4px;
+}
+.phone-island {
+  width: 52px; height: 9px;
+  background: #111; border-radius: 5px;
+}
+.phone-screen {
+  width: 100%; border-radius: 26px;
+  display: block; line-height: 0;
+  overflow: hidden;
+}
+.phone-screen img {
+  width: 100%; height: auto; display: block;
+}
+.c-label {
+  font-size: 11px; font-weight: 600; color: var(--muted);
+  text-align: center; margin-top: 10px;
+}
+
+/* Dots */
+.carousel-dots {
+  display: flex; justify-content: center; gap: 6px;
+  margin-top: 16px; padding: 0 20px 4px;
+}
+.c-dot {
+  width: 6px; height: 6px; border-radius: 3px;
+  background: #ddd; border: none; cursor: pointer; padding: 0;
+  transition: width .3s ease, background .3s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.c-dot.active { width: 20px; background: var(--orange); }
+
+/* ─── FEATURES ────────────────────────────────────── */
+.features {
+  background: var(--cream);
+  padding: 52px 20px;
+}
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 22px;
+}
+.f-tile {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 18px 15px 16px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.f-tile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0,0,0,.08);
+}
+.f-tile.pro-tile { border-color: rgba(224,103,74,.25); background: #fffaf8; }
+.f-icon { font-size: 28px; margin-bottom: 10px; line-height: 1; }
+.f-name {
+  font-size: 13.5px; font-weight: 800;
+  letter-spacing: -.01em; color: var(--text);
+  margin-bottom: 4px;
+}
+.f-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.pro-tag {
+  display: inline-block; font-size: 9px; font-weight: 800;
+  letter-spacing: .07em; text-transform: uppercase;
+  background: rgba(224,103,74,.12); color: var(--orange);
+  border: 1px solid rgba(224,103,74,.2);
+  padding: 2px 7px; border-radius: 100px;
+  margin-bottom: 7px;
+}
+
+/* ─── SHARING SPOTLIGHT ───────────────────────────── */
+.sharing-section {
+  padding: 0 14px 14px;
+}
+.sharing-card {
+  background: linear-gradient(155deg, #0e1a30 0%, #162444 60%, #0e1630 100%);
+  border-radius: 28px;
+  padding: 32px 24px;
+  position: relative;
+  overflow: hidden;
+}
+.sharing-card::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(93,95,239,.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+.sharing-card::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: 10%;
+  width: 160px; height: 160px;
+  background: radial-gradient(circle, rgba(59,177,255,.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+.sharing-eyebrow {
+  font-size: 11px; font-weight: 800;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(93,95,239,.9);
+  margin-bottom: 8px;
+}
+.sharing-h {
+  font-size: 24px; font-weight: 900;
+  letter-spacing: -.03em; line-height: 1.15;
+  color: #fff; margin-bottom: 12px;
+}
+.sharing-h em {
+  font-style: normal;
+  background: linear-gradient(90deg, #7f79ff, #53c6ff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.sharing-desc {
+  font-size: 14px; color: rgba(255,255,255,.62);
+  line-height: 1.6; margin-bottom: 18px;
+}
+.sharing-pills {
+  display: flex; flex-wrap: wrap; gap: 7px;
+  position: relative; z-index: 1;
+}
+.sharing-pill {
+  font-size: 12px; font-weight: 700;
+  color: rgba(255,255,255,.75);
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  padding: 6px 12px; border-radius: 100px;
+}
+.sharing-cross {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 800;
+  color: #fff;
+  background: linear-gradient(90deg, #5d5fef, #3bb1ff);
+  padding: 7px 14px; border-radius: 100px;
+  margin-top: 18px; position: relative; z-index: 1;
+}
+
+/* ─── THEMES ──────────────────────────────────────── */
+.themes-section {
+  background: #fff;
+  padding: 52px 0 40px;
+}
+.themes-scroll {
+  display: flex; gap: 10px;
+  overflow-x: auto; scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  padding: 16px 20px 20px;
+}
+.themes-scroll::-webkit-scrollbar { display: none; }
+.theme-card {
+  flex-shrink: 0; scroll-snap-align: start;
+  width: 160px; border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,.1), 0 1px 4px rgba(0,0,0,.06);
+}
+.theme-preview {
+  height: 110px;
+  position: relative;
+}
+.theme-preview-bar {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 42px;
+  display: flex; flex-direction: column;
+  justify-content: center; padding: 0 10px; gap: 3px;
+}
+.theme-bar-line {
+  height: 5px; border-radius: 3px; opacity: .6;
+}
+.theme-bar-line.short { width: 55%; }
+.theme-info {
+  padding: 10px 11px 12px;
+}
+.theme-name {
+  font-size: 13px; font-weight: 800;
+  letter-spacing: -.01em;
+}
+.theme-hint {
+  font-size: 11px; color: var(--muted);
+  margin-top: 2px; line-height: 1.4;
+}
+.theme-modes {
+  display: flex; gap: 4px; margin-top: 6px;
+}
+.theme-mode-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  border: 1.5px solid rgba(0,0,0,.1);
+}
+
+/* ─── PRICING ─────────────────────────────────────── */
+.pricing {
+  background: #fff;
+  padding: 52px 20px;
+}
+.pricing-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; margin-top: 22px;
+}
+.p-tile {
+  border-radius: 22px; padding: 22px 16px;
+}
+.p-tile.free {
+  background: var(--cream); border: 1px solid var(--border);
+}
+.p-tile.pro {
+  background: linear-gradient(155deg, #1c0e0b, #2e1410);
+  border: 1px solid rgba(224,103,74,.2);
+}
+.p-badge {
+  display: inline-block; font-size: 10px; font-weight: 800;
+  letter-spacing: .07em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 100px; margin-bottom: 11px;
+}
+.p-tile.free .p-badge { background: var(--border); color: var(--muted); }
+.p-tile.pro  .p-badge { background: rgba(224,103,74,.18); color: #f4946c; }
+
+.p-head {
+  font-size: 20px; font-weight: 900;
+  letter-spacing: -.025em; margin-bottom: 13px;
+}
+.p-tile.free .p-head { color: var(--text); }
+.p-tile.pro  .p-head { color: #fff; }
+
+.p-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.p-list li {
+  font-size: 12.5px; line-height: 1.4;
+  display: flex; align-items: flex-start; gap: 7px;
+}
+.p-list li::before {
+  content: '✓'; font-weight: 700; flex-shrink: 0; margin-top: 1px;
+}
+.p-tile.free .p-list li { color: var(--muted); }
+.p-tile.free .p-list li::before { color: var(--orange); }
+.p-tile.pro  .p-list li { color: rgba(255,255,255,.65); }
+.p-tile.pro  .p-list li::before { color: #f4946c; }
+
+/* ─── CTA CARD ────────────────────────────────────── */
+.cta-wrap { padding: 0 14px 14px; }
+.cta-card {
+  border-radius: 28px;
+  background: linear-gradient(145deg, #e0674a 0%, #c94050 100%);
+  padding: 36px 24px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+/* animated shimmer overlay */
+.cta-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(105deg,
+    transparent 20%, rgba(255,255,255,.1) 50%, transparent 80%);
+  background-size: 200% 100%;
+  animation: shimmer 3.5s linear infinite;
+}
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+.cta-h { font-size: 26px; font-weight: 900; letter-spacing: -.03em;
+         color: #fff; line-height: 1.15; margin-bottom: 8px;
+         position: relative; z-index: 1; }
+.cta-sub { font-size: 14px; color: rgba(255,255,255,.68);
+           margin-bottom: 24px; position: relative; z-index: 1; }
+.cta-badges { display: flex; gap: 10px; justify-content: center;
+              flex-wrap: wrap; position: relative; z-index: 1; }
+
+/* ─── MORE APPS ───────────────────────────────────── */
+.more-apps {
+  background: var(--cream);
+  padding: 52px 20px 36px;
+}
+.more-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; margin-top: 22px;
+}
+.m-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 22px; padding: 20px 14px;
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center; gap: 10px;
+}
+.m-icon {
+  width: 56px; height: 56px; border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+}
+.m-name { font-size: 14px; font-weight: 800; color: var(--text); }
+.m-desc { font-size: 12px; color: var(--muted); line-height: 1.4; }
+.m-badge {
+  font-size: 10px; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase;
+  background: var(--cream); color: #b09878;
+  border: 1px solid var(--border);
+  padding: 4px 10px; border-radius: 100px;
+}
+
+/* ─── BRAND BANNER ────────────────────────────────── */
+.brand-section { padding: 0 14px 14px; }
+.brand-banner {
+  width: 100%; border-radius: 18px;
+  overflow: hidden; display: block;
+  box-shadow: 0 4px 20px rgba(0,0,0,.07);
+}
+
+/* ─── FOOTER ──────────────────────────────────────── */
+footer {
+  padding: 20px 20px calc(20px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--border);
+}
+.footer-inner {
+  max-width: 540px; margin: 0 auto;
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 10px;
+}
+.footer-links { display: flex; gap: 18px; }
+.footer-links a, .footer-copy {
+  font-size: 12px; color: #b09878; text-decoration: none;
+}
+.footer-links a:hover { color: var(--text); }
+
+/* ─── SCROLL REVEAL ───────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.in-view { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: .07s; }
+.reveal-d2 { transition-delay: .14s; }
+.reveal-d3 { transition-delay: .21s; }
+.reveal-d4 { transition-delay: .28s; }
+.reveal-d5 { transition-delay: .35s; }
+.reveal-d6 { transition-delay: .42s; }
+
+/* ─── KEYFRAMES ───────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ─── TOUCH / RESPONSIVE ──────────────────────────── */
+@media (hover: none) {
+  .f-tile:hover { transform: none; box-shadow: none; }
+}
+
+/* ─── LIGHTBOX ────────────────────────────────────── */
+.lightbox {
+  position: fixed; inset: 0; z-index: 999;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  pointer-events: none;
+  transition: background .28s ease, backdrop-filter .28s ease,
+              -webkit-backdrop-filter .28s ease;
+  padding: env(safe-area-inset-top, 20px) 20px
+           env(safe-area-inset-bottom, 20px);
+}
+.lightbox.open {
+  background: rgba(0,0,0,.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  pointer-events: all;
+}
+.lb-img-wrap {
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%;
+}
+.lb-img {
+  max-width: min(300px, 72vw);
+  max-height: calc(100svh - 120px);
+  width: auto; height: auto;
+  border-radius: 28px;
+  box-shadow: 0 24px 80px rgba(0,0,0,.7);
+  transform: scale(.82) translateY(12px);
+  opacity: 0;
+  transition: transform .35s cubic-bezier(.34,1.4,.64,1),
+              opacity .28s ease;
+  display: block;
+  object-fit: contain;
+  -webkit-user-drag: none; user-select: none;
+}
+.lightbox.open .lb-img {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+/* Close button */
+.lb-close {
+  position: fixed; top: max(18px, env(safe-area-inset-top,18px)); right: 18px;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.2);
+  color: #fff; font-size: 22px; line-height: 1;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background .15s, transform .15s;
+  -webkit-tap-highlight-color: transparent;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.lb-close:hover  { background: rgba(255,255,255,.3); }
+.lb-close:active { transform: scale(.9); }
+/* Nav arrows */
+.lb-nav {
+  position: fixed; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.18);
+  color: #fff; font-size: 20px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background .15s, transform .15s;
+  -webkit-tap-highlight-color: transparent;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  z-index: 2;
+}
+.lb-nav:hover  { background: rgba(255,255,255,.28); }
+.lb-nav:active { transform: translateY(-50%) scale(.9); }
+.lb-prev { left: 12px; }
+.lb-next { right: 12px; }
+/* Label */
+.lb-label {
+  position: fixed;
+  bottom: max(64px, calc(env(safe-area-inset-bottom, 20px) + 44px));
+  left: 50%; transform: translateX(-50%);
+  font-size: 13px; font-weight: 600;
+  color: rgba(255,255,255,.65);
+  white-space: nowrap; pointer-events: none;
+  transition: opacity .2s;
+}
+/* Dots */
+.lb-dots {
+  position: fixed;
+  bottom: max(28px, calc(env(safe-area-inset-bottom, 20px) + 8px));
+  left: 50%; transform: translateX(-50%);
+  display: flex; gap: 6px; z-index: 2;
+}
+.lb-dot {
+  width: 6px; height: 6px; border-radius: 3px;
+  background: rgba(255,255,255,.3);
+  transition: width .25s ease, background .25s ease;
+}
+.lb-dot.active { width: 20px; background: #fff; }
+/* Zoom cursor on screenshots */
+.c-item { cursor: zoom-in; }
+/* Desktop hover: subtle scale hint */
+@media (hover: hover) {
+  .c-item.active:hover .phone {
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,.1),
+      0 12px 36px rgba(0,0,0,.2),
+      0 28px 72px rgba(0,0,0,.22),
+      0 48px 88px rgba(0,0,0,.1);
+    transform: scale(1.03) translateY(-4px);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+}
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════ HERO -->
+<section class="hero">
+  <div class="bokeh" aria-hidden="true">
+    <span class="b1"></span>
+    <span class="b2"></span>
+    <span class="b3"></span>
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <a href="/" class="nav-brand" aria-label="MW_Apps Startseite">
+      <img src="assets/mwapps-logo.jpg" alt="MW_Apps Logo" class="nav-logo">
+      <span class="nav-wordmark">MW_Apps</span>
+    </a>
+    <a href="mailto:mw_apps@gmx.de" class="nav-contact">Kontakt</a>
+  </nav>
+
+  <!-- Hero Content -->
+  <div class="hero-body">
+    <img src="assets/terminkompass/icon.png" alt="TerminKompass App Icon"
+         class="hero-icon" width="90" height="90">
+
+    <span class="hero-tag">TerminKompass</span>
+
+    <h1 class="hero-h1">
+      Termine, die du<br>
+      <em>nicht vergisst.</em>
+    </h1>
+
+    <p class="hero-sub">
+      Dein Alltag, endlich im Griff.<br>
+      Offline. Ohne Konto. Ohne Abo. Einfach fertig.
+    </p>
+
+    <div class="hero-pills">
+      <span class="pill">🔒 Kein Konto</span>
+      <span class="pill">📵 Offline-first</span>
+      <span class="pill">🌍 12 Sprachen</span>
+      <span class="pill">🇩🇪 Made in Germany</span>
+    </div>
+
+    <div class="hero-badges" id="tk-badges">
+      <a href="https://apps.apple.com/us/app/terminkompass/id6771828426"
+         class="store-btn" id="tk-ios" data-store="ios"
+         aria-label="TerminKompass im App Store">
+        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/de-de?size=250x83"
+             alt="Im App Store laden" class="badge-apple">
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.terminkompass.app&utm_source=emea_Med"
+         class="store-btn" id="tk-android" data-store="android"
+         aria-label="TerminKompass bei Google Play">
+        <img src="https://play.google.com/intl/de_de/badges/static/images/badges/de_badge_web_generic.png"
+             alt="Jetzt bei Google Play" class="badge-google">
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ SCREENSHOTS -->
+<section class="screenshots">
+  <div class="section-inner">
+    <p class="section-eyebrow reveal">In der App</p>
+    <h2 class="section-h2 reveal reveal-d1">Schau rein.</h2>
+  </div>
+
+  <div class="carousel-wrap reveal reveal-d2">
+    <div class="carousel-fade" aria-hidden="true"></div>
+    <div class="carousel-track" id="ctrack" role="list">
+
+      <div class="c-item active" role="listitem">
+        <div class="phone">
+          <div class="phone-top" aria-hidden="true"><div class="phone-island"></div></div>
+          <div class="phone-screen">
+            <img src="assets/terminkompass/screenshots/02-uebersicht.png"
+                 alt="Terminübersicht" loading="lazy">
+          </div>
+        </div>
+        <p class="c-label">Übersicht</p>
+      </div>
+
+      <div class="c-item" role="listitem">
+        <div class="phone">
+          <div class="phone-top" aria-hidden="true"><div class="phone-island"></div></div>
+          <div class="phone-screen">
+            <img src="assets/terminkompass/screenshots/03-kalender-gross.png"
+                 alt="Kalenderansicht" loading="lazy">
+          </div>
+        </div>
+        <p class="c-label">Kalender</p>
+      </div>
+
+      <div class="c-item" role="listitem">
+        <div class="phone">
+          <div class="phone-top" aria-hidden="true"><div class="phone-island"></div></div>
+          <div class="phone-screen">
+            <img src="assets/terminkompass/screenshots/08-termin-erstellen.png"
+                 alt="Termin erstellen" loading="lazy">
+          </div>
+        </div>
+        <p class="c-label">Termin erstellen</p>
+      </div>
+
+      <div class="c-item" role="listitem">
+        <div class="phone">
+          <div class="phone-top" aria-hidden="true"><div class="phone-island"></div></div>
+          <div class="phone-screen">
+            <img src="assets/terminkompass/screenshots/04-kategorien.png"
+                 alt="Kategorien" loading="lazy">
+          </div>
+        </div>
+        <p class="c-label">Kategorien</p>
+      </div>
+
+      <div class="c-item" role="listitem">
+        <div class="phone">
+          <div class="phone-top" aria-hidden="true"><div class="phone-island"></div></div>
+          <div class="phone-screen">
+            <img src="assets/terminkompass/screenshots/01-widget.png"
+                 alt="Home-Screen Widget" loading="lazy">
+          </div>
+        </div>
+        <p class="c-label">Widget</p>
+      </div>
+
+      <div class="c-item" role="listitem">
+        <div class="phone">
+          <div class="phone-top" aria-hidden="true"><div class="phone-island"></div></div>
+          <div class="phone-screen">
+            <img src="assets/terminkompass/screenshots/05-alle-termine.png"
+                 alt="Alle Termine" loading="lazy">
+          </div>
+        </div>
+        <p class="c-label">Alle Termine</p>
+      </div>
+
+    </div>
+    <div class="carousel-dots" id="cdots" role="tablist" aria-label="Screenshots"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ FEATURES -->
+<section class="features">
+  <div style="max-width:540px;margin:0 auto;">
+    <p class="section-eyebrow reveal">Was TerminKompass kann</p>
+    <h2 class="section-h2 reveal reveal-d1">Das haben andere<br>nicht.</h2>
+
+    <div class="feature-grid">
+
+      <div class="f-tile reveal reveal-d1">
+        <div class="f-icon">📲</div>
+        <div class="f-name">Kalender-Import</div>
+        <div class="f-desc">iCloud, Google Calendar oder andere? Einmal tippen – alle Termine drin. Baby-leicht.</div>
+      </div>
+
+      <div class="f-tile reveal reveal-d2">
+        <div class="f-icon">📱</div>
+        <div class="f-name">Home-Screen Widget</div>
+        <div class="f-desc">Sieh deine nächsten Termine direkt auf dem Sperrbildschirm – ohne die App zu öffnen.</div>
+      </div>
+
+      <div class="f-tile reveal reveal-d3">
+        <div class="f-icon">🔕</div>
+        <div class="f-name">Erinnerungen ohne Cloud</div>
+        <div class="f-desc">Laufen lokal auf deinem Gerät. Kein Server, der gerade offline ist.</div>
+      </div>
+
+      <div class="f-tile reveal reveal-d4">
+        <div class="f-icon">🎂</div>
+        <div class="f-name">Geburtstage mit Alter</div>
+        <div class="f-desc">Trägt automatisch das Alter ein. Nie wieder nachrechnen.</div>
+      </div>
+
+      <div class="f-tile pro-tile reveal reveal-d5">
+        <span class="pro-tag">Pro</span>
+        <div class="f-icon">🌙</div>
+        <div class="f-name">Mondphasen</div>
+        <div class="f-desc">Vollmond bei jedem Termin und im Kalender sichtbar – jeden Tag.</div>
+      </div>
+
+      <div class="f-tile pro-tile reveal reveal-d6">
+        <span class="pro-tag">Pro</span>
+        <div class="f-icon">♈</div>
+        <div class="f-name">Sternzeichen</div>
+        <div class="f-desc">Geburtsdatum eingetragen? TerminKompass zeigt automatisch das Sternzeichen.</div>
+      </div>
+
+      <div class="f-tile reveal reveal-d1">
+        <div class="f-icon">✨</div>
+        <div class="f-name">Tippe „Arzt"</div>
+        <div class="f-desc">Das passende Icon setzt sich von selbst. 50+ Begriffe erkannt.</div>
+      </div>
+
+      <div class="f-tile reveal reveal-d2">
+        <div class="f-icon">🌍</div>
+        <div class="f-name">12 Sprachen</div>
+        <div class="f-desc">DE · EN · AR · FR · ES · PL · RO · RU · TR · UK · ID und mehr.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ SHARING SPOTLIGHT -->
+<div class="sharing-section reveal">
+  <div class="sharing-card">
+    <p class="sharing-eyebrow">Einzigartiges Feature</p>
+    <h2 class="sharing-h">Termine teilen.<br><em>Android zu iOS.</em><br>Und zurück.</h2>
+    <p class="sharing-desc">
+      Teile einzelne Termine, ganze Kategorien oder alle Termine auf einmal –
+      direkt via WhatsApp oder jede andere App. Der Empfänger importiert sie
+      mit einem Tap. Egal ob er Android oder iPhone nutzt.
+    </p>
+    <div class="sharing-pills">
+      <span class="sharing-pill">📁 Einzelne Termine</span>
+      <span class="sharing-pill">📂 Ganze Kategorien</span>
+      <span class="sharing-pill">📦 Alle Termine</span>
+    </div>
+    <div class="sharing-cross">🔄 Android ↔ iOS – plattformübergreifend</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ THEMES -->
+<section class="themes-section">
+  <div class="section-inner">
+    <p class="section-eyebrow reveal">4 Looks × 2 Modi</p>
+    <h2 class="section-h2 reveal reveal-d1">Deine App.<br>Dein Style.</h2>
+    <p style="font-size:14px;color:var(--muted);margin-top:8px;" class="reveal reveal-d2">
+      Jeder Look hat ein eigenes helles und dunkles Design – kein einheitlicher Dark Mode, sondern wirklich eigene Farbwelten.
+    </p>
+  </div>
+
+  <div class="themes-scroll">
+
+    <!-- Wüste -->
+    <div class="theme-card reveal reveal-d1">
+      <div class="theme-preview" style="background:linear-gradient(160deg,#efe1b0,#f5c98a);">
+        <div class="theme-preview-bar" style="background:rgba(251,242,214,.85);">
+          <div class="theme-bar-line" style="background:#e0674a; width:70%;"></div>
+          <div class="theme-bar-line short" style="background:#7e6456;"></div>
+        </div>
+      </div>
+      <div class="theme-info" style="background:#fbf2d6;">
+        <div class="theme-name" style="color:#2f2019;">🏜️ Wüste</div>
+        <div class="theme-hint">Warm, lebendig, emotional</div>
+        <div class="theme-modes">
+          <div class="theme-mode-dot" style="background:#efe1b0;"></div>
+          <div class="theme-mode-dot" style="background:#17100d;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Himmel -->
+    <div class="theme-card reveal reveal-d2">
+      <div class="theme-preview" style="background:linear-gradient(160deg,#c8d4ff,#a0b4ff);">
+        <div class="theme-preview-bar" style="background:rgba(253,253,255,.9);">
+          <div class="theme-bar-line" style="background:#5d5fef; width:70%;"></div>
+          <div class="theme-bar-line short" style="background:#657094;"></div>
+        </div>
+      </div>
+      <div class="theme-info" style="background:#f5f7ff;">
+        <div class="theme-name" style="color:#18223f;">☁️ Himmel</div>
+        <div class="theme-hint">Hell, jung, dynamisch</div>
+        <div class="theme-modes">
+          <div class="theme-mode-dot" style="background:#f5f7ff;"></div>
+          <div class="theme-mode-dot" style="background:#0b1020;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Universum -->
+    <div class="theme-card reveal reveal-d3">
+      <div class="theme-preview" style="background:linear-gradient(160deg,#090d1f,#142d70);">
+        <div class="theme-preview-bar" style="background:rgba(18,26,59,.9);">
+          <div class="theme-bar-line" style="background:#8b7cff; width:70%;"></div>
+          <div class="theme-bar-line short" style="background:#a8b4de;"></div>
+        </div>
+        <!-- Stars -->
+        <div style="position:absolute;inset:0;overflow:hidden;">
+          <div style="position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;top:15%;left:20%;opacity:.8;"></div>
+          <div style="position:absolute;width:1px;height:1px;border-radius:50%;background:#fff;top:30%;left:60%;opacity:.6;"></div>
+          <div style="position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;top:50%;left:40%;opacity:.7;"></div>
+          <div style="position:absolute;width:1px;height:1px;border-radius:50%;background:#fff;top:20%;left:80%;opacity:.5;"></div>
+          <div style="position:absolute;width:1px;height:1px;border-radius:50%;background:#fff;top:65%;left:75%;opacity:.6;"></div>
+        </div>
+      </div>
+      <div class="theme-info" style="background:#121a3b;">
+        <div class="theme-name" style="color:#f5f7ff;">🌌 Universum</div>
+        <div class="theme-hint" style="color:#a8b4de;">Weltraum & Sternschnuppen</div>
+        <div class="theme-modes">
+          <div class="theme-mode-dot" style="background:#090d1f;"></div>
+          <div class="theme-mode-dot" style="background:#050812;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Minimal -->
+    <div class="theme-card reveal reveal-d4">
+      <div class="theme-preview" style="background:linear-gradient(160deg,#ececea,#ddddd8);">
+        <div class="theme-preview-bar" style="background:rgba(255,255,255,.9);">
+          <div class="theme-bar-line" style="background:#466a9a; width:70%;"></div>
+          <div class="theme-bar-line short" style="background:#6a7077;"></div>
+        </div>
+      </div>
+      <div class="theme-info" style="background:#f6f6f4;">
+        <div class="theme-name" style="color:#1c2024;">⬜ Minimal</div>
+        <div class="theme-hint">Ruhig, schlicht, fokussiert</div>
+        <div class="theme-modes">
+          <div class="theme-mode-dot" style="background:#f6f6f4;"></div>
+          <div class="theme-mode-dot" style="background:#101214;"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Eigenes Hintergrundbild -->
+  <div style="margin: 0 20px; padding: 16px 18px; background: var(--cream); border-radius: 18px; border: 1px solid var(--border); display:flex; align-items:center; gap:14px;" class="reveal">
+    <span style="font-size:28px; flex-shrink:0;">🖼️</span>
+    <div>
+      <div style="font-size:14px; font-weight:800; color:var(--text); margin-bottom:2px;">Eigenes Hintergrundbild</div>
+      <div style="font-size:12px; color:var(--muted); line-height:1.5;">Leg dein eigenes Foto als App-Hintergrund fest – kombinierbar mit jedem Style. (Pro)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ PRICING -->
+<section class="pricing">
+  <div style="max-width:540px;margin:0 auto;">
+    <p class="section-eyebrow reveal">Kostenlos starten</p>
+    <h2 class="section-h2 reveal reveal-d1">Gratis. Oder alles.</h2>
+    <div class="pricing-grid">
+      <div class="p-tile free reveal reveal-d2">
+        <span class="p-badge">Kostenlos</span>
+        <div class="p-head">Für den Start</div>
+        <ul class="p-list">
+          <li>Bis zu 10 Termine</li>
+          <li>Kalender, Liste, Tagesansicht</li>
+          <li>Lokale Erinnerungen</li>
+          <li>Kalender-Import</li>
+          <li>Termine teilen (Android ↔ iOS)</li>
+          <li>Widget &amp; 12 Sprachen</li>
+          <li>4 Looks mit Dark Mode</li>
+        </ul>
+      </div>
+      <div class="p-tile pro reveal reveal-d3">
+        <span class="p-badge">Pro</span>
+        <div class="p-head">Ohne Limit</div>
+        <ul class="p-list">
+          <li>Unbegrenzte Termine</li>
+          <li>Smarte Icon-Erkennung</li>
+          <li>🌙 Mondphasen</li>
+          <li>♈ Sternzeichen bei Geburtstagen</li>
+          <li>Eigene Terminfarben</li>
+          <li>Eigenes Hintergrundbild</li>
+          <li>Backup &amp; CSV-Export</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ CTA -->
+<div class="cta-wrap reveal">
+  <div class="cta-card">
+    <h2 class="cta-h">Jetzt kostenlos<br>ausprobieren.</h2>
+    <p class="cta-sub">Kein Konto. Keine Cloud. Einfach starten.</p>
+    <div class="cta-badges" id="cta-badges">
+      <a href="https://apps.apple.com/us/app/terminkompass/id6771828426"
+         class="store-btn" id="cta-ios" data-store="ios">
+        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/de-de?size=250x83"
+             alt="Im App Store laden" class="badge-apple">
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.terminkompass.app&utm_source=emea_Med"
+         class="store-btn" id="cta-android" data-store="android">
+        <img src="https://play.google.com/intl/de_de/badges/static/images/badges/de_badge_web_generic.png"
+             alt="Jetzt bei Google Play" class="badge-google">
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ MORE APPS -->
+<section class="more-apps">
+  <div style="max-width:540px;margin:0 auto;">
+    <p class="section-eyebrow reveal">MW_Apps</p>
+    <h2 class="section-h2 reveal reveal-d1">Weitere Apps.</h2>
+    <div class="more-grid">
+      <div class="m-card reveal reveal-d2">
+        <div class="m-icon" style="background:linear-gradient(135deg,#d4f0e8,#8ed4bc);">🔧</div>
+        <div>
+          <div class="m-name">JobTrace</div>
+          <div class="m-desc">Zeiterfassung für Handwerker &amp; Außendienst</div>
+        </div>
+        <span class="m-badge">Demnächst</span>
+      </div>
+      <div class="m-card reveal reveal-d3">
+        <div class="m-icon" style="background:linear-gradient(135deg,#e8d4f4,#c4a0e0);">🎨</div>
+        <div>
+          <div class="m-name">ChromaFlow</div>
+          <div class="m-desc">Color Tile Puzzle – denk in Farben</div>
+        </div>
+        <span class="m-badge">Demnächst</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ BRAND BANNER -->
+<div class="brand-section reveal">
+  <img src="assets/mwapps-banner.jpg" alt="MW_Apps – Software Development" class="brand-banner">
+</div>
+
+<!-- ═══════════════════════════════════════ FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <nav class="footer-links">
+      <a href="impressum/">Impressum</a>
+      <a href="datenschutz/">Datenschutz</a>
+    </nav>
+    <span class="footer-copy">© 2026 MW_Apps</span>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════ LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot Vollbild">
+  <button class="lb-close" id="lb-close" aria-label="Schließen">✕</button>
+  <button class="lb-nav lb-prev" id="lb-prev" aria-label="Vorheriger Screenshot">‹</button>
+  <button class="lb-nav lb-next" id="lb-next" aria-label="Nächster Screenshot">›</button>
+  <div class="lb-img-wrap" id="lb-backdrop">
+    <img class="lb-img" id="lb-img" src="" alt="Screenshot">
+  </div>
+  <div class="lb-label" id="lb-label"></div>
+  <div class="lb-dots" id="lb-dots"></div>
+</div>
+
+<!-- ═══════════════════════════════════════ SCRIPTS -->
+<script>
+/* ── Carousel ───────────────────────────────────── */
+(function () {
+  var track  = document.getElementById('ctrack');
+  var dotsEl = document.getElementById('cdots');
+  if (!track || !dotsEl) return;
+
+  var items   = track.querySelectorAll('.c-item');
+  var dots    = [];
+  var current = 0;
+  var timer;
+
+  /* Build dots */
+  items.forEach(function (_, i) {
+    var d = document.createElement('button');
+    d.className = 'c-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('role', 'tab');
+    d.setAttribute('aria-label', 'Screenshot ' + (i + 1));
+    d.addEventListener('click', function () { go(i); resetTimer(); });
+    dotsEl.appendChild(d);
+    dots.push(d);
+  });
+
+  function setActive(idx) {
+    if (idx === current) return;
+    current = idx;
+    items.forEach(function (item, i) { item.classList.toggle('active', i === idx); });
+    dots.forEach(function (d, i)    { d.classList.toggle('active',  i === idx); });
+  }
+
+  function go(idx) {
+    var trackW    = track.offsetWidth;
+    var item      = items[idx];
+    var target    = item.offsetLeft + item.offsetWidth / 2 - trackW / 2;
+    track.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
+    setActive(idx);
+  }
+
+  /* Update active item on scroll */
+  track.addEventListener('scroll', function () {
+    var center = track.scrollLeft + track.offsetWidth / 2;
+    var best = 0, bestDist = Infinity;
+    items.forEach(function (item, i) {
+      var dist = Math.abs(item.offsetLeft + item.offsetWidth / 2 - center);
+      if (dist < bestDist) { bestDist = dist; best = i; }
+    });
+    setActive(best);
+  }, { passive: true });
+
+  function autoNext() { go((current + 1) % items.length); }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(autoNext, 3600);
+  }
+
+  /* Pause on touch */
+  track.addEventListener('touchstart', function () { clearInterval(timer); }, { passive: true });
+  track.addEventListener('touchend',   resetTimer, { passive: true });
+
+  resetTimer();
+})();
+
+/* ── Lightbox ───────────────────────────────────── */
+(function () {
+  var lb       = document.getElementById('lightbox');
+  var lbImg    = document.getElementById('lb-img');
+  var lbLabel  = document.getElementById('lb-label');
+  var lbClose  = document.getElementById('lb-close');
+  var lbPrev   = document.getElementById('lb-prev');
+  var lbNext   = document.getElementById('lb-next');
+  var lbBg     = document.getElementById('lb-backdrop');
+  var lbDots   = document.getElementById('lb-dots');
+  if (!lb) return;
+
+  // Collect all carousel screenshots + labels
+  var items  = Array.from(document.querySelectorAll('.carousel-track .c-item'));
+  var srcs   = items.map(function(it) {
+    return it.querySelector('.phone-screen img').src;
+  });
+  var labels = items.map(function(it) {
+    var l = it.querySelector('.c-label');
+    return l ? l.textContent : '';
+  });
+  var cur = 0;
+
+  // Build lightbox dots
+  srcs.forEach(function(_, i) {
+    var d = document.createElement('div');
+    d.className = 'lb-dot';
+    lbDots.appendChild(d);
+  });
+  var dots = lbDots.querySelectorAll('.lb-dot');
+
+  function setDots(idx) {
+    dots.forEach(function(d, i) { d.classList.toggle('active', i === idx); });
+  }
+
+  function open(idx) {
+    cur = ((idx % srcs.length) + srcs.length) % srcs.length;
+    lbImg.src = srcs[cur];
+    lbLabel.textContent = labels[cur];
+    setDots(cur);
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    // Clear src after transition to avoid flash on reopen
+    setTimeout(function() {
+      if (!lb.classList.contains('open')) lbImg.src = '';
+    }, 300);
+  }
+
+  function prev() { open(cur - 1); }
+  function next() { open(cur + 1); }
+
+  // Open on screenshot click
+  items.forEach(function(item, i) {
+    item.addEventListener('click', function() { open(i); });
+  });
+
+  // Controls
+  lbClose.addEventListener('click', close);
+  lbPrev.addEventListener('click', function(e) { e.stopPropagation(); prev(); });
+  lbNext.addEventListener('click', function(e) { e.stopPropagation(); next(); });
+
+  // Click backdrop to close (not on image itself)
+  lb.addEventListener('click', function(e) {
+    if (e.target === lb || e.target === lbBg) close();
+  });
+
+  // Keyboard
+  document.addEventListener('keydown', function(e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape')      close();
+    if (e.key === 'ArrowLeft')   prev();
+    if (e.key === 'ArrowRight')  next();
+  });
+
+  // Touch swipe
+  var swipeX = 0, swipeY = 0, swiping = false;
+  lb.addEventListener('touchstart', function(e) {
+    swipeX = e.touches[0].clientX;
+    swipeY = e.touches[0].clientY;
+    swiping = true;
+  }, { passive: true });
+  lb.addEventListener('touchend', function(e) {
+    if (!swiping) return;
+    swiping = false;
+    var dx = e.changedTouches[0].clientX - swipeX;
+    var dy = e.changedTouches[0].clientY - swipeY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 44) {
+      dx < 0 ? next() : prev();
+    }
+  }, { passive: true });
+})();
+
+/* ── OS Detection ───────────────────────────────── */
+(function () {
+  var ua        = navigator.userAgent;
+  var isIOS     = /iphone|ipad|ipod/i.test(ua);
+  var isAndroid = /android/i.test(ua);
+  if (!isIOS && !isAndroid) return;
+
+  function reorder(wrapId, primId, secId) {
+    var wrap = document.getElementById(wrapId);
+    var prim = document.getElementById(primId);
+    var sec  = document.getElementById(secId);
+    if (!wrap || !prim || !sec) return;
+    wrap.insertBefore(prim, wrap.firstChild);
+    sec.classList.add('dimmed');
+  }
+
+  if (isIOS) {
+    reorder('tk-badges',  'tk-ios',    'tk-android');
+    reorder('cta-badges', 'cta-ios',   'cta-android');
+  } else {
+    reorder('tk-badges',  'tk-android','tk-ios');
+    reorder('cta-badges', 'cta-android','cta-ios');
+  }
+})();
+
+/* ── Scroll Reveal ──────────────────────────────── */
+(function () {
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      el.classList.add('in-view');
+    });
+    return;
+  }
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+})();
+</script>
+
+<!-- ═══════════════════════════════════════ ANALYTICS
+     SETUP: Ersetze [DEIN-ACCOUNT] mit deinem GoatCounter-Accountnamen.
+     Kostenlos anmelden: https://www.goatcounter.com/
+     Danach diese zwei Zeilen einkommentieren (<!-- entfernen):
+-->
+<!--
+<script>
+  window.goatcounter = { no_onload: true };
+</script>
+<script data-goatcounter="https://[DEIN-ACCOUNT].goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+-->
+
+<script>
+/* ── Analytics Klick-Tracking ───────────────────── */
+/* Läuft auch ohne GoatCounter – sendet nur wenn gc geladen ist */
+function gcTrack(path, title) {
+  if (window.goatcounter && window.goatcounter.count) {
+    window.goatcounter.count({ path: path, title: title });
+  }
+}
+document.addEventListener('DOMContentLoaded', function () {
+  /* Store-Button Klicks */
+  document.querySelectorAll('[data-store]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var s = this.dataset.store;
+      gcTrack(
+        s === 'ios' ? 'click-appstore' : 'click-playstore',
+        s === 'ios' ? 'App Store Button' : 'Play Store Button'
+      );
+    });
+  });
+  /* Manueller Seitenaufruf (wegen no_onload) */
+  if (window.goatcounter && window.goatcounter.count) {
+    window.goatcounter.count();
+  }
+});
+</script>
+
+</body>
+</html>
