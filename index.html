@@ -311,11 +311,12 @@ img { max-width: 100%; display: block; }
   margin-top: 22px;
 }
 .f-tile {
-  background: #fff;
+  background: #fffaf8;
   border: 1px solid var(--border);
   border-radius: 22px;
   padding: 18px 15px 16px;
   transition: transform .2s ease, box-shadow .2s ease;
+  position: relative;
 }
 .f-tile:hover {
   transform: translateY(-3px);
@@ -329,13 +330,10 @@ img { max-width: 100%; display: block; }
   margin-bottom: 4px;
 }
 .f-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
-.pro-tag {
-  display: inline-block; font-size: 9px; font-weight: 800;
-  letter-spacing: .07em; text-transform: uppercase;
-  background: rgba(224,103,74,.12); color: var(--orange);
-  border: 1px solid rgba(224,103,74,.2);
-  padding: 2px 7px; border-radius: 100px;
-  margin-bottom: 7px;
+.pro-tag-icon {
+  width: 36px; height: 36px;
+  object-fit: contain;
+  position: absolute; top: 14px; right: 14px;
 }
 
 /* ─── SHARING SPOTLIGHT ───────────────────────────── */
@@ -387,23 +385,63 @@ img { max-width: 100%; display: block; }
   line-height: 1.6; margin-bottom: 18px;
 }
 .sharing-pills {
-  display: flex; flex-wrap: wrap; gap: 7px;
+  display: flex; flex-wrap: wrap; gap: 9px;
   position: relative; z-index: 1;
 }
 .sharing-pill {
-  font-size: 12px; font-weight: 700;
-  color: rgba(255,255,255,.75);
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,255,255,.12);
-  padding: 6px 12px; border-radius: 100px;
+  font-size: 13px; font-weight: 700;
+  color: rgba(255,255,255,.92);
+  background: rgba(255,255,255,.13);
+  border: 1px solid rgba(255,255,255,.22);
+  padding: 8px 16px; border-radius: 100px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 12px rgba(0,0,0,.18);
+  letter-spacing: -.01em;
 }
 .sharing-cross {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 12px; font-weight: 800;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 800;
   color: #fff;
   background: linear-gradient(90deg, #5d5fef, #3bb1ff);
-  padding: 7px 14px; border-radius: 100px;
-  margin-top: 18px; position: relative; z-index: 1;
+  padding: 10px 18px; border-radius: 100px;
+  margin-top: 20px; position: relative; z-index: 1;
+  box-shadow: 0 4px 20px rgba(93,95,239,.4);
+  letter-spacing: -.01em;
+}
+
+/* ─── HINTERGRUNDBILD BANNER ─────────────────────── */
+.bg-feature-banner {
+  margin: 0 20px;
+  padding: 18px 20px;
+  background: linear-gradient(135deg, #fff8f5 0%, #fff3ee 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(224,103,74,.2);
+  display: flex; align-items: center; gap: 16px;
+  box-shadow: 0 2px 16px rgba(224,103,74,.08);
+}
+.bg-feature-icon {
+  width: 52px; height: 52px; flex-shrink: 0;
+  background: linear-gradient(135deg, #fff, #fde8df);
+  border-radius: 14px;
+  border: 1px solid rgba(224,103,74,.18);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px rgba(224,103,74,.12);
+}
+.bg-feature-title {
+  font-size: 14px; font-weight: 800;
+  color: var(--text); margin-bottom: 3px;
+  display: flex; align-items: center; gap: 8px;
+}
+.bg-feature-pro {
+  font-size: 10px; font-weight: 800;
+  color: #E0674A;
+  background: rgba(224,103,74,.12);
+  border: 1px solid rgba(224,103,74,.25);
+  padding: 2px 7px; border-radius: 100px;
+  letter-spacing: .04em; text-transform: uppercase;
+}
+.bg-feature-desc {
+  font-size: 12px; color: var(--muted); line-height: 1.5;
 }
 
 /* ─── THEMES ──────────────────────────────────────── */
@@ -482,7 +520,10 @@ img { max-width: 100%; display: block; }
   padding: 3px 9px; border-radius: 100px; margin-bottom: 11px;
 }
 .p-tile.free .p-badge { background: var(--border); color: var(--muted); }
-.p-tile.pro  .p-badge { background: rgba(224,103,74,.18); color: #f4946c; }
+.p-badge-icon {
+  display: block; width: 48px; height: 48px;
+  object-fit: contain; margin-bottom: 8px;
+}
 
 .p-head {
   font-size: 20px; font-weight: 900;
@@ -655,6 +696,10 @@ footer {
   transform: scale(1) translateY(0);
   opacity: 1;
 }
+.lightbox.open .lb-close,
+.lightbox.open .lb-nav {
+  opacity: 1; pointer-events: all;
+}
 /* Close button */
 .lb-close {
   position: fixed; top: max(18px, env(safe-area-inset-top,18px)); right: 18px;
@@ -663,9 +708,10 @@ footer {
   border: 1px solid rgba(255,255,255,.2);
   color: #fff; font-size: 22px; line-height: 1;
   cursor: pointer; display: flex; align-items: center; justify-content: center;
-  transition: background .15s, transform .15s;
+  transition: background .15s, transform .15s, opacity .28s ease;
   -webkit-tap-highlight-color: transparent;
   backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  opacity: 0; pointer-events: none;
 }
 .lb-close:hover  { background: rgba(255,255,255,.3); }
 .lb-close:active { transform: scale(.9); }
@@ -677,10 +723,11 @@ footer {
   border: 1px solid rgba(255,255,255,.18);
   color: #fff; font-size: 20px;
   cursor: pointer; display: flex; align-items: center; justify-content: center;
-  transition: background .15s, transform .15s;
+  transition: background .15s, transform .15s, opacity .28s ease;
   -webkit-tap-highlight-color: transparent;
   backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
   z-index: 2;
+  opacity: 0; pointer-events: none;
 }
 .lb-nav:hover  { background: rgba(255,255,255,.28); }
 .lb-nav:active { transform: translateY(-50%) scale(.9); }
@@ -876,19 +923,19 @@ footer {
     <div class="feature-grid">
 
       <div class="f-tile reveal reveal-d1">
-        <div class="f-icon">📲</div>
+        <div class="f-icon"><img src="icons/kalender_import.png" alt="Kalender-Import" style="width:34px;height:34px;object-fit:contain;"></div>
         <div class="f-name">Kalender-Import</div>
         <div class="f-desc">iCloud, Google Calendar oder andere? Einmal tippen – alle Termine drin. Baby-leicht.</div>
       </div>
 
       <div class="f-tile reveal reveal-d2">
-        <div class="f-icon">📱</div>
+        <div class="f-icon"><img src="icons/widget.png" alt="Home-Screen Widget" style="width:34px;height:34px;object-fit:contain;"></div>
         <div class="f-name">Home-Screen Widget</div>
         <div class="f-desc">Sieh deine nächsten Termine direkt auf dem Sperrbildschirm – ohne die App zu öffnen.</div>
       </div>
 
       <div class="f-tile reveal reveal-d3">
-        <div class="f-icon">🔕</div>
+        <div class="f-icon"><img src="icons/no_cloud.png" alt="Keine Cloud" style="width:34px;height:34px;object-fit:contain;"></div>
         <div class="f-name">Erinnerungen ohne Cloud</div>
         <div class="f-desc">Laufen lokal auf deinem Gerät. Kein Server, der gerade offline ist.</div>
       </div>
@@ -899,23 +946,9 @@ footer {
         <div class="f-desc">Trägt automatisch das Alter ein. Nie wieder nachrechnen.</div>
       </div>
 
-      <div class="f-tile pro-tile reveal reveal-d5">
-        <span class="pro-tag">Pro</span>
-        <div class="f-icon">🌙</div>
-        <div class="f-name">Mondphasen</div>
-        <div class="f-desc">Vollmond bei jedem Termin und im Kalender sichtbar – jeden Tag.</div>
-      </div>
-
-      <div class="f-tile pro-tile reveal reveal-d6">
-        <span class="pro-tag">Pro</span>
-        <div class="f-icon">♈</div>
-        <div class="f-name">Sternzeichen</div>
-        <div class="f-desc">Geburtsdatum eingetragen? TerminKompass zeigt automatisch das Sternzeichen.</div>
-      </div>
-
       <div class="f-tile reveal reveal-d1">
         <div class="f-icon">✨</div>
-        <div class="f-name">Tippe „Arzt"</div>
+        <div class="f-name">Schreibe „Arzt"</div>
         <div class="f-desc">Das passende Icon setzt sich von selbst. 50+ Begriffe erkannt.</div>
       </div>
 
@@ -923,6 +956,20 @@ footer {
         <div class="f-icon">🌍</div>
         <div class="f-name">12 Sprachen</div>
         <div class="f-desc">DE · EN · AR · FR · ES · PL · RO · RU · TR · UK · ID und mehr.</div>
+      </div>
+
+      <div class="f-tile pro-tile reveal reveal-d3">
+        <img src="icons/pro.png" alt="Pro" class="pro-tag-icon">
+        <div class="f-icon">🌙</div>
+        <div class="f-name">Mondphasen</div>
+        <div class="f-desc">Vollmond bei jedem Termin und im Kalender sichtbar – jeden Tag.</div>
+      </div>
+
+      <div class="f-tile pro-tile reveal reveal-d4">
+        <img src="icons/pro.png" alt="Pro" class="pro-tag-icon">
+        <div class="f-icon"><img src="icons/sternzeichen.png" alt="Sternzeichen" style="width:34px;height:34px;object-fit:contain;"></div>
+        <div class="f-name">Sternzeichen</div>
+        <div class="f-desc">Geburtsdatum eingetragen? TerminKompass zeigt automatisch das Sternzeichen.</div>
       </div>
 
     </div>
@@ -1043,11 +1090,11 @@ footer {
   </div>
 
   <!-- Eigenes Hintergrundbild -->
-  <div style="margin: 0 20px; padding: 16px 18px; background: var(--cream); border-radius: 18px; border: 1px solid var(--border); display:flex; align-items:center; gap:14px;" class="reveal">
-    <span style="font-size:28px; flex-shrink:0;">🖼️</span>
-    <div>
-      <div style="font-size:14px; font-weight:800; color:var(--text); margin-bottom:2px;">Eigenes Hintergrundbild</div>
-      <div style="font-size:12px; color:var(--muted); line-height:1.5;">Leg dein eigenes Foto als App-Hintergrund fest – kombinierbar mit jedem Style. (Pro)</div>
+  <div class="bg-feature-banner reveal">
+    <div class="bg-feature-icon"><img src="icons/hintergrund.png" alt="Hintergrundbild" style="width:38px;height:38px;object-fit:contain;"></div>
+    <div class="bg-feature-text">
+      <div class="bg-feature-title">Eigenes Hintergrundbild</div>
+      <div class="bg-feature-desc">Dein Foto als App-Hintergrund – kombinierbar mit jedem Style.</div>
     </div>
   </div>
 </section>
@@ -1069,14 +1116,14 @@ footer {
           <li>Termine teilen (Android ↔ iOS)</li>
           <li>Widget &amp; 12 Sprachen</li>
           <li>4 Looks mit Dark Mode</li>
+          <li>Smarte Icon-Erkennung</li>
         </ul>
       </div>
       <div class="p-tile pro reveal reveal-d3">
-        <span class="p-badge">Pro</span>
+        <img src="icons/pro.png" alt="Pro" class="p-badge-icon">
         <div class="p-head">Ohne Limit</div>
         <ul class="p-list">
           <li>Unbegrenzte Termine</li>
-          <li>Smarte Icon-Erkennung</li>
           <li>🌙 Mondphasen</li>
           <li>♈ Sternzeichen bei Geburtstagen</li>
           <li>Eigene Terminfarben</li>
