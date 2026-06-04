@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>JobTrace – Stundennachweise für Handwerker & Außendienst</title>
+  <meta name="description" content="JobTrace – Tagesberichte erfassen, Zuschläge berechnen, PDFs erstellen. Offline. Kein Abo. Für Handwerker, Monteure und Außendienstler.">
+  <meta property="og:title" content="Stunden erfassen. PDFs erstellen. Fertig.">
+  <meta property="og:description" content="JobTrace – Offline. Kein Abo. Für Handwerker & Außendienst.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../assets/app-icon-v5.png">
+  <style>
+
+/* ─── RESET & BASE ────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display',
+               'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #fff;
+  color: #1a1a1a;
+  overflow-x: hidden;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+img { max-width: 100%; display: block; }
+
+/* ─── TOKENS ──────────────────────────────────────── */
+:root {
+  --green:    #2e9e6b;
+  --green2:   #1d7a52;
+  --dark:     #0b1008;
+  --cream:    #f5f8f5;
+  --border:   #dce8dc;
+  --text:     #121f12;
+  --muted:    #5a6e5a;
+  --blue:     #1a5adb;
+}
+
+/* ─── HERO ────────────────────────────────────────── */
+.hero {
+  position: relative;
+  background: var(--dark);
+  overflow: hidden;
+  padding-bottom: 56px;
+}
+
+.bokeh { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.bokeh span {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  animation: drift linear infinite alternate;
+  will-change: transform;
+}
+.b1 { width: 260px; height: 260px; background: rgba(46,158,107,.40);
+      top: -80px; left: -60px; animation-duration: 9s; }
+.b2 { width: 200px; height: 200px; background: rgba(29,122,82,.32);
+      bottom: 0; right: -40px; animation-duration: 12s; animation-delay: -4s; }
+.b3 { width: 140px; height: 140px; background: rgba(100,200,140,.22);
+      top: 35%; right: 15%; animation-duration: 7s; animation-delay: -2s; }
+
+@keyframes drift {
+  from { transform: translateY(0) scale(1); }
+  to   { transform: translateY(-40px) scale(1.12); }
+}
+
+/* Nav */
+.nav {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 20px 0;
+  max-width: 540px; margin: 0 auto;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 9px;
+  text-decoration: none;
+}
+.nav-logo {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  object-fit: cover; object-position: 50% 22%;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.15);
+}
+.nav-wordmark {
+  font-size: 15px; font-weight: 800; letter-spacing: -.01em;
+  color: #fff;
+}
+.nav-contact {
+  font-size: 13px; color: rgba(255,255,255,.42);
+  text-decoration: none;
+  padding: 6px 0 6px 8px;
+  transition: color .2s;
+}
+.nav-contact:hover { color: rgba(255,255,255,.75); }
+
+/* Hero Content */
+.hero-body {
+  position: relative; z-index: 2;
+  max-width: 540px; margin: 0 auto;
+  padding: 40px 20px 0;
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center;
+}
+
+.hero-icon {
+  width: 90px; height: 90px;
+  border-radius: 20px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.12),
+    0 0 56px rgba(46,158,107,.55),
+    0 12px 36px rgba(0,0,0,.55);
+  animation: iconPop .55s cubic-bezier(.34,1.56,.64,1) both,
+             iconFloat 3.8s ease-in-out .6s infinite;
+  will-change: transform;
+}
+@keyframes iconPop {
+  from { opacity: 0; transform: scale(.6) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-7px); }
+}
+
+.hero-tag {
+  margin-top: 22px;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  animation: fadeUp .5s .15s ease both;
+}
+
+.hero-h1 {
+  margin-top: 10px;
+  font-size: clamp(30px, 9vw, 44px);
+  font-weight: 900;
+  letter-spacing: -.04em;
+  line-height: 1.07;
+  color: #fff;
+  animation: fadeUp .5s .22s ease both;
+}
+.hero-h1 em {
+  font-style: normal;
+  background: linear-gradient(92deg, #6edba8 20%, #2e9e6b 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  margin-top: 14px;
+  font-size: 16px; line-height: 1.55;
+  color: rgba(255,255,255,.52);
+  animation: fadeUp .5s .3s ease both;
+}
+
+.hero-pills {
+  display: flex; flex-wrap: wrap; gap: 7px;
+  justify-content: center;
+  margin-top: 18px;
+  animation: fadeUp .5s .37s ease both;
+}
+.pill {
+  font-size: 12px; font-weight: 600;
+  color: rgba(255,255,255,.52);
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  padding: 5px 11px;
+  border-radius: 100px;
+}
+
+.hero-badges {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  justify-content: center;
+  margin-top: 24px;
+  animation: fadeUp .5s .44s ease both;
+}
+.store-btn {
+  display: flex; align-items: center;
+  transition: transform .15s, opacity .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.store-btn:active { transform: scale(.96); }
+.store-btn.dimmed { opacity: .32; pointer-events: none; }
+.badge-apple  { height: 44px; width: auto; border-radius: 8px; }
+.badge-google { height: 52px; width: auto; margin: -4px 0; }
+
+/* Demnächst Badge für iOS */
+.soon-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 700;
+  color: rgba(255,255,255,.45);
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  padding: 8px 16px; border-radius: 8px;
+  letter-spacing: .03em;
+  height: 44px;
+}
+
+/* ─── SCREENSHOTS ─────────────────────────────────── */
+.screenshots {
+  background: #fff;
+  padding: 48px 0 12px;
+}
+.section-inner {
+  max-width: 540px; margin: 0 auto;
+  padding: 0 20px;
+}
+.section-eyebrow {
+  font-size: 11px; font-weight: 800;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 5px;
+}
+.section-h2 {
+  font-size: 26px; font-weight: 900;
+  letter-spacing: -.03em; line-height: 1.15;
+  color: var(--text);
+}
+
+/* Carousel – Marketing-Screenshot-Stil (kein Phone-Frame, da Bilder Rahmen enthalten) */
+.carousel-wrap { position: relative; margin-top: 22px; }
+.carousel-fade {
+  position: absolute; right: 0; top: 0; bottom: 0; width: 56px;
+  background: linear-gradient(to right, transparent, #fff);
+  pointer-events: none; z-index: 2;
+}
+.carousel-track {
+  display: flex;
+  gap: 14px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 10px 20px 20px;
+  overscroll-behavior-x: contain;
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+
+.c-item {
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  width: 148px;
+  transition: transform .38s cubic-bezier(.25,.46,.45,.94),
+              opacity .38s ease;
+  transform: scale(.87);
+  opacity: .52;
+  cursor: zoom-in;
+}
+.c-item.active { transform: scale(1); opacity: 1; }
+
+.c-img {
+  width: 148px;
+  border-radius: 18px;
+  display: block;
+  box-shadow:
+    0 4px 18px rgba(0,0,0,.12),
+    0 12px 40px rgba(0,0,0,.10);
+  overflow: hidden;
+}
+.c-img img {
+  width: 100%; height: auto; display: block;
+  border-radius: 18px;
+}
+.c-label {
+  font-size: 11px; font-weight: 600; color: var(--muted);
+  text-align: center; margin-top: 10px;
+}
+
+.carousel-dots {
+  display: flex; justify-content: center; gap: 6px;
+  margin-top: 16px; padding: 0 20px 4px;
+}
+.c-dot {
+  width: 6px; height: 6px; border-radius: 3px;
+  background: #ddd; border: none; cursor: pointer; padding: 0;
+  transition: width .3s ease, background .3s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.c-dot.active { width: 20px; background: var(--green); }
+
+/* ─── FEATURES ────────────────────────────────────── */
+.features {
+  background: var(--cream);
+  padding: 52px 20px;
+}
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 22px;
+}
+.f-tile {
+  background: #fffffe;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 18px 15px 16px;
+  transition: transform .2s ease, box-shadow .2s ease;
+  position: relative;
+}
+.f-tile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0,0,0,.08);
+}
+.f-tile.pro-tile { border-color: rgba(46,158,107,.25); }
+.f-icon { font-size: 28px; margin-bottom: 10px; line-height: 1; }
+.f-name {
+  font-size: 13.5px; font-weight: 800;
+  letter-spacing: -.01em; color: var(--text);
+  margin-bottom: 4px;
+}
+.f-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.pro-tag {
+  position: absolute; top: 12px; right: 12px;
+  font-size: 9px; font-weight: 800; letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--green2);
+  background: rgba(46,158,107,.12);
+  border: 1px solid rgba(46,158,107,.25);
+  padding: 2px 7px; border-radius: 100px;
+}
+
+/* ─── SPOTLIGHT (Berechnung) ──────────────────────── */
+.spotlight-section {
+  padding: 0 14px 14px;
+}
+.spotlight-card {
+  background: linear-gradient(155deg, #0b1a12 0%, #122a1e 60%, #0b1a12 100%);
+  border-radius: 28px;
+  padding: 32px 24px;
+  position: relative;
+  overflow: hidden;
+}
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(46,158,107,.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+.spotlight-card::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: 10%;
+  width: 160px; height: 160px;
+  background: radial-gradient(circle, rgba(100,220,160,.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.spotlight-eyebrow {
+  font-size: 11px; font-weight: 800;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(100,200,140,.9);
+  margin-bottom: 8px;
+}
+.spotlight-h {
+  font-size: 24px; font-weight: 900;
+  letter-spacing: -.03em; line-height: 1.15;
+  color: #fff; margin-bottom: 12px;
+}
+.spotlight-h em {
+  font-style: normal;
+  background: linear-gradient(90deg, #6edba8, #2ee8a0);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.spotlight-desc {
+  font-size: 14px; color: rgba(255,255,255,.62);
+  line-height: 1.6; margin-bottom: 18px;
+}
+.spotlight-pills {
+  display: flex; flex-wrap: wrap; gap: 9px;
+  position: relative; z-index: 1;
+}
+.spotlight-pill {
+  font-size: 13px; font-weight: 700;
+  color: rgba(255,255,255,.92);
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.18);
+  padding: 8px 16px; border-radius: 100px;
+  backdrop-filter: blur(6px);
+  letter-spacing: -.01em;
+}
+.spotlight-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 800;
+  color: #fff;
+  background: linear-gradient(90deg, #2e9e6b, #1ab870);
+  padding: 10px 18px; border-radius: 100px;
+  margin-top: 20px; position: relative; z-index: 1;
+  box-shadow: 0 4px 20px rgba(46,158,107,.4);
+}
+
+/* ─── SPRACHEN BANNER ─────────────────────────────── */
+.lang-banner {
+  margin: 0 20px;
+  padding: 18px 20px;
+  background: linear-gradient(135deg, #f0fbf5 0%, #e6f7ee 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(46,158,107,.2);
+  display: flex; align-items: center; gap: 16px;
+  box-shadow: 0 2px 16px rgba(46,158,107,.07);
+}
+.lang-icon-wrap {
+  width: 52px; height: 52px; flex-shrink: 0;
+  background: linear-gradient(135deg, #fff, #d6f4e6);
+  border-radius: 14px;
+  border: 1px solid rgba(46,158,107,.18);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+  box-shadow: 0 2px 8px rgba(46,158,107,.1);
+}
+.lang-title {
+  font-size: 14px; font-weight: 800;
+  color: var(--text); margin-bottom: 3px;
+}
+.lang-desc {
+  font-size: 12px; color: var(--muted); line-height: 1.5;
+}
+
+/* ─── PRICING ─────────────────────────────────────── */
+.pricing {
+  background: #fff;
+  padding: 52px 20px;
+}
+.pricing-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; margin-top: 22px;
+}
+.p-tile {
+  border-radius: 22px; padding: 22px 16px;
+}
+.p-tile.free {
+  background: var(--cream); border: 1px solid var(--border);
+}
+.p-tile.pro {
+  background: linear-gradient(155deg, #0b1a0e, #122a18);
+  border: 1px solid rgba(46,158,107,.2);
+}
+.p-badge {
+  display: inline-block; font-size: 10px; font-weight: 800;
+  letter-spacing: .07em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 100px; margin-bottom: 11px;
+}
+.p-tile.free .p-badge { background: var(--border); color: var(--muted); }
+.p-tile.pro .p-badge {
+  background: rgba(46,158,107,.2);
+  color: #6edba8;
+  border: 1px solid rgba(46,158,107,.3);
+}
+.p-head {
+  font-size: 20px; font-weight: 900;
+  letter-spacing: -.025em; margin-bottom: 13px;
+}
+.p-tile.free .p-head { color: var(--text); }
+.p-tile.pro  .p-head { color: #fff; }
+.p-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.p-list li {
+  font-size: 12.5px; line-height: 1.4;
+  display: flex; align-items: flex-start; gap: 7px;
+}
+.p-list li::before {
+  content: '✓'; font-weight: 700; flex-shrink: 0; margin-top: 1px;
+}
+.p-tile.free .p-list li { color: var(--muted); }
+.p-tile.free .p-list li::before { color: var(--green); }
+.p-tile.pro  .p-list li { color: rgba(255,255,255,.65); }
+.p-tile.pro  .p-list li::before { color: #6edba8; }
+.p-note {
+  font-size: 11px; color: rgba(255,255,255,.4);
+  margin-top: 14px; line-height: 1.4;
+}
+
+/* ─── CTA ─────────────────────────────────────────── */
+.cta-wrap { padding: 0 14px 14px; }
+.cta-card {
+  border-radius: 28px;
+  background: linear-gradient(145deg, #2e9e6b 0%, #1d7a52 100%);
+  padding: 36px 24px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(105deg,
+    transparent 20%, rgba(255,255,255,.08) 50%, transparent 80%);
+  background-size: 200% 100%;
+  animation: shimmer 3.5s linear infinite;
+}
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+.cta-h { font-size: 26px; font-weight: 900; letter-spacing: -.03em;
+         color: #fff; line-height: 1.15; margin-bottom: 8px;
+         position: relative; z-index: 1; }
+.cta-sub { font-size: 14px; color: rgba(255,255,255,.68);
+           margin-bottom: 24px; position: relative; z-index: 1; }
+.cta-badges { display: flex; gap: 10px; justify-content: center;
+              flex-wrap: wrap; position: relative; z-index: 1; }
+
+/* ─── MORE APPS ───────────────────────────────────── */
+.more-apps {
+  background: var(--cream);
+  padding: 52px 20px 36px;
+}
+.more-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; margin-top: 22px;
+}
+.m-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 22px; padding: 20px 14px;
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center; gap: 10px;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+}
+.m-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0,0,0,.07);
+}
+.m-icon {
+  width: 56px; height: 56px; border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+  overflow: hidden;
+}
+.m-name { font-size: 14px; font-weight: 800; color: var(--text); }
+.m-desc { font-size: 12px; color: var(--muted); line-height: 1.4; }
+.m-badge {
+  font-size: 10px; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase;
+  background: var(--cream); color: #8aaa8a;
+  border: 1px solid var(--border);
+  padding: 4px 10px; border-radius: 100px;
+}
+
+/* ─── BRAND BANNER ────────────────────────────────── */
+.brand-section { padding: 0 14px 14px; }
+.brand-banner {
+  width: 100%; border-radius: 18px;
+  overflow: hidden; display: block;
+  box-shadow: 0 4px 20px rgba(0,0,0,.07);
+}
+
+/* ─── FOOTER ──────────────────────────────────────── */
+footer {
+  padding: 20px 20px calc(20px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--border);
+}
+.footer-inner {
+  max-width: 540px; margin: 0 auto;
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 10px;
+}
+.footer-links { display: flex; gap: 18px; }
+.footer-links a, .footer-copy {
+  font-size: 12px; color: #8aaa8a; text-decoration: none;
+}
+.footer-links a:hover { color: var(--text); }
+
+/* ─── SCROLL REVEAL ───────────────────────────────── */
+.reveal {
+  opacity: 0; transform: translateY(22px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.in-view { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: .07s; }
+.reveal-d2 { transition-delay: .14s; }
+.reveal-d3 { transition-delay: .21s; }
+.reveal-d4 { transition-delay: .28s; }
+.reveal-d5 { transition-delay: .35s; }
+.reveal-d6 { transition-delay: .42s; }
+
+/* ─── KEYFRAMES ───────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ─── LIGHTBOX ────────────────────────────────────── */
+.lightbox {
+  position: fixed; inset: 0; z-index: 999;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  pointer-events: none;
+  transition: background .28s ease, backdrop-filter .28s ease,
+              -webkit-backdrop-filter .28s ease;
+  padding: env(safe-area-inset-top, 20px) 20px
+           env(safe-area-inset-bottom, 20px);
+}
+.lightbox.open {
+  background: rgba(0,0,0,.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  pointer-events: all;
+}
+.lb-img-wrap {
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%;
+}
+.lb-img {
+  max-width: min(300px, 72vw);
+  max-height: calc(100svh - 120px);
+  width: auto; height: auto;
+  border-radius: 28px;
+  box-shadow: 0 24px 80px rgba(0,0,0,.7);
+  transform: scale(.82) translateY(12px); opacity: 0;
+  transition: transform .35s cubic-bezier(.34,1.4,.64,1), opacity .28s ease;
+  display: block; object-fit: contain;
+  -webkit-user-drag: none; user-select: none;
+}
+.lightbox.open .lb-img { transform: scale(1) translateY(0); opacity: 1; }
+.lightbox.open .lb-close, .lightbox.open .lb-nav { opacity: 1; pointer-events: all; }
+.lb-close {
+  position: fixed; top: max(18px, env(safe-area-inset-top,18px)); right: 18px;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.2);
+  color: #fff; font-size: 22px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s, transform .15s, opacity .28s ease;
+  -webkit-tap-highlight-color: transparent;
+  backdrop-filter: blur(8px); opacity: 0; pointer-events: none;
+}
+.lb-close:hover { background: rgba(255,255,255,.3); }
+.lb-close:active { transform: scale(.9); }
+.lb-nav {
+  position: fixed; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.18);
+  color: #fff; font-size: 20px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s, transform .15s, opacity .28s ease;
+  -webkit-tap-highlight-color: transparent;
+  backdrop-filter: blur(8px); z-index: 2;
+  opacity: 0; pointer-events: none;
+}
+.lb-nav:hover { background: rgba(255,255,255,.28); }
+.lb-nav:active { transform: translateY(-50%) scale(.9); }
+.lb-prev { left: 12px; }
+.lb-next { right: 12px; }
+.lb-label {
+  position: fixed;
+  bottom: max(64px, calc(env(safe-area-inset-bottom, 20px) + 44px));
+  left: 50%; transform: translateX(-50%);
+  font-size: 13px; font-weight: 600;
+  color: rgba(255,255,255,.65);
+  white-space: nowrap; pointer-events: none;
+  transition: opacity .2s;
+}
+.lb-dots {
+  position: fixed;
+  bottom: max(28px, calc(env(safe-area-inset-bottom, 20px) + 8px));
+  left: 50%; transform: translateX(-50%);
+  display: flex; gap: 6px; z-index: 2;
+}
+.lb-dot {
+  width: 6px; height: 6px; border-radius: 3px;
+  background: rgba(255,255,255,.3);
+  transition: width .25s ease, background .25s ease;
+}
+.lb-dot.active { width: 20px; background: #fff; }
+
+@media (hover: none) {
+  .f-tile:hover { transform: none; box-shadow: none; }
+  .m-card:hover { transform: none; box-shadow: none; }
+}
+
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════ HERO -->
+<section class="hero">
+  <div class="bokeh" aria-hidden="true">
+    <span class="b1"></span>
+    <span class="b2"></span>
+    <span class="b3"></span>
+  </div>
+
+  <nav class="nav">
+    <a href="../" class="nav-brand" aria-label="MW_Apps Startseite">
+      <img src="../assets/mwapps-logo.jpg" alt="MW_Apps Logo" class="nav-logo">
+      <span class="nav-wordmark">MW_Apps</span>
+    </a>
+    <a href="mailto:mw_apps@gmx.de" class="nav-contact">Kontakt</a>
+  </nav>
+
+  <div class="hero-body">
+    <img src="../assets/app-icon-v5.png" alt="JobTrace App Icon"
+         class="hero-icon" width="90" height="90">
+
+    <span class="hero-tag">JobTrace</span>
+
+    <h1 class="hero-h1">
+      Stunden erfassen.<br>
+      <em>PDFs erstellen. Fertig.</em>
+    </h1>
+
+    <p class="hero-sub">
+      Tagesberichte, Zuschläge und Monatsberichte –<br>
+      alles in einer App. Offline. Ohne Abo.
+    </p>
+
+    <div class="hero-pills">
+      <span class="pill">📋 Tagesberichte</span>
+      <span class="pill">📄 PDF-Export</span>
+      <span class="pill">🌍 5 Sprachen</span>
+      <span class="pill">🔒 PIN-geschützt</span>
+      <span class="pill">🇩🇪 Made in Germany</span>
+    </div>
+
+    <div class="hero-badges">
+      <a href="https://play.google.com/store/apps/details?id=de.mwapps.jobtrace"
+         class="store-btn" aria-label="JobTrace bei Google Play">
+        <img src="https://play.google.com/intl/de_de/badges/static/images/badges/de_badge_web_generic.png"
+             alt="Jetzt bei Google Play" class="badge-google">
+      </a>
+      <span class="soon-badge" aria-label="App Store kommt bald">
+        🍎 App Store – bald verfügbar
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ SCREENSHOTS -->
+<section class="screenshots">
+  <div class="section-inner">
+    <p class="section-eyebrow reveal">In der App</p>
+    <h2 class="section-h2 reveal reveal-d1">Schau rein.</h2>
+  </div>
+
+  <div class="carousel-wrap reveal reveal-d2">
+    <div class="carousel-fade" aria-hidden="true"></div>
+    <div class="carousel-track" id="ctrack" role="list">
+
+      <div class="c-item active" role="listitem">
+        <div class="c-img">
+          <img src="../assets/jobtrace/screenshots/01-monat.png"
+               alt="Monatsübersicht" loading="lazy">
+        </div>
+        <p class="c-label">Monatsübersicht</p>
+      </div>
+
+      <div class="c-item" role="listitem">
+        <div class="c-img">
+          <img src="../assets/jobtrace/screenshots/02-berichte.png"
+               alt="Berichte" loading="lazy">
+        </div>
+        <p class="c-label">Berichte</p>
+      </div>
+
+      <div class="c-item" role="listitem">
+        <div class="c-img">
+          <img src="../assets/jobtrace/screenshots/03-pdf.png"
+               alt="PDF-Bericht" loading="lazy">
+        </div>
+        <p class="c-label">PDF-Bericht</p>
+      </div>
+
+      <div class="c-item" role="listitem">
+        <div class="c-img">
+          <img src="../assets/jobtrace/screenshots/04-zuschlaege.png"
+               alt="Zuschläge" loading="lazy">
+        </div>
+        <p class="c-label">Zuschläge</p>
+      </div>
+
+      <div class="c-item" role="listitem">
+        <div class="c-img">
+          <img src="../assets/jobtrace/screenshots/06-monatsbericht.png"
+               alt="Monatsbericht PDF" loading="lazy">
+        </div>
+        <p class="c-label">Monatsbericht</p>
+      </div>
+
+      <div class="c-item" role="listitem">
+        <div class="c-img">
+          <img src="../assets/jobtrace/screenshots/05-tour.png"
+               alt="Geführte Tour" loading="lazy">
+        </div>
+        <p class="c-label">Geführte Tour</p>
+      </div>
+
+      <div class="c-item" role="listitem">
+        <div class="c-img">
+          <img src="../assets/jobtrace/screenshots/07-pin.png"
+               alt="PIN-Schutz" loading="lazy">
+        </div>
+        <p class="c-label">PIN-Schutz</p>
+      </div>
+
+    </div>
+    <div class="carousel-dots" id="cdots" role="tablist" aria-label="Screenshots"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ FEATURES -->
+<section class="features">
+  <div style="max-width:540px;margin:0 auto;">
+    <p class="section-eyebrow reveal">Was JobTrace kann</p>
+    <h2 class="section-h2 reveal reveal-d1">Das haben andere<br>nicht.</h2>
+
+    <div class="feature-grid">
+
+      <div class="f-tile reveal reveal-d1">
+        <div class="f-icon">📋</div>
+        <div class="f-name">Tagesberichte</div>
+        <div class="f-desc">Baustelle, Tätigkeit, Stunden und Geräte – alles in einem Bericht.</div>
+      </div>
+
+      <div class="f-tile reveal reveal-d2">
+        <div class="f-icon">⚡</div>
+        <div class="f-name">Auto-Berechnung</div>
+        <div class="f-desc">Überstunden, Samstag, Sonntag, Feiertag und Nacht werden automatisch berechnet.</div>
+      </div>
+
+      <div class="f-tile reveal reveal-d3">
+        <div class="f-icon">📄</div>
+        <div class="f-name">PDF-Export</div>
+        <div class="f-desc">Tages- und Monatsberichte als professionelle PDF direkt aus der App.</div>
+      </div>
+
+      <div class="f-tile reveal reveal-d4">
+        <div class="f-icon">✍️</div>
+        <div class="f-name">Digitale Signatur</div>
+        <div class="f-desc">Unterschrift mit dem Finger zeichnen – lokal gespeichert, erscheint im PDF.</div>
+      </div>
+
+      <div class="f-tile reveal reveal-d1">
+        <div class="f-icon">📤</div>
+        <div class="f-name">Senden & Teilen</div>
+        <div class="f-desc">Per E-Mail, WhatsApp oder an deinen WLAN-Server – direkt aus der App.</div>
+      </div>
+
+      <div class="f-tile reveal reveal-d2">
+        <div class="f-icon">🔐</div>
+        <div class="f-name">Zwei Rollen</div>
+        <div class="f-desc">Benutzer und Admin getrennt. Zuschläge zentral im Admin konfiguriert.</div>
+      </div>
+
+      <div class="f-tile reveal reveal-d3">
+        <div class="f-icon">🗓️</div>
+        <div class="f-name">Monatsübersicht</div>
+        <div class="f-desc">Kalenderansicht mit Wochenstunden, Monatsstunden und Überstunden-Stand.</div>
+      </div>
+
+      <div class="f-tile pro-tile reveal reveal-d4">
+        <span class="pro-tag">Pro</span>
+        <div class="f-icon">♾️</div>
+        <div class="f-name">Unbegrenzte Berichte</div>
+        <div class="f-desc">Keine Grenze. Einmal kaufen, dauerhaft nutzen – kein Abo.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ SPOTLIGHT: PDF & Unterschrift -->
+<div class="spotlight-section reveal">
+  <div class="spotlight-card">
+    <p class="spotlight-eyebrow">Highlight</p>
+    <h2 class="spotlight-h">Bericht fertig.<br><em>PDF. Unterschrift.</em><br>Abgeschickt.</h2>
+    <p class="spotlight-desc">
+      Einen Tagesbericht anlegen, Baustellen und Stunden eintragen,
+      speichern – und schon liegt das PDF bereit. Mit deiner
+      handschriftlichen Signatur direkt im Dokument.
+      Per WhatsApp, E-Mail oder direkt an deinen Server.
+    </p>
+    <div class="spotlight-pills">
+      <span class="spotlight-pill">📋 Tagesbericht</span>
+      <span class="spotlight-pill">📅 Monatsbericht</span>
+      <span class="spotlight-pill">✍️ Signatur im PDF</span>
+    </div>
+    <div class="spotlight-badge">📤 Teilen, drucken, am Server ablegen</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ SPRACHEN -->
+<div class="lang-banner reveal" style="margin-top:14px;">
+  <div class="lang-icon-wrap">🌍</div>
+  <div>
+    <div class="lang-title">5 Sprachen</div>
+    <div class="lang-desc">DE · EN · UK · RU · TR – alle Texte, Buttons und PDFs vollständig übersetzt.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ PRICING -->
+<section class="pricing">
+  <div style="max-width:540px;margin:0 auto;">
+    <p class="section-eyebrow reveal">Kostenlos starten</p>
+    <h2 class="section-h2 reveal reveal-d1">Gratis. Oder alles.</h2>
+    <div class="pricing-grid">
+      <div class="p-tile free reveal reveal-d2">
+        <span class="p-badge">Kostenlos</span>
+        <div class="p-head">Zum Starten</div>
+        <ul class="p-list">
+          <li>Bis zu 14 Berichte</li>
+          <li>Tages- &amp; Monats-PDF</li>
+          <li>Auto-Zuschlagsberechnung</li>
+          <li>Digitale Signatur</li>
+          <li>Senden &amp; Teilen</li>
+          <li>5 Sprachen</li>
+          <li>Hell &amp; Dunkel Modus</li>
+          <li>PIN-Schutz</li>
+        </ul>
+      </div>
+      <div class="p-tile pro reveal reveal-d3">
+        <span class="p-badge">Pro</span>
+        <div class="p-head">Ohne Limit</div>
+        <ul class="p-list">
+          <li>Unbegrenzte Berichte</li>
+          <li>Alle Free-Features</li>
+          <li>Einmalkauf – kein Abo</li>
+        </ul>
+        <p class="p-note">Einmaliger Kauf über Google Play oder Apple App Store. Kein Abonnement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ CTA -->
+<div class="cta-wrap reveal">
+  <div class="cta-card">
+    <h2 class="cta-h">Jetzt kostenlos<br>ausprobieren.</h2>
+    <p class="cta-sub">Offline. Kein Konto. Einfach starten.</p>
+    <div class="cta-badges">
+      <a href="https://play.google.com/store/apps/details?id=de.mwapps.jobtrace"
+         class="store-btn" aria-label="JobTrace bei Google Play">
+        <img src="https://play.google.com/intl/de_de/badges/static/images/badges/de_badge_web_generic.png"
+             alt="Jetzt bei Google Play" class="badge-google">
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ MORE APPS -->
+<section class="more-apps">
+  <div style="max-width:540px;margin:0 auto;">
+    <p class="section-eyebrow reveal">MW_Apps</p>
+    <h2 class="section-h2 reveal reveal-d1">Weitere Apps.</h2>
+    <div class="more-grid">
+      <a href="../" class="m-card reveal reveal-d2">
+        <div class="m-icon" style="padding:0;overflow:hidden;">
+          <img src="../assets/terminkompass/icon.png" alt="TerminKompass Icon"
+               style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
+        </div>
+        <div>
+          <div class="m-name">TerminKompass</div>
+          <div class="m-desc">Termine, die du nicht vergisst</div>
+        </div>
+        <span class="m-badge" style="background:#fff3ee;color:#c07050;border-color:#f0d0c0;">Im Store</span>
+      </a>
+      <div class="m-card reveal reveal-d3" style="cursor:default;">
+        <div class="m-icon" style="background:linear-gradient(135deg,#e8d4f4,#c4a0e0);">🎨</div>
+        <div>
+          <div class="m-name">ChromaFlow</div>
+          <div class="m-desc">Color Tile Puzzle – denk in Farben</div>
+        </div>
+        <span class="m-badge">Demnächst</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ BRAND BANNER -->
+<div class="brand-section reveal">
+  <img src="../assets/mwapps-banner.jpg" alt="MW_Apps – Software Development" class="brand-banner">
+</div>
+
+<!-- ═══════════════════════════════════════ FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <nav class="footer-links">
+      <a href="../impressum/">Impressum</a>
+      <a href="../datenschutz/">Datenschutz</a>
+    </nav>
+    <span class="footer-copy">© 2026 MW_Apps</span>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════ LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot Vollbild">
+  <button class="lb-close" id="lb-close" aria-label="Schließen">✕</button>
+  <button class="lb-nav lb-prev" id="lb-prev" aria-label="Vorheriger Screenshot">‹</button>
+  <button class="lb-nav lb-next" id="lb-next" aria-label="Nächster Screenshot">›</button>
+  <div class="lb-img-wrap" id="lb-backdrop">
+    <img class="lb-img" id="lb-img" src="" alt="Screenshot">
+  </div>
+  <div class="lb-label" id="lb-label"></div>
+  <div class="lb-dots" id="lb-dots"></div>
+</div>
+
+<!-- ═══════════════════════════════════════ SCRIPTS -->
+<script>
+/* ── Carousel ───────────────────────────────────── */
+(function () {
+  var track  = document.getElementById('ctrack');
+  var dotsEl = document.getElementById('cdots');
+  if (!track || !dotsEl) return;
+
+  var items   = track.querySelectorAll('.c-item');
+  var dots    = [];
+  var current = 0;
+  var timer;
+
+  items.forEach(function (_, i) {
+    var d = document.createElement('button');
+    d.className = 'c-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('role', 'tab');
+    d.setAttribute('aria-label', 'Screenshot ' + (i + 1));
+    d.addEventListener('click', function () { go(i); resetTimer(); });
+    dotsEl.appendChild(d);
+    dots.push(d);
+  });
+
+  function setActive(idx) {
+    if (idx === current) return;
+    current = idx;
+    items.forEach(function (item, i) { item.classList.toggle('active', i === idx); });
+    dots.forEach(function (d, i)    { d.classList.toggle('active',  i === idx); });
+  }
+
+  function go(idx) {
+    var trackW = track.offsetWidth;
+    var item   = items[idx];
+    var target = item.offsetLeft + item.offsetWidth / 2 - trackW / 2;
+    track.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
+    setActive(idx);
+  }
+
+  function next() { go((current + 1) % items.length); }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(next, 3400);
+  }
+
+  track.addEventListener('scroll', function () {
+    var center = track.scrollLeft + track.offsetWidth / 2;
+    var closest = 0; var minDist = Infinity;
+    items.forEach(function (item, i) {
+      var dist = Math.abs(item.offsetLeft + item.offsetWidth / 2 - center);
+      if (dist < minDist) { minDist = dist; closest = i; }
+    });
+    setActive(closest);
+  }, { passive: true });
+
+  track.addEventListener('touchstart', function () { clearInterval(timer); }, { passive: true });
+  track.addEventListener('touchend',   function () { resetTimer(); },          { passive: true });
+
+  resetTimer();
+})();
+
+/* ── Lightbox ───────────────────────────────────── */
+(function () {
+  var lb      = document.getElementById('lightbox');
+  var lbImg   = document.getElementById('lb-img');
+  var lbLabel = document.getElementById('lb-label');
+  var lbDots  = document.getElementById('lb-dots');
+  var lbClose = document.getElementById('lb-close');
+  var lbPrev  = document.getElementById('lb-prev');
+  var lbNext  = document.getElementById('lb-next');
+  var lbBack  = document.getElementById('lb-backdrop');
+  if (!lb) return;
+
+  var items   = Array.from(document.querySelectorAll('#ctrack .c-item'));
+  var current = 0;
+  var dots    = [];
+
+  items.forEach(function (_, i) {
+    var d = document.createElement('div');
+    d.className = 'lb-dot' + (i === 0 ? ' active' : '');
+    lbDots.appendChild(d);
+    dots.push(d);
+  });
+
+  function open(idx) {
+    current = idx;
+    var img   = items[idx].querySelector('img');
+    var label = items[idx].querySelector('.c-label');
+    lbImg.src      = img ? img.src : '';
+    lbLabel.textContent = label ? label.textContent : '';
+    dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(function () { lbImg.src = ''; }, 300);
+  }
+
+  function prev() { open((current - 1 + items.length) % items.length); }
+  function next() { open((current + 1) % items.length); }
+
+  items.forEach(function (item, i) {
+    item.addEventListener('click', function () { open(i); });
+  });
+
+  lbClose.addEventListener('click', close);
+  lbPrev.addEventListener('click',  prev);
+  lbNext.addEventListener('click',  next);
+  lbBack.addEventListener('click',  function (e) { if (e.target === lbBack) close(); });
+
+  document.addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape')      close();
+    if (e.key === 'ArrowLeft')   prev();
+    if (e.key === 'ArrowRight')  next();
+  });
+})();
+
+/* ── Scroll Reveal ──────────────────────────────── */
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.classList.add('in-view'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(function (el) { io.observe(el); });
+})();
+</script>
+
+</body>
+</html>
