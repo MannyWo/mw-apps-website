@@ -3,26 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>ItemShark – Dein Preisalarm</title>
-  <meta name="description" content="ItemShark – dein persönlicher Deal-Tracker. Demnächst bei MW_Apps.">
+  <title>ItemShark – Fotografieren. KI erkennt alles. Finden.</title>
+  <meta name="description" content="ItemShark – Fotografiere deine Kisten und Regale, die KI erkennt automatisch alles darin. Nie wieder suchen.">
+  <meta property="og:title" content="Fotografieren. KI erkennt alles. Finden.">
+  <meta property="og:description" content="ItemShark – dein KI-Inventar für Zuhause. Wo liegt das nochmal?">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../assets/itemshark-icon.png">
+  <link rel="preconnect" href="https://play.google.com">
+  <link rel="dns-prefetch" href="https://play.google.com">
   <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
-  -webkit-font-smoothing: antialiased; background: #fff; color: #0a1628; overflow-x: hidden;
+  -webkit-font-smoothing: antialiased; background: #fff; color: #0f172a; overflow-x: hidden;
   padding-bottom: env(safe-area-inset-bottom);
 }
 img { max-width: 100%; display: block; }
-:root { --teal: #0e7490; --teal2: #0c4a6e; --dark: #060e1a; --cream: #f0f9ff; --border: #bae6fd; --text: #0a1628; --muted: #476582; }
+:root {
+  --blue:   #2563eb;
+  --blue2:  #1d4ed8;
+  --dark:   #06080f;
+  --cream:  #f0f4ff;
+  --border: #c7d9ff;
+  --text:   #0f172a;
+  --muted:  #475a8a;
+}
 
 /* HERO */
 .hero { position: relative; background: var(--dark); overflow: hidden; padding-bottom: 56px; }
 .bokeh { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
 .bokeh span { position: absolute; border-radius: 50%; filter: blur(70px); animation: drift linear infinite alternate; will-change: transform; }
-.b1 { width: 260px; height: 260px; background: rgba(14,116,144,.40); top: -80px; left: -60px; animation-duration: 9s; }
-.b2 { width: 200px; height: 200px; background: rgba(12,74,110,.32); bottom: 0; right: -40px; animation-duration: 12s; animation-delay: -4s; }
-.b3 { width: 140px; height: 140px; background: rgba(56,189,248,.20); top: 35%; right: 15%; animation-duration: 7s; animation-delay: -2s; }
+.b1 { width: 280px; height: 280px; background: rgba(37,99,235,.42); top: -80px; left: -70px; animation-duration: 10s; }
+.b2 { width: 200px; height: 200px; background: rgba(29,78,216,.30); bottom: 0; right: -40px; animation-duration: 13s; animation-delay: -5s; }
+.b3 { width: 150px; height: 150px; background: rgba(96,165,250,.20); top: 40%; right: 18%; animation-duration: 8s; animation-delay: -3s; }
 @keyframes drift { from { transform: translateY(0) scale(1); } to { transform: translateY(-40px) scale(1.12); } }
 
 .nav { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 0; max-width: 540px; margin: 0 auto; }
@@ -34,79 +48,170 @@ img { max-width: 100%; display: block; }
 
 .hero-body { position: relative; z-index: 2; max-width: 540px; margin: 0 auto; padding: 40px 20px 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
 
-/* SWITCHER */
-.hero-switcher { display: flex; align-items: flex-end; justify-content: center; gap: 22px; width: 100%; }
-.sw-wrap { display: flex; flex-direction: column; align-items: center; gap: 9px; text-decoration: none; -webkit-tap-highlight-color: transparent; }
-.sw-wrap.active .sw-icon {
-  display: block; width: 90px; height: 90px; border-radius: 22px;
-  box-shadow: 0 0 0 1.5px rgba(255,255,255,.22), 0 0 0 6px rgba(14,116,144,.13), 0 0 58px rgba(14,116,144,.72), 0 10px 24px rgba(0,0,0,.6), 0 26px 58px rgba(0,0,0,.45);
+/* 3D CAROUSEL */
+.sw-arrow { display: none; flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16); color: rgba(255,255,255,.8); font-size: 22px; line-height: 1; cursor: pointer; align-items: center; justify-content: center; transition: background .15s, transform .1s; -webkit-tap-highlight-color: transparent; padding: 0; }
+.sw-arrow:hover { background: rgba(255,255,255,.22); }
+.sw-arrow:active { transform: scale(.9); }
+@media (hover: hover) and (pointer: fine) { .sw-arrow { display: flex; } }
+.sw-outer { display: flex; align-items: center; justify-content: center; width: 100%; gap: 8px; }
+.sw-stage { perspective: 700px; perspective-origin: 50% 42%; display: flex; align-items: flex-end; justify-content: center; gap: 12px; padding: 12px 4px 22px; }
+.sw-slide { display: flex; flex-direction: column; align-items: center; gap: 9px; transition: transform .44s cubic-bezier(.4,0,.2,1), opacity .44s ease, filter .44s ease; -webkit-tap-highlight-color: transparent; text-decoration: none; }
+.sw-slide .sw-icon { display: block; width: 90px; height: 90px; border-radius: 20px; }
+.sw-slide.sw-active .sw-icon {
+  border-radius: 22px;
+  box-shadow: 0 0 0 1.5px rgba(255,255,255,.22), 0 0 0 6px rgba(37,99,235,.14), 0 0 58px rgba(37,99,235,.75), 0 10px 24px rgba(0,0,0,.6), 0 26px 58px rgba(0,0,0,.45);
   animation: iconPop .55s cubic-bezier(.34,1.56,.64,1) both, swFloat 3.6s ease-in-out .55s infinite; will-change: transform;
 }
-.sw-wrap.inactive .sw-icon {
-  display: block; width: 58px; height: 58px; border-radius: 15px;
-  opacity: .40; filter: brightness(.72); transform: translateY(8px);
-  box-shadow: 0 4px 16px rgba(0,0,0,.4); animation: swFloatIdle 4.4s ease-in-out infinite;
-  will-change: transform; transition: opacity .2s, filter .2s, transform .2s, box-shadow .2s; cursor: pointer;
-}
-.sw-wrap.inactive:first-child .sw-icon { animation-delay: -1.3s; }
-.sw-wrap.inactive:last-child  .sw-icon { animation-delay: -2.7s; }
-.sw-wrap.inactive:hover .sw-icon { opacity: .85; filter: brightness(.95); transform: translateY(2px) scale(1.1); box-shadow: 0 0 0 1.5px rgba(255,255,255,.2), 0 10px 28px rgba(0,0,0,.5); }
-.sw-wrap.sw-tap .sw-icon { animation: swTap .35s cubic-bezier(.34,1.56,.64,1) forwards !important; }
-.sw-icon-emoji { display: flex; align-items: center; justify-content: center; font-size: 30px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08); }
-.sw-dots { display: flex; gap: 7px; justify-content: center; margin-top: 14px; }
+.sw-slide.sw-prev { transform: rotateY(38deg) scale(0.74) translateY(14px); opacity: .70; filter: brightness(.88); cursor: pointer; }
+.sw-slide.sw-next { transform: rotateY(-38deg) scale(0.74) translateY(14px); opacity: .70; filter: brightness(.88); cursor: pointer; }
+.sw-slide.sw-prev:hover, .sw-slide.sw-next:hover { opacity: .9; filter: brightness(.98); }
+.sw-slide.sw-exit-left  { transform: rotateY(-80deg) scale(.48) translateY(24px); opacity: 0; pointer-events: none; }
+.sw-slide.sw-exit-right { transform: rotateY(80deg) scale(.48) translateY(24px); opacity: 0; pointer-events: none; }
+.sw-stage.sw-navigating { pointer-events: none; }
+.sw-icon-emoji { display: flex; align-items: center; justify-content: center; font-size: 32px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08); }
+.sw-label { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.sw-slide.sw-active .sw-label { color: rgba(255,255,255,.65); }
+.sw-slide:not(.sw-active) .sw-label { color: rgba(255,255,255,.30); }
+.sw-dots { display: flex; gap: 7px; justify-content: center; margin-top: 12px; }
 .sw-dot { height: 5px; border-radius: 3px; background: rgba(255,255,255,.2); transition: width .3s, background .3s; width: 5px; }
 .sw-dot.active { width: 18px; background: rgba(255,255,255,.65); }
-.sw-label { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
-.sw-wrap.active   .sw-label { color: rgba(255,255,255,.65); }
-.sw-wrap.inactive .sw-label { color: rgba(255,255,255,.28); }
-@keyframes iconPop  { from { opacity:0; transform:scale(.6) translateY(12px); } to { opacity:1; transform:scale(1) translateY(0); } }
-@keyframes swFloat    { 0%,100%{ transform:translateY(0); }   50%{ transform:translateY(-9px); } }
-@keyframes swFloatIdle{ 0%,100%{ transform:translateY(8px); } 50%{ transform:translateY(4px); } }
-@keyframes swTap { 0%{ transform:scale(.65) translateY(8px); opacity:.4; } 55%{ transform:scale(1.12) translateY(-16px); opacity:1; } 100%{ transform:scale(.88) translateY(6px); opacity:.7; } }
+@keyframes iconPop { from { opacity:0; transform:scale(.6) translateY(12px); } to { opacity:1; transform:scale(1) translateY(0); } }
+@keyframes swFloat { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-9px); } }
 @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
 
-.hero-h1 { margin-top: 24px; font-size: clamp(32px,9vw,46px); font-weight: 900; letter-spacing: -.04em; line-height: 1.07; color: #fff; animation: fadeUp .5s .22s ease both; }
-.hero-h1 em { font-style: normal; background: linear-gradient(92deg, #7dd3fc 20%, #0e7490 80%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-h1 { margin-top: 24px; font-size: clamp(30px,9vw,44px); font-weight: 900; letter-spacing: -.04em; line-height: 1.07; color: #fff; animation: fadeUp .5s .22s ease both; }
+.hero-h1 em { font-style: normal; background: linear-gradient(92deg, #93c5fd 20%, #2563eb 80%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .hero-sub { margin-top: 14px; font-size: 16px; line-height: 1.55; color: rgba(255,255,255,.52); animation: fadeUp .5s .3s ease both; }
 .hero-pills { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin-top: 18px; animation: fadeUp .5s .37s ease both; }
 .pill { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.52); background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); padding: 5px 11px; border-radius: 100px; }
+.hero-badges { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 24px; animation: fadeUp .5s .44s ease both; }
+.store-btn { display: flex; align-items: center; transition: transform .15s, opacity .15s; -webkit-tap-highlight-color: transparent; }
+.store-btn:active { transform: scale(.96); }
+.badge-google { height: 52px; width: auto; margin: -4px 0; }
+.soon-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: rgba(255,255,255,.42); background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); padding: 8px 16px; border-radius: 8px; height: 44px; }
 
-/* COMING SOON */
-.coming-section { padding: 52px 20px; background: var(--cream); }
-.coming-card { max-width: 540px; margin: 0 auto; background: #fff; border: 1px solid var(--border); border-radius: 28px; padding: 36px 28px; text-align: center; box-shadow: 0 4px 24px rgba(14,116,144,.07); }
-.coming-emoji { font-size: 64px; margin-bottom: 20px; }
-.coming-h2 { font-size: 26px; font-weight: 900; letter-spacing: -.03em; color: var(--text); margin-bottom: 10px; }
-.coming-sub { font-size: 15px; color: var(--muted); line-height: 1.6; margin-bottom: 28px; }
-.coming-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--teal); background: rgba(14,116,144,.1); border: 1px solid rgba(14,116,144,.25); padding: 10px 20px; border-radius: 100px; }
+/* SECTIONS BASE */
+.section-inner { max-width: 540px; margin: 0 auto; padding: 0 20px; }
+.section-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 5px; }
+.section-h2 { font-size: 26px; font-weight: 900; letter-spacing: -.03em; line-height: 1.15; color: var(--text); }
+
+/* SCREENSHOTS CAROUSEL */
+.screenshots { background: #fff; padding: 48px 0 12px; }
+.carousel-wrap { position: relative; margin-top: 22px; }
+.carousel-fade { position: absolute; right: 0; top: 0; bottom: 0; width: 56px; background: linear-gradient(to right, transparent, #fff); pointer-events: none; z-index: 2; }
+.carousel-track { display: flex; gap: 14px; overflow-x: scroll; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 10px 20px 20px; overscroll-behavior-x: contain; }
+.carousel-track::-webkit-scrollbar { display: none; }
+.c-item { flex-shrink: 0; scroll-snap-align: center; width: 148px; transition: transform .38s cubic-bezier(.25,.46,.45,.94), opacity .38s ease; transform: scale(.87); opacity: .52; cursor: zoom-in; }
+.c-item.active { transform: scale(1); opacity: 1; }
+.c-img { width: 148px; border-radius: 18px; display: block; box-shadow: 0 4px 18px rgba(0,0,0,.12), 0 12px 40px rgba(0,0,0,.10); overflow: hidden; }
+.c-img img { width: 100%; height: auto; display: block; border-radius: 18px; }
+.c-label { font-size: 11px; font-weight: 600; color: var(--muted); text-align: center; margin-top: 10px; }
+.carousel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 16px; padding: 0 20px 4px; }
+.c-dot { width: 6px; height: 6px; border-radius: 3px; background: #ddd; border: none; cursor: pointer; padding: 0; transition: width .3s ease, background .3s ease; -webkit-tap-highlight-color: transparent; }
+.c-dot.active { width: 20px; background: var(--blue); }
+
+/* FEATURES */
+.features { background: var(--cream); padding: 52px 20px; }
+.feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
+.f-tile { background: #fff; border: 1px solid var(--border); border-radius: 22px; padding: 18px 15px 16px; transition: transform .2s, box-shadow .2s; position: relative; }
+.f-tile:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,.08); }
+.f-tile.pro-tile { border-color: rgba(37,99,235,.25); }
+.f-icon { font-size: 28px; margin-bottom: 10px; line-height: 1; }
+.f-name { font-size: 13.5px; font-weight: 800; letter-spacing: -.01em; color: var(--text); margin-bottom: 4px; }
+.f-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.pro-tag { position: absolute; top: 12px; right: 12px; font-size: 9px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--blue); background: rgba(37,99,235,.1); border: 1px solid rgba(37,99,235,.25); padding: 2px 7px; border-radius: 100px; }
+
+/* SPOTLIGHT: KI-Scan */
+.spotlight-section { padding: 0 14px 14px; }
+.spotlight-card { background: linear-gradient(155deg, #060f26 0%, #0d1f4a 60%, #060f26 100%); border-radius: 28px; padding: 32px 24px; position: relative; overflow: hidden; }
+.spotlight-card::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(37,99,235,.35) 0%, transparent 70%); pointer-events: none; }
+.spotlight-card::after { content: ''; position: absolute; bottom: -40px; left: 10%; width: 160px; height: 160px; background: radial-gradient(circle, rgba(96,165,250,.18) 0%, transparent 70%); pointer-events: none; }
+.spotlight-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(96,165,250,.9); margin-bottom: 8px; }
+.spotlight-h { font-size: 24px; font-weight: 900; letter-spacing: -.03em; line-height: 1.15; color: #fff; margin-bottom: 12px; }
+.spotlight-h em { font-style: normal; background: linear-gradient(90deg, #93c5fd, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.spotlight-desc { font-size: 14px; color: rgba(255,255,255,.62); line-height: 1.6; margin-bottom: 18px; }
+.spotlight-pills { display: flex; flex-wrap: wrap; gap: 9px; position: relative; z-index: 1; }
+.spotlight-pill { font-size: 13px; font-weight: 700; color: rgba(255,255,255,.92); background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); padding: 8px 16px; border-radius: 100px; }
+
+/* TOKENS */
+.tokens-section { background: #fff; padding: 52px 20px; }
+.tokens-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 22px; }
+.token-card { background: var(--cream); border: 1px solid var(--border); border-radius: 18px; padding: 16px 14px; text-align: center; }
+.token-card.popular { background: linear-gradient(145deg, #1e3a8a, #1d4ed8); border-color: rgba(37,99,235,.3); }
+.token-card .token-count { font-size: 28px; font-weight: 900; color: var(--text); letter-spacing: -.02em; }
+.token-card.popular .token-count { color: #fff; }
+.token-card .token-label { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-top: 2px; }
+.token-card.popular .token-label { color: rgba(255,255,255,.6); }
+.token-badge { display: inline-block; font-size: 9px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; background: rgba(37,99,235,.15); color: var(--blue); border: 1px solid rgba(37,99,235,.25); padding: 2px 8px; border-radius: 100px; margin-top: 6px; }
+.token-card.popular .token-badge { background: rgba(255,255,255,.18); color: #fff; border-color: rgba(255,255,255,.25); }
+
+/* PRICING */
+.pricing { background: var(--cream); padding: 52px 20px; }
+.pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
+.p-tile { border-radius: 22px; padding: 22px 16px; }
+.p-tile.free { background: #fff; border: 1px solid var(--border); }
+.p-tile.pro { background: linear-gradient(155deg, #060f26, #0d1f4a); border: 1px solid rgba(37,99,235,.25); }
+.p-badge { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; padding: 3px 9px; border-radius: 100px; margin-bottom: 11px; }
+.p-tile.free .p-badge { background: var(--border); color: var(--muted); }
+.p-tile.pro .p-badge { background: rgba(37,99,235,.2); color: #93c5fd; border: 1px solid rgba(37,99,235,.3); }
+.p-head { font-size: 20px; font-weight: 900; letter-spacing: -.025em; margin-bottom: 13px; }
+.p-tile.free .p-head { color: var(--text); }
+.p-tile.pro  .p-head { color: #fff; }
+.p-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.p-list li { font-size: 12.5px; line-height: 1.4; display: flex; align-items: flex-start; gap: 7px; }
+.p-list li::before { content: '✓'; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.p-tile.free .p-list li { color: var(--muted); }
+.p-tile.free .p-list li::before { color: var(--blue); }
+.p-tile.pro  .p-list li { color: rgba(255,255,255,.65); }
+.p-tile.pro  .p-list li::before { color: #93c5fd; }
+.p-note { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 14px; line-height: 1.4; }
+
+/* CTA */
+.cta-wrap { padding: 0 14px 14px; }
+.cta-card { border-radius: 28px; background: linear-gradient(145deg, #2563eb 0%, #1d4ed8 100%); padding: 36px 24px; text-align: center; position: relative; overflow: hidden; }
+.cta-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,.08) 50%, transparent 80%); background-size: 200% 100%; animation: shimmer 3.5s linear infinite; }
+@keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+.cta-h { font-size: 26px; font-weight: 900; letter-spacing: -.03em; color: #fff; line-height: 1.15; margin-bottom: 8px; position: relative; z-index: 1; }
+.cta-sub { font-size: 14px; color: rgba(255,255,255,.68); margin-bottom: 24px; position: relative; z-index: 1; }
+.cta-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
 
 /* MORE APPS */
-.more-apps { background: #fff; padding: 52px 20px 36px; }
-.section-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--teal); margin-bottom: 5px; }
-.section-h2 { font-size: 26px; font-weight: 900; letter-spacing: -.03em; line-height: 1.15; color: var(--text); }
-.more-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
-.m-card { background: var(--cream); border: 1px solid var(--border); border-radius: 22px; padding: 20px 14px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; text-decoration: none; transition: transform .2s, box-shadow .2s; }
+.more-apps { background: var(--cream); padding: 52px 20px 36px; }
+.more-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px,1fr)); gap: 10px; margin-top: 22px; }
+.m-card { background: #fff; border: 1px solid var(--border); border-radius: 22px; padding: 20px 14px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; text-decoration: none; transition: transform .2s, box-shadow .2s; }
 .m-card[href]:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,.07); }
 .m-icon { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 26px; overflow: hidden; }
 .m-name { font-size: 14px; font-weight: 800; color: var(--text); }
 .m-desc { font-size: 12px; color: var(--muted); line-height: 1.4; }
+.m-badge { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; background: var(--cream); color: #5a7ab0; border: 1px solid var(--border); padding: 4px 10px; border-radius: 100px; }
 
+/* BRAND + FOOTER */
 .brand-section { padding: 0 14px 14px; }
 .brand-banner { width: 100%; border-radius: 18px; overflow: hidden; display: block; box-shadow: 0 4px 20px rgba(0,0,0,.07); }
 footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top: 1px solid var(--border); }
 .footer-inner { max-width: 540px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
 .footer-links { display: flex; gap: 18px; }
-.footer-links a, .footer-copy { font-size: 12px; color: #7ab4c8; text-decoration: none; }
+.footer-links a, .footer-copy { font-size: 12px; color: #7a9ab8; text-decoration: none; }
 .footer-links a:hover { color: var(--text); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.in-view { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: .07s; } .reveal-d2 { transition-delay: .14s; }
+.reveal-d3 { transition-delay: .21s; } .reveal-d4 { transition-delay: .28s; }
+
+@media (hover: none) { .f-tile:hover { transform: none; box-shadow: none; } .m-card:hover { transform: none; box-shadow: none; } }
   </style>
 </head>
 <body>
 
+<!-- HERO -->
 <section class="hero">
   <div class="bokeh" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
 
   <nav class="nav">
     <a href="../" class="nav-brand" aria-label="MW_Apps">
-      <img src="../assets/mwapps-logo.jpg" alt="MW_Apps Logo" class="nav-logo">
+      <img src="../assets/mwapps-logo.jpg" alt="MW_Apps Logo" class="nav-logo" width="32" height="32" loading="eager">
       <span class="nav-wordmark">MW_Apps</span>
     </a>
     <a href="mailto:mw_apps@gmx.de" class="nav-contact">Kontakt</a>
@@ -114,22 +219,25 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
 
   <div class="hero-body">
 
-    <!-- CF links | IS AKTIV MITTE | TK rechts -->
-    <div class="hero-switcher">
-      <a href="../chromaflow/" class="sw-wrap inactive" aria-label="ChromaFlow">
-        <div class="sw-icon sw-icon-emoji" style="border-radius:15px;">🎨</div>
-        <span class="sw-label">ChromaFlow</span>
-      </a>
-      <div class="sw-wrap active" aria-label="ItemShark aktiv">
-        <img src="../assets/itemshark-icon.png" alt="ItemShark" class="sw-icon">
-        <span class="sw-label">ItemShark</span>
+    <!-- 3D Carousel: CF ← IS★ → TK -->
+    <div class="sw-outer">
+      <button class="sw-arrow" id="sw-prev-btn" aria-label="Zurück">‹</button>
+      <div class="sw-stage" id="sw-stage">
+        <div class="sw-slide sw-prev" id="sw-item-prev">
+          <div class="sw-icon sw-icon-emoji" style="border-radius:20px;">🎨</div>
+          <span class="sw-label">ChromaFlow</span>
+        </div>
+        <div class="sw-slide sw-active" id="sw-item-active">
+          <img src="../assets/itemshark-icon.png" alt="ItemShark" class="sw-icon" width="90" height="90" loading="eager" decoding="async">
+          <span class="sw-label">ItemShark</span>
+        </div>
+        <div class="sw-slide sw-next" id="sw-item-next">
+          <img src="../assets/terminkompass/icon.png" alt="TerminKompass" class="sw-icon" width="90" height="90" loading="eager" decoding="async">
+          <span class="sw-label">TerminKompass</span>
+        </div>
       </div>
-      <a href="../" class="sw-wrap inactive" aria-label="TerminKompass">
-        <img src="../assets/terminkompass/icon.png" alt="TerminKompass" class="sw-icon">
-        <span class="sw-label">TerminKompass</span>
-      </a>
+      <button class="sw-arrow" id="sw-next-btn" aria-label="Weiter">›</button>
     </div>
-
     <div class="sw-dots">
       <span class="sw-dot active"></span>
       <span class="sw-dot"></span>
@@ -137,47 +245,214 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
       <span class="sw-dot"></span>
     </div>
 
-    <h1 class="hero-h1">Jagt die<br><em>besten Deals.</em></h1>
-    <p class="hero-sub">Dein persönlicher Deal-Tracker –<br>Preisalarm, Artikel-Watch, immer informiert.</p>
+    <h1 class="hero-h1">
+      Fotografieren.<br>
+      <em>KI erkennt alles.</em>
+    </h1>
+    <p class="hero-sub">
+      Nie wieder suchen, wo du etwas hingelegt hast.<br>
+      Kiste fotografieren – KI katalogisiert – fertig.
+    </p>
     <div class="hero-pills">
-      <span class="pill">🦈 Deal-Tracker</span>
-      <span class="pill">💰 Preisalarm</span>
-      <span class="pill">📦 Artikel-Watch</span>
+      <span class="pill">🤖 KI-Erkennung</span>
+      <span class="pill">📦 Inventar</span>
+      <span class="pill">🔍 Sofort finden</span>
       <span class="pill">🇩🇪 Made in Germany</span>
     </div>
+    <div class="hero-badges">
+      <a href="https://play.google.com/store/apps/details?id=de.itemshark.app"
+         class="store-btn" aria-label="ItemShark bei Google Play">
+        <img src="https://play.google.com/intl/de_de/badges/static/images/badges/de_badge_web_generic.png"
+             alt="Jetzt bei Google Play" class="badge-google" width="160" height="62" loading="eager">
+      </a>
+      <span class="soon-badge">🍎 App Store – bald</span>
+    </div>
   </div>
 </section>
 
-<section class="coming-section">
-  <div class="coming-card">
-    <div class="coming-emoji">🦈</div>
-    <h2 class="coming-h2">Demnächst verfügbar</h2>
-    <p class="coming-sub">ItemShark ist in Entwicklung.<br>Behalte Preise im Blick, erhalte Alarme wenn dein Artikel günstiger wird – und verpasse keine Deals mehr.</p>
-    <span class="coming-badge">🚀 Bald im Store</span>
+<!-- HOW IT WORKS SPOTLIGHT -->
+<div class="spotlight-section reveal" style="padding-top:14px;">
+  <div class="spotlight-card">
+    <p class="spotlight-eyebrow">So funktioniert's</p>
+    <h2 class="spotlight-h">Foto aufnehmen.<br><em>KI macht den Rest.</em></h2>
+    <p class="spotlight-desc">
+      Öffne eine Sammlung, tippe auf „KI-Scan" und fotografiere den Inhalt deiner Kiste.
+      Die KI erkennt automatisch alle Objekte, Texte und Motive – und listet sie auf.
+      Beim nächsten Suchen findest du alles in Sekunden.
+    </p>
+    <div class="spotlight-pills">
+      <span class="spotlight-pill">📸 Foto aufnehmen</span>
+      <span class="spotlight-pill">🤖 KI erkennt alles</span>
+      <span class="spotlight-pill">🔍 Jederzeit finden</span>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features">
+  <div style="max-width:540px;margin:0 auto;">
+    <p class="section-eyebrow reveal">Was ItemShark kann</p>
+    <h2 class="section-h2 reveal reveal-d1">Das haben andere<br>nicht.</h2>
+
+    <div class="feature-grid">
+      <div class="f-tile reveal reveal-d1">
+        <div class="f-icon">🤖</div>
+        <div class="f-name">KI-Scan</div>
+        <div class="f-desc">Foto aufnehmen – KI erkennt Objekte, Texte und Motive automatisch. Kein manuelles Eintippen.</div>
+      </div>
+      <div class="f-tile reveal reveal-d2">
+        <div class="f-icon">📦</div>
+        <div class="f-name">Sammlungen</div>
+        <div class="f-desc">Kisten, Regale, Schachteln – alles bekommt einen Namen. ItemShark merkt sich, was wo drin ist.</div>
+      </div>
+      <div class="f-tile reveal reveal-d3">
+        <div class="f-icon">🔍</div>
+        <div class="f-name">Sofort finden</div>
+        <div class="f-desc">Suchst du ein Objekt? ItemShark zeigt dir sofort, in welcher Sammlung es liegt.</div>
+      </div>
+      <div class="f-tile reveal reveal-d4">
+        <div class="f-icon">✏️</div>
+        <div class="f-name">Manuell ergänzen</div>
+        <div class="f-desc">Kein Foto? Kein Problem. Objekte lassen sich auch manuell mit Name, Beschreibung und Wert anlegen.</div>
+      </div>
+      <div class="f-tile reveal reveal-d1">
+        <div class="f-icon">📝</div>
+        <div class="f-name">Notizen & Listen</div>
+        <div class="f-desc">Checklisten und Notizen direkt zu Sammlungen – z. B. „was fehlt noch" oder „nicht vergessen".</div>
+      </div>
+      <div class="f-tile reveal reveal-d2">
+        <div class="f-icon">💰</div>
+        <div class="f-name">Wert-Tracking</div>
+        <div class="f-desc">Erfasse den Wert deiner Objekte und sieh den Gesamtwert jeder Sammlung auf einen Blick.</div>
+      </div>
+      <div class="f-tile reveal reveal-d3">
+        <div class="f-icon">🔒</div>
+        <div class="f-name">Lokal & privat</div>
+        <div class="f-desc">Alle Daten bleiben auf deinem Gerät. Nur KI-Scans laufen über die Cloud – sicher verschlüsselt.</div>
+      </div>
+      <div class="f-tile pro-tile reveal reveal-d4">
+        <span class="pro-tag">Pro</span>
+        <div class="f-icon">♾️</div>
+        <div class="f-name">Unbegrenzt</div>
+        <div class="f-desc">Pro hebt alle Limits auf. Unbegrenzte Sammlungen, Objekte und Notizen.</div>
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- TOKENS -->
+<section class="tokens-section">
+  <div style="max-width:540px;margin:0 auto;">
+    <p class="section-eyebrow reveal">KI-Scans</p>
+    <h2 class="section-h2 reveal reveal-d1">Tokens für KI-Scans.</h2>
+    <p style="font-size:14px;color:var(--muted);margin-top:8px;line-height:1.6;" class="reveal reveal-d2">
+      Jeder KI-Scan kostet einen Token. Tokens kannst du jederzeit nachkaufen –
+      in der Menge die du brauchst. Kein Abo, kein Zwang.
+    </p>
+    <div class="tokens-grid reveal reveal-d2">
+      <div class="token-card">
+        <div class="token-count">10</div>
+        <div class="token-label">Tokens</div>
+        <div class="token-badge">Starter</div>
+      </div>
+      <div class="token-card popular">
+        <div class="token-count">30</div>
+        <div class="token-label">Tokens</div>
+        <div class="token-badge">Beliebt</div>
+      </div>
+      <div class="token-card">
+        <div class="token-count">60</div>
+        <div class="token-label">Tokens</div>
+        <div class="token-badge">Power</div>
+      </div>
+      <div class="token-card">
+        <div class="token-count">100</div>
+        <div class="token-label">Tokens</div>
+        <div class="token-badge">Bestes Angebot</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing">
+  <div style="max-width:540px;margin:0 auto;">
+    <p class="section-eyebrow reveal">Kostenlos starten</p>
+    <h2 class="section-h2 reveal reveal-d1">Gratis. Oder alles.</h2>
+    <div class="pricing-grid">
+      <div class="p-tile free reveal reveal-d2">
+        <span class="p-badge">Kostenlos</span>
+        <div class="p-head">Zum Starten</div>
+        <ul class="p-list">
+          <li>Bis zu 20 Sammlungen</li>
+          <li>Bis zu 20 Objekte</li>
+          <li>Bis zu 20 Notizen</li>
+          <li>KI-Scan mit Tokens</li>
+          <li>Suche & Bibliothek</li>
+          <li>Wert-Tracking</li>
+          <li>Backup & Import</li>
+        </ul>
+      </div>
+      <div class="p-tile pro reveal reveal-d3">
+        <span class="p-badge">Pro</span>
+        <div class="p-head">Ohne Limit</div>
+        <ul class="p-list">
+          <li>Unbegrenzte Sammlungen</li>
+          <li>Unbegrenzte Objekte</li>
+          <li>Unbegrenzte Notizen</li>
+          <li>Alle Free-Features</li>
+          <li>Einmalkauf – kein Abo</li>
+        </ul>
+        <p class="p-note">Einmaliger Kauf über Google Play oder Apple App Store.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-wrap reveal">
+  <div class="cta-card">
+    <h2 class="cta-h">Jetzt kostenlos<br>ausprobieren.</h2>
+    <p class="cta-sub">Fotografieren. KI erkennt alles. Finden.</p>
+    <div class="cta-badges">
+      <a href="https://play.google.com/store/apps/details?id=de.itemshark.app"
+         class="store-btn" aria-label="Google Play">
+        <img src="https://play.google.com/intl/de_de/badges/static/images/badges/de_badge_web_generic.png"
+             alt="Jetzt bei Google Play" class="badge-google" width="160" height="62" loading="lazy">
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- MORE APPS -->
 <section class="more-apps">
   <div style="max-width:540px;margin:0 auto;">
-    <p class="section-eyebrow">MW_Apps</p>
-    <h2 class="section-h2">Weitere Apps.</h2>
+    <p class="section-eyebrow reveal">MW_Apps</p>
+    <h2 class="section-h2 reveal reveal-d1">Weitere Apps.</h2>
     <div class="more-grid">
-      <a href="../" class="m-card">
-        <div class="m-icon" style="padding:0;overflow:hidden;"><img src="../assets/terminkompass/icon.png" alt="TerminKompass" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
+      <a href="../" class="m-card reveal reveal-d2">
+        <div class="m-icon" style="padding:0;overflow:hidden;"><img src="../assets/terminkompass/icon.png" alt="TerminKompass" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;" loading="lazy"></div>
         <div><div class="m-name">TerminKompass</div><div class="m-desc">Termine, die du nicht vergisst</div></div>
       </a>
-      <a href="../jobtrace/" class="m-card">
-        <div class="m-icon" style="padding:0;overflow:hidden;"><img src="../assets/app-icon-v5.png" alt="JobTrace" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
+      <a href="../jobtrace/" class="m-card reveal reveal-d3">
+        <div class="m-icon" style="padding:0;overflow:hidden;"><img src="../assets/app-icon-v5.png" alt="JobTrace" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;" loading="lazy"></div>
         <div><div class="m-name">JobTrace</div><div class="m-desc">Zeiterfassung für Handwerker</div></div>
+      </a>
+      <a href="../chromaflow/" class="m-card reveal reveal-d4">
+        <div class="m-icon" style="background:linear-gradient(135deg,#e8d4f4,#c4a0e0);font-size:26px;display:flex;align-items:center;justify-content:center;">🎨</div>
+        <div><div class="m-name">ChromaFlow</div><div class="m-desc">Color Tile Puzzle</div></div>
+        <span class="m-badge">Demnächst</span>
       </a>
     </div>
   </div>
 </section>
 
-<div class="brand-section">
-  <img src="../assets/mwapps-banner.jpg" alt="MW_Apps" class="brand-banner">
+<!-- BRAND BANNER -->
+<div class="brand-section reveal">
+  <img src="../assets/mwapps-banner.jpg" alt="MW_Apps" class="brand-banner" loading="lazy">
 </div>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <nav class="footer-links">
@@ -189,16 +464,50 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
 </footer>
 
 <script>
+/* 3D Carousel */
 (function () {
-  document.querySelectorAll('.hero-switcher .sw-wrap.inactive').forEach(function (wrap) {
-    wrap.addEventListener('click', function (e) {
-      e.preventDefault();
-      var href = wrap.getAttribute('href');
-      if (!href) return;
-      wrap.classList.add('sw-tap');
-      setTimeout(function () { window.location.href = href; }, 320);
-    });
+  var PREV_HREF = '../chromaflow/'; var NEXT_HREF = '../';
+  var stage = document.getElementById('sw-stage');
+  var elPrev = document.getElementById('sw-item-prev'); var elNext = document.getElementById('sw-item-next');
+  var going = false; var touchX = 0;
+  function go(dir) {
+    if (going) return; var href = dir === 'prev' ? PREV_HREF : NEXT_HREF;
+    going = true; stage.classList.add('sw-navigating');
+    document.getElementById('sw-item-active').classList.add(dir === 'prev' ? 'sw-exit-right' : 'sw-exit-left');
+    (dir === 'prev' ? elPrev : elNext).classList.replace(dir === 'prev' ? 'sw-prev' : 'sw-next', 'sw-active');
+    setTimeout(function () { window.location.href = href; }, 420);
+  }
+  document.getElementById('sw-prev-btn').addEventListener('click', function () { go('prev'); });
+  document.getElementById('sw-next-btn').addEventListener('click', function () { go('next'); });
+  elPrev.addEventListener('click', function () { go('prev'); });
+  elNext.addEventListener('click', function () { go('next'); });
+  stage.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+  stage.addEventListener('touchend', function (e) { var dx = e.changedTouches[0].clientX - touchX; if (Math.abs(dx) > 45) go(dx < 0 ? 'next' : 'prev'); }, { passive: true });
+})();
+
+/* Screenshot Carousel */
+(function () {
+  var track = document.getElementById('ctrack');
+  var dotsEl = document.getElementById('cdots');
+  if (!track || !dotsEl) return;
+  var items = track.querySelectorAll('.c-item'); var dots = []; var current = 0; var timer;
+  items.forEach(function (_, i) {
+    var d = document.createElement('button'); d.className = 'c-dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', function () { go(i); resetTimer(); }); dotsEl.appendChild(d); dots.push(d);
   });
+  function setActive(idx) { if (idx === current) return; current = idx; items.forEach(function (item, i) { item.classList.toggle('active', i === idx); }); dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); }); }
+  function go(idx) { var target = items[idx].offsetLeft + items[idx].offsetWidth / 2 - track.offsetWidth / 2; track.scrollTo({ left: Math.max(0, target), behavior: 'smooth' }); setActive(idx); }
+  function resetTimer() { clearInterval(timer); timer = setInterval(function () { go((current + 1) % items.length); }, 3400); }
+  track.addEventListener('scroll', function () { var center = track.scrollLeft + track.offsetWidth / 2; var closest = 0; var minDist = Infinity; items.forEach(function (item, i) { var dist = Math.abs(item.offsetLeft + item.offsetWidth / 2 - center); if (dist < minDist) { minDist = dist; closest = i; } }); setActive(closest); }, { passive: true });
+  resetTimer();
+})();
+
+/* Scroll Reveal */
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('in-view'); }); return; }
+  var io = new IntersectionObserver(function (entries) { entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } }); }, { threshold: 0.12 });
+  els.forEach(function (el) { io.observe(el); });
 })();
 </script>
 </body>
