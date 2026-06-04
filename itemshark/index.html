@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>ItemShark – Dein Preisalarm</title>
+  <meta name="description" content="ItemShark – dein persönlicher Deal-Tracker. Demnächst bei MW_Apps.">
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased; background: #fff; color: #0a1628; overflow-x: hidden;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+img { max-width: 100%; display: block; }
+:root { --teal: #0e7490; --teal2: #0c4a6e; --dark: #060e1a; --cream: #f0f9ff; --border: #bae6fd; --text: #0a1628; --muted: #476582; }
+
+/* HERO */
+.hero { position: relative; background: var(--dark); overflow: hidden; padding-bottom: 56px; }
+.bokeh { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.bokeh span { position: absolute; border-radius: 50%; filter: blur(70px); animation: drift linear infinite alternate; will-change: transform; }
+.b1 { width: 260px; height: 260px; background: rgba(14,116,144,.40); top: -80px; left: -60px; animation-duration: 9s; }
+.b2 { width: 200px; height: 200px; background: rgba(12,74,110,.32); bottom: 0; right: -40px; animation-duration: 12s; animation-delay: -4s; }
+.b3 { width: 140px; height: 140px; background: rgba(56,189,248,.20); top: 35%; right: 15%; animation-duration: 7s; animation-delay: -2s; }
+@keyframes drift { from { transform: translateY(0) scale(1); } to { transform: translateY(-40px) scale(1.12); } }
+
+.nav { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 0; max-width: 540px; margin: 0 auto; }
+.nav-brand { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+.nav-logo { width: 32px; height: 32px; border-radius: 8px; object-fit: cover; object-position: 50% 22%; box-shadow: 0 0 0 1px rgba(255,255,255,.15); }
+.nav-wordmark { font-size: 15px; font-weight: 800; letter-spacing: -.01em; color: #fff; }
+.nav-contact { font-size: 13px; color: rgba(255,255,255,.42); text-decoration: none; padding: 6px 0 6px 8px; transition: color .2s; }
+.nav-contact:hover { color: rgba(255,255,255,.75); }
+
+.hero-body { position: relative; z-index: 2; max-width: 540px; margin: 0 auto; padding: 40px 20px 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+/* SWITCHER */
+.hero-switcher { display: flex; align-items: flex-end; justify-content: center; gap: 22px; width: 100%; }
+.sw-wrap { display: flex; flex-direction: column; align-items: center; gap: 9px; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+.sw-wrap.active .sw-icon {
+  display: block; width: 90px; height: 90px; border-radius: 22px;
+  box-shadow: 0 0 0 1.5px rgba(255,255,255,.22), 0 0 0 6px rgba(14,116,144,.13), 0 0 58px rgba(14,116,144,.72), 0 10px 24px rgba(0,0,0,.6), 0 26px 58px rgba(0,0,0,.45);
+  animation: iconPop .55s cubic-bezier(.34,1.56,.64,1) both, swFloat 3.6s ease-in-out .55s infinite; will-change: transform;
+}
+.sw-wrap.inactive .sw-icon {
+  display: block; width: 58px; height: 58px; border-radius: 15px;
+  opacity: .40; filter: brightness(.72); transform: translateY(8px);
+  box-shadow: 0 4px 16px rgba(0,0,0,.4); animation: swFloatIdle 4.4s ease-in-out infinite;
+  will-change: transform; transition: opacity .2s, filter .2s, transform .2s, box-shadow .2s; cursor: pointer;
+}
+.sw-wrap.inactive:first-child .sw-icon { animation-delay: -1.3s; }
+.sw-wrap.inactive:last-child  .sw-icon { animation-delay: -2.7s; }
+.sw-wrap.inactive:hover .sw-icon { opacity: .85; filter: brightness(.95); transform: translateY(2px) scale(1.1); box-shadow: 0 0 0 1.5px rgba(255,255,255,.2), 0 10px 28px rgba(0,0,0,.5); }
+.sw-wrap.sw-tap .sw-icon { animation: swTap .35s cubic-bezier(.34,1.56,.64,1) forwards !important; }
+.sw-icon-emoji { display: flex; align-items: center; justify-content: center; font-size: 30px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08); }
+.sw-dots { display: flex; gap: 7px; justify-content: center; margin-top: 14px; }
+.sw-dot { height: 5px; border-radius: 3px; background: rgba(255,255,255,.2); transition: width .3s, background .3s; width: 5px; }
+.sw-dot.active { width: 18px; background: rgba(255,255,255,.65); }
+.sw-label { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.sw-wrap.active   .sw-label { color: rgba(255,255,255,.65); }
+.sw-wrap.inactive .sw-label { color: rgba(255,255,255,.28); }
+@keyframes iconPop  { from { opacity:0; transform:scale(.6) translateY(12px); } to { opacity:1; transform:scale(1) translateY(0); } }
+@keyframes swFloat    { 0%,100%{ transform:translateY(0); }   50%{ transform:translateY(-9px); } }
+@keyframes swFloatIdle{ 0%,100%{ transform:translateY(8px); } 50%{ transform:translateY(4px); } }
+@keyframes swTap { 0%{ transform:scale(.65) translateY(8px); opacity:.4; } 55%{ transform:scale(1.12) translateY(-16px); opacity:1; } 100%{ transform:scale(.88) translateY(6px); opacity:.7; } }
+@keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
+
+.hero-h1 { margin-top: 24px; font-size: clamp(32px,9vw,46px); font-weight: 900; letter-spacing: -.04em; line-height: 1.07; color: #fff; animation: fadeUp .5s .22s ease both; }
+.hero-h1 em { font-style: normal; background: linear-gradient(92deg, #7dd3fc 20%, #0e7490 80%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { margin-top: 14px; font-size: 16px; line-height: 1.55; color: rgba(255,255,255,.52); animation: fadeUp .5s .3s ease both; }
+.hero-pills { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin-top: 18px; animation: fadeUp .5s .37s ease both; }
+.pill { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.52); background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); padding: 5px 11px; border-radius: 100px; }
+
+/* COMING SOON */
+.coming-section { padding: 52px 20px; background: var(--cream); }
+.coming-card { max-width: 540px; margin: 0 auto; background: #fff; border: 1px solid var(--border); border-radius: 28px; padding: 36px 28px; text-align: center; box-shadow: 0 4px 24px rgba(14,116,144,.07); }
+.coming-emoji { font-size: 64px; margin-bottom: 20px; }
+.coming-h2 { font-size: 26px; font-weight: 900; letter-spacing: -.03em; color: var(--text); margin-bottom: 10px; }
+.coming-sub { font-size: 15px; color: var(--muted); line-height: 1.6; margin-bottom: 28px; }
+.coming-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--teal); background: rgba(14,116,144,.1); border: 1px solid rgba(14,116,144,.25); padding: 10px 20px; border-radius: 100px; }
+
+/* MORE APPS */
+.more-apps { background: #fff; padding: 52px 20px 36px; }
+.section-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--teal); margin-bottom: 5px; }
+.section-h2 { font-size: 26px; font-weight: 900; letter-spacing: -.03em; line-height: 1.15; color: var(--text); }
+.more-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
+.m-card { background: var(--cream); border: 1px solid var(--border); border-radius: 22px; padding: 20px 14px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; text-decoration: none; transition: transform .2s, box-shadow .2s; }
+.m-card[href]:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,.07); }
+.m-icon { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 26px; overflow: hidden; }
+.m-name { font-size: 14px; font-weight: 800; color: var(--text); }
+.m-desc { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+.brand-section { padding: 0 14px 14px; }
+.brand-banner { width: 100%; border-radius: 18px; overflow: hidden; display: block; box-shadow: 0 4px 20px rgba(0,0,0,.07); }
+footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top: 1px solid var(--border); }
+.footer-inner { max-width: 540px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+.footer-links { display: flex; gap: 18px; }
+.footer-links a, .footer-copy { font-size: 12px; color: #7ab4c8; text-decoration: none; }
+.footer-links a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="bokeh" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+
+  <nav class="nav">
+    <a href="../" class="nav-brand" aria-label="MW_Apps">
+      <img src="../assets/mwapps-logo.jpg" alt="MW_Apps Logo" class="nav-logo">
+      <span class="nav-wordmark">MW_Apps</span>
+    </a>
+    <a href="mailto:mw_apps@gmx.de" class="nav-contact">Kontakt</a>
+  </nav>
+
+  <div class="hero-body">
+
+    <!-- CF links | IS AKTIV MITTE | TK rechts -->
+    <div class="hero-switcher">
+      <a href="../chromaflow/" class="sw-wrap inactive" aria-label="ChromaFlow">
+        <div class="sw-icon sw-icon-emoji" style="border-radius:15px;">🎨</div>
+        <span class="sw-label">ChromaFlow</span>
+      </a>
+      <div class="sw-wrap active" aria-label="ItemShark aktiv">
+        <img src="../assets/itemshark-icon.png" alt="ItemShark" class="sw-icon">
+        <span class="sw-label">ItemShark</span>
+      </div>
+      <a href="../" class="sw-wrap inactive" aria-label="TerminKompass">
+        <img src="../assets/terminkompass/icon.png" alt="TerminKompass" class="sw-icon">
+        <span class="sw-label">TerminKompass</span>
+      </a>
+    </div>
+
+    <div class="sw-dots">
+      <span class="sw-dot active"></span>
+      <span class="sw-dot"></span>
+      <span class="sw-dot"></span>
+      <span class="sw-dot"></span>
+    </div>
+
+    <h1 class="hero-h1">Jagt die<br><em>besten Deals.</em></h1>
+    <p class="hero-sub">Dein persönlicher Deal-Tracker –<br>Preisalarm, Artikel-Watch, immer informiert.</p>
+    <div class="hero-pills">
+      <span class="pill">🦈 Deal-Tracker</span>
+      <span class="pill">💰 Preisalarm</span>
+      <span class="pill">📦 Artikel-Watch</span>
+      <span class="pill">🇩🇪 Made in Germany</span>
+    </div>
+  </div>
+</section>
+
+<section class="coming-section">
+  <div class="coming-card">
+    <div class="coming-emoji">🦈</div>
+    <h2 class="coming-h2">Demnächst verfügbar</h2>
+    <p class="coming-sub">ItemShark ist in Entwicklung.<br>Behalte Preise im Blick, erhalte Alarme wenn dein Artikel günstiger wird – und verpasse keine Deals mehr.</p>
+    <span class="coming-badge">🚀 Bald im Store</span>
+  </div>
+</section>
+
+<section class="more-apps">
+  <div style="max-width:540px;margin:0 auto;">
+    <p class="section-eyebrow">MW_Apps</p>
+    <h2 class="section-h2">Weitere Apps.</h2>
+    <div class="more-grid">
+      <a href="../" class="m-card">
+        <div class="m-icon" style="padding:0;overflow:hidden;"><img src="../assets/terminkompass/icon.png" alt="TerminKompass" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
+        <div><div class="m-name">TerminKompass</div><div class="m-desc">Termine, die du nicht vergisst</div></div>
+      </a>
+      <a href="../jobtrace/" class="m-card">
+        <div class="m-icon" style="padding:0;overflow:hidden;"><img src="../assets/app-icon-v5.png" alt="JobTrace" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
+        <div><div class="m-name">JobTrace</div><div class="m-desc">Zeiterfassung für Handwerker</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="brand-section">
+  <img src="../assets/mwapps-banner.jpg" alt="MW_Apps" class="brand-banner">
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <nav class="footer-links">
+      <a href="../impressum/">Impressum</a>
+      <a href="../datenschutz/">Datenschutz</a>
+    </nav>
+    <span class="footer-copy">© 2026 MW_Apps</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  document.querySelectorAll('.hero-switcher .sw-wrap.inactive').forEach(function (wrap) {
+    wrap.addEventListener('click', function (e) {
+      e.preventDefault();
+      var href = wrap.getAttribute('href');
+      if (!href) return;
+      wrap.classList.add('sw-tap');
+      setTimeout(function () { window.location.href = href; }, 320);
+    });
+  });
+})();
+</script>
+</body>
+</html>

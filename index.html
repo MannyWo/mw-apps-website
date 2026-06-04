@@ -109,36 +109,108 @@ img { max-width: 100%; display: block; }
   align-items: center; text-align: center;
 }
 
-/* Floating icon */
-.hero-icon {
-  width: 90px; height: 90px;
-  border-radius: 20px;
+/* ─── APP SWITCHER – aktive App immer mittig ────────── */
+.hero-switcher {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 22px;
+  width: 100%;
+}
+/* Basis aller Icons */
+.sw-wrap {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 9px;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+/* ── Aktives Icon: groß, mittig, schwebend ── */
+.sw-wrap.active .sw-icon {
+  display: block;
+  width: 90px; height: 90px; border-radius: 22px;
   box-shadow:
-    0 0 0 1px rgba(255,255,255,.12),
-    0 0 56px rgba(224,103,74,.55),
-    0 12px 36px rgba(0,0,0,.55);
+    0 0 0 1.5px rgba(255,255,255,.22),
+    0 0 0 6px rgba(224,103,74,.13),
+    0 0 58px rgba(224,103,74,.72),
+    0 10px 24px rgba(0,0,0,.6),
+    0 26px 58px rgba(0,0,0,.45);
   animation: iconPop .55s cubic-bezier(.34,1.56,.64,1) both,
-             iconFloat 3.8s ease-in-out .6s infinite;
+             swFloat  3.6s ease-in-out .55s infinite;
   will-change: transform;
 }
+/* ── Inaktive Icons: kleiner, leises Schweben, klickbar ── */
+.sw-wrap.inactive .sw-icon {
+  display: block;
+  width: 58px; height: 58px; border-radius: 15px;
+  opacity: 0.40; filter: brightness(0.72);
+  transform: translateY(8px);
+  box-shadow: 0 4px 16px rgba(0,0,0,.4);
+  animation: swFloatIdle 4.4s ease-in-out infinite;
+  will-change: transform;
+  transition: opacity .2s, filter .2s, transform .2s, box-shadow .2s;
+  cursor: pointer;
+}
+.sw-wrap.inactive:first-child .sw-icon { animation-delay: -1.3s; }
+.sw-wrap.inactive:last-child  .sw-icon { animation-delay: -2.7s; }
+
+.sw-wrap.inactive:hover .sw-icon {
+  opacity: 0.85; filter: brightness(0.95);
+  transform: translateY(2px) scale(1.1);
+  box-shadow: 0 0 0 1.5px rgba(255,255,255,.2), 0 10px 28px rgba(0,0,0,.5);
+}
+/* Klick-Sprung-Animation bevor Navigation */
+.sw-wrap.sw-tap .sw-icon {
+  animation: swTap .35s cubic-bezier(.34,1.56,.64,1) forwards !important;
+}
+@keyframes swTap {
+  0%  { transform: scale(.65) translateY(8px); opacity: .4; }
+  55% { transform: scale(1.12) translateY(-16px); opacity: 1; }
+  100%{ transform: scale(0.88) translateY(6px); opacity: .7; }
+}
+/* ── Emoji-Icon (ChromaFlow) ── */
+.sw-icon-emoji {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.08);
+}
+/* ── Dots: Positionsanzeige für alle 4 Apps ── */
+.sw-dots {
+  display: flex; gap: 7px; justify-content: center;
+  margin-top: 14px;
+}
+.sw-dot {
+  height: 5px; border-radius: 3px;
+  background: rgba(255,255,255,.2);
+  transition: width .3s ease, background .3s ease;
+  width: 5px;
+}
+.sw-dot.active { width: 18px; background: rgba(255,255,255,.65); }
+
+/* ── Labels ── */
+.sw-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.sw-wrap.active   .sw-label { color: rgba(255,255,255,.65); }
+.sw-wrap.inactive .sw-label { color: rgba(255,255,255,.28); }
+
+/* ── Keyframes ── */
 @keyframes iconPop {
-  from { opacity: 0; transform: scale(.6) translateY(10px); }
+  from { opacity: 0; transform: scale(.6) translateY(12px); }
   to   { opacity: 1; transform: scale(1) translateY(0); }
 }
-@keyframes iconFloat {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-7px); }
+@keyframes swFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-9px); }
+}
+@keyframes swFloatIdle {
+  0%, 100% { transform: translateY(8px); }
+  50%       { transform: translateY(4px); }
 }
 
-/* Tag line above headline */
-.hero-tag {
-  margin-top: 22px;
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 12px; font-weight: 700;
-  letter-spacing: .06em; text-transform: uppercase;
-  color: rgba(255,255,255,.4);
-  animation: fadeUp .5s .15s ease both;
-}
+/* Tag line (legacy, nicht mehr sichtbar) */
+.hero-tag { display: none; }
 
 /* Main headline */
 .hero-h1 {
@@ -799,10 +871,34 @@ footer {
 
   <!-- Hero Content -->
   <div class="hero-body">
-    <img src="assets/terminkompass/icon.png" alt="TerminKompass App Icon"
-         class="hero-icon" width="90" height="90">
 
-    <span class="hero-tag">TerminKompass</span>
+    <!-- App-Switcher: IS links | TK AKTIV MITTE | JT rechts -->
+    <div class="hero-switcher">
+
+      <a href="itemshark/" class="sw-wrap inactive" aria-label="ItemShark">
+        <img src="assets/itemshark-icon.png" alt="ItemShark" class="sw-icon">
+        <span class="sw-label">ItemShark</span>
+      </a>
+
+      <div class="sw-wrap active" aria-label="TerminKompass aktiv">
+        <img src="assets/terminkompass/icon.png" alt="TerminKompass" class="sw-icon">
+        <span class="sw-label">TerminKompass</span>
+      </div>
+
+      <a href="jobtrace/" class="sw-wrap inactive" aria-label="JobTrace">
+        <img src="assets/app-icon-v5.png" alt="JobTrace" class="sw-icon">
+        <span class="sw-label">JobTrace</span>
+      </a>
+
+    </div>
+
+    <!-- Positionsdots: IS · TK · JT · CF -->
+    <div class="sw-dots">
+      <span class="sw-dot"></span>
+      <span class="sw-dot active"></span>
+      <span class="sw-dot"></span>
+      <span class="sw-dot"></span>
+    </div>
 
     <h1 class="hero-h1">
       Termine, die du<br>
@@ -1398,6 +1494,19 @@ footer {
     reorder('tk-badges',  'tk-android','tk-ios');
     reorder('cta-badges', 'cta-android','cta-ios');
   }
+})();
+
+/* ── App Switcher: Tap-Sprung dann Navigation ─────── */
+(function () {
+  document.querySelectorAll('.hero-switcher .sw-wrap.inactive').forEach(function (wrap) {
+    wrap.addEventListener('click', function (e) {
+      e.preventDefault();
+      var href = wrap.getAttribute('href');
+      if (!href) return;
+      wrap.classList.add('sw-tap');
+      setTimeout(function () { window.location.href = href; }, 320);
+    });
+  });
 })();
 
 /* ── Scroll Reveal ──────────────────────────────── */
