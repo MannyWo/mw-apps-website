@@ -324,33 +324,47 @@ img { max-width: 100%; display: block; }
 .c-item.active { transform: scale(1); opacity: 1; }
 
 /* Phone frame */
-.phone {
-  width: 162px;
-  background: #1a1a1e;
-  border-radius: 34px;
-  padding: 8px;
+/* iPhone-Mockup – clean & slim */
+.c-img {
+  width: 148px;
+  background: linear-gradient(160deg, #2c2c30 0%, #18181c 50%, #111114 100%);
+  border-radius: 26px;
+  padding: 3px;
   box-shadow:
-    0 0 0 1px rgba(255,255,255,.07),
-    0 8px 24px rgba(0,0,0,.14),
-    0 20px 60px rgba(0,0,0,.18),
-    0 40px 80px rgba(0,0,0,.08);
+    0 0 0 1px rgba(255,255,255,.11),
+    0 0 0 2px rgba(0,0,0,.85),
+    0 6px 20px rgba(0,0,0,.25),
+    0 16px 48px rgba(0,0,0,.22),
+    0 32px 64px rgba(0,0,0,.1);
+  position: relative;
+  display: block;
 }
-/* Tiny dynamic-island dot */
-.phone-top {
-  height: 10px; display: flex; align-items: center; justify-content: center;
-  margin-bottom: 4px;
+/* Dynamic Island */
+.c-img::before {
+  content: '';
+  position: absolute;
+  top: 7px; left: 50%;
+  transform: translateX(-50%);
+  width: 38px; height: 6px;
+  background: #08080a;
+  border-radius: 4px;
+  z-index: 2;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.05);
 }
-.phone-island {
-  width: 52px; height: 9px;
-  background: #111; border-radius: 5px;
+/* Home Indicator */
+.c-img::after {
+  content: '';
+  position: absolute;
+  bottom: 7px; left: 50%;
+  transform: translateX(-50%);
+  width: 34px; height: 3px;
+  background: rgba(255,255,255,.22);
+  border-radius: 2px;
+  z-index: 2;
 }
-.phone-screen {
-  width: 100%; border-radius: 26px;
-  display: block; line-height: 0;
-  overflow: hidden;
-}
-.phone-screen img {
+.c-img img {
   width: 100%; height: auto; display: block;
+  border-radius: 24px;
 }
 .c-label {
   font-size: 11px; font-weight: 600; color: var(--muted);
@@ -837,12 +851,8 @@ footer {
 .c-item { cursor: zoom-in; }
 /* Desktop hover: subtle scale hint */
 @media (hover: hover) {
-  .c-item.active:hover .phone {
-    box-shadow:
-      0 0 0 1px rgba(255,255,255,.1),
-      0 12px 36px rgba(0,0,0,.2),
-      0 28px 72px rgba(0,0,0,.22),
-      0 48px 88px rgba(0,0,0,.1);
+  .c-item.active:hover .c-img {
+    box-shadow: 0 8px 32px rgba(0,0,0,.18), 0 20px 56px rgba(0,0,0,.16);
     transform: scale(1.03) translateY(-4px);
     transition: transform .25s ease, box-shadow .25s ease;
   }
@@ -945,68 +955,32 @@ footer {
     <div class="carousel-track" id="ctrack" role="list">
 
       <div class="c-item active" role="listitem">
-        <div class="phone">
-          <div class="phone-top" aria-hidden="true"><div class="phone-island"></div></div>
-          <div class="phone-screen">
-            <img src="assets/terminkompass/screenshots/02-uebersicht.jpg"
-                 alt="Terminübersicht" loading="lazy">
-          </div>
-        </div>
+        <div class="c-img"><img src="assets/terminkompass/screenshots/02-uebersicht.jpg" alt="Terminübersicht" loading="lazy"></div>
         <p class="c-label">Übersicht</p>
       </div>
 
       <div class="c-item" role="listitem">
-        <div class="phone">
-          <div class="phone-top" aria-hidden="true"><div class="phone-island"></div></div>
-          <div class="phone-screen">
-            <img src="assets/terminkompass/screenshots/03-kalender-gross.jpg"
-                 alt="Kalenderansicht" loading="lazy">
-          </div>
-        </div>
+        <div class="c-img"><img src="assets/terminkompass/screenshots/03-kalender-gross.jpg" alt="Kalenderansicht" loading="lazy"></div>
         <p class="c-label">Kalender</p>
       </div>
 
       <div class="c-item" role="listitem">
-        <div class="phone">
-          <div class="phone-top" aria-hidden="true"><div class="phone-island"></div></div>
-          <div class="phone-screen">
-            <img src="assets/terminkompass/screenshots/08-termin-erstellen.jpg"
-                 alt="Termin erstellen" loading="lazy">
-          </div>
-        </div>
+        <div class="c-img"><img src="assets/terminkompass/screenshots/08-termin-erstellen.jpg" alt="Termin erstellen" loading="lazy"></div>
         <p class="c-label">Termin erstellen</p>
       </div>
 
       <div class="c-item" role="listitem">
-        <div class="phone">
-          <div class="phone-top" aria-hidden="true"><div class="phone-island"></div></div>
-          <div class="phone-screen">
-            <img src="assets/terminkompass/screenshots/04-kategorien.jpg"
-                 alt="Kategorien" loading="lazy">
-          </div>
-        </div>
+        <div class="c-img"><img src="assets/terminkompass/screenshots/04-kategorien.jpg" alt="Kategorien" loading="lazy"></div>
         <p class="c-label">Kategorien</p>
       </div>
 
       <div class="c-item" role="listitem">
-        <div class="phone">
-          <div class="phone-top" aria-hidden="true"><div class="phone-island"></div></div>
-          <div class="phone-screen">
-            <img src="assets/terminkompass/screenshots/01-widget.jpg"
-                 alt="Home-Screen Widget" loading="lazy">
-          </div>
-        </div>
+        <div class="c-img"><img src="assets/terminkompass/screenshots/01-widget.jpg" alt="Home-Screen Widget" loading="lazy"></div>
         <p class="c-label">Widget</p>
       </div>
 
       <div class="c-item" role="listitem">
-        <div class="phone">
-          <div class="phone-top" aria-hidden="true"><div class="phone-island"></div></div>
-          <div class="phone-screen">
-            <img src="assets/terminkompass/screenshots/05-alle-termine.jpg"
-                 alt="Alle Termine" loading="lazy">
-          </div>
-        </div>
+        <div class="c-img"><img src="assets/terminkompass/screenshots/05-alle-termine.jpg" alt="Alle Termine" loading="lazy"></div>
         <p class="c-label">Alle Termine</p>
       </div>
 
@@ -1387,7 +1361,7 @@ footer {
   // Collect all carousel screenshots + labels
   var items  = Array.from(document.querySelectorAll('.carousel-track .c-item'));
   var srcs   = items.map(function(it) {
-    return it.querySelector('.phone-screen img').src;
+    return it.querySelector('.c-img img').src;
   });
   var labels = items.map(function(it) {
     var l = it.querySelector('.c-label');
