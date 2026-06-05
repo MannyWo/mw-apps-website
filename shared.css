@@ -1,6 +1,3 @@
-/* shared.css – Gemeinsame Styles für alle MW_Apps Seiten
-   Einmal laden → Browser cached für alle Seitenwechsel */
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -12,7 +9,6 @@ body {
 }
 img { max-width: 100%; display: block; }
 
-/* ── NAV ── */
 .nav {
   position: relative; z-index: 2;
   display: flex; align-items: center; justify-content: space-between;
@@ -24,7 +20,6 @@ img { max-width: 100%; display: block; }
 .nav-contact { font-size: 13px; color: rgba(255,255,255,.42); text-decoration: none; padding: 6px 0 6px 8px; transition: color .2s; }
 .nav-contact:hover { color: rgba(255,255,255,.75); }
 
-/* ── HERO BASE ── */
 .hero { position: relative; overflow: hidden; padding-bottom: 56px; }
 .hero-body {
   position: relative; z-index: 2; max-width: 540px; margin: 0 auto;
@@ -32,7 +27,6 @@ img { max-width: 100%; display: block; }
   align-items: center; text-align: center;
 }
 
-/* ── BOKEH (GPU-optimiert: blur 40px statt 70px) ── */
 .bokeh { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
 .bokeh span {
   position: absolute; border-radius: 50%;
@@ -43,7 +37,6 @@ img { max-width: 100%; display: block; }
 }
 @keyframes drift { from { transform: translateZ(0) scale(1); } to { transform: translateZ(0) translateY(-40px) scale(1.12); } }
 
-/* ── 3D CAROUSEL (identisch auf allen Seiten) ── */
 .sw-arrow {
   display: none; flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%;
   background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16);
@@ -83,7 +76,6 @@ img { max-width: 100%; display: block; }
 .sw-dot { height: 5px; border-radius: 3px; background: rgba(255,255,255,.2); transition: width .3s, background .3s; width: 5px; }
 .sw-dot.active { width: 18px; }
 
-/* ── HERO TEXT ── */
 .hero-h1 {
   margin-top: 24px; font-size: clamp(30px,9vw,44px); font-weight: 900;
   letter-spacing: -.04em; line-height: 1.07; color: #fff;
@@ -100,12 +92,10 @@ img { max-width: 100%; display: block; }
 .badge-google { height: 52px; width: auto; margin: -4px 0; }
 .soon-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: rgba(255,255,255,.42); background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); padding: 8px 16px; border-radius: 8px; height: 44px; }
 
-/* ── SECTIONS ── */
 .section-inner { max-width: 540px; margin: 0 auto; padding: 0 20px; }
 .section-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 5px; }
 .section-h2 { font-size: 26px; font-weight: 900; letter-spacing: -.03em; line-height: 1.15; }
 
-/* ── FEATURE TILES ── */
 .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
 .f-tile { border-radius: 22px; padding: 18px 15px 16px; transition: transform .2s, box-shadow .2s; position: relative; }
 .f-tile:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,.08); }
@@ -114,7 +104,6 @@ img { max-width: 100%; display: block; }
 .f-desc { font-size: 12px; line-height: 1.5; }
 .pro-tag { position: absolute; top: 12px; right: 12px; font-size: 9px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; padding: 2px 7px; border-radius: 100px; }
 
-/* ── MORE APPS ── */
 .more-apps { padding: 52px 20px 36px; }
 .more-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(140px,1fr)); gap: 10px; margin-top: 22px; }
 .m-card { border-radius: 22px; padding: 20px 14px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; text-decoration: none; transition: transform .2s, box-shadow .2s; }
@@ -124,7 +113,6 @@ img { max-width: 100%; display: block; }
 .m-desc { font-size: 12px; line-height: 1.4; }
 .m-badge { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; }
 
-/* ── BRAND + FOOTER ── */
 .brand-section { padding: 0 14px 14px; }
 .brand-banner { width: 100%; border-radius: 18px; overflow: hidden; display: block; box-shadow: 0 4px 20px rgba(0,0,0,.07); }
 footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); }
@@ -132,7 +120,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); }
 .footer-links { display: flex; gap: 18px; }
 .footer-links a, .footer-copy { font-size: 12px; text-decoration: none; }
 
-/* ── PRICING ── */
 .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
 .p-tile { border-radius: 22px; padding: 22px 16px; }
 .p-badge { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; padding: 3px 9px; border-radius: 100px; margin-bottom: 11px; }
@@ -141,7 +128,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); }
 .p-list li { font-size: 12.5px; line-height: 1.4; display: flex; align-items: flex-start; gap: 7px; }
 .p-list li::before { content: '✓'; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
 
-/* ── CTA CARD ── */
 .cta-wrap { padding: 0 14px 14px; }
 .cta-card { border-radius: 28px; padding: 36px 24px; text-align: center; position: relative; overflow: hidden; }
 .cta-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,.1) 50%, transparent 80%); background-size: 200% 100%; animation: shimmer 3.5s linear infinite; }
@@ -150,18 +136,15 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); }
 .cta-sub { font-size: 14px; color: rgba(255,255,255,.68); margin-bottom: 24px; position: relative; z-index: 1; }
 .cta-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
 
-/* ── SCROLL REVEAL ── */
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.in-view { opacity: 1; transform: none; }
 .reveal-d1 { transition-delay: .07s; } .reveal-d2 { transition-delay: .14s; }
 .reveal-d3 { transition-delay: .21s; } .reveal-d4 { transition-delay: .28s; }
 
-/* ── KEYFRAMES ── */
 @keyframes iconPop { from { opacity:0; transform:scale(.6) translateY(12px); } to { opacity:1; transform:scale(1) translateY(0); } }
 @keyframes swFloat { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-9px); } }
 @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
 
-/* ── SHARED CAROUSEL JS ── */
 @media (hover: none) {
   .f-tile:hover, .m-card:hover { transform: none; box-shadow: none; }
 }
