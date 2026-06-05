@@ -3,23 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link rel="stylesheet" href="../shared.css">
+  <link rel="prefetch" href="../chromaflow/">
+  <link rel="prefetch" href="../">
   <title>ItemShark – Fotografieren. KI erkennt alles. Finden.</title>
-  <meta name="description" content="ItemShark – Fotografiere deine Kisten und Regale, die KI erkennt automatisch alles darin. Nie wieder suchen.">
+  <meta name="description" content="ItemShark – fotografiere deine Kisten, die KI erkennt automatisch alles darin. Nie wieder suchen. Bald für Android und iOS.">
   <meta property="og:title" content="Fotografieren. KI erkennt alles. Finden.">
-  <meta property="og:description" content="ItemShark – dein KI-Inventar für Zuhause. Wo liegt das nochmal?">
+  <meta property="og:description" content="ItemShark – dein KI-Inventar. Bald verfügbar für Android & iOS.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="../assets/itemshark-icon.png">
-  <link rel="preconnect" href="https://play.google.com">
-  <link rel="dns-prefetch" href="https://play.google.com">
   <style>
+
+/* ─── RESET & BASE ─────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
-  -webkit-font-smoothing: antialiased; background: #fff; color: #0f172a; overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display',
+               'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: #fff; color: #0f172a; overflow-x: hidden;
   padding-bottom: env(safe-area-inset-bottom);
 }
 img { max-width: 100%; display: block; }
+
+/* ─── TOKENS ──────────────────────────────────── */
 :root {
   --blue:   #2563eb;
   --blue2:  #1d4ed8;
@@ -30,26 +37,49 @@ img { max-width: 100%; display: block; }
   --muted:  #475a8a;
 }
 
-/* HERO */
-.hero { position: relative; background: var(--dark); overflow: hidden; padding-bottom: 56px; }
+/* ─── HERO ────────────────────────────────────── */
+.hero {
+  position: relative;
+  background: var(--dark);
+  overflow: hidden;
+  padding-bottom: 56px;
+}
 .bokeh { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-.bokeh span { position: absolute; border-radius: 50%; filter: blur(70px); animation: drift linear infinite alternate; will-change: transform; }
-.b1 { width: 280px; height: 280px; background: rgba(37,99,235,.42); top: -80px; left: -70px; animation-duration: 10s; }
-.b2 { width: 200px; height: 200px; background: rgba(29,78,216,.30); bottom: 0; right: -40px; animation-duration: 13s; animation-delay: -5s; }
-.b3 { width: 150px; height: 150px; background: rgba(96,165,250,.20); top: 40%; right: 18%; animation-duration: 8s; animation-delay: -3s; }
+.bokeh span {
+  position: absolute; border-radius: 50%;
+  filter: blur(70px); animation: drift linear infinite alternate; will-change: transform;
+}
+.b1 { width: 300px; height: 300px; background: rgba(37,99,235,.48); top: -90px; left: -80px; animation-duration: 9s; }
+.b2 { width: 220px; height: 220px; background: rgba(29,78,216,.34); bottom: -20px; right: -50px; animation-duration: 12s; animation-delay: -4s; }
+.b3 { width: 160px; height: 160px; background: rgba(96,165,250,.24); top: 38%; right: 14%; animation-duration: 7s; animation-delay: -2s; }
 @keyframes drift { from { transform: translateY(0) scale(1); } to { transform: translateY(-40px) scale(1.12); } }
 
-.nav { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 0; max-width: 540px; margin: 0 auto; }
+/* Nav */
+.nav {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 20px 0; max-width: 540px; margin: 0 auto;
+}
 .nav-brand { display: flex; align-items: center; gap: 9px; text-decoration: none; }
 .nav-logo { width: 32px; height: 32px; border-radius: 8px; object-fit: cover; object-position: 50% 22%; box-shadow: 0 0 0 1px rgba(255,255,255,.15); }
 .nav-wordmark { font-size: 15px; font-weight: 800; letter-spacing: -.01em; color: #fff; }
 .nav-contact { font-size: 13px; color: rgba(255,255,255,.42); text-decoration: none; padding: 6px 0 6px 8px; transition: color .2s; }
 .nav-contact:hover { color: rgba(255,255,255,.75); }
 
-.hero-body { position: relative; z-index: 2; max-width: 540px; margin: 0 auto; padding: 40px 20px 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
+/* Hero Body */
+.hero-body {
+  position: relative; z-index: 2; max-width: 540px; margin: 0 auto;
+  padding: 40px 20px 0; display: flex; flex-direction: column; align-items: center; text-align: center;
+}
 
-/* 3D CAROUSEL */
-.sw-arrow { display: none; flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16); color: rgba(255,255,255,.8); font-size: 22px; line-height: 1; cursor: pointer; align-items: center; justify-content: center; transition: background .15s, transform .1s; -webkit-tap-highlight-color: transparent; padding: 0; }
+/* ─── 3D CAROUSEL ─────────────────────────────── */
+.sw-arrow {
+  display: none; flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16);
+  color: rgba(255,255,255,.8); font-size: 22px; line-height: 1; cursor: pointer;
+  align-items: center; justify-content: center; transition: background .15s, transform .1s;
+  -webkit-tap-highlight-color: transparent; padding: 0;
+}
 .sw-arrow:hover { background: rgba(255,255,255,.22); }
 .sw-arrow:active { transform: scale(.9); }
 @media (hover: hover) and (pointer: fine) { .sw-arrow { display: flex; } }
@@ -59,7 +89,7 @@ img { max-width: 100%; display: block; }
 .sw-slide .sw-icon { display: block; width: 90px; height: 90px; border-radius: 20px; }
 .sw-slide.sw-active .sw-icon {
   border-radius: 22px;
-  box-shadow: 0 0 0 1.5px rgba(255,255,255,.22), 0 0 0 6px rgba(37,99,235,.14), 0 0 58px rgba(37,99,235,.75), 0 10px 24px rgba(0,0,0,.6), 0 26px 58px rgba(0,0,0,.45);
+  box-shadow: 0 0 0 1.5px rgba(255,255,255,.22), 0 0 0 6px rgba(37,99,235,.15), 0 0 60px rgba(37,99,235,.78), 0 10px 24px rgba(0,0,0,.6), 0 26px 58px rgba(0,0,0,.45);
   animation: iconPop .55s cubic-bezier(.34,1.56,.64,1) both, swFloat 3.6s ease-in-out .55s infinite; will-change: transform;
 }
 .sw-slide.sw-prev { transform: rotateY(38deg) scale(0.74) translateY(14px); opacity: .70; filter: brightness(.88); cursor: pointer; }
@@ -75,82 +105,194 @@ img { max-width: 100%; display: block; }
 .sw-dots { display: flex; gap: 7px; justify-content: center; margin-top: 12px; }
 .sw-dot { height: 5px; border-radius: 3px; background: rgba(255,255,255,.2); transition: width .3s, background .3s; width: 5px; }
 .sw-dot.active { width: 18px; background: rgba(255,255,255,.65); }
-@keyframes iconPop { from { opacity:0; transform:scale(.6) translateY(12px); } to { opacity:1; transform:scale(1) translateY(0); } }
-@keyframes swFloat { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-9px); } }
-@keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
 
-.hero-h1 { margin-top: 24px; font-size: clamp(30px,9vw,44px); font-weight: 900; letter-spacing: -.04em; line-height: 1.07; color: #fff; animation: fadeUp .5s .22s ease both; }
-.hero-h1 em { font-style: normal; background: linear-gradient(92deg, #93c5fd 20%, #2563eb 80%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+/* Hero Text */
+.hero-h1 {
+  margin-top: 24px; font-size: clamp(30px,9vw,44px); font-weight: 900;
+  letter-spacing: -.04em; line-height: 1.07; color: #fff;
+  animation: fadeUp .5s .22s ease both;
+}
+.hero-h1 em {
+  font-style: normal;
+  background: linear-gradient(92deg, #93c5fd 20%, #3b82f6 80%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
 .hero-sub { margin-top: 14px; font-size: 16px; line-height: 1.55; color: rgba(255,255,255,.52); animation: fadeUp .5s .3s ease both; }
 .hero-pills { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin-top: 18px; animation: fadeUp .5s .37s ease both; }
 .pill { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.52); background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); padding: 5px 11px; border-radius: 100px; }
-.hero-badges { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 24px; animation: fadeUp .5s .44s ease both; }
-.store-btn { display: flex; align-items: center; transition: transform .15s, opacity .15s; -webkit-tap-highlight-color: transparent; }
-.store-btn:active { transform: scale(.96); }
-.badge-google { height: 52px; width: auto; margin: -4px 0; }
-.soon-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: rgba(255,255,255,.42); background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); padding: 8px 16px; border-radius: 8px; height: 44px; }
 
-/* SECTIONS BASE */
+/* Hero Coming Soon badges */
+.hero-soon {
+  margin-top: 26px; animation: fadeUp .5s .44s ease both;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+.soon-label {
+  font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(255,255,255,.38);
+}
+.soon-badges {
+  display: flex; gap: 12px; justify-content: center; align-items: center;
+}
+.soon-badge-pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 13px; font-weight: 700;
+  color: rgba(255,255,255,.45);
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  padding: 9px 18px; border-radius: 100px;
+}
+.soon-badge-pill .platform-icon { font-size: 16px; }
+
+/* ─── SECTION BASE ────────────────────────────── */
 .section-inner { max-width: 540px; margin: 0 auto; padding: 0 20px; }
 .section-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 5px; }
 .section-h2 { font-size: 26px; font-weight: 900; letter-spacing: -.03em; line-height: 1.15; color: var(--text); }
 
-/* SCREENSHOTS CAROUSEL */
-.screenshots { background: #fff; padding: 48px 0 12px; }
-.carousel-wrap { position: relative; margin-top: 22px; }
-.carousel-fade { position: absolute; right: 0; top: 0; bottom: 0; width: 56px; background: linear-gradient(to right, transparent, #fff); pointer-events: none; z-index: 2; }
-.carousel-track { display: flex; gap: 14px; overflow-x: scroll; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 10px 20px 20px; overscroll-behavior-x: contain; }
-.carousel-track::-webkit-scrollbar { display: none; }
-.c-item { flex-shrink: 0; scroll-snap-align: center; width: 148px; transition: transform .38s cubic-bezier(.25,.46,.45,.94), opacity .38s ease; transform: scale(.87); opacity: .52; cursor: zoom-in; }
-.c-item.active { transform: scale(1); opacity: 1; }
-.c-img { width: 148px; border-radius: 18px; display: block; box-shadow: 0 4px 18px rgba(0,0,0,.12), 0 12px 40px rgba(0,0,0,.10); overflow: hidden; }
-.c-img img { width: 100%; height: auto; display: block; border-radius: 18px; }
-.c-label { font-size: 11px; font-weight: 600; color: var(--muted); text-align: center; margin-top: 10px; }
-.carousel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 16px; padding: 0 20px 4px; }
-.c-dot { width: 6px; height: 6px; border-radius: 3px; background: #ddd; border: none; cursor: pointer; padding: 0; transition: width .3s ease, background .3s ease; -webkit-tap-highlight-color: transparent; }
-.c-dot.active { width: 20px; background: var(--blue); }
+/* ─── HOW IT WORKS ────────────────────────────── */
+.how-section { background: #fff; padding: 52px 20px; }
+.steps-grid { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
+.step-card {
+  background: var(--cream); border: 1px solid var(--border);
+  border-radius: 22px; padding: 22px 20px;
+  display: flex; align-items: flex-start; gap: 16px;
+  transition: transform .2s, box-shadow .2s;
+}
+.step-card:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,99,235,.1); }
+.step-num {
+  flex-shrink: 0; width: 38px; height: 38px; border-radius: 12px;
+  background: var(--blue); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 900; letter-spacing: -.01em;
+}
+.step-title { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 4px; }
+.step-desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
+.step-emoji { font-size: 22px; margin-top: 1px; }
 
-/* FEATURES */
+/* ─── FEATURES ────────────────────────────────── */
 .features { background: var(--cream); padding: 52px 20px; }
 .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
-.f-tile { background: #fff; border: 1px solid var(--border); border-radius: 22px; padding: 18px 15px 16px; transition: transform .2s, box-shadow .2s; position: relative; }
+.f-tile {
+  background: #fff; border: 1px solid var(--border); border-radius: 22px;
+  padding: 18px 15px 16px; transition: transform .2s, box-shadow .2s; position: relative;
+}
 .f-tile:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,.08); }
-.f-tile.pro-tile { border-color: rgba(37,99,235,.25); }
+.f-tile.wide { grid-column: 1 / -1; display: flex; align-items: center; gap: 16px; padding: 20px 20px; }
+.f-tile.blue-tile { background: linear-gradient(145deg, #1e3a8a, #1d4ed8); border-color: rgba(37,99,235,.3); }
 .f-icon { font-size: 28px; margin-bottom: 10px; line-height: 1; }
+.f-tile.wide .f-icon { margin-bottom: 0; font-size: 36px; flex-shrink: 0; }
 .f-name { font-size: 13.5px; font-weight: 800; letter-spacing: -.01em; color: var(--text); margin-bottom: 4px; }
+.f-tile.blue-tile .f-name { color: #fff; }
 .f-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.f-tile.blue-tile .f-desc { color: rgba(255,255,255,.65); }
 .pro-tag { position: absolute; top: 12px; right: 12px; font-size: 9px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--blue); background: rgba(37,99,235,.1); border: 1px solid rgba(37,99,235,.25); padding: 2px 7px; border-radius: 100px; }
 
-/* SPOTLIGHT: KI-Scan */
+/* ─── AI SPOTLIGHT ────────────────────────────── */
 .spotlight-section { padding: 0 14px 14px; }
-.spotlight-card { background: linear-gradient(155deg, #060f26 0%, #0d1f4a 60%, #060f26 100%); border-radius: 28px; padding: 32px 24px; position: relative; overflow: hidden; }
-.spotlight-card::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(37,99,235,.35) 0%, transparent 70%); pointer-events: none; }
-.spotlight-card::after { content: ''; position: absolute; bottom: -40px; left: 10%; width: 160px; height: 160px; background: radial-gradient(circle, rgba(96,165,250,.18) 0%, transparent 70%); pointer-events: none; }
+.spotlight-card {
+  background: linear-gradient(155deg, #060f26 0%, #0c1d50 55%, #060f26 100%);
+  border-radius: 28px; padding: 32px 24px; position: relative; overflow: hidden;
+}
+.spotlight-card::before {
+  content: ''; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px;
+  background: radial-gradient(circle, rgba(37,99,235,.38) 0%, transparent 70%); pointer-events: none;
+}
+.spotlight-card::after {
+  content: ''; position: absolute; bottom: -50px; left: 5%; width: 180px; height: 180px;
+  background: radial-gradient(circle, rgba(96,165,250,.2) 0%, transparent 70%); pointer-events: none;
+}
 .spotlight-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(96,165,250,.9); margin-bottom: 8px; }
 .spotlight-h { font-size: 24px; font-weight: 900; letter-spacing: -.03em; line-height: 1.15; color: #fff; margin-bottom: 12px; }
-.spotlight-h em { font-style: normal; background: linear-gradient(90deg, #93c5fd, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.spotlight-desc { font-size: 14px; color: rgba(255,255,255,.62); line-height: 1.6; margin-bottom: 18px; }
+.spotlight-h em {
+  font-style: normal;
+  background: linear-gradient(90deg, #93c5fd, #60a5fa);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.spotlight-desc { font-size: 14px; color: rgba(255,255,255,.62); line-height: 1.6; margin-bottom: 20px; }
 .spotlight-pills { display: flex; flex-wrap: wrap; gap: 9px; position: relative; z-index: 1; }
-.spotlight-pill { font-size: 13px; font-weight: 700; color: rgba(255,255,255,.92); background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); padding: 8px 16px; border-radius: 100px; }
+.spotlight-pill {
+  font-size: 13px; font-weight: 700; color: rgba(255,255,255,.92);
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18);
+  padding: 8px 16px; border-radius: 100px; backdrop-filter: blur(6px);
+}
 
-/* TOKENS */
+/* ─── TOKENS SECTION ──────────────────────────── */
 .tokens-section { background: #fff; padding: 52px 20px; }
-.tokens-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 22px; }
-.token-card { background: var(--cream); border: 1px solid var(--border); border-radius: 18px; padding: 16px 14px; text-align: center; }
-.token-card.popular { background: linear-gradient(145deg, #1e3a8a, #1d4ed8); border-color: rgba(37,99,235,.3); }
-.token-card .token-count { font-size: 28px; font-weight: 900; color: var(--text); letter-spacing: -.02em; }
-.token-card.popular .token-count { color: #fff; }
-.token-card .token-label { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-top: 2px; }
-.token-card.popular .token-label { color: rgba(255,255,255,.6); }
-.token-badge { display: inline-block; font-size: 9px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; background: rgba(37,99,235,.15); color: var(--blue); border: 1px solid rgba(37,99,235,.25); padding: 2px 8px; border-radius: 100px; margin-top: 6px; }
-.token-card.popular .token-badge { background: rgba(255,255,255,.18); color: #fff; border-color: rgba(255,255,255,.25); }
+.tokens-track {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 8px; margin-top: 22px;
+}
+.tok-card {
+  background: var(--cream); border: 1px solid var(--border);
+  border-radius: 18px; padding: 18px 10px 14px; text-align: center;
+  transition: transform .2s, box-shadow .2s;
+}
+.tok-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(37,99,235,.12); }
+.tok-card.tok-popular {
+  background: linear-gradient(145deg, #1e3a8a, #2563eb);
+  border-color: transparent;
+  box-shadow: 0 4px 20px rgba(37,99,235,.3);
+}
+.tok-num { font-size: 26px; font-weight: 900; letter-spacing: -.02em; color: var(--text); }
+.tok-card.tok-popular .tok-num { color: #fff; }
+.tok-unit { font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-top: 2px; }
+.tok-card.tok-popular .tok-unit { color: rgba(255,255,255,.6); }
+.tok-chip {
+  display: inline-block; font-size: 9px; font-weight: 800;
+  letter-spacing: .05em; text-transform: uppercase;
+  padding: 3px 7px; border-radius: 100px; margin-top: 7px;
+  background: rgba(37,99,235,.12); color: var(--blue); border: 1px solid rgba(37,99,235,.2);
+}
+.tok-card.tok-popular .tok-chip { background: rgba(255,255,255,.2); color: #fff; border-color: transparent; }
 
-/* PRICING */
-.pricing { background: var(--cream); padding: 52px 20px; }
+/* ─── COMING SOON HYPE ────────────────────────── */
+.hype-section {
+  background: var(--cream);
+  padding: 52px 20px;
+}
+.hype-card {
+  max-width: 540px; margin: 0 auto;
+  background: linear-gradient(155deg, #060f26 0%, #0c1d50 60%, #060f26 100%);
+  border-radius: 28px; padding: 38px 28px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.hype-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(105deg, transparent 20%, rgba(96,165,250,.07) 50%, transparent 80%);
+  background-size: 200% 100%; animation: shimmer 4s linear infinite;
+}
+@keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+.hype-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: rgba(96,165,250,.8); margin-bottom: 12px; position: relative; z-index: 1; }
+.hype-h { font-size: 28px; font-weight: 900; letter-spacing: -.03em; line-height: 1.12; color: #fff; margin-bottom: 12px; position: relative; z-index: 1; }
+.hype-h em {
+  font-style: normal;
+  background: linear-gradient(92deg, #93c5fd, #3b82f6);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hype-sub { font-size: 15px; color: rgba(255,255,255,.58); line-height: 1.6; margin-bottom: 28px; position: relative; z-index: 1; }
+.hype-platforms {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  position: relative; z-index: 1; margin-bottom: 20px;
+}
+.hype-platform {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 700; color: rgba(255,255,255,.85);
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+  padding: 10px 20px; border-radius: 100px;
+}
+.hype-platform .platform-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #60a5fa; box-shadow: 0 0 8px rgba(96,165,250,.7);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:.6; transform:scale(.8); } }
+.hype-note { font-size: 12px; color: rgba(255,255,255,.32); position: relative; z-index: 1; }
+
+/* ─── PRICING ─────────────────────────────────── */
+.pricing { background: #fff; padding: 52px 20px; }
 .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
 .p-tile { border-radius: 22px; padding: 22px 16px; }
-.p-tile.free { background: #fff; border: 1px solid var(--border); }
-.p-tile.pro { background: linear-gradient(155deg, #060f26, #0d1f4a); border: 1px solid rgba(37,99,235,.25); }
+.p-tile.free { background: var(--cream); border: 1px solid var(--border); }
+.p-tile.pro { background: linear-gradient(155deg, #060f26, #0c1d50); border: 1px solid rgba(37,99,235,.25); }
 .p-badge { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; padding: 3px 9px; border-radius: 100px; margin-bottom: 11px; }
 .p-tile.free .p-badge { background: var(--border); color: var(--muted); }
 .p-tile.pro .p-badge { background: rgba(37,99,235,.2); color: #93c5fd; border: 1px solid rgba(37,99,235,.3); }
@@ -164,18 +306,9 @@ img { max-width: 100%; display: block; }
 .p-tile.free .p-list li::before { color: var(--blue); }
 .p-tile.pro  .p-list li { color: rgba(255,255,255,.65); }
 .p-tile.pro  .p-list li::before { color: #93c5fd; }
-.p-note { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 14px; line-height: 1.4; }
+.p-note { font-size: 11px; color: rgba(255,255,255,.38); margin-top: 14px; line-height: 1.5; }
 
-/* CTA */
-.cta-wrap { padding: 0 14px 14px; }
-.cta-card { border-radius: 28px; background: linear-gradient(145deg, #2563eb 0%, #1d4ed8 100%); padding: 36px 24px; text-align: center; position: relative; overflow: hidden; }
-.cta-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,.08) 50%, transparent 80%); background-size: 200% 100%; animation: shimmer 3.5s linear infinite; }
-@keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
-.cta-h { font-size: 26px; font-weight: 900; letter-spacing: -.03em; color: #fff; line-height: 1.15; margin-bottom: 8px; position: relative; z-index: 1; }
-.cta-sub { font-size: 14px; color: rgba(255,255,255,.68); margin-bottom: 24px; position: relative; z-index: 1; }
-.cta-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
-
-/* MORE APPS */
+/* ─── MORE APPS ───────────────────────────────── */
 .more-apps { background: var(--cream); padding: 52px 20px 36px; }
 .more-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px,1fr)); gap: 10px; margin-top: 22px; }
 .m-card { background: #fff; border: 1px solid var(--border); border-radius: 22px; padding: 20px 14px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; text-decoration: none; transition: transform .2s, box-shadow .2s; }
@@ -185,7 +318,7 @@ img { max-width: 100%; display: block; }
 .m-desc { font-size: 12px; color: var(--muted); line-height: 1.4; }
 .m-badge { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; background: var(--cream); color: #5a7ab0; border: 1px solid var(--border); padding: 4px 10px; border-radius: 100px; }
 
-/* BRAND + FOOTER */
+/* ─── BRAND + FOOTER ──────────────────────────── */
 .brand-section { padding: 0 14px 14px; }
 .brand-banner { width: 100%; border-radius: 18px; overflow: hidden; display: block; box-shadow: 0 4px 20px rgba(0,0,0,.07); }
 footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top: 1px solid var(--border); }
@@ -194,18 +327,25 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
 .footer-links a, .footer-copy { font-size: 12px; color: #7a9ab8; text-decoration: none; }
 .footer-links a:hover { color: var(--text); }
 
-/* REVEAL */
+/* ─── SCROLL REVEAL ───────────────────────────── */
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.in-view { opacity: 1; transform: none; }
 .reveal-d1 { transition-delay: .07s; } .reveal-d2 { transition-delay: .14s; }
 .reveal-d3 { transition-delay: .21s; } .reveal-d4 { transition-delay: .28s; }
 
-@media (hover: none) { .f-tile:hover { transform: none; box-shadow: none; } .m-card:hover { transform: none; box-shadow: none; } }
+/* ─── KEYFRAMES ───────────────────────────────── */
+@keyframes iconPop { from { opacity:0; transform:scale(.6) translateY(12px); } to { opacity:1; transform:scale(1) translateY(0); } }
+@keyframes swFloat { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-9px); } }
+@keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
+
+@media (hover: none) {
+  .f-tile:hover, .step-card:hover, .tok-card:hover, .m-card:hover { transform: none; box-shadow: none; }
+}
   </style>
 </head>
 <body>
 
-<!-- HERO -->
+<!-- ══════════════════════════ HERO -->
 <section class="hero">
   <div class="bokeh" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
 
@@ -232,7 +372,7 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
           <span class="sw-label">ItemShark</span>
         </div>
         <div class="sw-slide sw-next" id="sw-item-next">
-          <img src="../assets/terminkompass/icon.png" alt="TerminKompass" class="sw-icon" width="90" height="90" loading="eager" decoding="async">
+          <img src="../assets/terminkompass/icon-opt.png" alt="TerminKompass" class="sw-icon" width="90" height="90" loading="eager" decoding="async">
           <span class="sw-label">TerminKompass</span>
         </div>
       </div>
@@ -259,36 +399,76 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
       <span class="pill">🔍 Sofort finden</span>
       <span class="pill">🇩🇪 Made in Germany</span>
     </div>
-    <div class="hero-badges">
-      <a href="https://play.google.com/store/apps/details?id=de.itemshark.app"
-         class="store-btn" aria-label="ItemShark bei Google Play">
-        <img src="https://play.google.com/intl/de_de/badges/static/images/badges/de_badge_web_generic.png"
-             alt="Jetzt bei Google Play" class="badge-google" width="160" height="62" loading="eager">
-      </a>
-      <span class="soon-badge">🍎 App Store – bald</span>
+
+    <!-- Coming Soon statt Store-Links -->
+    <div class="hero-soon">
+      <span class="soon-label">Bald verfügbar</span>
+      <div class="soon-badges">
+        <span class="soon-badge-pill"><span class="platform-icon">🤖</span> Android</span>
+        <span class="soon-badge-pill"><span class="platform-icon">🍎</span> iOS</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════ HOW IT WORKS -->
+<section class="how-section">
+  <div class="section-inner">
+    <p class="section-eyebrow reveal">So einfach geht's</p>
+    <h2 class="section-h2 reveal reveal-d1">In 3 Schritten<br>alles im Griff.</h2>
+  </div>
+
+  <div class="section-inner" style="margin-top:0;">
+    <div class="steps-grid">
+      <div class="step-card reveal reveal-d1">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-emoji">📦</div>
+          <div class="step-title">Sammlung anlegen</div>
+          <div class="step-desc">Erstelle eine virtuelle Sammlung für jede echte Kiste, Schachtel oder jeden Karton. Beschrifte sie genau so wie den echten Behälter.</div>
+        </div>
+      </div>
+      <div class="step-card reveal reveal-d2">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-emoji">📸</div>
+          <div class="step-title">Foto aufnehmen</div>
+          <div class="step-desc">Öffne die Sammlung und tippe auf KI-Scan. Fotografiere den Inhalt – die KI erkennt automatisch alle Objekte, Texte und Motive.</div>
+        </div>
+      </div>
+      <div class="step-card reveal reveal-d3">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-emoji">🔍</div>
+          <div class="step-title">Jederzeit finden</div>
+          <div class="step-desc">Suche nach einem beliebigen Objekt – ItemShark zeigt dir sofort, in welcher Sammlung es liegt. Schluss mit stundenlanges Suchen.</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS SPOTLIGHT -->
-<div class="spotlight-section reveal" style="padding-top:14px;">
+<!-- ══════════════════════════ AI SPOTLIGHT -->
+<div class="spotlight-section reveal">
   <div class="spotlight-card">
-    <p class="spotlight-eyebrow">So funktioniert's</p>
-    <h2 class="spotlight-h">Foto aufnehmen.<br><em>KI macht den Rest.</em></h2>
+    <p class="spotlight-eyebrow">Das Herzstück</p>
+    <h2 class="spotlight-h">KI erkennt.<br><em>Du findest.</em><br>Immer.</h2>
     <p class="spotlight-desc">
-      Öffne eine Sammlung, tippe auf „KI-Scan" und fotografiere den Inhalt deiner Kiste.
-      Die KI erkennt automatisch alle Objekte, Texte und Motive – und listet sie auf.
-      Beim nächsten Suchen findest du alles in Sekunden.
+      Mach ein Foto von deiner Kiste oder deinem Regal.
+      Die KI analysiert das Bild und listet automatisch auf,
+      was sie sieht – Objekte, aufgedruckte Texte, Motive.
+      Kein manuelles Eintippen. Kein Vergessen.
     </p>
     <div class="spotlight-pills">
-      <span class="spotlight-pill">📸 Foto aufnehmen</span>
-      <span class="spotlight-pill">🤖 KI erkennt alles</span>
-      <span class="spotlight-pill">🔍 Jederzeit finden</span>
+      <span class="spotlight-pill">🏷️ Objekte erkennen</span>
+      <span class="spotlight-pill">📝 Texte lesen</span>
+      <span class="spotlight-pill">🎨 Motive erfassen</span>
     </div>
   </div>
 </div>
 
-<!-- FEATURES -->
+<!-- ══════════════════════════ FEATURES -->
 <section class="features">
   <div style="max-width:540px;margin:0 auto;">
     <p class="section-eyebrow reveal">Was ItemShark kann</p>
@@ -298,83 +478,108 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
       <div class="f-tile reveal reveal-d1">
         <div class="f-icon">🤖</div>
         <div class="f-name">KI-Scan</div>
-        <div class="f-desc">Foto aufnehmen – KI erkennt Objekte, Texte und Motive automatisch. Kein manuelles Eintippen.</div>
+        <div class="f-desc">Foto aufnehmen – KI listet automatisch auf, was sie sieht. Kein manuelles Tippen nötig.</div>
       </div>
       <div class="f-tile reveal reveal-d2">
-        <div class="f-icon">📦</div>
-        <div class="f-name">Sammlungen</div>
-        <div class="f-desc">Kisten, Regale, Schachteln – alles bekommt einen Namen. ItemShark merkt sich, was wo drin ist.</div>
-      </div>
-      <div class="f-tile reveal reveal-d3">
         <div class="f-icon">🔍</div>
         <div class="f-name">Sofort finden</div>
-        <div class="f-desc">Suchst du ein Objekt? ItemShark zeigt dir sofort, in welcher Sammlung es liegt.</div>
+        <div class="f-desc">Tippe ein Stichwort ein – ItemShark zeigt dir auf Anhieb, in welcher Sammlung es liegt.</div>
+      </div>
+      <div class="f-tile blue-tile reveal reveal-d3">
+        <div class="f-icon">📦</div>
+        <div class="f-name">Sammlungen</div>
+        <div class="f-desc">Kisten, Regale, Schachteln – jede bekommt einen Namen und ein digitales Inventar.</div>
       </div>
       <div class="f-tile reveal reveal-d4">
-        <div class="f-icon">✏️</div>
-        <div class="f-name">Manuell ergänzen</div>
-        <div class="f-desc">Kein Foto? Kein Problem. Objekte lassen sich auch manuell mit Name, Beschreibung und Wert anlegen.</div>
+        <div class="f-icon">💰</div>
+        <div class="f-name">Wert-Tracking</div>
+        <div class="f-desc">Erfasse den Wert deiner Objekte. ItemShark zeigt den Gesamtwert jeder Sammlung.</div>
       </div>
       <div class="f-tile reveal reveal-d1">
         <div class="f-icon">📝</div>
-        <div class="f-name">Notizen & Listen</div>
-        <div class="f-desc">Checklisten und Notizen direkt zu Sammlungen – z. B. „was fehlt noch" oder „nicht vergessen".</div>
+        <div class="f-name">Notizen & Checklisten</div>
+        <div class="f-desc">Füge Notizen direkt zu Sammlungen hinzu – z. B. „was fehlt" oder „nicht vergessen".</div>
       </div>
       <div class="f-tile reveal reveal-d2">
-        <div class="f-icon">💰</div>
-        <div class="f-name">Wert-Tracking</div>
-        <div class="f-desc">Erfasse den Wert deiner Objekte und sieh den Gesamtwert jeder Sammlung auf einen Blick.</div>
+        <div class="f-icon">✏️</div>
+        <div class="f-name">Manuell ergänzen</div>
+        <div class="f-desc">Kein Foto? Kein Problem. Objekte mit Name, Beschreibung und Wert auch manuell anlegen.</div>
       </div>
       <div class="f-tile reveal reveal-d3">
         <div class="f-icon">🔒</div>
         <div class="f-name">Lokal & privat</div>
-        <div class="f-desc">Alle Daten bleiben auf deinem Gerät. Nur KI-Scans laufen über die Cloud – sicher verschlüsselt.</div>
+        <div class="f-desc">Alle Daten bleiben auf deinem Gerät. Nur KI-Scans laufen verschlüsselt über die Cloud.</div>
       </div>
-      <div class="f-tile pro-tile reveal reveal-d4">
-        <span class="pro-tag">Pro</span>
-        <div class="f-icon">♾️</div>
-        <div class="f-name">Unbegrenzt</div>
-        <div class="f-desc">Pro hebt alle Limits auf. Unbegrenzte Sammlungen, Objekte und Notizen.</div>
+      <div class="f-tile reveal reveal-d4">
+        <div class="f-icon">💾</div>
+        <div class="f-name">Backup & Import</div>
+        <div class="f-desc">Dein Inventar lässt sich lokal sichern und auf ein neues Gerät übertragen.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TOKENS -->
+<!-- ══════════════════════════ TOKENS -->
 <section class="tokens-section">
   <div style="max-width:540px;margin:0 auto;">
     <p class="section-eyebrow reveal">KI-Scans</p>
-    <h2 class="section-h2 reveal reveal-d1">Tokens für KI-Scans.</h2>
+    <h2 class="section-h2 reveal reveal-d1">Tokens für jeden Bedarf.</h2>
     <p style="font-size:14px;color:var(--muted);margin-top:8px;line-height:1.6;" class="reveal reveal-d2">
-      Jeder KI-Scan kostet einen Token. Tokens kannst du jederzeit nachkaufen –
-      in der Menge die du brauchst. Kein Abo, kein Zwang.
+      Jeder KI-Scan kostet einen Token. Du kaufst genau die Menge,
+      die du brauchst – kein Abo, kein Zwang, keine versteckten Kosten.
     </p>
-    <div class="tokens-grid reveal reveal-d2">
-      <div class="token-card">
-        <div class="token-count">10</div>
-        <div class="token-label">Tokens</div>
-        <div class="token-badge">Starter</div>
+    <div class="tokens-track reveal reveal-d3">
+      <div class="tok-card">
+        <div class="tok-num">10</div>
+        <div class="tok-unit">Scans</div>
+        <div class="tok-chip">Starter</div>
       </div>
-      <div class="token-card popular">
-        <div class="token-count">30</div>
-        <div class="token-label">Tokens</div>
-        <div class="token-badge">Beliebt</div>
+      <div class="tok-card tok-popular">
+        <div class="tok-num">30</div>
+        <div class="tok-unit">Scans</div>
+        <div class="tok-chip">Beliebt</div>
       </div>
-      <div class="token-card">
-        <div class="token-count">60</div>
-        <div class="token-label">Tokens</div>
-        <div class="token-badge">Power</div>
+      <div class="tok-card">
+        <div class="tok-num">60</div>
+        <div class="tok-unit">Scans</div>
+        <div class="tok-chip">Power</div>
       </div>
-      <div class="token-card">
-        <div class="token-count">100</div>
-        <div class="token-label">Tokens</div>
-        <div class="token-badge">Bestes Angebot</div>
+      <div class="tok-card">
+        <div class="tok-num">100</div>
+        <div class="tok-unit">Scans</div>
+        <div class="tok-chip">Mega</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
+<!-- ══════════════════════════ COMING SOON HYPE -->
+<section class="hype-section">
+  <div class="hype-card">
+    <p class="hype-eyebrow">Bald verfügbar</p>
+    <h2 class="hype-h">
+      Sei dabei,<br>wenn ItemShark<br><em>startet.</em>
+    </h2>
+    <p class="hype-sub">
+      ItemShark befindet sich aktuell in der Entwicklung
+      und wird bald für Android und iOS verfügbar sein.
+      Schau regelmäßig vorbei – es geht bald los.
+    </p>
+    <div class="hype-platforms">
+      <div class="hype-platform">
+        <span class="platform-dot"></span>
+        🤖 Android
+      </div>
+      <div class="hype-platform">
+        <span class="platform-dot"></span>
+        🍎 iOS
+      </div>
+    </div>
+    <p class="hype-note">Kein Konto nötig. Einfach später im Store suchen: ItemShark</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════ PRICING -->
 <section class="pricing">
   <div style="max-width:540px;margin:0 auto;">
     <p class="section-eyebrow reveal">Kostenlos starten</p>
@@ -384,9 +589,9 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
         <span class="p-badge">Kostenlos</span>
         <div class="p-head">Zum Starten</div>
         <ul class="p-list">
-          <li>Bis zu 20 Sammlungen</li>
-          <li>Bis zu 20 Objekte</li>
-          <li>Bis zu 20 Notizen</li>
+          <li>20 Sammlungen</li>
+          <li>20 Objekte</li>
+          <li>20 Notizen</li>
           <li>KI-Scan mit Tokens</li>
           <li>Suche & Bibliothek</li>
           <li>Wert-Tracking</li>
@@ -403,35 +608,20 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
           <li>Alle Free-Features</li>
           <li>Einmalkauf – kein Abo</li>
         </ul>
-        <p class="p-note">Einmaliger Kauf über Google Play oder Apple App Store.</p>
+        <p class="p-note">Einmaliger Kauf. Kein Abonnement. Für immer.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<div class="cta-wrap reveal">
-  <div class="cta-card">
-    <h2 class="cta-h">Jetzt kostenlos<br>ausprobieren.</h2>
-    <p class="cta-sub">Fotografieren. KI erkennt alles. Finden.</p>
-    <div class="cta-badges">
-      <a href="https://play.google.com/store/apps/details?id=de.itemshark.app"
-         class="store-btn" aria-label="Google Play">
-        <img src="https://play.google.com/intl/de_de/badges/static/images/badges/de_badge_web_generic.png"
-             alt="Jetzt bei Google Play" class="badge-google" width="160" height="62" loading="lazy">
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- MORE APPS -->
+<!-- ══════════════════════════ MORE APPS -->
 <section class="more-apps">
   <div style="max-width:540px;margin:0 auto;">
     <p class="section-eyebrow reveal">MW_Apps</p>
     <h2 class="section-h2 reveal reveal-d1">Weitere Apps.</h2>
     <div class="more-grid">
       <a href="../" class="m-card reveal reveal-d2">
-        <div class="m-icon" style="padding:0;overflow:hidden;"><img src="../assets/terminkompass/icon.png" alt="TerminKompass" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;" loading="lazy"></div>
+        <div class="m-icon" style="padding:0;overflow:hidden;"><img src="../assets/terminkompass/icon-opt.png" alt="TerminKompass" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;" loading="lazy"></div>
         <div><div class="m-name">TerminKompass</div><div class="m-desc">Termine, die du nicht vergisst</div></div>
       </a>
       <a href="../jobtrace/" class="m-card reveal reveal-d3">
@@ -447,12 +637,12 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   </div>
 </section>
 
-<!-- BRAND BANNER -->
+<!-- ══════════════════════════ BRAND BANNER -->
 <div class="brand-section reveal">
-  <img src="../assets/mwapps-banner.jpg" alt="MW_Apps" class="brand-banner" loading="lazy">
+  <img src="../assets/mwapps-banner.jpg" alt="MW_Apps – Software Development" class="brand-banner" loading="lazy">
 </div>
 
-<!-- FOOTER -->
+<!-- ══════════════════════════ FOOTER -->
 <footer>
   <div class="footer-inner">
     <nav class="footer-links">
@@ -463,15 +653,18 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   </div>
 </footer>
 
+<!-- ══════════════════════════ SCRIPTS -->
 <script>
-/* 3D Carousel */
+/* ── 3D Carousel ─────────────────────────────── */
 (function () {
   var PREV_HREF = '../chromaflow/'; var NEXT_HREF = '../';
   var stage = document.getElementById('sw-stage');
-  var elPrev = document.getElementById('sw-item-prev'); var elNext = document.getElementById('sw-item-next');
+  var elPrev = document.getElementById('sw-item-prev');
+  var elNext = document.getElementById('sw-item-next');
   var going = false; var touchX = 0;
   function go(dir) {
-    if (going) return; var href = dir === 'prev' ? PREV_HREF : NEXT_HREF;
+    if (going) return;
+    var href = dir === 'prev' ? PREV_HREF : NEXT_HREF;
     going = true; stage.classList.add('sw-navigating');
     document.getElementById('sw-item-active').classList.add(dir === 'prev' ? 'sw-exit-right' : 'sw-exit-left');
     (dir === 'prev' ? elPrev : elNext).classList.replace(dir === 'prev' ? 'sw-prev' : 'sw-next', 'sw-active');
@@ -482,33 +675,26 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   elPrev.addEventListener('click', function () { go('prev'); });
   elNext.addEventListener('click', function () { go('next'); });
   stage.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
-  stage.addEventListener('touchend', function (e) { var dx = e.changedTouches[0].clientX - touchX; if (Math.abs(dx) > 45) go(dx < 0 ? 'next' : 'prev'); }, { passive: true });
+  stage.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 45) go(dx < 0 ? 'next' : 'prev');
+  }, { passive: true });
 })();
 
-/* Screenshot Carousel */
-(function () {
-  var track = document.getElementById('ctrack');
-  var dotsEl = document.getElementById('cdots');
-  if (!track || !dotsEl) return;
-  var items = track.querySelectorAll('.c-item'); var dots = []; var current = 0; var timer;
-  items.forEach(function (_, i) {
-    var d = document.createElement('button'); d.className = 'c-dot' + (i === 0 ? ' active' : '');
-    d.addEventListener('click', function () { go(i); resetTimer(); }); dotsEl.appendChild(d); dots.push(d);
-  });
-  function setActive(idx) { if (idx === current) return; current = idx; items.forEach(function (item, i) { item.classList.toggle('active', i === idx); }); dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); }); }
-  function go(idx) { var target = items[idx].offsetLeft + items[idx].offsetWidth / 2 - track.offsetWidth / 2; track.scrollTo({ left: Math.max(0, target), behavior: 'smooth' }); setActive(idx); }
-  function resetTimer() { clearInterval(timer); timer = setInterval(function () { go((current + 1) % items.length); }, 3400); }
-  track.addEventListener('scroll', function () { var center = track.scrollLeft + track.offsetWidth / 2; var closest = 0; var minDist = Infinity; items.forEach(function (item, i) { var dist = Math.abs(item.offsetLeft + item.offsetWidth / 2 - center); if (dist < minDist) { minDist = dist; closest = i; } }); setActive(closest); }, { passive: true });
-  resetTimer();
-})();
-
-/* Scroll Reveal */
+/* ── Scroll Reveal ───────────────────────────── */
 (function () {
   var els = document.querySelectorAll('.reveal');
-  if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('in-view'); }); return; }
-  var io = new IntersectionObserver(function (entries) { entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } }); }, { threshold: 0.12 });
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.classList.add('in-view'); }); return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
   els.forEach(function (el) { io.observe(el); });
 })();
 </script>
+
 </body>
 </html>
