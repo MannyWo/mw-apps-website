@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <link rel="stylesheet" href="../shared.css">
-  <link rel="prefetch" href="../chromaflow/">
+  <link rel="prefetch" href="../jobtrace/">
   <link rel="prefetch" href="../">
   <title>ItemShark – Fotografieren. KI erkennt alles. Finden.</title>
   <meta name="description" content="ItemShark – fotografiere deine Kisten, die KI erkennt automatisch alles darin. Nie wieder suchen. Bald für Android und iOS.">
@@ -359,13 +359,13 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
 
   <div class="hero-body">
 
-    <!-- 3D Carousel: CF ← IS★ → TK -->
+    <!-- 3D Carousel: JT ← IS★ → TK -->
     <div class="sw-outer">
       <button class="sw-arrow" id="sw-prev-btn" aria-label="Zurück">‹</button>
       <div class="sw-stage" id="sw-stage">
         <div class="sw-slide sw-prev" id="sw-item-prev">
-          <div class="sw-icon sw-icon-emoji" style="border-radius:20px;">🎨</div>
-          <span class="sw-label">ChromaFlow</span>
+          <img src="../assets/app-icon-v5.png" alt="JobTrace" class="sw-icon" width="90" height="90" loading="eager" decoding="async">
+          <span class="sw-label">JobTrace</span>
         </div>
         <div class="sw-slide sw-active" id="sw-item-active">
           <img src="../assets/itemshark-icon.png" alt="ItemShark" class="sw-icon" width="90" height="90" loading="eager" decoding="async">
@@ -380,7 +380,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
     </div>
     <div class="sw-dots">
       <span class="sw-dot active"></span>
-      <span class="sw-dot"></span>
       <span class="sw-dot"></span>
       <span class="sw-dot"></span>
     </div>
@@ -628,11 +627,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
         <div class="m-icon" style="padding:0;overflow:hidden;"><img src="../assets/app-icon-v5.png" alt="JobTrace" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;" loading="lazy"></div>
         <div><div class="m-name">JobTrace</div><div class="m-desc">Zeiterfassung für Handwerker</div></div>
       </a>
-      <a href="../chromaflow/" class="m-card reveal reveal-d4">
-        <div class="m-icon" style="background:linear-gradient(135deg,#e8d4f4,#c4a0e0);font-size:26px;display:flex;align-items:center;justify-content:center;">🎨</div>
-        <div><div class="m-name">ChromaFlow</div><div class="m-desc">Color Tile Puzzle</div></div>
-        <span class="m-badge">Demnächst</span>
-      </a>
     </div>
   </div>
 </section>
@@ -657,7 +651,7 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
 <script>
 /* ── 3D Carousel ─────────────────────────────── */
 (function () {
-  var PREV_HREF = '../chromaflow/'; var NEXT_HREF = '../';
+  var PREV_HREF = '../jobtrace/'; var NEXT_HREF = '../';
   var stage = document.getElementById('sw-stage');
   var elPrev = document.getElementById('sw-item-prev');
   var elNext = document.getElementById('sw-item-next');
