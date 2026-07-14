@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <link rel="stylesheet" href="../shared.css">
   <link rel="prefetch" href="../">
-  <link rel="prefetch" href="../chromaflow/">
+  <link rel="prefetch" href="../itemshark/">
   <title>JobTrace – Stundennachweise für Handwerker & Außendienst</title>
   <meta name="description" content="JobTrace – Tagesberichte erfassen, Zuschläge berechnen, PDFs erstellen. Offline. Kein Abo. Für Handwerker, Monteure und Außendienstler.">
   <meta property="og:title" content="Stunden erfassen. PDFs erstellen. Fertig.">
@@ -704,7 +704,7 @@ footer {
 
   <div class="hero-body">
 
-    <!-- 3D Carousel: TK ← JT★ → CF -->
+    <!-- 3D Carousel: TK ← JT★ → IS -->
     <div class="sw-outer">
       <button class="sw-arrow" id="sw-prev-btn" aria-label="Zurück">‹</button>
       <div class="sw-stage" id="sw-stage">
@@ -717,19 +717,18 @@ footer {
           <span class="sw-label">JobTrace</span>
         </div>
         <div class="sw-slide sw-next" id="sw-item-next">
-          <div class="sw-icon sw-icon-emoji">🎨</div>
-          <span class="sw-label">ChromaFlow</span>
+          <img src="../assets/itemshark-icon.png" alt="ItemShark" class="sw-icon" width="90" height="90" loading="eager" decoding="async">
+          <span class="sw-label">ItemShark</span>
         </div>
       </div>
       <button class="sw-arrow" id="sw-next-btn" aria-label="Weiter">›</button>
     </div>
 
-    <!-- Dots: IS · TK · JT · CF -->
+    <!-- Dots: IS · TK · JT -->
     <div class="sw-dots">
       <span class="sw-dot"></span>
+      <span class="sw-dot"></span>
       <span class="sw-dot active"></span>
-      <span class="sw-dot"></span>
-      <span class="sw-dot"></span>
     </div>
 
     <h1 class="hero-h1">
@@ -992,11 +991,6 @@ footer {
         <div><div class="m-name">TerminKompass</div><div class="m-desc">Termine, die du nicht vergisst</div></div>
         <span class="m-badge" style="background:#fff3ee;color:#c07050;border-color:#f0d0c0;">Im Store</span>
       </a>
-      <a href="../chromaflow/" class="m-card reveal reveal-d3">
-        <div class="m-icon" style="background:linear-gradient(135deg,#e8d4f4,#c4a0e0);font-size:26px;display:flex;align-items:center;justify-content:center;">🎨</div>
-        <div><div class="m-name">ChromaFlow</div><div class="m-desc">Color Tile Puzzle – denk in Farben</div></div>
-        <span class="m-badge">Demnächst</span>
-      </a>
       <a href="../itemshark/" class="m-card reveal reveal-d4">
         <div class="m-icon" style="padding:0;overflow:hidden;"><img src="../assets/itemshark-icon.png" alt="ItemShark" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
         <div><div class="m-name">ItemShark</div><div class="m-desc">Dein persönlicher Deal-Tracker</div></div>
@@ -1158,7 +1152,7 @@ footer {
 /* ── 3D Carousel: Swipe + Arrows ─────────────────── */
 (function () {
   var PREV_HREF = '../';
-  var NEXT_HREF = '../chromaflow/';
+  var NEXT_HREF = '../itemshark/';
   var stage = document.getElementById('sw-stage');
   var elPrev = document.getElementById('sw-item-prev');
   var elNext = document.getElementById('sw-item-next');
