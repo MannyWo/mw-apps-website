@@ -857,18 +857,18 @@ footer {
     <div class="sw-outer">
       <button class="sw-arrow" id="sw-prev-btn" aria-label="Zurück">‹</button>
       <div class="sw-stage" id="sw-stage">
-        <div class="sw-slide sw-prev" id="sw-item-prev">
+        <a class="sw-slide sw-prev" id="sw-item-prev" href="../terminkompass/" aria-label="Zu TerminKompass">
           <img src="../assets/terminkompass/icon-opt.png" alt="TerminKompass" class="sw-icon" width="90" height="90" loading="eager" decoding="async">
           <span class="sw-label">TerminKompass</span>
-        </div>
+        </a>
         <div class="sw-slide sw-active" id="sw-item-active">
           <img src="../assets/app-icon-v5.png" alt="JobTrace" class="sw-icon" width="90" height="90" loading="eager" decoding="async">
           <span class="sw-label">JobTrace</span>
         </div>
-        <div class="sw-slide sw-next" id="sw-item-next">
+        <a class="sw-slide sw-next" id="sw-item-next" href="../itemshark/" aria-label="Zu ItemShark">
           <img src="../assets/itemshark-icon.png" alt="ItemShark" class="sw-icon" width="90" height="90" loading="eager" decoding="async">
           <span class="sw-label">ItemShark</span>
-        </div>
+        </a>
       </div>
       <button class="sw-arrow" id="sw-next-btn" aria-label="Weiter">›</button>
     </div>
@@ -1495,8 +1495,8 @@ footer {
   }
   document.getElementById('sw-prev-btn').addEventListener('click', function () { go('prev'); });
   document.getElementById('sw-next-btn').addEventListener('click', function () { go('next'); });
-  elPrev.addEventListener('click', function () { go('prev'); });
-  elNext.addEventListener('click', function () { go('next'); });
+  elPrev.addEventListener('click', function (e) { e.preventDefault(); go('prev'); });
+  elNext.addEventListener('click', function (e) { e.preventDefault(); go('next'); });
   stage.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
   stage.addEventListener('touchend',   function (e) { var dx = e.changedTouches[0].clientX - touchX; if (Math.abs(dx) > 45) go(dx < 0 ? 'next' : 'prev'); }, { passive: true });
 })();
