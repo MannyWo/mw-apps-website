@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <link rel="stylesheet" href="../shared.css">
+  <link rel="stylesheet" href="../shared.css?v=20260811">
   <link rel="prefetch" href="../jobtrace/">
   <link rel="prefetch" href="../">
   <title>ItemShark – Kisten fotografieren statt beschriften | MW_Apps</title>
@@ -26,7 +26,7 @@
     "operatingSystem": "iOS, Android",
     "url": "https://mw-app.de/itemshark/",
     "image": "https://mw-app.de/assets/itemshark-icon-opt.png",
-    "description": "Inventar-App für Umzugskartons, Kisten und Lagerräume. Kiste fotografieren, die KI erkennt den Inhalt, später per Suche wiederfinden statt jede Kiste zu öffnen. Grundfunktionen laufen offline und kostenlos, der KI-Scan über Prepaid-Tokens ohne Abo.",
+    "description": "Inventar-App für Umzugskartons, Kisten und Lagerräume. Kiste fotografieren, die KI erkennt den Inhalt, später per Suche wiederfinden statt jede Kiste zu öffnen. Manuelle Erfassung, Suche, Notizen und Sicherung laufen offline und ohne Konto. Der KI-Scan benötigt eine Verbindung und Prepaid-Tokens, kein Abo.",
     "inLanguage": "de",
     "releaseNotes": "Noch nicht veröffentlicht – erscheint demnächst für iOS und Android.",
     "offers": {
@@ -37,6 +37,30 @@
       "description": "Grundfunktionen kostenlos, KI-Scan über Prepaid-Tokens, kein Abo"
     },
     "author": { "@type": "Organization", "name": "MW_Apps", "url": "https://mw-app.de/" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Wann erscheint ItemShark?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Die App ist in Entwicklung und erscheint für Android und iOS. Ein fester Termin steht noch nicht fest." } },
+      { "@type": "Question", "name": "Was kostet ein KI-Scan?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Jeder Scan kostet einen Token. Tokens werden im Voraus in der benötigten Menge gekauft – kein Abo und keine monatlichen Kosten." } },
+      { "@type": "Question", "name": "Funktioniert ItemShark ohne Internet?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ja, für alles was selbst erfasst wird: Sammlungen anlegen, Objekte von Hand eintragen, Notizen und Werte pflegen, suchen, sichern und importieren. Der KI-Scan und das Anlegen eines Kontos brauchen eine Verbindung." } },
+      { "@type": "Question", "name": "Was passiert mit meinen Fotos?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Beim KI-Scan wird das Bild verschlüsselt zur Auswertung übertragen. Zurück kommt die Liste der erkannten Objekte. Das Inventar selbst bleibt auf dem Gerät." } },
+      { "@type": "Question", "name": "Brauche ich ein Konto?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Nur für den KI-Scan, weil die Tokens einem Zugang zugeordnet sein müssen. Für die manuelle Erfassung braucht es weder Konto noch Internet." } },
+      { "@type": "Question", "name": "Kann ich Objekte auch ohne Foto erfassen?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ja. Jedes Objekt lässt sich von Hand anlegen, mit Name, Beschreibung und Wert. Das kostet keinen Token und funktioniert ohne Internet." } },
+      { "@type": "Question", "name": "Was ist kostenlos enthalten?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Bis zu 20 Sammlungen, 20 Objekte und 20 Notizen, dazu Suche, Bibliothek, Wert-Erfassung sowie Sicherung und Import. Die Pro-Version hebt diese Grenzen auf und ist ein Einmalkauf." } },
+      { "@type": "Question", "name": "Kann ich mein Inventar auf ein neues Handy übertragen?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ja, über die Sicherungs- und Importfunktion. Die Sicherung wird auf dem neuen Gerät wieder eingespielt." } }
+    ]
   }
   </script>
   <style>
@@ -368,7 +392,258 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
 @media (hover: none) {
   .f-tile:hover, .step-card:hover, .tok-card:hover, .m-card:hover { transform: none; box-shadow: none; }
 }
-  </style>
+  
+/* ═══════════════════════════════════════════════════════════════
+   INHALTSABSCHNITTE  ·  nutzen die Kartensprache der Seite
+   ═══════════════════════════════════════════════════════════════ */
+
+.content-sec { padding: 52px 20px; }
+.content-inner { max-width: 540px; margin: 0 auto; }
+
+/* Kartenliste (Anwendungsfaelle) ─────────────────────────────── */
+.case-list { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
+.case-card {
+  background: #fffaf8;
+  border: 1px solid var(--border, #ede3d0);
+  border-radius: 22px;
+  padding: 22px 20px;
+  transition: transform .2s, box-shadow .2s;
+}
+.case-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,.08); }
+.case-ico { font-size: 28px; line-height: 1; margin-bottom: 11px; }
+.case-h {
+  font-size: 16px; font-weight: 800;
+  letter-spacing: -.02em; line-height: 1.3;
+  color: var(--text, #1a0f0a);
+  margin-bottom: 7px;
+}
+.case-t {
+  font-size: 13.5px; line-height: 1.62;
+  color: var(--muted, #7e6456);
+}
+.case-t + .case-t { margin-top: 9px; }
+
+/* Hervorgehobene Karte (ehrlicher Hinweis) ───────────────────── */
+.note-card {
+  background: #fff;
+  border: 1px solid var(--border, #ede3d0);
+  border-radius: 24px;
+  padding: 26px 22px;
+  margin-top: 22px;
+}
+.note-card p { font-size: 14px; line-height: 1.65; color: var(--muted, #7e6456); }
+.note-card p + p { margin-top: 13px; }
+.note-card .note-lead { font-size: 15px; color: var(--text, #1a0f0a); }
+.note-flag {
+  margin-top: 16px;
+  border-left: 3px solid var(--orange, #e0674a);
+  background: rgba(224,103,74,.06);
+  border-radius: 0 14px 14px 0;
+  padding: 14px 16px;
+}
+.note-flag .note-flag-h {
+  font-size: 12px; font-weight: 800;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--orange, #e0674a);
+  margin-bottom: 6px;
+}
+.note-flag p { font-size: 13.5px; line-height: 1.6; }
+
+/* FAQ ────────────────────────────────────────────────────────── */
+.faq-list { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
+.faq-item {
+  background: #fffaf8;
+  border: 1px solid var(--border, #ede3d0);
+  border-radius: 22px;
+  overflow: hidden;
+  transition: box-shadow .2s;
+}
+.faq-item[open] { box-shadow: 0 8px 28px rgba(0,0,0,.07); }
+.faq-item summary {
+  list-style: none; cursor: pointer;
+  padding: 17px 48px 17px 20px;
+  font-size: 14px; font-weight: 800;
+  letter-spacing: -.01em; line-height: 1.4;
+  color: var(--text, #1a0f0a);
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '';
+  position: absolute; right: 20px; top: 50%;
+  width: 10px; height: 10px;
+  border-right: 2px solid var(--orange, #e0674a);
+  border-bottom: 2px solid var(--orange, #e0674a);
+  transform: translateY(-70%) rotate(45deg);
+  transition: transform .25s;
+}
+.faq-item[open] summary::after { transform: translateY(-20%) rotate(-135deg); }
+.faq-item .faq-a { padding: 0 20px 18px; }
+.faq-item .faq-a p {
+  font-size: 13.5px; line-height: 1.62;
+  color: var(--muted, #7e6456);
+}
+.faq-item .faq-a p + p { margin-top: 10px; }
+
+/* Keine Sonderbreite: 540px wie jeder andere Abschnitt der Seite. */
+
+
+/* ─── SCREENSHOT-KARUSSELL (von JobTrace uebernommen) ───────── */
+.carousel-wrap { position: relative; margin-top: 22px; }
+.carousel-fade {
+  position: absolute; right: 0; top: 0; bottom: 0; width: 56px;
+  background: linear-gradient(to right, transparent, #fff);
+  pointer-events: none; z-index: 2;
+}
+.carousel-track {
+  display: flex;
+  gap: 14px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 10px 20px 20px;
+  overscroll-behavior-x: contain;
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+
+.c-item {
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  width: 148px;
+  transition: transform .38s cubic-bezier(.25,.46,.45,.94),
+              opacity .38s ease;
+  transform: scale(.87);
+  opacity: .52;
+  cursor: zoom-in;
+}
+.c-item.active { transform: scale(1); opacity: 1; }
+
+.c-img {
+  width: 148px;
+  border-radius: 18px;
+  display: block;
+  box-shadow:
+    0 4px 18px rgba(0,0,0,.12),
+    0 12px 40px rgba(0,0,0,.10);
+  overflow: hidden;
+}
+.c-img img {
+  width: 100%; height: auto; display: block;
+  border-radius: 18px;
+}
+.c-label {
+  font-size: 11px; font-weight: 600; color: var(--muted);
+  text-align: center; margin-top: 10px;
+}
+
+.carousel-dots {
+  display: flex; justify-content: center; gap: 6px;
+  margin-top: 16px; padding: 0 20px 4px;
+}
+.c-dot {
+  width: 6px; height: 6px; border-radius: 3px;
+  background: #ddd; border: none; cursor: pointer; padding: 0;
+  transition: width .3s ease, background .3s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.c-dot.active { width: 20px; background: var(--green); }
+
+
+/* ─── LIGHTBOX ────────────────────────────────────── */
+.lightbox {
+  position: fixed; inset: 0; z-index: 999;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  pointer-events: none;
+  transition: background .28s ease, backdrop-filter .28s ease,
+              -webkit-backdrop-filter .28s ease;
+  padding: env(safe-area-inset-top, 20px) 20px
+           env(safe-area-inset-bottom, 20px);
+}
+.lightbox.open {
+  background: rgba(0,0,0,.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  pointer-events: all;
+}
+.lb-img-wrap {
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%;
+}
+.lb-img {
+  max-width: min(300px, 72vw);
+  max-height: calc(100svh - 120px);
+  width: auto; height: auto;
+  border-radius: 28px;
+  box-shadow: 0 24px 80px rgba(0,0,0,.7);
+  transform: scale(.82) translateY(12px); opacity: 0;
+  transition: transform .35s cubic-bezier(.34,1.4,.64,1), opacity .28s ease;
+  display: block; object-fit: contain;
+  -webkit-user-drag: none; user-select: none;
+}
+.lightbox.open .lb-img { transform: scale(1) translateY(0); opacity: 1; }
+.lightbox.open .lb-close, .lightbox.open .lb-nav { opacity: 1; pointer-events: all; }
+.lb-close {
+  position: fixed; top: max(18px, env(safe-area-inset-top,18px)); right: 18px;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.2);
+  color: #fff; font-size: 22px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s, transform .15s, opacity .28s ease;
+  -webkit-tap-highlight-color: transparent;
+  backdrop-filter: blur(8px); opacity: 0; pointer-events: none;
+}
+.lb-close:hover { background: rgba(255,255,255,.3); }
+.lb-close:active { transform: scale(.9); }
+.lb-nav {
+  position: fixed; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.18);
+  color: #fff; font-size: 20px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s, transform .15s, opacity .28s ease;
+  -webkit-tap-highlight-color: transparent;
+  backdrop-filter: blur(8px); z-index: 2;
+  opacity: 0; pointer-events: none;
+}
+.lb-nav:hover { background: rgba(255,255,255,.28); }
+.lb-nav:active { transform: translateY(-50%) scale(.9); }
+.lb-prev { left: 12px; }
+.lb-next { right: 12px; }
+.lb-label {
+  position: fixed;
+  bottom: max(64px, calc(env(safe-area-inset-bottom, 20px) + 44px));
+  left: 50%; transform: translateX(-50%);
+  font-size: 13px; font-weight: 600;
+  color: rgba(255,255,255,.65);
+  white-space: nowrap; pointer-events: none;
+  transition: opacity .2s;
+}
+.lb-dots {
+  position: fixed;
+  bottom: max(28px, calc(env(safe-area-inset-bottom, 20px) + 8px));
+  left: 50%; transform: translateX(-50%);
+  display: flex; gap: 6px; z-index: 2;
+}
+.lb-dot {
+  width: 6px; height: 6px; border-radius: 3px;
+  background: rgba(255,255,255,.3);
+  transition: width .25s ease, background .25s ease;
+}
+.lb-dot.active { width: 20px; background: #fff; }
+
+@media (hover: none) {
+  .f-tile:hover { transform: none; box-shadow: none; }
+  .m-card:hover { transform: none; box-shadow: none; }
+}
+
+  
+</style>
 </head>
 <body>
 
@@ -435,6 +710,72 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ══════════════════════════ SCREENSHOTS -->
+<section class="screenshots">
+  <div class="section-inner">
+    <p class="section-eyebrow reveal">In der App</p>
+    <h2 class="section-h2 reveal reveal-d1">Schau rein.</h2>
+  </div>
+
+  <div class="carousel-wrap reveal reveal-d2">
+    <div class="carousel-fade" aria-hidden="true"></div>
+    <div class="carousel-track" id="ctrack" role="list">
+
+      <div class="c-item active" role="listitem">
+        <div class="c-img"><img src="../assets/itemshark/screenshots/01.jpg" alt="Alles im Blick" loading="lazy"></div>
+        <p class="c-label">Dashboard</p>
+      </div>
+
+      <div class="c-item" role="listitem">
+        <div class="c-img"><img src="../assets/itemshark/screenshots/02.jpg" alt="Erkannte Elemente pruefen" loading="lazy"></div>
+        <p class="c-label">KI-Erkennung</p>
+      </div>
+
+      <div class="c-item" role="listitem">
+        <div class="c-img"><img src="../assets/itemshark/screenshots/03.jpg" alt="Sammlungen klar organisiert" loading="lazy"></div>
+        <p class="c-label">Sammlungen</p>
+      </div>
+
+      <div class="c-item" role="listitem">
+        <div class="c-img"><img src="../assets/itemshark/screenshots/04.jpg" alt="Objekte sauber verwalten" loading="lazy"></div>
+        <p class="c-label">Bibliothek</p>
+      </div>
+
+      <div class="c-item" role="listitem">
+        <div class="c-img"><img src="../assets/itemshark/screenshots/05.jpg" alt="Treffer schnell finden" loading="lazy"></div>
+        <p class="c-label">Suche</p>
+      </div>
+
+      <div class="c-item" role="listitem">
+        <div class="c-img"><img src="../assets/itemshark/screenshots/06.jpg" alt="Werte uebersichtlich verwalten" loading="lazy"></div>
+        <p class="c-label">Wertuebersicht</p>
+      </div>
+
+      <div class="c-item" role="listitem">
+        <div class="c-img"><img src="../assets/itemshark/screenshots/07.jpg" alt="Schnellzugriff vom Homescreen" loading="lazy"></div>
+        <p class="c-label">Widget</p>
+      </div>
+
+      <div class="c-item" role="listitem">
+        <div class="c-img"><img src="../assets/itemshark/screenshots/08.jpg" alt="Sammlungen einfach anlegen" loading="lazy"></div>
+        <p class="c-label">Anlegen</p>
+      </div>
+
+      <div class="c-item" role="listitem">
+        <div class="c-img"><img src="../assets/itemshark/screenshots/09.jpg" alt="So funktioniert der KI-Scan" loading="lazy"></div>
+        <p class="c-label">KI-Scan</p>
+      </div>
+
+      <div class="c-item" role="listitem">
+        <div class="c-img"><img src="../assets/itemshark/screenshots/10.jpg" alt="Notizen, wie du sie brauchst" loading="lazy"></div>
+        <p class="c-label">Notizen</p>
+      </div>
+
+    </div>
+    <div class="carousel-dots" id="cdots" role="tablist" aria-label="Screenshots"></div>
   </div>
 </section>
 
@@ -545,6 +886,13 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   </div>
 </section>
 
+<!-- ══════════════════════════ APP-BANNER -->
+<div class="brand-section reveal" style="padding:0 14px 28px;">
+  <img src="../assets/itemshark/banner.jpg"
+       alt="ItemShark – per KI oder manuell erfassen: Sammlungen, Objekte und Notizen schnell anlegen"
+       class="brand-banner" loading="lazy" width="1100" height="537">
+</div>
+
 <!-- ══════════════════════════ TOKENS -->
 <section class="tokens-section">
   <div style="max-width:540px;margin:0 auto;">
@@ -602,6 +950,182 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
       </div>
     </div>
     <p class="hype-note">Kein Konto nötig. Einfach später im Store suchen: ItemShark</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════ ANWENDUNGSFÄLLE -->
+<section class="content-sec" style="background:#fff;">
+  <div class="content-inner">
+    <p class="section-eyebrow reveal">Wofür ItemShark gedacht ist</p>
+    <h2 class="section-h2 reveal reveal-d1">Immer dieselbe Frage:<br>Wo war das nochmal?</h2>
+
+    <div class="case-list">
+
+      <div class="case-card reveal reveal-d1">
+        <div class="case-ico">📦</div>
+        <div class="case-h">Der Umzug</div>
+        <p class="case-t">
+          Dreißig Kartons, alle beschriftet mit „Küche" – und in der zweiten Woche suchst
+          du immer noch den Wasserkocher. Beschriften reicht nie, weil man nie alles
+          draufschreibt.
+        </p>
+        <p class="case-t">
+          Statt zu schreiben, fotografierst du den offenen Karton. Die Erkennung listet
+          auf, was drin ist. Später tippst du „Wasserkocher" ein und weißt, in welcher
+          Kiste er liegt.
+        </p>
+      </div>
+
+      <div class="case-card reveal reveal-d2">
+        <div class="case-ico">🔦</div>
+        <div class="case-h">Keller, Dachboden, Garage</div>
+        <p class="case-t">
+          Die Kisten stehen seit Jahren dort. Was in welcher ist, weiß niemand mehr –
+          also wird jedes Mal alles aufgemacht.
+        </p>
+        <p class="case-t">
+          Jede Kiste bekommt eine Sammlung mit demselben Namen wie der echte Behälter.
+          Einmal erfasst, findest du danach per Suche statt per Öffnen.
+        </p>
+      </div>
+
+      <div class="case-card reveal reveal-d3">
+        <div class="case-ico">💶</div>
+        <div class="case-h">Sammlung und Wert im Blick</div>
+        <p class="case-t">
+          Werkzeug, Modellbau, Technik – irgendwann weiß man nicht mehr, was man
+          eigentlich alles hat, und schon gar nicht, was es zusammen wert ist.
+        </p>
+        <p class="case-t">
+          Zu jedem Objekt lässt sich ein Wert hinterlegen; ItemShark zeigt die Summe je
+          Sammlung. Nützlich für die eigene Übersicht und für den Fall, dass man
+          gegenüber einer Versicherung etwas belegen muss.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ OFFLINE & KI -->
+<section class="content-sec" style="background:var(--cream);">
+  <div class="content-inner">
+    <p class="section-eyebrow reveal">Ehrlich gesagt</p>
+    <h2 class="section-h2 reveal reveal-d1">Du entscheidest,<br>ob mit oder ohne KI.</h2>
+
+    <div class="note-card reveal reveal-d1">
+      <p class="note-lead">
+        ItemShark lässt sich auf zwei Arten nutzen, und beide sind vollwertig. Du musst
+        dich nicht vorher festlegen und kannst jederzeit wechseln.
+      </p>
+      <p>
+        <strong>Ohne Konto und ohne Internet:</strong> Sammlungen anlegen, Objekte von
+        Hand erfassen, Notizen schreiben, Werte hinterlegen, suchen, sichern und
+        importieren. Alles bleibt auf deinem Gerät, nichts wird übertragen. Für viele
+        reicht genau das.
+      </p>
+
+      <div class="note-flag">
+        <div class="note-flag-h">Wofür eine Verbindung nötig ist</div>
+        <p>
+          Für den KI-Scan – ein Handy kann die Bildauswertung nicht nebenbei leisten, das
+          Bild wird dafür verschlüsselt übertragen. Und für das Anlegen eines Kontos,
+          weil die Tokens einem Zugang zugeordnet sein müssen. Ohne Verbindung entfallen
+          diese beiden Dinge, der Rest funktioniert weiter.
+        </p>
+      </div>
+
+      <p>
+        Übertragen wird dabei nur das Bild, das du selbst zum Scan gibst. Dein Inventar
+        bleibt auf dem Gerät – kein Tracking, keine Werbung, keine Weitergabe an Dritte.
+        Und statt eines Abos kaufst du Tokens in der Menge, die du brauchst. Wer einmal
+        umzieht, zahlt für einen Umzug, nicht für ein Jahr.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ FAQ -->
+<section class="content-sec" style="background:#fff;">
+  <div class="content-inner">
+    <p class="section-eyebrow reveal">Häufige Fragen</p>
+    <h2 class="section-h2 reveal reveal-d1">Das wird oft gefragt.</h2>
+
+    <div class="faq-list">
+
+      <details class="faq-item reveal reveal-d1">
+        <summary>Wann erscheint ItemShark?</summary>
+        <div class="faq-a">
+          <p>Die App ist in Entwicklung und erscheint für Android und iOS. Einen festen
+          Termin nenne ich bewusst nicht, solange ich ihn nicht sicher halten kann. Schau
+          gelegentlich vorbei oder suche später im Store nach „ItemShark".</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d2">
+        <summary>Was kostet ein KI-Scan?</summary>
+        <div class="faq-a">
+          <p>Jeder Scan kostet einen Token. Tokens kaufst du im Voraus in der Menge, die
+          du brauchst – <strong>kein Abo</strong>, keine monatlichen Kosten, kein
+          automatisches Verlängern.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d3">
+        <summary>Funktioniert ItemShark ohne Internet?</summary>
+        <div class="faq-a">
+          <p>Ja – für alles, was du selbst erfasst. Sammlungen anlegen, Objekte von Hand
+          eintragen, Notizen und Werte pflegen, suchen, sichern und importieren
+          funktioniert ohne Verbindung.</p>
+          <p>Was offline nicht geht: der KI-Scan und das Anlegen eines Kontos. Beides
+          braucht eine Verbindung.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d4">
+        <summary>Was passiert mit meinen Fotos?</summary>
+        <div class="faq-a">
+          <p>Beim KI-Scan wird das Bild verschlüsselt zur Auswertung übertragen. Zurück
+          kommt die Liste der erkannten Objekte, die in deinem Inventar landet. Dein
+          Inventar selbst bleibt auf dem Gerät.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d1">
+        <summary>Brauche ich ein Konto?</summary>
+        <div class="faq-a">
+          <p>Nur wenn du den KI-Scan nutzen willst, weil die Tokens einem Zugang
+          zugeordnet sein müssen. Willst du deine Objekte von Hand erfassen, brauchst du
+          weder Konto noch Internet.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d2">
+        <summary>Kann ich Objekte auch ohne Foto erfassen?</summary>
+        <div class="faq-a">
+          <p>Ja. Jedes Objekt lässt sich von Hand anlegen – mit Name, Beschreibung und
+          Wert. Das kostet keinen Token und funktioniert ohne Internet.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d3">
+        <summary>Was ist kostenlos enthalten?</summary>
+        <div class="faq-a">
+          <p>Bis zu 20 Sammlungen, 20 Objekte und 20 Notizen, dazu Suche, Bibliothek,
+          Wert-Erfassung sowie Sicherung und Import. Die Pro-Version hebt diese Grenzen
+          auf und ist ein Einmalkauf, kein Abo.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d4">
+        <summary>Kann ich mein Inventar auf ein neues Handy übertragen?</summary>
+        <div class="faq-a">
+          <p>Ja, über die Sicherungs- und Importfunktion. Du erstellst eine Sicherung und
+          spielst sie auf dem neuen Gerät wieder ein.</p>
+        </div>
+      </details>
+
+    </div>
   </div>
 </section>
 
@@ -674,6 +1198,18 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   </div>
 </footer>
 
+<!-- ══════════════════════════ LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot Vollbild">
+  <button class="lb-close" id="lb-close" aria-label="Schließen">✕</button>
+  <button class="lb-nav lb-prev" id="lb-prev" aria-label="Vorheriger Screenshot">‹</button>
+  <button class="lb-nav lb-next" id="lb-next" aria-label="Nächster Screenshot">›</button>
+  <div class="lb-img-wrap" id="lb-backdrop">
+    <img class="lb-img" id="lb-img" src="" alt="Screenshot">
+  </div>
+  <div class="lb-label" id="lb-label"></div>
+  <div class="lb-dots" id="lb-dots"></div>
+</div>
+
 <!-- ══════════════════════════ SCRIPTS -->
 <script>
 /* ── 3D Carousel ─────────────────────────────── */
@@ -707,6 +1243,166 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   var els = document.querySelectorAll('.reveal');
   if (!('IntersectionObserver' in window)) {
     els.forEach(function (el) { el.classList.add('in-view'); }); return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(function (el) { io.observe(el); });
+})();
+</script>
+
+<script>
+/* ── Carousel ───────────────────────────────────── */
+(function () {
+  var track  = document.getElementById('ctrack');
+  var dotsEl = document.getElementById('cdots');
+  if (!track || !dotsEl) return;
+
+  var items   = track.querySelectorAll('.c-item');
+  var dots    = [];
+  var current = 0;
+  var timer;
+
+  items.forEach(function (_, i) {
+    var d = document.createElement('button');
+    d.className = 'c-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('role', 'tab');
+    d.setAttribute('aria-label', 'Screenshot ' + (i + 1));
+    d.addEventListener('click', function () { go(i); resetTimer(); });
+    dotsEl.appendChild(d);
+    dots.push(d);
+  });
+
+  function setActive(idx) {
+    if (idx === current) return;
+    current = idx;
+    items.forEach(function (item, i) { item.classList.toggle('active', i === idx); });
+    dots.forEach(function (d, i)    { d.classList.toggle('active',  i === idx); });
+  }
+
+  function go(idx) {
+    var trackW = track.offsetWidth;
+    var item   = items[idx];
+    var target = item.offsetLeft + item.offsetWidth / 2 - trackW / 2;
+    track.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
+    setActive(idx);
+  }
+
+  function next() { go((current + 1) % items.length); }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(next, 3400);
+  }
+
+  track.addEventListener('scroll', function () {
+    var center = track.scrollLeft + track.offsetWidth / 2;
+    var closest = 0; var minDist = Infinity;
+    items.forEach(function (item, i) {
+      var dist = Math.abs(item.offsetLeft + item.offsetWidth / 2 - center);
+      if (dist < minDist) { minDist = dist; closest = i; }
+    });
+    setActive(closest);
+  }, { passive: true });
+
+  track.addEventListener('touchstart', function () { clearInterval(timer); }, { passive: true });
+  track.addEventListener('touchend',   function () { resetTimer(); },          { passive: true });
+
+  resetTimer();
+})();
+
+/* ── Lightbox ───────────────────────────────────── */
+(function () {
+  var lb      = document.getElementById('lightbox');
+  var lbImg   = document.getElementById('lb-img');
+  var lbLabel = document.getElementById('lb-label');
+  var lbDots  = document.getElementById('lb-dots');
+  var lbClose = document.getElementById('lb-close');
+  var lbPrev  = document.getElementById('lb-prev');
+  var lbNext  = document.getElementById('lb-next');
+  var lbBack  = document.getElementById('lb-backdrop');
+  if (!lb) return;
+
+  var items   = Array.from(document.querySelectorAll('#ctrack .c-item'));
+  var current = 0;
+  var dots    = [];
+
+  items.forEach(function (_, i) {
+    var d = document.createElement('div');
+    d.className = 'lb-dot' + (i === 0 ? ' active' : '');
+    lbDots.appendChild(d);
+    dots.push(d);
+  });
+
+  function open(idx) {
+    current = idx;
+    var img   = items[idx].querySelector('img');
+    var label = items[idx].querySelector('.c-label');
+    lbImg.src      = img ? img.src : '';
+    lbLabel.textContent = label ? label.textContent : '';
+    dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(function () { lbImg.src = ''; }, 300);
+  }
+
+  function prev() { open((current - 1 + items.length) % items.length); }
+  function next() { open((current + 1) % items.length); }
+
+  items.forEach(function (item, i) {
+    item.addEventListener('click', function () { open(i); });
+  });
+
+  lbClose.addEventListener('click', close);
+  lbPrev.addEventListener('click',  prev);
+  lbNext.addEventListener('click',  next);
+  lbBack.addEventListener('click',  function (e) { if (e.target === lbBack) close(); });
+
+  document.addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape')      close();
+    if (e.key === 'ArrowLeft')   prev();
+    if (e.key === 'ArrowRight')  next();
+  });
+})();
+
+/* ── 3D Carousel: Swipe + Arrows ─────────────────── */
+(function () {
+  var PREV_HREF = '../terminkompass/';
+  var NEXT_HREF = '../itemshark/';
+  var stage = document.getElementById('sw-stage');
+  var elPrev = document.getElementById('sw-item-prev');
+  var elNext = document.getElementById('sw-item-next');
+  var going = false; var touchX = 0;
+  function go(dir) {
+    if (going) return;
+    var href = dir === 'prev' ? PREV_HREF : NEXT_HREF;
+    going = true; stage.classList.add('sw-navigating');
+    document.getElementById('sw-item-active').classList.add(dir === 'prev' ? 'sw-exit-right' : 'sw-exit-left');
+    (dir === 'prev' ? elPrev : elNext).classList.replace(dir === 'prev' ? 'sw-prev' : 'sw-next', 'sw-active');
+    setTimeout(function () { window.location.href = href; }, 420);
+  }
+  document.getElementById('sw-prev-btn').addEventListener('click', function () { go('prev'); });
+  document.getElementById('sw-next-btn').addEventListener('click', function () { go('next'); });
+  elPrev.addEventListener('click', function () { go('prev'); });
+  elNext.addEventListener('click', function () { go('next'); });
+  stage.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+  stage.addEventListener('touchend',   function (e) { var dx = e.changedTouches[0].clientX - touchX; if (Math.abs(dx) > 45) go(dx < 0 ? 'next' : 'prev'); }, { passive: true });
+})();
+
+/* ── Scroll Reveal ──────────────────────────────── */
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.classList.add('in-view'); });
+    return;
   }
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <link rel="stylesheet" href="../shared.css">
+  <link rel="stylesheet" href="../shared.css?v=20260811">
   <link rel="prefetch" href="../jobtrace/">
   <link rel="prefetch" href="../itemshark/">
   <link rel="preconnect" href="https://tools.applemediaservices.com">
@@ -41,6 +41,54 @@
     "downloadUrl": [
       "https://apps.apple.com/de/app/terminkompass/id6771828426",
       "https://play.google.com/store/apps/details?id=com.terminkompass.app"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Brauche ich ein Konto oder eine Anmeldung?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Nein. Du lädst die App und legst sofort los. Es gibt keine Registrierung, keine E-Mail-Adresse, kein Passwort. Auch nicht für die Pro-Version." }
+      },
+      {
+        "@type": "Question",
+        "name": "Funktioniert TerminKompass ohne Internet?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ja, vollständig. Termine anlegen, ansehen, bearbeiten und Erinnerungen bekommen läuft auf dem Gerät. Internet brauchst du nur, wenn du einen Termin per WhatsApp verschicken willst." }
+      },
+      {
+        "@type": "Question",
+        "name": "Kann ich Termine vom Android-Handy aufs iPhone schicken?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ja, in beide Richtungen. Du wählst einen Termin, eine ganze Kategorie oder alle Termine aus und verschickst sie über WhatsApp oder jede andere App. Der Empfänger tippt einmal, und die Termine landen in seinem TerminKompass. Ein gemeinsames Konto braucht ihr dafür nicht." }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie bekomme ich meine bestehenden Termine in die App?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Über den Kalender-Import. Die App liest den Kalender ein, der auf deinem Gerät schon vorhanden ist, etwa iCloud oder Google Calendar. Du musst nichts abtippen und nichts exportieren." }
+      },
+      {
+        "@type": "Question",
+        "name": "Was kostet TerminKompass?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Die App ist kostenlos und erlaubt bis zu 10 Termine, inklusive Kalender-Import, Teilen, Widget, Erinnerungen, 12 Sprachen und vier Designs. Die Pro-Version hebt das Limit auf und bringt Mondphasen, Sternzeichen, eigene Terminfarben, eigenes Hintergrundbild sowie Sicherung und CSV-Export. Kein Abo, sondern Einmalkauf." }
+      },
+      {
+        "@type": "Question",
+        "name": "Wo werden meine Termine gespeichert?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ausschließlich auf deinem Gerät. Es gibt keinen Server, auf den etwas übertragen wird. Auch die Erinnerungen werden lokal ausgelöst." }
+      },
+      {
+        "@type": "Question",
+        "name": "Was passiert bei einem Gerätewechsel?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Weil nichts in einer Cloud liegt, wandern die Termine nicht von selbst mit. Mit der Sicherungsfunktion der Pro-Version überträgst du deinen Bestand aufs neue Gerät. Ohne Pro kannst du dir deine Termine über die Teilen-Funktion selbst schicken." }
+      },
+      {
+        "@type": "Question",
+        "name": "Gibt es die App für iPhone und Android?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ja, für beide. Im App Store und bei Google Play, mit demselben Funktionsumfang. Die Oberfläche gibt es in 12 Sprachen." }
+      }
     ]
   }
   </script>
@@ -851,7 +899,103 @@ footer {
     transition: transform .25s ease, box-shadow .25s ease;
   }
 }
-  </style>
+  
+/* ═══════════════════════════════════════════════════════════════
+   INHALTSABSCHNITTE  ·  nutzen die Kartensprache der Seite
+   ═══════════════════════════════════════════════════════════════ */
+
+.content-sec { padding: 52px 20px; }
+.content-inner { max-width: 540px; margin: 0 auto; }
+
+/* Kartenliste (Anwendungsfaelle) ─────────────────────────────── */
+.case-list { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
+.case-card {
+  background: #fffaf8;
+  border: 1px solid var(--border, #ede3d0);
+  border-radius: 22px;
+  padding: 22px 20px;
+  transition: transform .2s, box-shadow .2s;
+}
+.case-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,.08); }
+.case-ico { font-size: 28px; line-height: 1; margin-bottom: 11px; }
+.case-h {
+  font-size: 16px; font-weight: 800;
+  letter-spacing: -.02em; line-height: 1.3;
+  color: var(--text, #1a0f0a);
+  margin-bottom: 7px;
+}
+.case-t {
+  font-size: 13.5px; line-height: 1.62;
+  color: var(--muted, #7e6456);
+}
+.case-t + .case-t { margin-top: 9px; }
+
+/* Hervorgehobene Karte (ehrlicher Hinweis) ───────────────────── */
+.note-card {
+  background: #fff;
+  border: 1px solid var(--border, #ede3d0);
+  border-radius: 24px;
+  padding: 26px 22px;
+  margin-top: 22px;
+}
+.note-card p { font-size: 14px; line-height: 1.65; color: var(--muted, #7e6456); }
+.note-card p + p { margin-top: 13px; }
+.note-card .note-lead { font-size: 15px; color: var(--text, #1a0f0a); }
+.note-flag {
+  margin-top: 16px;
+  border-left: 3px solid var(--orange, #e0674a);
+  background: rgba(224,103,74,.06);
+  border-radius: 0 14px 14px 0;
+  padding: 14px 16px;
+}
+.note-flag .note-flag-h {
+  font-size: 12px; font-weight: 800;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--orange, #e0674a);
+  margin-bottom: 6px;
+}
+.note-flag p { font-size: 13.5px; line-height: 1.6; }
+
+/* FAQ ────────────────────────────────────────────────────────── */
+.faq-list { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
+.faq-item {
+  background: #fffaf8;
+  border: 1px solid var(--border, #ede3d0);
+  border-radius: 22px;
+  overflow: hidden;
+  transition: box-shadow .2s;
+}
+.faq-item[open] { box-shadow: 0 8px 28px rgba(0,0,0,.07); }
+.faq-item summary {
+  list-style: none; cursor: pointer;
+  padding: 17px 48px 17px 20px;
+  font-size: 14px; font-weight: 800;
+  letter-spacing: -.01em; line-height: 1.4;
+  color: var(--text, #1a0f0a);
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '';
+  position: absolute; right: 20px; top: 50%;
+  width: 10px; height: 10px;
+  border-right: 2px solid var(--orange, #e0674a);
+  border-bottom: 2px solid var(--orange, #e0674a);
+  transform: translateY(-70%) rotate(45deg);
+  transition: transform .25s;
+}
+.faq-item[open] summary::after { transform: translateY(-20%) rotate(-135deg); }
+.faq-item .faq-a { padding: 0 20px 18px; }
+.faq-item .faq-a p {
+  font-size: 13.5px; line-height: 1.62;
+  color: var(--muted, #7e6456);
+}
+.faq-item .faq-a p + p { margin-top: 10px; }
+
+/* Keine Sonderbreite: 540px wie jeder andere Abschnitt der Seite. */
+
+</style>
 </head>
 <body>
 
@@ -1073,6 +1217,96 @@ footer {
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════ ANWENDUNGSFÄLLE -->
+<section class="content-sec" style="background:#fff;">
+  <div class="content-inner">
+    <p class="section-eyebrow reveal">Wofür Leute die App nutzen</p>
+    <h2 class="section-h2 reveal reveal-d1">Drei Situationen.<br>Ein Problem.</h2>
+
+    <div class="case-list">
+
+      <div class="case-card reveal reveal-d1">
+        <div class="case-ico">📲</div>
+        <div class="case-h">Die Familie mit gemischten Geräten</div>
+        <p class="case-t">
+          Mutter hat ein iPhone, der Sohn ein Android-Handy, die Großeltern irgendetwas
+          dazwischen. Ein gemeinsamer Kalender scheitert genau daran: Alle müssten beim
+          selben Anbieter ein Konto haben.
+        </p>
+        <p class="case-t">
+          Mit TerminKompass schickst du den Termin per WhatsApp. Der Empfänger tippt
+          einmal – und er steht in seinem Kalender. Egal welches Gerät.
+        </p>
+      </div>
+
+      <div class="case-card reveal reveal-d2">
+        <div class="case-ico">🎂</div>
+        <div class="case-h">Geburtstage, die man jedes Jahr vergisst</div>
+        <p class="case-t">
+          Geburtsdatum eintragen genügt – das Alter rechnet die App jedes Jahr neu aus.
+          Auf Wunsch zeigt sie zusätzlich das Sternzeichen an.
+        </p>
+        <p class="case-t">
+          Die Erinnerung kommt vom Gerät selbst, nicht von einem Server. Sie funktioniert
+          also auch, wenn du gerade kein Netz hast.
+        </p>
+      </div>
+
+      <div class="case-card reveal reveal-d3">
+        <div class="case-ico">📥</div>
+        <div class="case-h">Der Umstieg, der sonst am Abtippen scheitert</div>
+        <p class="case-t">
+          Der häufigste Grund, bei einer App zu bleiben, die man nicht mag: Man müsste
+          alles neu eingeben.
+        </p>
+        <p class="case-t">
+          TerminKompass liest deinen bestehenden Kalender ein – iCloud, Google Calendar
+          oder was du sonst nutzt. Einmal antippen, alles drin. Danach entscheidest du
+          in Ruhe, ob du bleibst.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ OHNE KONTO & CLOUD -->
+<section class="content-sec" style="background:var(--cream);">
+  <div class="content-inner">
+    <p class="section-eyebrow reveal">Ehrlich gesagt</p>
+    <h2 class="section-h2 reveal reveal-d1">Was „ohne Cloud"<br>wirklich bedeutet.</h2>
+
+    <div class="note-card reveal reveal-d1">
+      <p class="note-lead">
+        Die meisten Kalender-Apps funktionieren so: Du legst ein Konto an, deine Termine
+        liegen auf einem Server, und dafür synchronisiert sich alles automatisch zwischen
+        deinen Geräten. Bequem – und der Grund, warum du dort ein Konto brauchst.
+      </p>
+      <p>
+        TerminKompass macht es andersherum. Deine Termine liegen auf deinem Gerät, sonst
+        nirgends. Kein Konto, keine Anmeldung, keine Übertragung an mich oder an Dritte.
+        Auch die Erinnerungen kommen vom Gerät – die App läuft im Funkloch wie zu Hause.
+      </p>
+
+      <div class="note-flag">
+        <div class="note-flag-h">Der Preis dafür</div>
+        <p>
+          Es gibt keine automatische Synchronisierung zwischen deinen eigenen Geräten.
+          Willst du dieselben Termine auf Handy und Tablet, überträgst du sie einmal über
+          die Teilen-Funktion oder die Sicherung. Wer echte Zwei-Geräte-Synchronisierung
+          braucht, ist mit einem Cloud-Kalender besser bedient – das sage ich lieber
+          vorher als hinterher.
+        </p>
+      </div>
+
+      <p>
+        Für alle anderen ist der Tausch ein guter: keine Konten, keine Abos, keine Frage,
+        wo die Daten liegen.
+      </p>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════════════════════════════════ THEMES -->
 <section class="themes-section">
   <div class="section-inner">
@@ -1209,6 +1443,96 @@ footer {
           <li>Backup &amp; CSV-Export</li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ FAQ -->
+<section class="content-sec" style="background:#fff;">
+  <div class="content-inner">
+    <p class="section-eyebrow reveal">Häufige Fragen</p>
+    <h2 class="section-h2 reveal reveal-d1">Das wird oft gefragt.</h2>
+
+    <div class="faq-list">
+
+      <details class="faq-item reveal reveal-d1">
+        <summary>Brauche ich ein Konto oder eine Anmeldung?</summary>
+        <div class="faq-a">
+          <p>Nein. Du lädst die App und legst sofort los. Es gibt keine Registrierung,
+          keine E-Mail-Adresse, kein Passwort. Auch nicht für die Pro-Version.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d2">
+        <summary>Funktioniert TerminKompass ohne Internet?</summary>
+        <div class="faq-a">
+          <p>Ja, vollständig. Termine anlegen, ansehen, bearbeiten und Erinnerungen
+          bekommen – alles läuft auf dem Gerät. Internet brauchst du nur, wenn du einen
+          Termin per WhatsApp verschicken willst, und auch das nur zum Versenden.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d3">
+        <summary>Kann ich Termine vom Android-Handy aufs iPhone schicken?</summary>
+        <div class="faq-a">
+          <p>Ja, in beide Richtungen. Du wählst einen Termin, eine ganze Kategorie oder
+          alle Termine aus und verschickst sie über WhatsApp oder jede andere App. Der
+          Empfänger tippt einmal, und die Termine landen in seinem TerminKompass.</p>
+          <p>Ein gemeinsames Konto braucht ihr dafür nicht – auch kein Google-Konto.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d4">
+        <summary>Wie bekomme ich meine bestehenden Termine in die App?</summary>
+        <div class="faq-a">
+          <p>Über den Kalender-Import. Die App liest den Kalender ein, der auf deinem
+          Gerät schon vorhanden ist – etwa iCloud oder Google Calendar. Du musst nichts
+          abtippen und nichts exportieren.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d1">
+        <summary>Was kostet TerminKompass?</summary>
+        <div class="faq-a">
+          <p>Die App ist kostenlos und erlaubt bis zu 10 Termine. Fast alle Funktionen
+          sind dabei: Kalender-Import, Teilen, Widget, Erinnerungen, 12 Sprachen und die
+          vier Designs.</p>
+          <p>Die Pro-Version hebt das Limit auf und bringt Mondphasen, Sternzeichen,
+          eigene Terminfarben, ein eigenes Hintergrundbild sowie Sicherung und
+          CSV-Export. <strong>Kein Abo</strong> – einmal kaufen, fertig.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d2">
+        <summary>Wo werden meine Termine gespeichert?</summary>
+        <div class="faq-a">
+          <p>Ausschließlich auf deinem Gerät. Es gibt keinen Server, auf den etwas
+          übertragen wird, und ich als Entwickler sehe deine Termine nicht. Auch die
+          Erinnerungen werden lokal ausgelöst.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d3">
+        <summary>Was passiert bei einem Gerätewechsel?</summary>
+        <div class="faq-a">
+          <p>Weil nichts in einer Cloud liegt, wandern die Termine nicht von selbst mit.
+          Mit der Sicherungsfunktion der Pro-Version überträgst du deinen Bestand aufs
+          neue Gerät. Ohne Pro kannst du dir deine Termine über die Teilen-Funktion
+          selbst schicken.</p>
+          <p>Das ist die Kehrseite des Verzichts auf ein Konto – erwähnt sei es
+          trotzdem, damit es dich nicht überrascht.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d4">
+        <summary>Gibt es die App für iPhone und Android?</summary>
+        <div class="faq-a">
+          <p>Ja, für beide. Im App Store und bei Google Play, mit demselben
+          Funktionsumfang. Die Oberfläche gibt es in 12 Sprachen, darunter Deutsch,
+          Englisch, Französisch, Spanisch, Polnisch, Türkisch und Arabisch.</p>
+        </div>
+      </details>
+
     </div>
   </div>
 </section>

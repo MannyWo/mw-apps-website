@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <link rel="stylesheet" href="../shared.css">
+  <link rel="stylesheet" href="../shared.css?v=20260811">
   <link rel="prefetch" href="../">
   <link rel="prefetch" href="../itemshark/">
   <title>JobTrace – Stundenzettel-App ohne Abo | Handwerk & Montage</title>
@@ -38,6 +38,30 @@
     "downloadUrl": [
       "https://apps.apple.com/de/app/jobtrace/id6776141042",
       "https://play.google.com/store/apps/details?id=de.mwapps.jobtrace"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Funktioniert JobTrace ohne Internet?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ja. Berichte anlegen, Zuschläge berechnen, PDFs erzeugen und unterschreiben läuft auf dem Gerät. Auch auf der Baustelle ohne Empfang funktioniert die App. Netz brauchst du nur zum Versenden." } },
+      { "@type": "Question", "name": "Brauche ich ein Konto oder eine Anmeldung?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Nein. Keine Registrierung, keine E-Mail-Adresse, kein Passwort. Du installierst die App und legst los." } },
+      { "@type": "Question", "name": "Werden Zuschläge automatisch berechnet?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ja. Überstunden sowie Samstags-, Sonntags-, Feiertags- und Nachtanteile errechnet die App aus den erfassten Zeiten. Die Sätze werden einmal im Admin-Bereich festgelegt." } },
+      { "@type": "Question", "name": "Kann ich den Bericht unterschreiben?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ja, mit dem Finger direkt auf dem Bildschirm. Die Unterschrift wird lokal gespeichert und erscheint im fertigen PDF." } },
+      { "@type": "Question", "name": "Wie bekomme ich den Bericht ins Büro?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Direkt aus der App per E-Mail, per WhatsApp oder an einen Server im eigenen WLAN. Ausdrucken ist ebenfalls möglich." } },
+      { "@type": "Question", "name": "Was kostet JobTrace?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Kostenlos bis zu 14 Berichte mit vollem Funktionsumfang. Die Pro-Version hebt das Limit auf und ist ein Einmalkauf über Google Play oder den App Store – kein Abo." } },
+      { "@type": "Question", "name": "Wie sicher sind meine Daten?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Die Berichte liegen ausschließlich auf dem Gerät und lassen sich mit einer PIN schützen. Es gibt keinen Server, auf den etwas übertragen wird." } },
+      { "@type": "Question", "name": "Eignet sich JobTrace für einen Betrieb mit mehreren Mitarbeitern?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Nur eingeschränkt. Es gibt getrennte Rollen für Benutzer und Admin, aber keine zentrale Verwaltung über mehrere Geräte hinweg. JobTrace ist für den Einzelnen gedacht." } }
     ]
   }
   </script>
@@ -711,7 +735,103 @@ footer {
   .m-card:hover { transform: none; box-shadow: none; }
 }
 
-  </style>
+  
+/* ═══════════════════════════════════════════════════════════════
+   INHALTSABSCHNITTE  ·  nutzen die Kartensprache der Seite
+   ═══════════════════════════════════════════════════════════════ */
+
+.content-sec { padding: 52px 20px; }
+.content-inner { max-width: 540px; margin: 0 auto; }
+
+/* Kartenliste (Anwendungsfaelle) ─────────────────────────────── */
+.case-list { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
+.case-card {
+  background: #fffaf8;
+  border: 1px solid var(--border, #ede3d0);
+  border-radius: 22px;
+  padding: 22px 20px;
+  transition: transform .2s, box-shadow .2s;
+}
+.case-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,.08); }
+.case-ico { font-size: 28px; line-height: 1; margin-bottom: 11px; }
+.case-h {
+  font-size: 16px; font-weight: 800;
+  letter-spacing: -.02em; line-height: 1.3;
+  color: var(--text, #1a0f0a);
+  margin-bottom: 7px;
+}
+.case-t {
+  font-size: 13.5px; line-height: 1.62;
+  color: var(--muted, #7e6456);
+}
+.case-t + .case-t { margin-top: 9px; }
+
+/* Hervorgehobene Karte (ehrlicher Hinweis) ───────────────────── */
+.note-card {
+  background: #fff;
+  border: 1px solid var(--border, #ede3d0);
+  border-radius: 24px;
+  padding: 26px 22px;
+  margin-top: 22px;
+}
+.note-card p { font-size: 14px; line-height: 1.65; color: var(--muted, #7e6456); }
+.note-card p + p { margin-top: 13px; }
+.note-card .note-lead { font-size: 15px; color: var(--text, #1a0f0a); }
+.note-flag {
+  margin-top: 16px;
+  border-left: 3px solid var(--orange, #e0674a);
+  background: rgba(224,103,74,.06);
+  border-radius: 0 14px 14px 0;
+  padding: 14px 16px;
+}
+.note-flag .note-flag-h {
+  font-size: 12px; font-weight: 800;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--orange, #e0674a);
+  margin-bottom: 6px;
+}
+.note-flag p { font-size: 13.5px; line-height: 1.6; }
+
+/* FAQ ────────────────────────────────────────────────────────── */
+.faq-list { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
+.faq-item {
+  background: #fffaf8;
+  border: 1px solid var(--border, #ede3d0);
+  border-radius: 22px;
+  overflow: hidden;
+  transition: box-shadow .2s;
+}
+.faq-item[open] { box-shadow: 0 8px 28px rgba(0,0,0,.07); }
+.faq-item summary {
+  list-style: none; cursor: pointer;
+  padding: 17px 48px 17px 20px;
+  font-size: 14px; font-weight: 800;
+  letter-spacing: -.01em; line-height: 1.4;
+  color: var(--text, #1a0f0a);
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '';
+  position: absolute; right: 20px; top: 50%;
+  width: 10px; height: 10px;
+  border-right: 2px solid var(--orange, #e0674a);
+  border-bottom: 2px solid var(--orange, #e0674a);
+  transform: translateY(-70%) rotate(45deg);
+  transition: transform .25s;
+}
+.faq-item[open] summary::after { transform: translateY(-20%) rotate(-135deg); }
+.faq-item .faq-a { padding: 0 20px 18px; }
+.faq-item .faq-a p {
+  font-size: 13.5px; line-height: 1.62;
+  color: var(--muted, #7e6456);
+}
+.faq-item .faq-a p + p { margin-top: 10px; }
+
+/* Keine Sonderbreite: 540px wie jeder andere Abschnitt der Seite. */
+
+</style>
 </head>
 <body>
 
@@ -955,6 +1075,185 @@ footer {
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════ ANWENDUNGSFÄLLE -->
+<section class="content-sec" style="background:#fff;">
+  <div class="content-inner">
+    <p class="section-eyebrow reveal">Wofür JobTrace gebaut ist</p>
+    <h2 class="section-h2 reveal reveal-d1">Drei Situationen<br>vom Arbeitstag.</h2>
+
+    <div class="case-list">
+
+      <div class="case-card reveal reveal-d1">
+        <div class="case-ico">🚐</div>
+        <div class="case-h">Feierabend auf der Baustelle</div>
+        <p class="case-t">
+          Der Tag ist um, du willst nach Hause. Genau dann wird der Stundenzettel
+          geschrieben – oder eben nicht, und drei Tage später weiß niemand mehr, wie
+          lange die zweite Baustelle gedauert hat.
+        </p>
+        <p class="case-t">
+          In JobTrace legst du den Tagesbericht direkt im Fahrzeug an: Baustelle,
+          Tätigkeit, Stunden, verwendete Geräte. Zwei Minuten, und es ist erledigt –
+          auch ohne Empfang.
+        </p>
+      </div>
+
+      <div class="case-card reveal reveal-d2">
+        <div class="case-ico">🌙</div>
+        <div class="case-h">Zuschläge, die sonst untergehen</div>
+        <p class="case-t">
+          Samstagseinsatz, Nachtschicht, ein Feiertag dazwischen – wer das von Hand
+          zusammenrechnet, vergisst irgendwann etwas. Meistens zu den eigenen Lasten.
+        </p>
+        <p class="case-t">
+          JobTrace rechnet Überstunden sowie Samstags-, Sonntags-, Feiertags- und
+          Nachtanteile automatisch aus deinen erfassten Zeiten aus. Die Sätze werden
+          einmal hinterlegt, danach läuft es von allein.
+        </p>
+      </div>
+
+      <div class="case-card reveal reveal-d3">
+        <div class="case-ico">📄</div>
+        <div class="case-h">Der Nachweis fürs Büro</div>
+        <p class="case-t">
+          Am Monatsende braucht die Abrechnung etwas Schriftliches. Aus JobTrace kommt
+          ein fertiges PDF – Tagesbericht oder Monatsbericht, mit deiner handschriftlich
+          gezeichneten Unterschrift direkt im Dokument.
+        </p>
+        <p class="case-t">
+          Verschicken kannst du es per E-Mail, WhatsApp oder direkt an deinen
+          WLAN-Server. Kein Ausdrucken, kein Abfotografieren.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ OHNE ABO -->
+<section class="content-sec" style="background:var(--cream);">
+  <div class="content-inner">
+    <p class="section-eyebrow reveal">Ehrlich gesagt</p>
+    <h2 class="section-h2 reveal reveal-d1">Warum es hier<br>kein Abo gibt.</h2>
+
+    <div class="note-card reveal reveal-d1">
+      <p class="note-lead">
+        Die meisten Zeiterfassungs-Programme werden an Betriebe verkauft: monatlicher
+        Beitrag pro Mitarbeiter, Verwaltung im Browser, Daten auf dem Server des
+        Anbieters. Für eine Firma mit fünfzehn Leuten ergibt das Sinn.
+      </p>
+      <p>
+        JobTrace ist für die andere Seite gebaut – für den Einzelnen, der seine eigenen
+        Stunden festhält. Einmal kaufen, dauerhaft nutzen. Kein monatlicher Beitrag,
+        keine Anmeldung, keine Daten auf fremden Servern. Deine Berichte liegen auf
+        deinem Gerät, geschützt durch eine PIN.
+      </p>
+
+      <div class="note-flag">
+        <div class="note-flag-h">Der Preis dafür</div>
+        <p>
+          Es gibt keine zentrale Verwaltung über mehrere Mitarbeiter hinweg. Jeder führt
+          seine eigenen Berichte auf seinem eigenen Gerät. Wenn du einen Betrieb mit
+          Angestellten koordinieren musst, brauchst du eine Betriebslösung – JobTrace
+          ist das nicht und will es nicht sein.
+        </p>
+      </div>
+
+      <p>
+        Für Monteure, Selbstständige und alle, die schlicht ihre Stunden sauber
+        dokumentieren wollen, ist es genau richtig.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ FAQ -->
+<section class="content-sec" style="background:#fff;">
+  <div class="content-inner">
+    <p class="section-eyebrow reveal">Häufige Fragen</p>
+    <h2 class="section-h2 reveal reveal-d1">Das wird oft gefragt.</h2>
+
+    <div class="faq-list">
+
+      <details class="faq-item reveal reveal-d1">
+        <summary>Funktioniert JobTrace ohne Internet?</summary>
+        <div class="faq-a">
+          <p>Ja. Berichte anlegen, Zuschläge berechnen, PDFs erzeugen und unterschreiben
+          – alles läuft auf dem Gerät. Im Keller, in der Tiefgarage oder auf der Baustelle
+          ohne Empfang funktioniert die App genauso. Netz brauchst du nur zum Versenden.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d2">
+        <summary>Brauche ich ein Konto oder eine Anmeldung?</summary>
+        <div class="faq-a">
+          <p>Nein. Keine Registrierung, keine E-Mail-Adresse, kein Passwort. Du
+          installierst die App und legst los.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d3">
+        <summary>Werden Zuschläge automatisch berechnet?</summary>
+        <div class="faq-a">
+          <p>Ja. Überstunden sowie Samstags-, Sonntags-, Feiertags- und Nachtanteile
+          errechnet die App aus deinen erfassten Zeiten. Die Sätze legst du einmal im
+          Admin-Bereich fest, danach passiert es automatisch.</p>
+          <p>Welche Zuschläge dir zustehen, richtet sich nach deinem Vertrag oder Tarif –
+          das kann und darf dir die App nicht vorgeben.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d4">
+        <summary>Kann ich den Bericht unterschreiben?</summary>
+        <div class="faq-a">
+          <p>Ja, mit dem Finger direkt auf dem Bildschirm. Die Unterschrift wird lokal
+          gespeichert und erscheint im fertigen PDF.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d1">
+        <summary>Wie bekomme ich den Bericht zum Chef oder ins Büro?</summary>
+        <div class="faq-a">
+          <p>Direkt aus der App: per E-Mail, per WhatsApp oder an einen Server in deinem
+          WLAN. Ausdrucken geht ebenfalls. Das PDF sieht auf allen Wegen gleich aus.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d2">
+        <summary>Was kostet JobTrace?</summary>
+        <div class="faq-a">
+          <p>Kostenlos bis zu 14 Berichte – mit vollem Funktionsumfang: Tages- und
+          Monats-PDF, Zuschlagsberechnung, Unterschrift, Versand, 5 Sprachen, Hell- und
+          Dunkelmodus und PIN-Schutz.</p>
+          <p>Die Pro-Version hebt das Limit auf. <strong>Einmalkauf über Google Play oder
+          den App Store – kein Abo</strong>, keine monatlichen Kosten.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d3">
+        <summary>Wie sicher sind meine Daten?</summary>
+        <div class="faq-a">
+          <p>Die Berichte liegen ausschließlich auf deinem Gerät und lassen sich mit einer
+          PIN schützen. Es gibt keinen Server, auf den etwas übertragen wird, und ich als
+          Entwickler sehe deine Stunden nicht.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d4">
+        <summary>Eignet sich JobTrace für einen Betrieb mit mehreren Mitarbeitern?</summary>
+        <div class="faq-a">
+          <p>Nur eingeschränkt. Es gibt zwar getrennte Rollen für Benutzer und Admin, aber
+          keine zentrale Verwaltung über mehrere Geräte hinweg – jeder führt seine eigenen
+          Berichte selbst.</p>
+          <p>Für einen Betrieb mit Angestellten ist eine Betriebslösung die bessere Wahl.
+          JobTrace ist für den Einzelnen gedacht.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════════════════════════════════ PRICING -->
 <section class="pricing">
   <div style="max-width:540px;margin:0 auto;">
@@ -1022,7 +1321,7 @@ footer {
       </a>
       <a href="../itemshark/" class="m-card reveal reveal-d4">
         <div class="m-icon" style="padding:0;overflow:hidden;"><img src="../assets/itemshark-icon.png" alt="ItemShark" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
-        <div><div class="m-name">ItemShark</div><div class="m-desc">Dein persönlicher Deal-Tracker</div></div>
+        <div><div class="m-name">ItemShark</div><div class="m-desc">Fotografieren statt beschriften</div></div>
         <span class="m-badge">Demnächst</span>
       </a>
     </div>
