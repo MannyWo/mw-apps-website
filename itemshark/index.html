@@ -1373,29 +1373,7 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   });
 })();
 
-/* ── 3D Carousel: Swipe + Arrows ─────────────────── */
-(function () {
-  var PREV_HREF = '../terminkompass/';
-  var NEXT_HREF = '../itemshark/';
-  var stage = document.getElementById('sw-stage');
-  var elPrev = document.getElementById('sw-item-prev');
-  var elNext = document.getElementById('sw-item-next');
-  var going = false; var touchX = 0;
-  function go(dir) {
-    if (going) return;
-    var href = dir === 'prev' ? PREV_HREF : NEXT_HREF;
-    going = true; stage.classList.add('sw-navigating');
-    document.getElementById('sw-item-active').classList.add(dir === 'prev' ? 'sw-exit-right' : 'sw-exit-left');
-    (dir === 'prev' ? elPrev : elNext).classList.replace(dir === 'prev' ? 'sw-prev' : 'sw-next', 'sw-active');
-    setTimeout(function () { window.location.href = href; }, 420);
-  }
-  document.getElementById('sw-prev-btn').addEventListener('click', function () { go('prev'); });
-  document.getElementById('sw-next-btn').addEventListener('click', function () { go('next'); });
-  elPrev.addEventListener('click', function () { go('prev'); });
-  elNext.addEventListener('click', function () { go('next'); });
-  stage.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
-  stage.addEventListener('touchend',   function (e) { var dx = e.changedTouches[0].clientX - touchX; if (Math.abs(dx) > 45) go(dx < 0 ? 'next' : 'prev'); }, { passive: true });
-})();
+
 
 /* ── Scroll Reveal ──────────────────────────────── */
 (function () {
