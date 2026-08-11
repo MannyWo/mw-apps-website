@@ -1,0 +1,6 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Sicherheitskopien vor SEO-Umbau (nur lokal, gehoeren nicht ins Repo)
+.backup-vor-seo-*/
