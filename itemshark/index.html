@@ -15,7 +15,7 @@
   <meta property="og:url" content="https://mw-app.de/itemshark/">
   <meta property="og:site_name" content="MW_Apps">
   <meta property="og:locale" content="de_DE">
-  <meta property="og:image" content="https://mw-app.de/assets/itemshark-icon-opt.png">
+  <meta property="og:image" content="https://mw-app.de/assets/itemshark-icon.png">
   <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">
   {
@@ -25,7 +25,7 @@
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "iOS, Android",
     "url": "https://mw-app.de/itemshark/",
-    "image": "https://mw-app.de/assets/itemshark-icon-opt.png",
+    "image": "https://mw-app.de/assets/itemshark-icon.png",
     "description": "Inventar-App für Umzugskartons, Kisten und Lagerräume. Kiste fotografieren, die KI erkennt den Inhalt, später per Suche wiederfinden statt jede Kiste zu öffnen. Manuelle Erfassung, Suche, Notizen und Sicherung laufen offline und ohne Konto. Der KI-Scan benötigt eine Verbindung und Prepaid-Tokens, kein Abo.",
     "inLanguage": "de",
     "releaseNotes": "Noch nicht veröffentlicht – erscheint demnächst für iOS und Android.",
@@ -65,7 +65,6 @@
   </script>
   <style>
 
-/* ─── RESET & BASE ─────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -77,7 +76,6 @@ body {
 }
 img { max-width: 100%; display: block; }
 
-/* ─── TOKENS ──────────────────────────────────── */
 :root {
   --blue:   #2563eb;
   --blue2:  #1d4ed8;
@@ -88,7 +86,6 @@ img { max-width: 100%; display: block; }
   --muted:  #475a8a;
 }
 
-/* ─── HERO ────────────────────────────────────── */
 .hero {
   position: relative;
   background: var(--dark);
@@ -105,7 +102,6 @@ img { max-width: 100%; display: block; }
 .b3 { width: 160px; height: 160px; background: rgba(96,165,250,.24); top: 38%; right: 14%; animation-duration: 7s; animation-delay: -2s; }
 @keyframes drift { from { transform: translateY(0) scale(1); } to { transform: translateY(-40px) scale(1.12); } }
 
-/* Nav */
 .nav {
   position: relative; z-index: 2;
   display: flex; align-items: center; justify-content: space-between;
@@ -117,13 +113,11 @@ img { max-width: 100%; display: block; }
 .nav-contact { font-size: 13px; color: rgba(255,255,255,.42); text-decoration: none; padding: 6px 0 6px 8px; transition: color .2s; }
 .nav-contact:hover { color: rgba(255,255,255,.75); }
 
-/* Hero Body */
 .hero-body {
   position: relative; z-index: 2; max-width: 540px; margin: 0 auto;
   padding: 40px 20px 0; display: flex; flex-direction: column; align-items: center; text-align: center;
 }
 
-/* ─── 3D CAROUSEL ─────────────────────────────── */
 .sw-arrow {
   display: none; flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%;
   background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16);
@@ -157,7 +151,6 @@ img { max-width: 100%; display: block; }
 .sw-dot { height: 5px; border-radius: 3px; background: rgba(255,255,255,.2); transition: width .3s, background .3s; width: 5px; }
 .sw-dot.active { width: 18px; background: rgba(255,255,255,.65); }
 
-/* Hero Text */
 .hero-h1 {
   margin-top: 24px; font-size: clamp(30px,9vw,44px); font-weight: 900;
   letter-spacing: -.04em; line-height: 1.07; color: #fff;
@@ -172,7 +165,6 @@ img { max-width: 100%; display: block; }
 .hero-pills { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin-top: 18px; animation: fadeUp .5s .37s ease both; }
 .pill { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.52); background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); padding: 5px 11px; border-radius: 100px; }
 
-/* Hero Coming Soon badges */
 .hero-soon {
   margin-top: 26px; animation: fadeUp .5s .44s ease both;
   display: flex; flex-direction: column; align-items: center; gap: 12px;
@@ -194,12 +186,10 @@ img { max-width: 100%; display: block; }
 }
 .soon-badge-pill .platform-icon { font-size: 16px; }
 
-/* ─── SECTION BASE ────────────────────────────── */
 .section-inner { max-width: 540px; margin: 0 auto; padding: 0 20px; }
 .section-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 5px; }
 .section-h2 { font-size: 26px; font-weight: 900; letter-spacing: -.03em; line-height: 1.15; color: var(--text); }
 
-/* ─── HOW IT WORKS ────────────────────────────── */
 .how-section { background: #fff; padding: 52px 20px; }
 .steps-grid { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
 .step-card {
@@ -219,7 +209,6 @@ img { max-width: 100%; display: block; }
 .step-desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
 .step-emoji { font-size: 22px; margin-top: 1px; }
 
-/* ─── FEATURES ────────────────────────────────── */
 .features { background: var(--cream); padding: 52px 20px; }
 .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
 .f-tile {
@@ -237,7 +226,6 @@ img { max-width: 100%; display: block; }
 .f-tile.blue-tile .f-desc { color: rgba(255,255,255,.65); }
 .pro-tag { position: absolute; top: 12px; right: 12px; font-size: 9px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--blue); background: rgba(37,99,235,.1); border: 1px solid rgba(37,99,235,.25); padding: 2px 7px; border-radius: 100px; }
 
-/* ─── AI SPOTLIGHT ────────────────────────────── */
 .spotlight-section { padding: 0 14px 14px; }
 .spotlight-card {
   background: linear-gradient(155deg, #060f26 0%, #0c1d50 55%, #060f26 100%);
@@ -266,7 +254,6 @@ img { max-width: 100%; display: block; }
   padding: 8px 16px; border-radius: 100px; backdrop-filter: blur(6px);
 }
 
-/* ─── TOKENS SECTION ──────────────────────────── */
 .tokens-section { background: #fff; padding: 52px 20px; }
 .tokens-track {
   display: grid; grid-template-columns: repeat(4, 1fr);
@@ -295,7 +282,6 @@ img { max-width: 100%; display: block; }
 }
 .tok-card.tok-popular .tok-chip { background: rgba(255,255,255,.2); color: #fff; border-color: transparent; }
 
-/* ─── COMING SOON HYPE ────────────────────────── */
 .hype-section {
   background: var(--cream);
   padding: 52px 20px;
@@ -338,7 +324,6 @@ img { max-width: 100%; display: block; }
 @keyframes pulse { 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:.6; transform:scale(.8); } }
 .hype-note { font-size: 12px; color: rgba(255,255,255,.32); position: relative; z-index: 1; }
 
-/* ─── PRICING ─────────────────────────────────── */
 .pricing { background: #fff; padding: 52px 20px; }
 .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
 .p-tile { border-radius: 22px; padding: 22px 16px; }
@@ -359,7 +344,6 @@ img { max-width: 100%; display: block; }
 .p-tile.pro  .p-list li::before { color: #93c5fd; }
 .p-note { font-size: 11px; color: rgba(255,255,255,.38); margin-top: 14px; line-height: 1.5; }
 
-/* ─── MORE APPS ───────────────────────────────── */
 .more-apps { background: var(--cream); padding: 52px 20px 36px; }
 .more-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px,1fr)); gap: 10px; margin-top: 22px; }
 .m-card { background: #fff; border: 1px solid var(--border); border-radius: 22px; padding: 20px 14px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; text-decoration: none; transition: transform .2s, box-shadow .2s; }
@@ -369,7 +353,6 @@ img { max-width: 100%; display: block; }
 .m-desc { font-size: 12px; color: var(--muted); line-height: 1.4; }
 .m-badge { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; background: var(--cream); color: #5a7ab0; border: 1px solid var(--border); padding: 4px 10px; border-radius: 100px; }
 
-/* ─── BRAND + FOOTER ──────────────────────────── */
 .brand-section { padding: 0 14px 14px; }
 .brand-banner { width: 100%; height: auto; border-radius: 18px; overflow: hidden; display: block; box-shadow: 0 4px 20px rgba(0,0,0,.07); }
 footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top: 1px solid var(--border); }
@@ -378,13 +361,11 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
 .footer-links a, .footer-copy { font-size: 12px; color: #7a9ab8; text-decoration: none; }
 .footer-links a:hover { color: var(--text); }
 
-/* ─── SCROLL REVEAL ───────────────────────────── */
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.in-view { opacity: 1; transform: none; }
 .reveal-d1 { transition-delay: .07s; } .reveal-d2 { transition-delay: .14s; }
 .reveal-d3 { transition-delay: .21s; } .reveal-d4 { transition-delay: .28s; }
 
-/* ─── KEYFRAMES ───────────────────────────────── */
 @keyframes iconPop { from { opacity:0; transform:scale(.6) translateY(12px); } to { opacity:1; transform:scale(1) translateY(0); } }
 @keyframes swFloat { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-9px); } }
 @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
@@ -392,15 +373,10 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
 @media (hover: none) {
   .f-tile:hover, .step-card:hover, .tok-card:hover, .m-card:hover { transform: none; box-shadow: none; }
 }
-  
-/* ═══════════════════════════════════════════════════════════════
-   INHALTSABSCHNITTE  ·  nutzen die Kartensprache der Seite
-   ═══════════════════════════════════════════════════════════════ */
 
 .content-sec { padding: 52px 20px; }
 .content-inner { max-width: 540px; margin: 0 auto; }
 
-/* Kartenliste (Anwendungsfaelle) ─────────────────────────────── */
 .case-list { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
 .case-card {
   background: #fffaf8;
@@ -423,7 +399,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
 }
 .case-t + .case-t { margin-top: 9px; }
 
-/* Hervorgehobene Karte (ehrlicher Hinweis) ───────────────────── */
 .note-card {
   background: #fff;
   border: 1px solid var(--border, #ede3d0);
@@ -449,7 +424,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
 }
 .note-flag p { font-size: 13.5px; line-height: 1.6; }
 
-/* FAQ ────────────────────────────────────────────────────────── */
 .faq-list { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
 .faq-item {
   background: #fffaf8;
@@ -486,10 +460,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
 }
 .faq-item .faq-a p + p { margin-top: 10px; }
 
-/* Keine Sonderbreite: 540px wie jeder andere Abschnitt der Seite. */
-
-
-/* ─── SCREENSHOT-KARUSSELL (von JobTrace uebernommen) ───────── */
 .carousel-wrap { position: relative; margin-top: 22px; }
 .carousel-fade {
   position: absolute; right: 0; top: 0; bottom: 0; width: 56px;
@@ -550,8 +520,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
 }
 .c-dot.active { width: 20px; background: var(--green); }
 
-
-/* ─── LIGHTBOX ────────────────────────────────────── */
 .lightbox {
   position: fixed; inset: 0; z-index: 999;
   display: flex; align-items: center; justify-content: center;
@@ -642,12 +610,10 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   .m-card:hover { transform: none; box-shadow: none; }
 }
 
-  
 </style>
 </head>
 <body>
 
-<!-- ══════════════════════════ HERO -->
 <section class="hero">
   <div class="bokeh" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
 
@@ -661,7 +627,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
 
   <div class="hero-body">
 
-    <!-- 3D Carousel: JT ← IS★ → TK -->
     <div class="sw-outer">
       <button class="sw-arrow" id="sw-prev-btn" aria-label="Zurück">‹</button>
       <div class="sw-stage" id="sw-stage">
@@ -670,7 +635,7 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
           <span class="sw-label">JobTrace</span>
         </a>
         <div class="sw-slide sw-active" id="sw-item-active">
-          <img src="../assets/itemshark-icon.png" alt="ItemShark" class="sw-icon" width="90" height="90" loading="eager" decoding="async">
+          <img src="../assets/itemshark-icon-opt.png" alt="ItemShark" class="sw-icon" width="90" height="90" loading="eager" decoding="async">
           <span class="sw-label">ItemShark</span>
         </div>
         <a class="sw-slide sw-next" id="sw-item-next" href="../terminkompass/" aria-label="Zu TerminKompass">
@@ -701,7 +666,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
       <span class="pill">🇩🇪 Made in Germany</span>
     </div>
 
-    <!-- Coming Soon statt Store-Links -->
     <div class="hero-soon">
       <span class="soon-label">Bald verfügbar</span>
       <div class="soon-badges">
@@ -713,7 +677,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   </div>
 </section>
 
-<!-- ══════════════════════════ SCREENSHOTS -->
 <section class="screenshots">
   <div class="section-inner">
     <p class="section-eyebrow reveal">In der App</p>
@@ -779,7 +742,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   </div>
 </section>
 
-<!-- ══════════════════════════ HOW IT WORKS -->
 <section class="how-section">
   <div class="section-inner">
     <p class="section-eyebrow reveal">So einfach geht's</p>
@@ -816,7 +778,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   </div>
 </section>
 
-<!-- ══════════════════════════ AI SPOTLIGHT -->
 <div class="spotlight-section reveal">
   <div class="spotlight-card">
     <p class="spotlight-eyebrow">Das Herzstück</p>
@@ -835,7 +796,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   </div>
 </div>
 
-<!-- ══════════════════════════ FEATURES -->
 <section class="features">
   <div style="max-width:540px;margin:0 auto;">
     <p class="section-eyebrow reveal">Was ItemShark kann</p>
@@ -886,14 +846,12 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   </div>
 </section>
 
-<!-- ══════════════════════════ APP-BANNER -->
 <div class="brand-section reveal" style="padding:0 14px 28px;">
   <img src="../assets/itemshark/banner.jpg"
        alt="ItemShark – per KI oder manuell erfassen: Sammlungen, Objekte und Notizen schnell anlegen"
        class="brand-banner" loading="lazy" width="1100" height="537">
 </div>
 
-<!-- ══════════════════════════ TOKENS -->
 <section class="tokens-section">
   <div style="max-width:540px;margin:0 auto;">
     <p class="section-eyebrow reveal">KI-Scans</p>
@@ -927,7 +885,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   </div>
 </section>
 
-<!-- ══════════════════════════ COMING SOON HYPE -->
 <section class="hype-section">
   <div class="hype-card">
     <p class="hype-eyebrow">Bald verfügbar</p>
@@ -953,7 +910,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   </div>
 </section>
 
-<!-- ══════════════════════════ ANWENDUNGSFÄLLE -->
 <section class="content-sec" style="background:#fff;">
   <div class="content-inner">
     <p class="section-eyebrow reveal">Wofür ItemShark gedacht ist</p>
@@ -1007,7 +963,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   </div>
 </section>
 
-<!-- ══════════════════════════ OFFLINE & KI -->
 <section class="content-sec" style="background:var(--cream);">
   <div class="content-inner">
     <p class="section-eyebrow reveal">Ehrlich gesagt</p>
@@ -1045,7 +1000,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   </div>
 </section>
 
-<!-- ══════════════════════════ FAQ -->
 <section class="content-sec" style="background:#fff;">
   <div class="content-inner">
     <p class="section-eyebrow reveal">Häufige Fragen</p>
@@ -1129,7 +1083,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   </div>
 </section>
 
-<!-- ══════════════════════════ PRICING -->
 <section class="pricing">
   <div style="max-width:540px;margin:0 auto;">
     <p class="section-eyebrow reveal">Kostenlos starten</p>
@@ -1164,7 +1117,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   </div>
 </section>
 
-<!-- ══════════════════════════ MORE APPS -->
 <section class="more-apps">
   <div style="max-width:540px;margin:0 auto;">
     <p class="section-eyebrow reveal">MW_Apps</p>
@@ -1182,12 +1134,10 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   </div>
 </section>
 
-<!-- ══════════════════════════ BRAND BANNER -->
 <div class="brand-section reveal">
   <img src="../assets/mwapps-banner.jpg" alt="MW_Apps – Software Development · Android &amp; iOS Apps · Privacy First" class="brand-banner" loading="lazy">
 </div>
 
-<!-- ══════════════════════════ FOOTER -->
 <footer>
   <div class="footer-inner">
     <nav class="footer-links">
@@ -1198,7 +1148,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   </div>
 </footer>
 
-<!-- ══════════════════════════ LIGHTBOX -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot Vollbild">
   <button class="lb-close" id="lb-close" aria-label="Schließen">✕</button>
   <button class="lb-nav lb-prev" id="lb-prev" aria-label="Vorheriger Screenshot">‹</button>
@@ -1210,9 +1159,8 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   <div class="lb-dots" id="lb-dots"></div>
 </div>
 
-<!-- ══════════════════════════ SCRIPTS -->
 <script>
-/* ── 3D Carousel ─────────────────────────────── */
+
 (function () {
   var PREV_HREF = '../jobtrace/'; var NEXT_HREF = '../terminkompass/';
   var stage = document.getElementById('sw-stage');
@@ -1238,7 +1186,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   }, { passive: true });
 })();
 
-/* ── Scroll Reveal ───────────────────────────── */
 (function () {
   var els = document.querySelectorAll('.reveal');
   if (!('IntersectionObserver' in window)) {
@@ -1254,7 +1201,7 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
 </script>
 
 <script>
-/* ── Carousel ───────────────────────────────────── */
+
 (function () {
   var track  = document.getElementById('ctrack');
   var dotsEl = document.getElementById('cdots');
@@ -1313,7 +1260,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   resetTimer();
 })();
 
-/* ── Lightbox ───────────────────────────────────── */
 (function () {
   var lb      = document.getElementById('lightbox');
   var lbImg   = document.getElementById('lb-img');
@@ -1373,9 +1319,6 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   });
 })();
 
-
-
-/* ── Scroll Reveal ──────────────────────────────── */
 (function () {
   var els = document.querySelectorAll('.reveal');
   if (!('IntersectionObserver' in window)) {

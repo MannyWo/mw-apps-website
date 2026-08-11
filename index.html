@@ -61,7 +61,6 @@
   </script>
   <style>
 
-/* ─── RESET & BASE ────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -76,7 +75,6 @@ body {
 }
 img { max-width: 100%; display: block; }
 
-/* ─── TOKENS ──────────────────────────────────────── */
 :root {
   --orange:  #e0674a;
   --orange2: #c94050;
@@ -87,7 +85,6 @@ img { max-width: 100%; display: block; }
   --muted:   #7e6456;
 }
 
-/* ─── HERO ────────────────────────────────────────── */
 .hero {
   position: relative;
   background: var(--dark);
@@ -104,7 +101,6 @@ img { max-width: 100%; display: block; }
 .b3 { width: 140px; height: 140px; background: rgba(240,160,90,.25); top: 35%; right: 15%; animation-duration: 7s; animation-delay: -2s; }
 @keyframes drift { from { transform: translateY(0) scale(1); } to { transform: translateY(-40px) scale(1.12); } }
 
-/* Nav */
 .nav {
   position: relative; z-index: 2;
   display: flex; align-items: center; justify-content: space-between;
@@ -120,13 +116,11 @@ img { max-width: 100%; display: block; }
 }
 .nav-link:hover { color: rgba(255,255,255,.75); }
 
-/* Hero Body */
 .hero-body {
   position: relative; z-index: 2; max-width: 540px; margin: 0 auto;
   padding: 40px 20px 0; display: flex; flex-direction: column; align-items: center; text-align: center;
 }
 
-/* ─── 3D CAROUSEL ─────────────────────────────────── */
 .sw-arrow {
   display: none; flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%;
   background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16);
@@ -161,7 +155,6 @@ img { max-width: 100%; display: block; }
 @keyframes iconPop { from { opacity: 0; transform: scale(.6) translateY(12px); } to { opacity: 1; transform: scale(1) translateY(0); } }
 @keyframes swFloat { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-9px); } }
 
-/* Hero Text */
 .hero-h1 {
   margin-top: 10px; font-size: clamp(32px, 9vw, 46px); font-weight: 900;
   letter-spacing: -.04em; line-height: 1.07; color: #fff;
@@ -193,12 +186,10 @@ img { max-width: 100%; display: block; }
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 
-/* ─── SECTION SHARED ──────────────────────────────── */
 .section-inner { max-width: 540px; margin: 0 auto; padding: 0 20px; }
 .section-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); margin-bottom: 5px; }
 .section-h2 { font-size: 26px; font-weight: 900; letter-spacing: -.03em; line-height: 1.15; color: var(--text); }
 
-/* ─── APP OVERVIEW ────────────────────────────────── */
 .apps-section { padding: 60px 0 52px; background: #fff; }
 .app-cards { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
 
@@ -251,7 +242,6 @@ img { max-width: 100%; display: block; }
   padding: 7px 14px; border-radius: 100px;
 }
 
-/* Highlight border for main app */
 .app-card.featured { border-color: rgba(224,103,74,.3); background: linear-gradient(160deg, #fffaf8, #fff8f5); }
 .app-card.featured::before {
   content: '';
@@ -260,7 +250,6 @@ img { max-width: 100%; display: block; }
   border-radius: 28px 28px 0 0;
 }
 
-/* ─── ÜBER MICH ───────────────────────────────────── */
 .about-section { background: var(--cream); padding: 60px 0 52px; }
 .about-text {
   font-size: 15px; line-height: 1.75; color: var(--muted);
@@ -305,11 +294,9 @@ img { max-width: 100%; display: block; }
 }
 .about-github:hover { border-color: var(--text); transform: translateY(-2px); }
 
-/* ─── BRAND BANNER ────────────────────────────────── */
 .brand-section { padding: 0 14px 14px; }
 .brand-banner { width: 100%; border-radius: 18px; overflow: hidden; display: block; box-shadow: 0 4px 20px rgba(0,0,0,.07); }
 
-/* ─── FOOTER ──────────────────────────────────────── */
 footer {
   padding: 20px 20px calc(20px + env(safe-area-inset-bottom));
   border-top: 1px solid var(--border);
@@ -322,7 +309,6 @@ footer {
 .footer-links a, .footer-copy { font-size: 12px; color: #b09878; text-decoration: none; }
 .footer-links a:hover { color: var(--text); }
 
-/* ─── SCROLL REVEAL ───────────────────────────────── */
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.in-view { opacity: 1; transform: none; }
 .reveal-d1 { transition-delay: .07s; }
@@ -337,7 +323,6 @@ footer {
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════ HERO -->
 <section class="hero">
   <div class="bokeh" aria-hidden="true">
     <span class="b1"></span><span class="b2"></span><span class="b3"></span>
@@ -356,7 +341,6 @@ footer {
 
   <div class="hero-body">
 
-    <!-- 3D Carousel -->
     <div class="sw-outer">
       <button class="sw-arrow" id="sw-prev-btn" aria-label="Zurück">‹</button>
       <div class="sw-stage" id="sw-stage">
@@ -376,7 +360,6 @@ footer {
       <button class="sw-arrow" id="sw-next-btn" aria-label="Weiter">›</button>
     </div>
 
-    <!-- Dots -->
     <div class="sw-dots">
       <span class="sw-dot"></span>
       <span class="sw-dot active"></span>
@@ -403,7 +386,6 @@ footer {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════ APP OVERVIEW -->
 <section id="apps" class="apps-section">
   <div class="section-inner">
     <p class="section-eyebrow reveal">Meine Apps</p>
@@ -411,7 +393,6 @@ footer {
 
     <div class="app-cards">
 
-      <!-- TerminKompass -->
       <div class="app-card featured reveal reveal-d1">
         <div class="app-card-head">
           <img src="assets/terminkompass/icon-opt.png" alt="TerminKompass" class="app-card-icon">
@@ -435,7 +416,6 @@ footer {
         </div>
       </div>
 
-      <!-- JobTrace -->
       <div class="app-card reveal reveal-d2">
         <div class="app-card-head">
           <img src="assets/app-icon-v5.png" alt="JobTrace" class="app-card-icon">
@@ -459,7 +439,6 @@ footer {
         </div>
       </div>
 
-      <!-- ItemShark -->
       <div class="app-card reveal reveal-d3">
         <div class="app-card-head">
           <img src="assets/itemshark-icon-opt.png" alt="ItemShark" class="app-card-icon">
@@ -483,7 +462,6 @@ footer {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════ ÜBER MICH -->
 <section id="about" class="about-section">
   <div class="section-inner">
     <p class="section-eyebrow reveal">Der Entwickler</p>
@@ -535,12 +513,10 @@ footer {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════ BRAND BANNER -->
 <div class="brand-section reveal">
   <img src="assets/mwapps-banner.jpg" alt="MW_Apps – Software Development · Android &amp; iOS Apps · Privacy First" class="brand-banner">
 </div>
 
-<!-- ═══════════════════════════════════════ FOOTER -->
 <footer>
   <div class="footer-inner">
     <nav class="footer-links">
@@ -551,9 +527,8 @@ footer {
   </div>
 </footer>
 
-<!-- ═══════════════════════════════════════ SCRIPTS -->
 <script>
-/* ── 3D Carousel ─────────────────────────────────── */
+
 (function () {
   var PREV_HREF = 'itemshark/';
   var NEXT_HREF = 'jobtrace/';
@@ -591,7 +566,6 @@ footer {
   }, { passive: true });
 })();
 
-/* ── Scroll Reveal ───────────────────────────────── */
 (function () {
   if (!('IntersectionObserver' in window)) {
     document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in-view'); });

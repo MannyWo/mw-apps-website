@@ -1,34 +1,12 @@
-/* ═══════════════════════════════════════════════════════════════
-   Besucherzählung für mw-app.de  ·  GoatCounter
-   ───────────────────────────────────────────────────────────────
-   Wird von allen Seiten eingebunden:  <script src="/analytics.js"></script>
-
-   Zählt:
-     · jeden Seitenaufruf
-     · jeden Klick auf einen App-Store- oder Play-Store-Link
-
-   Keine Cookies, keine personenbezogenen Daten, keine Weitergabe
-   an Dritte. Auswertung nur unter mwapps.goatcounter.com.
-
-   Zum Abschalten: diese eine Zeile in den Seiten entfernen.
-   ═══════════════════════════════════════════════════════════════ */
-
 (function () {
   'use strict';
 
   var ACCOUNT = 'https://mwapps.goatcounter.com/count';
 
-  /* Eigene Aufrufe nicht mitzählen.
-     Zum Testen der eigenen Seite einmalig in der Browser-Konsole ausführen:
-        localStorage.setItem('skipzaehlung', '1')
-     Rückgängig:
-        localStorage.removeItem('skipzaehlung')                            */
   try {
     if (localStorage.getItem('skipzaehlung') === '1') return;
-  } catch (e) { /* localStorage gesperrt – dann eben zählen */ }
+  } catch (e) {}
 
-  /* Muss gesetzt sein, BEVOR count.js lädt: wir zählen selbst,
-     damit der Aufruf erst nach dem Laden der Seite gemeldet wird. */
   window.goatcounter = { no_onload: true };
 
   var s = document.createElement('script');
@@ -43,7 +21,6 @@
     }
   }
 
-  /* Welche App gehört zu diesem Store-Link? */
   function appAusLink(url) {
     if (/terminkompass/i.test(url)) return 'terminkompass';
     if (/jobtrace/i.test(url))      return 'jobtrace';
@@ -52,11 +29,8 @@
   }
 
   function start() {
-    /* Seitenaufruf melden */
     zaehle();
 
-    /* Store-Klicks melden – erkennt Links am Ziel, unabhängig davon
-       ob sie ein data-store-Attribut tragen.                        */
     document.addEventListener('click', function (ev) {
       var a = ev.target.closest && ev.target.closest('a[href]');
       if (!a) return;
@@ -64,8 +38,8 @@
       var url = a.getAttribute('href') || '';
       var laden;
 
-      if (url.indexOf('apps.apple.com') > -1)          laden = 'appstore';
-      else if (url.indexOf('play.google.com/store') > -1) laden = 'playstore';
+      if (url.indexOf('apps.apple.com') > -1)             laden = 'appstore';
+      else if (url.indexOf('play.google.com/store') > -1)  laden = 'playstore';
       else return;
 
       var app = appAusLink(url);
