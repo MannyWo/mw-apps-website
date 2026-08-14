@@ -319,7 +319,19 @@ footer {
   .app-card:hover { transform: none; box-shadow: none; }
 }
 
-  </style>
+.empf { background: linear-gradient(160deg, #f2faf3 0%, #e8f6ea 100%); padding: 56px 20px; border-top: 1px solid #d5ead8; border-bottom: 1px solid #d5ead8; }
+.empf-inner { max-width: 540px; margin: 0 auto; text-align: center; }
+.empf-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #3f9445; margin-bottom: 8px; }
+.empf-h2 { font-size: 26px; font-weight: 900; letter-spacing: -.03em; line-height: 1.15; color: #16401a; margin-bottom: 24px; }
+.empf-card { background: #fff; border: 1px solid #d5ead8; border-radius: 26px; padding: 30px 24px 26px; box-shadow: 0 6px 26px rgba(38,110,45,.09); }
+.empf-logo { width: 200px; height: auto; margin: 0 auto 20px; }
+.empf-zitat { font-size: 17px; line-height: 1.5; font-weight: 700; letter-spacing: -.015em; color: var(--text); }
+.empf-quelle { font-size: 12.5px; color: var(--muted); margin-top: 12px; line-height: 1.5; }
+.empf-btn { display: inline-flex; align-items: center; gap: 7px; margin-top: 20px; background: #4FB053; color: #fff; font-size: 14px; font-weight: 800; text-decoration: none; padding: 13px 24px; border-radius: 100px; transition: transform .2s, box-shadow .2s; }
+.empf-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(79,176,83,.42); }
+.empf-dank { font-size: 13px; line-height: 1.62; color: #3d5a41; margin-top: 22px; }
+.empf-dank a { color: #3f9445; font-weight: 700; text-decoration: underline; }
+</style>
 </head>
 <body>
 
@@ -459,6 +471,32 @@ footer {
       </div>
 
     </div>
+  </div>
+</section>
+
+<section class="empf">
+  <div class="empf-inner">
+    <p class="empf-eyebrow reveal">Empfehlung</p>
+    <h2 class="empf-h2 reveal reveal-d1">Getestet von<br>Android User.</h2>
+
+    <div class="empf-card reveal reveal-d2">
+      <img src="assets/presse/android-user-logo.png" alt="Android User" class="empf-logo" width="440" height="132">
+      <p class="empf-zitat">„Die App ist übersichtlich aufgebaut<br>und lässt sich einfach bedienen."</p>
+      <p class="empf-quelle">
+        Sarah Lindow-Zechmeister · Android User<br>
+        Ausführlicher Testbericht zu TerminKompass, Juli 2026
+      </p>
+      <a href="https://www.android-user.de/terminkompass-terminplaner-fuer-android/" target="_blank" rel="noopener" class="empf-btn">
+        Testbericht lesen →
+      </a>
+    </div>
+
+    <p class="empf-dank reveal reveal-d3">
+      Ein Dankeschön an <a href="https://www.android-user.de/" target="_blank" rel="noopener">Android User</a> –
+      das Magazin hat sich als erstes die Zeit genommen, TerminKompass in Ruhe
+      auszuprobieren und ausführlich vorzustellen. Nebenbei eine der wenigen Seiten,
+      die ganz ohne Werbebanner, Tracker und Cookie-Banner auskommt. Reinschauen lohnt sich.
+    </p>
   </div>
 </section>
 

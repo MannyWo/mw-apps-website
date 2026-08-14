@@ -956,6 +956,19 @@ footer {
 }
 .faq-item .faq-a p + p { margin-top: 10px; }
 
+
+.presse-sec { padding: 46px 20px; background: #fff; }
+.presse-inner { max-width: 540px; margin: 0 auto; }
+.presse-card {
+  background: var(--cream); border: 1px solid var(--border); border-radius: 22px;
+  padding: 24px 22px; display: block; text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+}
+.presse-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,.08); }
+.presse-logo { width: 150px; height: auto; margin-bottom: 15px; }
+.presse-zitat { font-size: 15.5px; line-height: 1.6; color: var(--text); font-weight: 600; }
+.presse-quelle { font-size: 12.5px; color: var(--muted); margin-top: 10px; }
+.presse-more { display: inline-block; margin-top: 12px; font-size: 13px; font-weight: 700; color: var(--orange); }
 </style>
 </head>
 <body>
@@ -1481,6 +1494,19 @@ footer {
       </details>
 
     </div>
+  </div>
+</section>
+
+<section class="presse-sec">
+  <div class="presse-inner">
+    <p class="section-eyebrow reveal">Im Test</p>
+    <h2 class="section-h2 reveal reveal-d1">Was andere sagen.</h2>
+    <a href="https://www.android-user.de/terminkompass-terminplaner-fuer-android/" target="_blank" rel="noopener" class="presse-card reveal reveal-d2" style="margin-top:22px;">
+      <img src="../assets/presse/android-user-logo.png" alt="Android User" class="presse-logo" width="440" height="132" loading="lazy">
+      <p class="presse-zitat">„Die App ist übersichtlich aufgebaut und lässt sich einfach bedienen."</p>
+      <p class="presse-quelle">Sarah Lindow-Zechmeister, Android User – ausführlicher Testbericht mit Screenshots, Juli 2026</p>
+      <span class="presse-more">Testbericht lesen →</span>
+    </a>
   </div>
 </section>
 
