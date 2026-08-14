@@ -2,24 +2,25 @@
   'use strict';
 
   var ACCOUNT = 'https://mwapps.goatcounter.com/count';
+  var SCHLUESSEL = 'mwapps-nicht-zaehlen';
 
   try {
-    if (localStorage.getItem('skipzaehlung') === '1') return;
+    if (/[?&]nozaehlen\b/.test(location.search)) {
+      localStorage.setItem(SCHLUESSEL, '1');
+      console.log('MW_Apps: Dieser Browser wird ab jetzt nicht mehr mitgezaehlt.');
+    }
+    if (/[?&]dochzaehlen\b/.test(location.search)) {
+      localStorage.removeItem(SCHLUESSEL);
+      console.log('MW_Apps: Dieser Browser wird wieder mitgezaehlt.');
+    }
+    if (localStorage.getItem(SCHLUESSEL) === '1') return;
   } catch (e) {}
-
-  window.goatcounter = { no_onload: true };
 
   var s = document.createElement('script');
   s.async = true;
   s.src = '//gc.zgo.at/count.js';
   s.setAttribute('data-goatcounter', ACCOUNT);
   document.head.appendChild(s);
-
-  function zaehle(pfad, titel) {
-    if (window.goatcounter && window.goatcounter.count) {
-      window.goatcounter.count(pfad ? { path: pfad, title: titel } : undefined);
-    }
-  }
 
   function appAusLink(url) {
     if (/terminkompass/i.test(url)) return 'terminkompass';
@@ -28,31 +29,24 @@
     return 'unbekannt';
   }
 
-  function start() {
-    zaehle();
+  document.addEventListener('click', function (ev) {
+    var a = ev.target.closest && ev.target.closest('a[href]');
+    if (!a) return;
 
-    document.addEventListener('click', function (ev) {
-      var a = ev.target.closest && ev.target.closest('a[href]');
-      if (!a) return;
+    var url = a.getAttribute('href') || '';
+    var laden;
 
-      var url = a.getAttribute('href') || '';
-      var laden;
+    if (url.indexOf('apps.apple.com') > -1)             laden = 'appstore';
+    else if (url.indexOf('play.google.com/store') > -1)  laden = 'playstore';
+    else return;
 
-      if (url.indexOf('apps.apple.com') > -1)             laden = 'appstore';
-      else if (url.indexOf('play.google.com/store') > -1)  laden = 'playstore';
-      else return;
+    if (!window.goatcounter || !window.goatcounter.count) return;
 
-      var app = appAusLink(url);
-      zaehle(
-        'klick-' + laden + '-' + app,
-        (laden === 'appstore' ? 'App Store' : 'Play Store') + ' – ' + app
-      );
-    }, true);
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', start);
-  } else {
-    start();
-  }
+    var app = appAusLink(url);
+    window.goatcounter.count({
+      path: 'klick-' + laden + '-' + app,
+      title: (laden === 'appstore' ? 'App Store' : 'Play Store') + ' - ' + app,
+      event: true
+    });
+  }, true);
 })();
