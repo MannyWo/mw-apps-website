@@ -19,13 +19,6 @@ img { max-width: 100%; display: block; }
 .nav-wordmark { font-size: 15px; font-weight: 800; letter-spacing: -.01em; color: #fff; }
 .nav-contact { font-size: 13px; color: rgba(255,255,255,.42); text-decoration: none; padding: 6px 0 6px 8px; transition: color .2s; }
 .nav-contact:hover { color: rgba(255,255,255,.75); }
-.nav-right { display: flex; align-items: center; gap: 12px; }
-.social-links { display: flex; align-items: center; gap: 10px; }
-.social-link { display: inline-flex; color: rgba(255,255,255,.42); transition: color .2s; -webkit-tap-highlight-color: transparent; }
-.social-link:hover { color: rgba(255,255,255,.75); }
-.footer-links .social-link, .footer-social .social-link { color: inherit; opacity: .75; transition: opacity .2s; }
-.footer-links .social-link:hover, .footer-social .social-link:hover { opacity: 1; }
-.footer-social { display: flex; align-items: center; gap: 12px; }
 
 .hero { position: relative; overflow: hidden; padding-bottom: 56px; }
 .hero-body {
