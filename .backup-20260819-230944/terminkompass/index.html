@@ -8,13 +8,18 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="../shared.css?v=20260811">
-  <title>Gemeinsamer Kalender für iPhone und Android – ohne Konto</title>
-  <meta name="description" content="Termine zwischen iPhone und Android teilen, ohne dass alle dasselbe Konto brauchen. Wie es geht, warum es sonst scheitert – und welche App das kann.">
-  <link rel="canonical" href="https://mw-app.de/gemeinsamer-kalender-iphone-android/">
-  <meta property="og:title" content="Gemeinsamer Kalender für iPhone und Android – ohne Konto">
-  <meta property="og:description" content="Termine zwischen iPhone und Android teilen, ohne gemeinsames Konto. So funktioniert es.">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://mw-app.de/gemeinsamer-kalender-iphone-android/">
+  <link rel="prefetch" href="../jobtrace/">
+  <link rel="prefetch" href="../itemshark/">
+  <link rel="preconnect" href="https://tools.applemediaservices.com">
+  <link rel="preconnect" href="https://play.google.com">
+  <link rel="dns-prefetch" href="https://tools.applemediaservices.com">
+  <title>TerminKompass – Terminplaner ohne Konto & Abo | MW_Apps</title>
+  <meta name="description" content="TerminKompass – Terminplaner für iOS und Android. Termine per WhatsApp teilen, Kalender importieren, Geburtstage verwalten. Offline, ohne Konto, ohne Abo.">
+  <link rel="canonical" href="https://mw-app.de/terminkompass/">
+  <meta property="og:title" content="TerminKompass – Termine, die du nicht vergisst.">
+  <meta property="og:description" content="Terminplaner für iOS & Android. Termine per WhatsApp teilen – auch zwischen Android und iPhone. Offline. Kein Konto. Kein Abo.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mw-app.de/terminkompass/">
   <meta property="og:site_name" content="MW_Apps">
   <meta property="og:locale" content="de_DE">
   <meta property="og:image" content="https://mw-app.de/assets/terminkompass/icon-opt.png">
@@ -22,87 +27,74 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Gemeinsamer Kalender für iPhone und Android – ohne gemeinsames Konto",
-    "description": "Warum gemeinsame Kalender zwischen iPhone und Android normalerweise scheitern, und wie sich Termine stattdessen direkt weitergeben lassen.",
-    "inLanguage": "de",
-    "mainEntityOfPage": "https://mw-app.de/gemeinsamer-kalender-iphone-android/",
-    "author": { "@type": "Person", "name": "Manfred Wolf", "url": "https://mw-app.de/" },
-    "publisher": { "@type": "Organization", "name": "MW_Apps", "url": "https://mw-app.de/" },
-    "about": { "@type": "SoftwareApplication", "name": "TerminKompass", "applicationCategory": "ProductivityApplication", "operatingSystem": "iOS, Android", "url": "https://mw-app.de/terminkompass/" }
+    "@type": "SoftwareApplication",
+    "name": "TerminKompass",
+    "applicationCategory": "ProductivityApplication",
+    "operatingSystem": "iOS, Android",
+    "url": "https://mw-app.de/terminkompass/",
+    "image": "https://mw-app.de/assets/terminkompass/icon-opt.png",
+    "description": "Terminplaner für iOS und Android. Termine und ganze Kategorien per WhatsApp teilen – plattformübergreifend zwischen Android und iPhone, ohne gemeinsames Konto. Kalender-Import, Geburtstage mit Alter und Sternzeichen, Mondphasen, Home-Screen-Widget. Läuft offline.",
+    "inLanguage": ["de","en","ar","fr","es","pl","ro","ru","tr","uk","id"],
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR",
+      "description": "Kostenlose Version verfügbar, Pro-Version als Einmalkauf"
+    },
+    "author": { "@type": "Organization", "name": "MW_Apps", "url": "https://mw-app.de/" },
+    "downloadUrl": [
+      "https://apps.apple.com/de/app/terminkompass/id6771828426",
+      "https://play.google.com/store/apps/details?id=com.terminkompass.app"
+    ]
   }
   </script>
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Kann man iPhone und Android-Kalender überhaupt verbinden?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Über die eingebauten Kalender nur mit einem gemeinsamen Konto – iCloud oder Google – oder über Zusatzdienste, die zwischen beiden vermitteln. Beides funktioniert, verlangt aber Einrichtung und ein Konto bei allen Beteiligten. Der Weg auf dieser Seite geht anders: Der Termin wird weitergegeben statt dauerhaft freigegeben. Dafür braucht niemand ein gemeinsames Konto."
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Brauche ich ein Konto oder eine Anmeldung?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Nein. Du lädst die App und legst sofort los. Es gibt keine Registrierung, keine E-Mail-Adresse, kein Passwort. Auch nicht für die Pro-Version." }
+      },
+      {
+        "@type": "Question",
+        "name": "Funktioniert TerminKompass ohne Internet?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ja, vollständig. Termine anlegen, ansehen, bearbeiten und Erinnerungen bekommen läuft auf dem Gerät. Internet brauchst du nur, wenn du einen Termin per WhatsApp verschicken willst." }
+      },
+      {
+        "@type": "Question",
+        "name": "Kann ich Termine vom Android-Handy aufs iPhone schicken?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ja, in beide Richtungen. Du wählst einen Termin, eine ganze Kategorie oder alle Termine aus und verschickst sie über WhatsApp oder jede andere App. Der Empfänger tippt einmal, und die Termine landen in seinem TerminKompass. Ein gemeinsames Konto braucht ihr dafür nicht." }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie bekomme ich meine bestehenden Termine in die App?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Über den Kalender-Import. Die App liest den Kalender ein, der auf deinem Gerät schon vorhanden ist, etwa iCloud oder Google Calendar. Du musst nichts abtippen und nichts exportieren." }
+      },
+      {
+        "@type": "Question",
+        "name": "Was kostet TerminKompass?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Die App ist kostenlos und erlaubt bis zu 10 Termine. Alle Funktionen sind dabei: Mondphasen, Sternzeichen, eigene Terminfarben, eigenes Hintergrundbild, Kalender-Import, Teilen, Widget, Erinnerungen, Sicherung und CSV-Export, 12 Sprachen und vier Designs. Die Pro-Version hebt einzig das Limit auf – für unbegrenzt viele Termine und Bereiche. Kein Abo, sondern Einmalkauf." }
+      },
+      {
+        "@type": "Question",
+        "name": "Wo werden meine Termine gespeichert?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ausschließlich auf deinem Gerät. Es gibt keinen Server, auf den etwas übertragen wird. Auch die Erinnerungen werden lokal ausgelöst." }
+      },
+      {
+        "@type": "Question",
+        "name": "Was passiert bei einem Gerätewechsel?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Weil nichts in einer Cloud liegt, wandern die Termine nicht von selbst mit. Mit der kostenlosen Sicherungsfunktion überträgst du deinen Bestand aufs neue Gerät. Alternativ kannst du dir deine Termine über die Teilen-Funktion selbst schicken." }
+      },
+      {
+        "@type": "Question",
+        "name": "Gibt es die App für iPhone und Android?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ja, für beide. Im App Store und bei Google Play, mit demselben Funktionsumfang. Die Oberfläche gibt es in 12 Sprachen." }
       }
-    },
-    {
-      "@type": "Question",
-      "name": "Brauchen beide Seiten ein Google-Konto?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Nein. Weder Google noch Apple noch sonst eine Anmeldung. Weder beim Absender noch beim Empfänger."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Wie schicke ich einen Termin vom Android aufs iPhone?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Termin auswählen, auf Teilen tippen, WhatsApp oder eine andere App wählen, abschicken. Der Empfänger tippt auf das, was ankommt, und der Termin steht in seinem Kalender. In die andere Richtung funktioniert es genauso."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Muss der Empfänger die App installiert haben?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ja, TerminKompass muss auf seinem Gerät sein. Die kostenlose Version genügt – kein Konto, keine Bezahlversion nötig."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Kann ich auch mehrere Termine auf einmal schicken?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ja. Einen einzelnen Termin, eine ganze Kategorie – etwa alle Schultermine – oder den kompletten Bestand. Du wählst das bei jedem Versand neu."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Werden Änderungen automatisch übertragen?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Nein. Änderst du einen Termin später, musst du ihn erneut schicken. Für einen Kalender, in dem Änderungen sofort bei allen ankommen, ist ein gemeinsamer Cloud-Kalender die passendere Lösung."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Liegen meine Termine dabei irgendwo in der Cloud?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Nein. Sie bleiben auf deinem Gerät. Beim Teilen geht genau das raus, was du ausgewählt hast – über die App, die du zum Verschicken nutzt. Es gibt keinen Server, auf dem dein Kalender liegt."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Was kostet das?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "TerminKompass ist kostenlos und erlaubt bis zu 10 Termine. Das Teilen zwischen Android und iPhone ist in der kostenlosen Version enthalten. Die Pro-Version hebt das Limit auf und ist ein Einmalkauf, kein Abo."
-      }
-    }
-  ]
-}
+    ]
+  }
   </script>
   <style>
 
@@ -968,6 +960,19 @@ footer {
 }
 .faq-item .faq-a p + p { margin-top: 10px; }
 
+
+.presse-sec { padding: 46px 20px; background: #fff; }
+.presse-inner { max-width: 540px; margin: 0 auto; }
+.presse-card {
+  background: var(--cream); border: 1px solid var(--border); border-radius: 22px;
+  padding: 24px 22px; display: block; text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+}
+.presse-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,.08); }
+.presse-logo { width: 150px; height: auto; margin-bottom: 15px; }
+.presse-zitat { font-size: 15.5px; line-height: 1.6; color: var(--text); font-weight: 600; }
+.presse-quelle { font-size: 12.5px; color: var(--muted); margin-top: 10px; }
+.presse-more { display: inline-block; margin-top: 12px; font-size: 13px; font-weight: 700; color: var(--orange); }
 </style>
 </head>
 <body>
@@ -988,7 +993,6 @@ footer {
       <span class="social-links">
         <a href="https://www.instagram.com/mw_apps/" class="social-link" target="_blank" rel="me noopener" aria-label="MW_Apps auf Instagram"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
         <a href="https://www.facebook.com/profile.php?id=61579544686113" class="social-link" target="_blank" rel="me noopener" aria-label="MW_Apps auf Facebook"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.45 2.89h-2.33v6.99A10 10 0 0 0 22 12z"/></svg></a>
-<a href="https://www.tiktok.com/@mw_apps" class="social-link" target="_blank" rel="me noopener" aria-label="MW_Apps auf TikTok"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 0 1 0-5.18c.27 0 .53.04.77.12v-3.2a5.76 5.76 0 0 0-.77-.05A5.78 5.78 0 0 0 4.08 15.4a5.78 5.78 0 0 0 5.78 5.78 5.78 5.78 0 0 0 5.78-5.78V9.01a7.35 7.35 0 0 0 4.29 1.38V7.3a4.29 4.29 0 0 1-3.33-1.48z"/></svg></a>
       </span>
       <a href="mailto:mw_apps@gmx.de" class="nav-contact">Kontakt</a>
     </div>
@@ -1022,21 +1026,21 @@ footer {
     </div>
 
     <h1 class="hero-h1">
-        Gemeinsamer Kalender für<br>
-        <em>iPhone und Android.</em>
-      </h1>
+      Termine, die du<br>
+      <em>nicht vergisst.</em>
+    </h1>
 
     <p class="hero-sub">
-        Termine weitergeben, ohne dass alle dasselbe Konto brauchen.<br>
-        Ein Tipp beim Empfänger – und der Termin steht drin.
-      </p>
+      Dein Alltag, endlich im Griff.<br>
+      Offline. Ohne Konto. Ohne Abo. Einfach fertig.
+    </p>
 
     <div class="hero-pills">
-        <span class="pill">🔄 Android ↔ iPhone</span>
-        <span class="pill">🔒 Kein gemeinsames Konto</span>
-        <span class="pill">💬 Per WhatsApp</span>
-        <span class="pill">🇩🇪 Made in Germany</span>
-      </div>
+      <span class="pill">🔒 Kein Konto</span>
+      <span class="pill">📵 Offline-first</span>
+      <span class="pill">🌍 12 Sprachen</span>
+      <span class="pill">🇩🇪 Made in Germany</span>
+    </div>
 
     <div class="hero-badges" id="tk-badges">
       <a href="https://apps.apple.com/de/app/terminkompass/id6771828426"
@@ -1057,8 +1061,8 @@ footer {
 
 <section class="screenshots">
   <div class="section-inner">
-    <p class="section-eyebrow reveal">So sieht es aus</p>
-    <h2 class="section-h2 reveal reveal-d1">Teilen, importieren,<br>fertig.</h2>
+    <p class="section-eyebrow reveal">In der App</p>
+    <h2 class="section-h2 reveal reveal-d1">Schau rein.</h2>
   </div>
 
   <div class="carousel-wrap reveal reveal-d2">
@@ -1110,43 +1114,59 @@ footer {
   </div>
 </section>
 
-<section class="content-sec" style="background:var(--cream);">
-  <div class="content-inner">
-    <p class="section-eyebrow reveal">Das eigentliche Problem</p>
-    <h2 class="section-h2 reveal reveal-d1">Warum gemeinsame Kalender<br>meistens scheitern.</h2>
+<section class="features">
+  <div style="max-width:540px;margin:0 auto;">
+    <p class="section-eyebrow reveal">Was TerminKompass kann</p>
+    <h2 class="section-h2 reveal reveal-d1">Das haben andere<br>nicht.</h2>
 
-    <div class="case-list">
+    <div class="feature-grid">
 
-      <div class="case-card reveal reveal-d1">
-        <div class="case-ico">🔐</div>
-        <div class="case-h">Alle brauchen dasselbe Konto</div>
-        <p class="case-t">
-          Apple teilt Kalender über iCloud, Google über ein Google-Konto. Beide Wege
-          funktionieren – solange alle beim selben Anbieter sind. Sobald in der Familie
-          ein Android-Handy und ein iPhone zusammenkommen, endet es damit, dass jemand
-          ein Konto anlegen soll, das er gar nicht will.
-        </p>
+      <div class="f-tile reveal reveal-d1">
+        <div class="f-icon"><img src="../icons/kalender_import.png" alt="Kalender-Import" style="width:34px;height:34px;object-fit:contain;"></div>
+        <div class="f-name">Kalender-Import</div>
+        <div class="f-desc">iCloud, Google Calendar oder andere? Einmal tippen – alle Termine drin. Baby-leicht.</div>
       </div>
 
-      <div class="case-card reveal reveal-d2">
-        <div class="case-ico">🧩</div>
-        <div class="case-h">Die Umwege sind Bastellösungen</div>
-        <p class="case-t">
-          In Foren liest man von Sync-Adaptern, abonnierten Kalenderadressen und
-          Zusatzdiensten, die zwischen iCloud und Google vermitteln. Das lässt sich
-          einrichten – aber es ist nichts, was man den Großeltern erklären möchte, und
-          es geht kaputt, sobald sich irgendwo ein Passwort ändert.
-        </p>
+      <div class="f-tile reveal reveal-d2">
+        <div class="f-icon"><img src="../icons/widget.png" alt="Home-Screen Widget" style="width:34px;height:34px;object-fit:contain;"></div>
+        <div class="f-name">Home-Screen Widget</div>
+        <div class="f-desc">Sieh deine nächsten Termine direkt auf dem Sperrbildschirm – ohne die App zu öffnen.</div>
       </div>
 
-      <div class="case-card reveal reveal-d3">
-        <div class="case-ico">🎯</div>
-        <div class="case-h">Meistens will man gar nicht alles teilen</div>
-        <p class="case-t">
-          Ein gemeinsamer Kalender teilt dauerhaft alles. Dabei geht es oft nur um einen
-          einzelnen Termin: den Arzttermin, das Fußballspiel, den Geburtstag. Dafür einen
-          ganzen Kalender freizugeben, ist mehr, als man eigentlich wollte.
-        </p>
+      <div class="f-tile reveal reveal-d3">
+        <div class="f-icon"><img src="../icons/no_cloud.png" alt="Keine Cloud" style="width:34px;height:34px;object-fit:contain;"></div>
+        <div class="f-name">Erinnerungen ohne Cloud</div>
+        <div class="f-desc">Laufen lokal auf deinem Gerät. Kein Server, der gerade offline ist.</div>
+      </div>
+
+      <div class="f-tile reveal reveal-d4">
+        <div class="f-icon">🎂</div>
+        <div class="f-name">Geburtstage mit Alter</div>
+        <div class="f-desc">Trägt automatisch das Alter ein. Nie wieder nachrechnen.</div>
+      </div>
+
+      <div class="f-tile reveal reveal-d1">
+        <div class="f-icon">✨</div>
+        <div class="f-name">Schreibe „Arzt"</div>
+        <div class="f-desc">Das passende Icon setzt sich von selbst. 50+ Begriffe erkannt.</div>
+      </div>
+
+      <div class="f-tile reveal reveal-d2">
+        <div class="f-icon">🌍</div>
+        <div class="f-name">12 Sprachen</div>
+        <div class="f-desc">DE · EN · AR · FR · ES · PL · RO · RU · TR · UK · ID und mehr.</div>
+      </div>
+
+      <div class="f-tile reveal reveal-d3">
+        <div class="f-icon">🌙</div>
+        <div class="f-name">Mondphasen</div>
+        <div class="f-desc">Vollmond bei jedem Termin und im Kalender sichtbar – jeden Tag.</div>
+      </div>
+
+      <div class="f-tile reveal reveal-d4">
+        <div class="f-icon"><img src="../icons/sternzeichen.png" alt="Sternzeichen" style="width:34px;height:34px;object-fit:contain;"></div>
+        <div class="f-name">Sternzeichen</div>
+        <div class="f-desc">Geburtsdatum eingetragen? TerminKompass zeigt automatisch das Sternzeichen.</div>
       </div>
 
     </div>
@@ -1155,57 +1175,72 @@ footer {
 
 <div class="sharing-section reveal">
   <div class="sharing-card">
-    <p class="sharing-eyebrow">Der andere Weg</p>
-    <h2 class="sharing-h">Weitergeben<br><em>statt synchronisieren.</em></h2>
+    <p class="sharing-eyebrow">Einzigartiges Feature</p>
+    <h2 class="sharing-h">Termine teilen.<br><em>Android zu iOS.</em><br>Und zurück.</h2>
     <p class="sharing-desc">
-      Statt einen Kalender dauerhaft freizugeben, schickst du den Termin wie eine
-      Nachricht – über WhatsApp, Signal, E-Mail oder was ihr sonst nutzt. Der Empfänger
-      tippt einmal darauf, und der Termin liegt in seinem Kalender. Kein gemeinsames
-      Konto, keine Einrichtung, keine Freigabe, die man später wieder zurücknehmen muss.
+      Teile einzelne Termine, ganze Kategorien oder alle Termine auf einmal –
+      direkt via WhatsApp oder jede andere App. Der Empfänger importiert sie
+      mit einem Tap. Egal ob er Android oder iPhone nutzt.
     </p>
     <div class="sharing-pills">
-      <span class="sharing-pill">📅 Ein einzelner Termin</span>
-      <span class="sharing-pill">📂 Eine ganze Kategorie</span>
-      <span class="sharing-pill">📦 Der komplette Bestand</span>
+      <span class="sharing-pill">📁 Einzelne Termine</span>
+      <span class="sharing-pill">📂 Ganze Kategorien</span>
+      <span class="sharing-pill">📦 Alle Termine</span>
     </div>
-    <div class="sharing-cross">🔄 Vom Android aufs iPhone und zurück</div>
+    <div class="sharing-cross">🔄 Android ↔ iOS – plattformübergreifend</div>
+    <p style="margin-top:16px;font-size:13px;line-height:1.6;">
+      <a href="../gemeinsamer-kalender-iphone-android/" style="color:#8ab4ff;text-decoration:underline;">
+        Ausführlich erklärt: gemeinsamer Kalender für iPhone und Android →
+      </a>
+    </p>
   </div>
 </div>
 
 <section class="content-sec" style="background:#fff;">
   <div class="content-inner">
-    <p class="section-eyebrow reveal">In der Praxis</p>
-    <h2 class="section-h2 reveal reveal-d1">Drei Schritte,<br>keine Einrichtung.</h2>
+    <p class="section-eyebrow reveal">Wofür Leute die App nutzen</p>
+    <h2 class="section-h2 reveal reveal-d1">Drei Situationen.<br>Ein Problem.</h2>
 
     <div class="case-list">
 
       <div class="case-card reveal reveal-d1">
-        <div class="case-ico">1️⃣</div>
-        <div class="case-h">Termin auswählen</div>
+        <div class="case-ico">📲</div>
+        <div class="case-h">Die Familie mit gemischten Geräten</div>
         <p class="case-t">
-          Einen einzelnen Termin, eine ganze Kategorie – etwa „Schule" oder „Arzt" – oder
-          alles auf einmal. Du entscheidest bei jedem Versand neu, was mitgeht.
+          Mutter hat ein iPhone, der Sohn ein Android-Handy, die Großeltern irgendetwas
+          dazwischen. Ein gemeinsamer Kalender scheitert genau daran: Alle müssten beim
+          selben Anbieter ein Konto haben.
+        </p>
+        <p class="case-t">
+          Mit TerminKompass schickst du den Termin per WhatsApp. Der Empfänger tippt
+          einmal – und er steht in seinem Kalender. Egal welches Gerät.
         </p>
       </div>
 
       <div class="case-card reveal reveal-d2">
-        <div class="case-ico">2️⃣</div>
-        <div class="case-h">Verschicken wie eine Nachricht</div>
+        <div class="case-ico">🎂</div>
+        <div class="case-h">Geburtstage, die man jedes Jahr vergisst</div>
         <p class="case-t">
-          Über WhatsApp, Signal, Threema, E-Mail oder jede andere App, die auf deinem
-          Handy zum Teilen bereitsteht. Es ist derselbe Ablauf wie beim Weiterleiten
-          eines Fotos.
+          Geburtsdatum eintragen genügt – das Alter rechnet die App jedes Jahr neu aus.
+          Auf Wunsch zeigt sie zusätzlich das Sternzeichen an.
+        </p>
+        <p class="case-t">
+          Die Erinnerung kommt vom Gerät selbst, nicht von einem Server. Sie funktioniert
+          also auch, wenn du gerade kein Netz hast.
         </p>
       </div>
 
       <div class="case-card reveal reveal-d3">
-        <div class="case-ico">3️⃣</div>
-        <div class="case-h">Empfänger tippt einmal</div>
+        <div class="case-ico">📥</div>
+        <div class="case-h">Der Umstieg, der sonst am Abtippen scheitert</div>
         <p class="case-t">
-          Beim Gegenüber öffnet sich die App und der Termin ist übernommen – mit Datum,
-          Uhrzeit und Beschreibung. Ob er ein iPhone oder ein Android-Handy hat, spielt
-          keine Rolle. Er braucht dafür TerminKompass, aber kein Konto und keine
-          Bezahlversion.
+          Der häufigste Grund, bei einer App zu bleiben, die man nicht mag: Man müsste
+          alles neu eingeben.
+        </p>
+        <p class="case-t">
+          TerminKompass liest deinen bestehenden Kalender ein – iCloud, Google Calendar
+          oder was du sonst nutzt. Einmal antippen, alles drin. Danach entscheidest du
+          in Ruhe, ob du bleibst.
         </p>
       </div>
 
@@ -1216,35 +1251,167 @@ footer {
 <section class="content-sec" style="background:var(--cream);">
   <div class="content-inner">
     <p class="section-eyebrow reveal">Ehrlich gesagt</p>
-    <h2 class="section-h2 reveal reveal-d1">Was dieser Weg<br>nicht leistet.</h2>
+    <h2 class="section-h2 reveal reveal-d1">Was „ohne Cloud"<br>wirklich bedeutet.</h2>
 
     <div class="note-card reveal reveal-d1">
       <p class="note-lead">
-        Damit du nicht mit falschen Erwartungen anfängst: Weitergeben ist nicht dasselbe
-        wie Synchronisieren, und für manche Situationen ist es die schlechtere Wahl.
+        Die meisten Kalender-Apps funktionieren so: Du legst ein Konto an, deine Termine
+        liegen auf einem Server, und dafür synchronisiert sich alles automatisch zwischen
+        deinen Geräten. Bequem – und der Grund, warum du dort ein Konto brauchst.
+      </p>
+      <p>
+        TerminKompass macht es andersherum. Deine Termine liegen auf deinem Gerät, sonst
+        nirgends. Kein Konto, keine Anmeldung, keine Übertragung an mich oder an Dritte.
+        Auch die Erinnerungen kommen vom Gerät – die App läuft im Funkloch wie zu Hause.
       </p>
 
       <div class="note-flag">
-        <div class="note-flag-h">Kein automatischer Abgleich</div>
+        <div class="note-flag-h">Der Preis dafür</div>
         <p>
-          Änderst du einen Termin später, erfährt der Empfänger davon nichts von selbst –
-          du müsstest ihn erneut schicken. Wer einen Kalender braucht, in dem Änderungen
-          bei allen sofort ankommen, ist mit einem gemeinsamen Cloud-Kalender besser
-          bedient. Das ist kein Versehen, sondern die Kehrseite davon, ohne Server und
-          ohne Konto auszukommen.
+          Es gibt keine automatische Synchronisierung zwischen deinen eigenen Geräten.
+          Willst du dieselben Termine auf Handy und Tablet, überträgst du sie einmal über
+          die Teilen-Funktion oder die Sicherung. Wer echte Zwei-Geräte-Synchronisierung
+          braucht, ist mit einem Cloud-Kalender besser bedient – das sage ich lieber
+          vorher als hinterher.
         </p>
       </div>
 
       <p>
-        Auch beim Empfänger muss die App installiert sein. Ein Termin, der in einem
-        beliebigen Kalender landet, ohne dass der andere etwas installiert, ist damit
-        nicht möglich.
+        Für alle anderen ist der Tausch ein guter: keine Konten, keine Abos, keine Frage,
+        wo die Daten liegen.
       </p>
-      <p>
-        Wofür es dagegen gut passt: einzelne Termine an Familie, Freunde oder Kollegen
-        weitergeben, ohne Konten anzulegen und ohne dauerhaft den ganzen Kalender
-        freizugeben. Genau dafür ist es gedacht.
-      </p>
+    </div>
+  </div>
+</section>
+
+<section class="themes-section">
+  <div class="section-inner">
+    <p class="section-eyebrow reveal">4 Looks × 2 Modi</p>
+    <h2 class="section-h2 reveal reveal-d1">Deine App.<br>Dein Style.</h2>
+    <p style="font-size:14px;color:var(--muted);margin-top:8px;" class="reveal reveal-d2">
+      Jeder Look hat ein eigenes helles und dunkles Design – kein einheitlicher Dark Mode, sondern wirklich eigene Farbwelten.
+    </p>
+  </div>
+
+  <div class="themes-scroll">
+
+    <div class="theme-card reveal reveal-d1">
+      <div class="theme-preview" style="background:linear-gradient(160deg,#efe1b0,#f5c98a);">
+        <div class="theme-preview-bar" style="background:rgba(251,242,214,.85);">
+          <div class="theme-bar-line" style="background:#e0674a; width:70%;"></div>
+          <div class="theme-bar-line short" style="background:#7e6456;"></div>
+        </div>
+      </div>
+      <div class="theme-info" style="background:#fbf2d6;">
+        <div class="theme-name" style="color:#2f2019;">🏜️ Wüste</div>
+        <div class="theme-hint">Warm, lebendig, emotional</div>
+        <div class="theme-modes">
+          <div class="theme-mode-dot" style="background:#efe1b0;"></div>
+          <div class="theme-mode-dot" style="background:#17100d;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="theme-card reveal reveal-d2">
+      <div class="theme-preview" style="background:linear-gradient(160deg,#c8d4ff,#a0b4ff);">
+        <div class="theme-preview-bar" style="background:rgba(253,253,255,.9);">
+          <div class="theme-bar-line" style="background:#5d5fef; width:70%;"></div>
+          <div class="theme-bar-line short" style="background:#657094;"></div>
+        </div>
+      </div>
+      <div class="theme-info" style="background:#f5f7ff;">
+        <div class="theme-name" style="color:#18223f;">☁️ Himmel</div>
+        <div class="theme-hint">Hell, jung, dynamisch</div>
+        <div class="theme-modes">
+          <div class="theme-mode-dot" style="background:#f5f7ff;"></div>
+          <div class="theme-mode-dot" style="background:#0b1020;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="theme-card reveal reveal-d3">
+      <div class="theme-preview" style="background:linear-gradient(160deg,#090d1f,#142d70);">
+        <div class="theme-preview-bar" style="background:rgba(18,26,59,.9);">
+          <div class="theme-bar-line" style="background:#8b7cff; width:70%;"></div>
+          <div class="theme-bar-line short" style="background:#a8b4de;"></div>
+        </div>
+        <div style="position:absolute;inset:0;overflow:hidden;">
+          <div style="position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;top:15%;left:20%;opacity:.8;"></div>
+          <div style="position:absolute;width:1px;height:1px;border-radius:50%;background:#fff;top:30%;left:60%;opacity:.6;"></div>
+          <div style="position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;top:50%;left:40%;opacity:.7;"></div>
+          <div style="position:absolute;width:1px;height:1px;border-radius:50%;background:#fff;top:20%;left:80%;opacity:.5;"></div>
+          <div style="position:absolute;width:1px;height:1px;border-radius:50%;background:#fff;top:65%;left:75%;opacity:.6;"></div>
+        </div>
+      </div>
+      <div class="theme-info" style="background:#121a3b;">
+        <div class="theme-name" style="color:#f5f7ff;">🌌 Universum</div>
+        <div class="theme-hint" style="color:#a8b4de;">Weltraum & Sternschnuppen</div>
+        <div class="theme-modes">
+          <div class="theme-mode-dot" style="background:#090d1f;"></div>
+          <div class="theme-mode-dot" style="background:#050812;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="theme-card reveal reveal-d4">
+      <div class="theme-preview" style="background:linear-gradient(160deg,#ececea,#ddddd8);">
+        <div class="theme-preview-bar" style="background:rgba(255,255,255,.9);">
+          <div class="theme-bar-line" style="background:#466a9a; width:70%;"></div>
+          <div class="theme-bar-line short" style="background:#6a7077;"></div>
+        </div>
+      </div>
+      <div class="theme-info" style="background:#f6f6f4;">
+        <div class="theme-name" style="color:#1c2024;">⬜ Minimal</div>
+        <div class="theme-hint">Ruhig, schlicht, fokussiert</div>
+        <div class="theme-modes">
+          <div class="theme-mode-dot" style="background:#f6f6f4;"></div>
+          <div class="theme-mode-dot" style="background:#101214;"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bg-feature-banner reveal">
+    <div class="bg-feature-icon"><img src="../icons/hintergrund.png" alt="Hintergrundbild" style="width:38px;height:38px;object-fit:contain;"></div>
+    <div class="bg-feature-text">
+      <div class="bg-feature-title">Eigenes Hintergrundbild</div>
+      <div class="bg-feature-desc">Dein Foto als App-Hintergrund – kombinierbar mit jedem Style.</div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing">
+  <div style="max-width:540px;margin:0 auto;">
+    <p class="section-eyebrow reveal">Kostenlos starten</p>
+    <h2 class="section-h2 reveal reveal-d1">Gratis. Oder alles.</h2>
+    <div class="pricing-grid">
+      <div class="p-tile free reveal reveal-d2">
+        <span class="p-badge">Kostenlos</span>
+        <div class="p-head">Alles dabei</div>
+        <ul class="p-list">
+          <li>Bis zu 10 Termine &amp; 10 Bereiche</li>
+          <li>🌙 Mondphasen &amp; ♈ Sternzeichen</li>
+          <li>Eigene Terminfarben &amp; Hintergrundbild</li>
+          <li>Kalender, Liste, Tagesansicht</li>
+          <li>Lokale Erinnerungen &amp; Kalender-Import</li>
+          <li>Termine teilen (Android ↔ iOS)</li>
+          <li>Backup &amp; CSV-Export</li>
+          <li>Widget, 12 Sprachen, 4 Looks, Icon-Erkennung</li>
+        </ul>
+      </div>
+      <div class="p-tile pro reveal reveal-d3">
+        <img src="../icons/pro.png" alt="Pro" class="p-badge-icon">
+        <div class="p-head">Ohne Limit</div>
+        <ul class="p-list">
+          <li>♾️ Unbegrenzte Termine</li>
+          <li>♾️ Unbegrenzte Bereiche &amp; Kategorien</li>
+          <li>Alle Funktionen – jetzt und künftig</li>
+          <li>Einmalkauf statt Abo</li>
+          <li>Keine Werbung, kein Tracking</li>
+          <li>Von einem Menschen, nicht von einem Konzern</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -1257,59 +1424,80 @@ footer {
     <div class="faq-list">
 
       <details class="faq-item reveal reveal-d1">
-        <summary>Kann man iPhone und Android-Kalender überhaupt verbinden?</summary>
+        <summary>Brauche ich ein Konto oder eine Anmeldung?</summary>
         <div class="faq-a">
-          <p>Über die eingebauten Kalender nur mit einem gemeinsamen Konto – iCloud oder Google – oder über Zusatzdienste, die zwischen beiden vermitteln. Beides funktioniert, verlangt aber Einrichtung und ein Konto bei allen Beteiligten.</p>
-          <p>Der Weg auf dieser Seite geht anders: Der Termin wird weitergegeben statt dauerhaft freigegeben. Dafür braucht niemand ein gemeinsames Konto.</p>
+          <p>Nein. Du lädst die App und legst sofort los. Es gibt keine Registrierung,
+          keine E-Mail-Adresse, kein Passwort. Auch nicht für die Pro-Version.</p>
         </div>
       </details>
 
       <details class="faq-item reveal reveal-d2">
-        <summary>Brauchen beide Seiten ein Google-Konto?</summary>
+        <summary>Funktioniert TerminKompass ohne Internet?</summary>
         <div class="faq-a">
-          <p>Nein. Weder Google noch Apple noch sonst eine Anmeldung. Weder beim Absender noch beim Empfänger.</p>
+          <p>Ja, vollständig. Termine anlegen, ansehen, bearbeiten und Erinnerungen
+          bekommen – alles läuft auf dem Gerät. Internet brauchst du nur, wenn du einen
+          Termin per WhatsApp verschicken willst, und auch das nur zum Versenden.</p>
         </div>
       </details>
 
       <details class="faq-item reveal reveal-d3">
-        <summary>Wie schicke ich einen Termin vom Android aufs iPhone?</summary>
+        <summary>Kann ich Termine vom Android-Handy aufs iPhone schicken?</summary>
         <div class="faq-a">
-          <p>Termin auswählen, auf Teilen tippen, WhatsApp oder eine andere App wählen, abschicken. Der Empfänger tippt auf das, was ankommt, und der Termin steht in seinem Kalender. In die andere Richtung funktioniert es genauso.</p>
+          <p>Ja, in beide Richtungen. Du wählst einen Termin, eine ganze Kategorie oder
+          alle Termine aus und verschickst sie über WhatsApp oder jede andere App. Der
+          Empfänger tippt einmal, und die Termine landen in seinem TerminKompass.</p>
+          <p>Ein gemeinsames Konto braucht ihr dafür nicht – auch kein Google-Konto.</p>
         </div>
       </details>
 
       <details class="faq-item reveal reveal-d4">
-        <summary>Muss der Empfänger die App installiert haben?</summary>
+        <summary>Wie bekomme ich meine bestehenden Termine in die App?</summary>
         <div class="faq-a">
-          <p>Ja, TerminKompass muss auf seinem Gerät sein. Die kostenlose Version genügt – kein Konto, keine Bezahlversion nötig.</p>
+          <p>Über den Kalender-Import. Die App liest den Kalender ein, der auf deinem
+          Gerät schon vorhanden ist – etwa iCloud oder Google Calendar. Du musst nichts
+          abtippen und nichts exportieren.</p>
         </div>
       </details>
 
       <details class="faq-item reveal reveal-d1">
-        <summary>Kann ich auch mehrere Termine auf einmal schicken?</summary>
+        <summary>Was kostet TerminKompass?</summary>
         <div class="faq-a">
-          <p>Ja. Einen einzelnen Termin, eine ganze Kategorie – etwa alle Schultermine – oder den kompletten Bestand. Du wählst das bei jedem Versand neu.</p>
+          <p>Die App ist kostenlos und erlaubt bis zu 10 Termine. <strong>Alle Funktionen
+          sind dabei</strong>: Mondphasen, Sternzeichen, eigene Terminfarben, eigenes
+          Hintergrundbild, Kalender-Import, Teilen, Widget, Erinnerungen, Backup &amp;
+          CSV-Export, 12 Sprachen und die vier Designs.</p>
+          <p>Die Pro-Version hebt einzig das Limit auf – für <strong>unbegrenzt viele
+          Termine und Bereiche</strong>. <strong>Kein Abo</strong> – einmal kaufen, fertig.</p>
         </div>
       </details>
 
       <details class="faq-item reveal reveal-d2">
-        <summary>Werden Änderungen automatisch übertragen?</summary>
+        <summary>Wo werden meine Termine gespeichert?</summary>
         <div class="faq-a">
-          <p>Nein. Änderst du einen Termin später, musst du ihn erneut schicken. Für einen Kalender, in dem Änderungen sofort bei allen ankommen, ist ein gemeinsamer Cloud-Kalender die passendere Lösung.</p>
+          <p>Ausschließlich auf deinem Gerät. Es gibt keinen Server, auf den etwas
+          übertragen wird, und ich als Entwickler sehe deine Termine nicht. Auch die
+          Erinnerungen werden lokal ausgelöst.</p>
         </div>
       </details>
 
       <details class="faq-item reveal reveal-d3">
-        <summary>Liegen meine Termine dabei irgendwo in der Cloud?</summary>
+        <summary>Was passiert bei einem Gerätewechsel?</summary>
         <div class="faq-a">
-          <p>Nein. Sie bleiben auf deinem Gerät. Beim Teilen geht genau das raus, was du ausgewählt hast – über die App, die du zum Verschicken nutzt. Es gibt keinen Server, auf dem dein Kalender liegt.</p>
+          <p>Weil nichts in einer Cloud liegt, wandern die Termine nicht von selbst mit.
+          Mit der kostenlosen Sicherungsfunktion überträgst du deinen Bestand aufs
+          neue Gerät. Alternativ kannst du dir deine Termine über die Teilen-Funktion
+          selbst schicken.</p>
+          <p>Das ist die Kehrseite des Verzichts auf ein Konto – erwähnt sei es
+          trotzdem, damit es dich nicht überrascht.</p>
         </div>
       </details>
 
       <details class="faq-item reveal reveal-d4">
-        <summary>Was kostet das?</summary>
+        <summary>Gibt es die App für iPhone und Android?</summary>
         <div class="faq-a">
-          <p>TerminKompass ist kostenlos und erlaubt bis zu 10 Termine. Das Teilen zwischen Android und iPhone ist in der kostenlosen Version enthalten. Die Pro-Version hebt das Limit auf und ist ein Einmalkauf, kein Abo.</p>
+          <p>Ja, für beide. Im App Store und bei Google Play, mit demselben
+          Funktionsumfang. Die Oberfläche gibt es in 12 Sprachen, darunter Deutsch,
+          Englisch, Französisch, Spanisch, Polnisch, Türkisch und Arabisch.</p>
         </div>
       </details>
 
@@ -1317,10 +1505,23 @@ footer {
   </div>
 </section>
 
+<section class="presse-sec">
+  <div class="presse-inner">
+    <p class="section-eyebrow reveal">Im Test</p>
+    <h2 class="section-h2 reveal reveal-d1">Was andere sagen.</h2>
+    <a href="https://www.android-user.de/terminkompass-terminplaner-fuer-android/" target="_blank" rel="noopener" class="presse-card reveal reveal-d2" style="margin-top:22px;">
+      <img src="../assets/presse/android-user-logo.png" alt="Android User" class="presse-logo" width="440" height="132" loading="lazy">
+      <p class="presse-zitat">„Die App ist übersichtlich aufgebaut und lässt sich einfach bedienen."</p>
+      <p class="presse-quelle">Sarah Lindow-Zechmeister, Android User – ausführlicher Testbericht mit Screenshots, Juli 2026</p>
+      <span class="presse-more">Testbericht lesen →</span>
+    </a>
+  </div>
+</section>
+
 <div class="cta-wrap reveal">
   <div class="cta-card">
-    <h2 class="cta-h">Termin schicken<br>statt erklären.</h2>
-    <p class="cta-sub">Kostenlos starten. Kein Konto, keine Einrichtung.</p>
+    <h2 class="cta-h">Jetzt kostenlos<br>ausprobieren.</h2>
+    <p class="cta-sub">Kein Konto. Keine Cloud. Einfach starten.</p>
     <div class="cta-badges" id="cta-badges">
       <a href="https://apps.apple.com/de/app/terminkompass/id6771828426"
          class="store-btn" id="cta-ios" data-store="ios">
@@ -1338,20 +1539,17 @@ footer {
 
 <section class="more-apps">
   <div style="max-width:540px;margin:0 auto;">
-    <p class="section-eyebrow reveal">Mehr zur App</p>
-    <h2 class="section-h2 reveal reveal-d1">Alles über<br>TerminKompass.</h2>
-    <div class="more-grid">
-      <a href="../terminkompass/" class="m-card reveal reveal-d2">
-        <div class="m-icon"><img src="../assets/terminkompass/icon-opt.png" alt="TerminKompass" style="width:100%;height:100%;object-fit:cover;"></div>
-        <div class="m-name">TerminKompass</div>
-        <div class="m-desc">Alle Funktionen, Screenshots und Preise</div>
-        <span class="m-badge">Zur App-Seite</span>
+    <p class="section-eyebrow reveal">MW_Apps</p>
+    <h2 class="section-h2 reveal reveal-d1">Weitere Apps.</h2>
+    <div class="more-grid" style="grid-template-columns:repeat(auto-fill,minmax(140px,1fr));">
+      <a href="../jobtrace/" class="m-card reveal reveal-d2">
+        <div class="m-icon" style="padding:0;overflow:hidden;"><img src="../assets/app-icon-v5.png" alt="JobTrace" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
+        <div><div class="m-name">JobTrace</div><div class="m-desc">Zeiterfassung für Handwerker &amp; Außendienst</div></div>
       </a>
-      <a href="../" class="m-card reveal reveal-d3">
-        <div class="m-icon"><img src="../assets/mwapps-logo.jpg" alt="MW_Apps" style="width:100%;height:100%;object-fit:cover;"></div>
-        <div class="m-name">MW_Apps</div>
-        <div class="m-desc">Alle Apps im Überblick</div>
-        <span class="m-badge">Startseite</span>
+      <a href="../itemshark/" class="m-card reveal reveal-d4">
+        <div class="m-icon" style="padding:0;overflow:hidden;"><img src="../assets/itemshark-icon-opt.png" alt="ItemShark" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
+        <div><div class="m-name">ItemShark</div><div class="m-desc">Dein persönlicher Deal-Tracker</div></div>
+        <span class="m-badge">Im Store</span>
       </a>
     </div>
   </div>
@@ -1370,7 +1568,6 @@ footer {
     <span class="footer-social">
       <a href="https://www.instagram.com/mw_apps/" class="social-link" target="_blank" rel="me noopener" aria-label="MW_Apps auf Instagram"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
       <a href="https://www.facebook.com/profile.php?id=61579544686113" class="social-link" target="_blank" rel="me noopener" aria-label="MW_Apps auf Facebook"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.45 2.89h-2.33v6.99A10 10 0 0 0 22 12z"/></svg></a>
-<a href="https://www.tiktok.com/@mw_apps" class="social-link" target="_blank" rel="me noopener" aria-label="MW_Apps auf TikTok"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 0 1 0-5.18c.27 0 .53.04.77.12v-3.2a5.76 5.76 0 0 0-.77-.05A5.78 5.78 0 0 0 4.08 15.4a5.78 5.78 0 0 0 5.78 5.78 5.78 5.78 0 0 0 5.78-5.78V9.01a7.35 7.35 0 0 0 4.29 1.38V7.3a4.29 4.29 0 0 1-3.33-1.48z"/></svg></a>
     </span>
     <span class="footer-copy">© 2026 MW_Apps</span>
   </div>
