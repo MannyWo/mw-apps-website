@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c5cff'/%3E%3Ctext x='16' y='23' font-family='Arial' font-size='20' font-weight='bold' fill='white' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
+<title>Datenschutz – Follevo</title>
+<meta name="description" content="Datenschutzerklärung für die App Follevo und die Follevo-Informationsseiten unter mw-app.de/follevo/.">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+--acc:#7c5cff;--acc2:#d94fb0;--dark:#0d0a1a;--panel:#f7f6fc;
+--border:#e7e3f2;--text:#16131f;--muted:#6a6680;--line:#efedf6;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',system-ui,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background:#fff;color:var(--text);overflow-x:hidden;padding-bottom:env(safe-area-inset-bottom);line-height:1.6}
+a{color:var(--acc)}
+img{max-width:100%;display:block}
+
+.topbar{background:var(--dark);position:relative;z-index:3}
+.topbar-inner{max-width:680px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 22px}
+.brand{display:inline-flex;align-items:center;gap:9px;text-decoration:none}
+.brand-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:17px;letter-spacing:-.02em}
+.brand-word{color:#fff;font-weight:800;font-size:16px;letter-spacing:-.01em}
+.topbar-tag{font-size:12px;font-weight:600;color:rgba(255,255,255,.5)}
+
+.hero{position:relative;background:var(--dark);overflow:hidden;text-align:center}
+.bokeh{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.bokeh span{position:absolute;border-radius:50%;filter:blur(45px);animation:drift 9s linear infinite alternate;will-change:transform}
+.bokeh .b1{width:260px;height:260px;background:rgba(124,92,255,.5);top:-70px;left:-50px}
+.bokeh .b2{width:210px;height:210px;background:rgba(217,79,176,.4);bottom:-40px;right:-40px;animation-duration:12s;animation-delay:-4s}
+.bokeh .b3{width:150px;height:150px;background:rgba(90,140,255,.28);top:40%;right:18%;animation-duration:7s;animation-delay:-2s}
+@keyframes drift{from{transform:translateZ(0) scale(1)}to{transform:translateY(-36px) scale(1.12)}}
+.hero-body{position:relative;z-index:2;max-width:680px;margin:0 auto;padding:56px 22px 60px}
+.hero-word{font-size:clamp(40px,12vw,68px);font-weight:900;letter-spacing:-.045em;line-height:1;background:linear-gradient(120deg,#fff 30%,#e5ddff 70%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:fadeUp .5s .1s ease both}
+.hero-sub{margin-top:16px;font-size:clamp(17px,4.5vw,22px);font-weight:600;color:rgba(255,255,255,.72);letter-spacing:-.01em;line-height:1.35;animation:fadeUp .5s .2s ease both}
+.hero-pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:22px;animation:fadeUp .5s .3s ease both}
+.pill{font-size:12.5px;font-weight:600;color:rgba(255,255,255,.72);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);padding:6px 13px;border-radius:100px}
+
+.pagehead{background:var(--dark);position:relative;overflow:hidden}
+.pagehead-inner{position:relative;z-index:2;max-width:680px;margin:0 auto;padding:40px 22px 42px}
+.pagehead h1{color:#fff;font-size:clamp(26px,6.5vw,38px);font-weight:900;letter-spacing:-.03em;line-height:1.12}
+.pagehead .lead{margin-top:12px;color:rgba(255,255,255,.6);font-size:15px}
+
+main{max-width:680px;margin:0 auto;padding:44px 22px 8px}
+.content h1{font-size:clamp(26px,6vw,34px);font-weight:900;letter-spacing:-.03em;line-height:1.15;margin:0 0 8px}
+.content h2{font-size:21px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin:38px 0 12px;padding-top:22px;border-top:1px solid var(--line);color:var(--text)}
+.content h2:first-of-type{border-top:none;padding-top:0;margin-top:26px}
+.content h3{font-size:16px;font-weight:800;margin:22px 0 8px}
+.content p{margin:0 0 15px;color:#2c2838;font-size:15.5px}
+.content ul,.content ol{margin:0 0 16px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:9px}
+.content ul li{position:relative;padding-left:26px;font-size:15.5px;color:#2c2838;line-height:1.55}
+.content ul li::before{content:'';position:absolute;left:6px;top:10px;width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,var(--acc),var(--acc2))}
+.content ol{counter-reset:step}
+.content ol li{position:relative;padding-left:38px;font-size:15.5px;color:#2c2838;counter-increment:step;line-height:1.55}
+.content ol li::before{content:counter(step);position:absolute;left:0;top:1px;width:26px;height:26px;border-radius:50%;background:var(--panel);border:1px solid var(--border);color:var(--acc);font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.content a{color:var(--acc);text-decoration:underline;text-underline-offset:2px;text-decoration-color:rgba(124,92,255,.4);word-break:break-word}
+.content a:hover{text-decoration-color:var(--acc)}
+.content strong{font-weight:800;color:var(--text)}
+.content .stand{display:inline-block;font-size:13px;font-weight:600;color:var(--muted);background:var(--panel);border:1px solid var(--border);padding:5px 12px;border-radius:100px;margin-bottom:20px}
+
+.contactcard{margin:30px 0 6px;background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:22px 20px}
+.contactcard .cc-h{font-size:15px;font-weight:800;margin-bottom:6px}
+.contactcard p{font-size:14.5px;color:#2c2838;margin:0}
+
+footer{border-top:1px solid var(--line);margin-top:40px;padding:26px 22px calc(28px + env(safe-area-inset-bottom))}
+.footer-inner{max-width:680px;margin:0 auto}
+.footer-nav{display:flex;flex-wrap:wrap;gap:8px 20px;margin-bottom:16px}
+.footer-nav a{font-size:13.5px;font-weight:600;color:var(--muted);text-decoration:none}
+.footer-nav a:hover{color:var(--acc)}
+.footer-nav a[aria-current]{color:var(--text)}
+.footer-note{font-size:12.5px;color:var(--muted);line-height:1.6}
+.footer-brand{display:inline-flex;align-items:center;gap:8px;margin-bottom:12px}
+.footer-brand .brand-mark{width:24px;height:24px;border-radius:7px;font-size:14px}
+.footer-brand .fb-word{font-weight:800;font-size:14px;color:var(--text)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.bokeh span{animation:none}.hero-word,.hero-sub,.hero-pills{animation:none}}
+</style>
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="/follevo/"><span class="brand-mark">F</span><span class="brand-word">Follevo</span></a>
+<span class="topbar-tag">Geschlossener Test</span>
+</div>
+</header>
+<section class="pagehead">
+<div class="bokeh"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+<div class="pagehead-inner"><h1>Datenschutzerklärung für Follevo</h1></div>
+</section>
+<main>
+<div class="content">
+<p class="stand">Stand: 18. September 2026</p>
+<p>Diese Datenschutzerklärung erläutert die Verarbeitung personenbezogener Daten in der App Follevo und auf den Follevo-Informationsseiten unter `mw-app.de/follevo/`. Follevo befindet sich derzeit im geschlossenen Testbetrieb.</p>
+<h2>1. Verantwortlicher und Kontakt</h2>
+<p>Manfred Wolf, MW_Apps</p>
+<p>Hammerstr 2</p>
+<p>91466 Gerhardshofen</p>
+<p>Deutschland</p>
+<p>E-Mail: <a href="mailto:mw_apps@gmx.de">mw_apps@gmx.de</a></p>
+<p>Du kannst diese Adresse auch für Datenschutzfragen und zur Ausübung deiner Rechte verwenden. Bitte übermittle keine Passwörter, Zugriffsschlüssel oder Sitzungscookies.</p>
+<h2>2. Verbindung mit Instagram</h2>
+<p>Wenn du ein freigeschaltetes professionelles Instagram-Konto verbindest, erfolgt die Anmeldung bei Instagram. Follevo erhält die zur Zuordnung erforderlichen Kontokennungen und einen Zugriffsschlüssel für die von dir freigegebenen Daten. Dein Instagram-Passwort wird nicht an unseren Auswertungsserver übermittelt.</p>
+<p>Die Daten stammen von dem verbundenen Instagram-Konto und den von Meta dafür bereitgestellten Schnittstellen. Kommentar-Metadaten stammen aus Reaktionen auf Beiträge dieses Kontos und werden nicht unmittelbar bei den kommentierenden Personen erhoben. Bereits vorhandene ältere Beiträge und zugängliche Kommentar-Metadaten können schrittweise eingelesen werden. Die Verarbeitung beginnt nicht ausschließlich mit Beiträgen, die nach der Installation entstanden sind. Im derzeitigen Betreiber-Pilot wird das eigene professionelle Konto von MW_Apps ausgewertet; es handelt sich noch nicht um einen öffentlich zugänglichen Analysedienst für beliebige fremde Konten.</p>
+<p>Ohne Verbindung steht in der App ein ausdrücklich gekennzeichneter Beispielmodus mit fiktiven Daten zur Verfügung.</p>
+<h2>3. Welche Daten zu welchem Zweck verarbeitet werden</h2>
+<p><strong>Kontozuordnung und Entwicklung:</strong> Instagram-Kennung, Benutzername, Anzeigename, Kontotyp sowie verfügbare Follower- und Following-Anzahlen. Damit ordnen wir die Verbindung deinem Konto zu und stellen dessen Entwicklung dar.</p>
+<p><strong>Eigene Beiträge und Auswertungen:</strong> Beitragskennungen, Beschreibungen einschließlich Hashtags, Medientyp, Veröffentlichungszeit, Original-Link sowie verfügbare Reichweiten-, Aufruf- und Interaktionswerte. Je nach Verfügbarkeit gehören dazu Likes, Kommentaranzahlen, gespeicherte und geteilte Inhalte, Wiedergabezeiten, Überspringraten und über Beiträge erzielte Profilbesuche oder Follows. Daraus entstehen Vergleiche deiner Inhalte, Formate, Hashtags und Veröffentlichungszeiten.</p>
+<p><strong>Zusammengefasste Kontostatistiken:</strong> Soweit Instagram sie bereitstellt, werden Konto-Reichweite, Aufrufe, Interaktionen, Profilaktionen, Zu- und Abgänge als Anzahl sowie Zielgruppenverteilungen nach Altersgruppen, Geschlecht, Ländern und Städten verarbeitet. Diese Verteilungen stammen als Gruppenstatistiken von Instagram; Follevo ordnet daraus einzelnen Followern weder Alter noch Geschlecht oder Wohnort zu.</p>
+<p><strong>Kommentar-Metadaten:</strong> Soweit von Instagram geliefert, verarbeiten wir Kommentar- und Beitragskennungen, Kennung und Benutzername der kommentierenden Person, Zeitpunkt sowie die Zuordnung von Antworten. Zweck ist die Darstellung der Häufigkeit und Verteilung von Kommentaren zum verbundenen Konto. Wir speichern dafür keine Kommentartexte und keine privaten Nachrichten. Aus einem Kommentar wird nicht abgeleitet, dass die Person dem Konto folgt. Im aktuellen Test werden trotz vorhandener Zähler noch keine Kommentarlisten geliefert.</p>
+<p><strong>Sicherer Betrieb:</strong> Zugriffsschlüssel, Follevo-Sitzungen, zeitlich begrenzte Anmeldevorgänge sowie Angaben für Anfragebegrenzung, Aktualisierung, Widerruf und Löschung. Die Serveranbieter verarbeiten außerdem technische Verbindungsdaten, beispielsweise IP-Adresse, Aufrufzeit, angefragte Adresse und Antwortstatus.</p>
+<p>Wir verkaufen diese Daten nicht und verwenden sie nicht für Werbeprofile. In der aktuellen App sind keine Werbe- oder Analyse-Tracking-SDKs eingebunden. Es erfolgen keine automatisierten Entscheidungen mit rechtlicher oder ähnlich erheblicher Wirkung über Personen. Kommentarhäufigkeiten beschreiben beobachtete Aktivität, keine Persönlichkeit oder sensiblen Eigenschaften.</p>
+<h2>4. Rechtsgrundlagen</h2>
+<p>Die zur angeforderten Bereitstellung der App erforderliche Verarbeitung deiner Konto- und Verbindungsdaten erfolgt zur Erfüllung des Nutzungsverhältnisses nach Art. 6 Abs. 1 Buchst. b DSGVO. Ohne die dafür notwendigen Daten können wir dein echtes Konto nicht verbinden und auswerten.</p>
+<p>Soweit der Betreiber sein eigenes professionelles Konto im Pilot auswertet, dient dies der Erprobung und Verbesserung des eigenen Angebots auf Grundlage von Art. 6 Abs. 1 Buchst. f DSGVO; ein Vertrag des Betreibers mit sich selbst wird dafür nicht vorausgesetzt.</p>
+<p>Die technisch erforderliche Bereitstellung der Informationsseiten und der Schutz vor Missbrauch beruhen auf unserem berechtigten Interesse an einem sicheren und funktionsfähigen Angebot nach Art. 6 Abs. 1 Buchst. f DSGVO. Zur Erfüllung gesetzlicher Pflichten, insbesondere der Bearbeitung von Datenschutzrechten, ist Art. 6 Abs. 1 Buchst. c DSGVO maßgeblich. Anfragen zur Nutzung bearbeiten wir nach Art. 6 Abs. 1 Buchst. b DSGVO; sonstige Anfragen auf Grundlage unseres berechtigten Interesses an der Beantwortung nach Buchst. f.</p>
+<p>Für die begrenzte Auswertung von Kommentar-Metadaten zum eigenen MW_Apps-Konto im Betreiber-Pilot ist Art. 6 Abs. 1 Buchst. f DSGVO die zugrunde gelegte Rechtsgrundlage. Unser Interesse besteht darin, wiederkehrende Reaktionen auf unsere eigenen Veröffentlichungen zu verstehen und die zugehörige Auswertung zu prüfen. Dazu werden nur zuordenbare Kennungen, Benutzernamen, Zeitpunkte und Beitragsbezüge verwendet. Die Ergebnisse bleiben beim Betreiber des kommentierten Kontos. Es werden keine kontoübergreifenden Personenprofile, Werbezielgruppen oder Bewertungen sensibler Eigenschaften erstellt. Betroffene Personen können der Verarbeitung aus Gründen ihrer besonderen Situation widersprechen. Die Zustimmung des Instagram-Kontoinhabers wird nicht als Einwilligung anderer kommentierender Personen behandelt.</p>
+<h2>5. Speicherort, Empfänger und Zugriff</h2>
+<p>Der Auswertungsdienst nutzt Google Cloud Functions und Cloud Firestore in der Region Frankfurt. Zugangsschlüssel und Statistikbestände werden zusätzlich verschlüsselt gespeichert. Die Übertragung zum Backend erfolgt verschlüsselt über HTTPS. Die Zuordnung erfolgt anhand stabiler Konto- und Nutzerkennungen, nicht allein anhand veränderbarer Benutzernamen. App-Nutzer erhalten nur Zugriff auf die ihrem verbundenen Konto zugeordneten Bestände.</p>
+<p>Berechtigte Betreiber und Dienstadministratoren können technisch Zugriff haben. Die Verschlüsselung schließt den Betreiber nicht grundsätzlich aus. Ein Zugriff ist auf erforderliche Betriebs-, Sicherheits- und begründete Supportzwecke zu beschränken. Auswertungen werden nicht anderen App-Nutzern oder Website-Besuchern öffentlich angezeigt.</p>
+<p>Google/Firebase verarbeitet Daten für den technischen Betrieb. Instagram/Meta verarbeitet Daten bei Anmeldung, Freigabe und Schnittstellenabrufen nach den dortigen Bedingungen. Beim Öffnen eines Original-Links gelten die Datenschutzinformationen von Instagram. Informationen dazu: <a href="https://privacycenter.instagram.com/policy/" rel="noopener noreferrer">Instagram-Datenschutzrichtlinie</a>.</p>
+<p>Für die Google-Cloud-Dienste ist nach der veröffentlichten Anbieterzuordnung bei einem deutschen Rechnungssitz Google Cloud EMEA Limited, Irland, vorgesehen. An der Bereitstellung sind auch verbundene Unternehmen und Unterauftragnehmer beteiligt, darunter Google LLC, USA. Für Firestore und Cloud Functions sehen die Standardbedingungen das <a href="https://cloud.google.com/terms/data-processing-addendum" rel="noopener noreferrer">Cloud Data Processing Addendum</a> vor; Firebase Hosting unterliegt den <a href="https://firebase.google.com/terms/data-processing-terms" rel="noopener noreferrer">Firebase-Datenverarbeitungsbedingungen</a>. Die Zuordnung der Dienste ist in der <a href="https://firebase.google.com/terms" rel="noopener noreferrer">Firebase-Vertragsübersicht</a> erläutert.</p>
+<p>Der Datenbankstandort Frankfurt bedeutet nicht, dass alle beteiligten Dienste sämtliche Daten ausschließlich in Deutschland verarbeiten. Bei internationalen Übermittlungen sehen Googles Bedingungen anwendbare Angemessenheitsregelungen und, soweit erforderlich, EU-Standardvertragsklauseln vor. Einzelheiten und die Klauseltexte sind über die oben verlinkten Datenverarbeitungsbedingungen zugänglich. Google erläutert die Nutzung des EU-US Data Privacy Framework in seinen <a href="https://firebase.google.com/support/privacy" rel="noopener noreferrer">Datenschutzinformationen</a>. Eine Kopie der einschlägigen Garantien kann auch über unseren Datenschutzkontakt angefragt werden.</p>
+<h2>6. Die Follevo-Website</h2>
+<p>Die Informationsseiten unter `mw-app.de/follevo/` werden über GitHub Pages bereitgestellt. GitHub verarbeitet beim Seitenaufruf technische Verbindungsdaten, darunter die IP-Adresse, für die Auslieferung und Sicherheit des Dienstes. Anbieter ist GitHub, Inc., USA. GitHub beschreibt für internationale Übermittlungen insbesondere EU-Standardvertragsklauseln und seine Teilnahme am EU-US Data Privacy Framework. Informationen und Kontaktmöglichkeiten für Auskünfte zu den Garantien stehen in der <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener noreferrer">GitHub-Datenschutzerklärung</a>. Auf GitHubs eigene technischen Protokolle haben wir keine individuelle Löschsteuerung. Deren Aufbewahrung richtet sich nach den dort genannten Betriebs-, Sicherheits- und gesetzlichen Zwecken; eine einheitliche feste Frist für Pages-Besucherdaten wird dort nicht zugesagt.</p>
+<p>Wir binden auf diesen Follevo-Seiten keine Besucheranalyse, Werbe-Pixel, Social-Media-Einbettungen oder extern geladenen Schriftarten ein und setzen dort selbst keine Cookies. Bei einer Kontaktaufnahme per E-Mail verarbeiten wir deine Absenderadresse, den Inhalt und gegebenenfalls mitgesendete Angaben zur Bearbeitung der Anfrage. E-Mails werden über unser GMX-Postfach empfangen. Anbieter ist die 1&amp;1 Mail &amp; Media GmbH, Deutschland; sie verarbeitet die erforderlichen Nachrichten- und Verbindungsdaten. Weitere Informationen: <a href="https://agb-server.gmx.net/datenschutz" rel="noopener noreferrer">GMX-Datenschutz</a>.</p>
+<p>GitHub enthält nur die öffentlichen Website-Dateien, keine Instagram-Zugriffsschlüssel, Followerlisten, persönlichen Auswertungen oder Datenbankbestände. Der technische App-Zugang und bisherige Hilfsseiten nutzen zusätzlich Firebase Hosting. Dieser Dienst verarbeitet ebenfalls technische Verbindungsdaten; Google nennt für dortige IP-Daten eine Aufbewahrung von einigen Monaten.</p>
+<h2>7. Speicherdauer und Löschung</h2>
+<p>Profil-, Beitrags-, Statistik- und gegebenenfalls Kommentarbestände werden während der bestehenden Verbindung für die Auswertungen gespeichert, bis die Verbindung gelöscht wird. Der Verlauf der Followeranzahl umfasst höchstens 365 tägliche Messpunkte. Verbindungen mit seit mindestens 30 Tagen abgelaufener Instagram-Freigabe werden durch die regelmäßige Wartung entfernt.</p>
+<p>Follevo-Sitzungen gelten 30 Tage, offene Anmeldevorgänge zehn Minuten und einmalige Übergabetickets zwei Minuten. Die Bereinigung abgelaufener Einträge erfolgt regelmäßig. Nach der Kontolöschung verbleiben zum Schutz vor verspäteten und wiederholten Vorgängen begrenzte Löschbelege und Wiederholungssperren für 30 Tage. Diese enthalten keine Profil- oder Statistikwerte. Das technische Versionsfenster der Datenbank beträgt nach dem aktuellen Betriebsstand eine Stunde; zusätzliche dauerhafte Datenbankbackups sind nicht eingerichtet.</p>
+<p>Gewöhnliche Betriebsprotokolle in unserem Google-Cloud-Projekt werden <strong>30 Tage</strong> aufbewahrt. Für die von Google verpflichtend vorgehaltenen Verwaltungs- und Systemereignisprotokolle ist eine Aufbewahrung von <strong>400 Tagen</strong> eingerichtet. Diese zweite Frist bezeichnet keine zusätzliche 400-tägige Speicherung deiner Statistik- oder Kommentarlisten. Die Protokollspeicher haben die Google-Standortzuordnung „global“, keine zugesicherte Beschränkung auf Frankfurt. Die Protokollierung von Anmelde-Rückrufadressen mit deren Übergabeparametern ist im Projekt ausgeschlossen.</p>
+<p>Bei einer Kontaktanfrage löschen wir die Nachricht, sobald das Anliegen abschließend erledigt ist und keine weitere zweckgebundene Aufbewahrung benötigt wird. Erfordern gesetzliche Aufbewahrungspflichten oder die Geltendmachung, Ausübung oder Verteidigung konkreter Rechtsansprüche eine längere Speicherung, beschränken wir diese auf die dafür erforderlichen Daten und die jeweilige Frist. Eine unbegrenzte Aufbewahrung sämtlicher Support-E-Mails ist nicht vorgesehen.</p>
+<p>Die Löschung aus unseren aktiven App-Beständen ist von der technischen Entfernung aus den Systemen der Anbieter zu unterscheiden. Googles Datenverarbeitungsbedingungen sehen für die endgültige Entfernung gelöschter Kundendaten grundsätzlich einen maximalen Zeitraum von <strong>180 Tagen</strong> vor, soweit keine rechtlich vorgeschriebene Aufbewahrung entgegensteht. Diese Anbieterfrist ist nicht das einstündige Versionsfenster unserer aktiven Datenbank. Die getrennten Fristen für Betriebsprotokolle bleiben davon zu unterscheiden.</p>
+<p>Unter <strong>Konto → App-Daten löschen</strong> kannst du die aktiven gespeicherten Daten deiner Follevo-Verbindung entfernen. Damit werden weitere Abrufe dieser Verbindung beendet. Die Originaldaten bei Instagram bleiben bestehen. <strong>Abmelden allein löscht die Serverdaten nicht und beendet die automatische Aktualisierung nicht.</strong> Die vollständige Anleitung und ein Kontaktweg ohne App-Zugriff stehen unter <a href="/follevo/daten-loeschen/">Daten löschen</a>.</p>
+<h2>8. Daten auf deinem Gerät und Exporte</h2>
+<p>Deine App-Sitzung wird in der geschützten Sitzungsablage des Geräts aufbewahrt. Ideen und Notizen liegen lokal. Wenn du freiwillig einen CSV-Bericht exportierst, bestimmst du im Teilen-Dialog dessen Ziel. Die weitere Aufbewahrung richtet sich nach dem gewählten Speicherort. Bereits exportierte Dateien werden durch die Löschung deiner Follevo-Verbindung nicht automatisch entfernt.</p>
+<p>Das für die ausdrücklich gewünschte Anmeldung und die von dir verwendeten lokalen Speicherfunktionen erforderliche Speichern und Auslesen auf deinem Gerät erfolgt nach § 25 Abs. 2 Nr. 2 TDDDG. Diese Ausnahme wird nicht für Werbung oder sonstiges optionales Tracking genutzt.</p>
+<h2>9. Deine Rechte</h2>
+<p>Unter den gesetzlichen Voraussetzungen kannst du Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Datenübertragbarkeit verlangen. Soweit eine Verarbeitung auf Einwilligung beruht, kannst du diese jederzeit für die Zukunft widerrufen.</p>
+<p><strong>Bei Verarbeitung auf Grundlage berechtigter Interessen kannst du aus Gründen, die sich aus deiner besonderen Situation ergeben, Widerspruch einlegen.</strong> Schreibe dafür an <a href="mailto:mw_apps@gmx.de">mw_apps@gmx.de</a>.</p>
+<p>Diese Rechte und der Kontaktweg gelten auch für kommentierende Personen ohne eigenes Follevo-Konto. Bitte nenne das betroffene Profil und, soweit möglich, den Zusammenhang mit dem kommentierten Konto oder Beitrag. Zur sicheren Zuordnung können angemessene zusätzliche Nachweise erforderlich sein. Passwörter oder Zugriffsschlüssel sind dafür nicht nötig. Wir beantworten Rechteanfragen grundsätzlich innerhalb eines Monats; über eine gesetzlich zulässige Verlängerung und deren Gründe informieren wir innerhalb dieser Frist.</p>
+<p>Du kannst dich bei einer Datenschutzaufsichtsbehörde beschweren, insbesondere am Ort deines gewöhnlichen Aufenthalts, Arbeitsplatzes oder des vermuteten Verstoßes. Für private Unternehmen in Bayern ist das <a href="https://www.lda.bayern.de/de/kontakt.html" rel="noopener noreferrer">Bayerische Landesamt für Datenschutzaufsicht</a> eine zuständige Anlaufstelle.</p>
+<h2>10. Noch nicht aktivierte Funktionen</h2>
+<p>Der fremde Creator-/Reel-Radar ist im aktuellen Cloudbetrieb nicht freigeschaltet. Der experimentelle private Follower-Test ist im regulären App-Build nicht zugänglich. Diese Erklärung behauptet weder den Betrieb dieser Funktionen noch einen vollständigen Abruf von Followernamen. Vor zusätzlichen Datenverarbeitungen werden Umfang, Voraussetzungen und Datenschutzhinweise entsprechend geprüft und angepasst.</p>
+</div>
+
+</main>
+<footer>
+<div class="footer-inner">
+<div class="footer-brand"><span class="brand-mark">F</span><span class="fb-word">Follevo</span></div>
+<nav class="footer-nav"><a href="/follevo/">Follevo</a><a href="/follevo/datenschutz/" aria-current="page">Datenschutz</a><a href="/follevo/daten-loeschen/">Daten löschen</a><a href="/follevo/impressum/">Impressum</a><a href="/follevo/nutzung/">Nutzungshinweise</a></nav>
+<p class="footer-note">Follevo ist ein eigenständiges Angebot von MW_Apps und wird nicht von Instagram oder Meta angeboten.</p>
+</div>
+</footer>
+</body>
+</html>
