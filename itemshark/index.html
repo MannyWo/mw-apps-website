@@ -289,6 +289,13 @@ img { max-width: 100%; display: block; }
   background: rgba(37,99,235,.12); color: var(--blue); border: 1px solid rgba(37,99,235,.2);
 }
 .tok-card.tok-popular .tok-chip { background: rgba(255,255,255,.2); color: #fff; border-color: transparent; }
+.tok-price { font-size: 13px; font-weight: 800; color: var(--blue); margin-top: 8px; }
+.tok-card.tok-popular .tok-price { color: #fff; }
+.tok-note { font-size: 11px; color: var(--muted); margin-top: 16px; line-height: 1.55; text-align: center; }
+.p-price { font-size: 24px; font-weight: 900; letter-spacing: -.02em; margin: 2px 0 12px; color: var(--text); }
+.p-price small { font-size: 12px; font-weight: 700; color: var(--muted); }
+.p-tile.pro .p-price { color: #fff; }
+.p-tile.pro .p-price small { color: rgba(255,255,255,.6); }
 
 .hype-section {
   background: var(--cream);
@@ -897,24 +904,32 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
       <div class="tok-card">
         <div class="tok-num">10</div>
         <div class="tok-unit">Scans</div>
+        <div class="tok-price">ca. 0,99 €</div>
         <div class="tok-chip">Starter</div>
       </div>
       <div class="tok-card tok-popular">
         <div class="tok-num">30</div>
         <div class="tok-unit">Scans</div>
+        <div class="tok-price">ca. 2,99 €</div>
         <div class="tok-chip">Beliebt</div>
       </div>
       <div class="tok-card">
         <div class="tok-num">60</div>
         <div class="tok-unit">Scans</div>
+        <div class="tok-price">ca. 5,99 €</div>
         <div class="tok-chip">Power</div>
       </div>
       <div class="tok-card">
         <div class="tok-num">100</div>
         <div class="tok-unit">Scans</div>
+        <div class="tok-price">ca. 9,99 €</div>
         <div class="tok-chip">Mega</div>
       </div>
     </div>
+    <p class="tok-note reveal reveal-d4">
+      1 Token = 1 KI-Scan. Preise inkl. MwSt. Die angezeigten Beträge sind Richtwerte;
+      in den App-Stores wird der aktuelle Preis in deiner Landeswährung angezeigt und ist verbindlich.
+    </p>
   </div>
 </section>
 
@@ -1122,6 +1137,7 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
       <div class="p-tile free reveal reveal-d2">
         <span class="p-badge">Kostenlos</span>
         <div class="p-head">Zum Starten</div>
+        <div class="p-price">0 €</div>
         <ul class="p-list">
           <li>20 Sammlungen</li>
           <li>20 Objekte</li>
@@ -1135,6 +1151,7 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
       <div class="p-tile pro reveal reveal-d3">
         <span class="p-badge">Pro</span>
         <div class="p-head">Ohne Limit</div>
+        <div class="p-price">8,99 € <small>einmalig</small></div>
         <ul class="p-list">
           <li>Unbegrenzte Sammlungen</li>
           <li>Unbegrenzte Objekte</li>
