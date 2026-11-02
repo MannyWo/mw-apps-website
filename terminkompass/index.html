@@ -14,10 +14,10 @@
   <link rel="preconnect" href="https://play.google.com">
   <link rel="dns-prefetch" href="https://tools.applemediaservices.com">
   <title>TerminKompass – Terminplaner ohne Konto & Abo | MW_Apps</title>
-  <meta name="description" content="TerminKompass – Terminplaner für iOS und Android. Termine per WhatsApp teilen, Kalender importieren, Geburtstage verwalten. Offline, ohne Konto, ohne Abo.">
+  <meta name="description" content="TerminKompass – Terminplaner für iOS und Android. Offline und ohne Konto nutzbar, mit Pro auf Wunsch Kalender abgleichen und Termine mit Familie teilen. Kein Abo.">
   <link rel="canonical" href="https://mw-app.de/terminkompass/">
   <meta property="og:title" content="TerminKompass – Termine, die du nicht vergisst.">
-  <meta property="og:description" content="Terminplaner für iOS & Android. Termine per WhatsApp teilen – auch zwischen Android und iPhone. Offline. Kein Konto. Kein Abo.">
+  <meta property="og:description" content="Terminplaner für iOS & Android. Offline und ohne Konto – oder gemeinsam mit Familie und Freunden, auch zwischen iPhone und Android. Kein Abo.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mw-app.de/terminkompass/">
   <meta property="og:site_name" content="MW_Apps">
@@ -33,13 +33,13 @@
     "operatingSystem": "iOS, Android",
     "url": "https://mw-app.de/terminkompass/",
     "image": "https://mw-app.de/assets/terminkompass/icon-opt.png",
-    "description": "Terminplaner für iOS und Android. Termine und ganze Kategorien per WhatsApp teilen – plattformübergreifend zwischen Android und iPhone, ohne gemeinsames Konto. Kalender-Import, Geburtstage mit Alter und Sternzeichen, Mondphasen, Home-Screen-Widget. Läuft offline.",
-    "inLanguage": ["de","en","ar","fr","es","pl","ro","ru","tr","uk","id"],
+    "description": "Terminplaner für iOS und Android. Standardmäßig offline und ohne Konto nutzbar. Termine per WhatsApp & Co. teilen, mit Pro zusätzlich Geräte-Kalender abgleichen und ausgewählte Kategorien automatisch mit Familie und Freunden gemeinsam nutzen – auch zwischen iPhone und Android. Geburtstage mit Alter und Sternzeichen, Mondphasen, Home-Screen-Widget.",
+    "inLanguage": ["de","en","ar","fr","es","pl","ro","ru","tr","uk","id","zh"],
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "EUR",
-      "description": "Kostenlose Version verfügbar, Pro-Version als Einmalkauf"
+      "description": "Kostenlose Version verfügbar, Pro-Version als Einmalkauf ohne Abo"
     },
     "author": { "@type": "Organization", "name": "MW_Apps", "url": "https://mw-app.de/" },
     "downloadUrl": [
@@ -56,42 +56,130 @@
       {
         "@type": "Question",
         "name": "Brauche ich ein Konto oder eine Anmeldung?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Nein. Du lädst die App und legst sofort los. Es gibt keine Registrierung, keine E-Mail-Adresse, kein Passwort. Auch nicht für die Pro-Version." }
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Für die normale Nutzung nicht. Du lädst die App und legst sofort los – ohne Registrierung, E-Mail-Adresse oder Passwort. Das gilt auch für die Pro-Version und für den Kalender-Abgleich. Nur wenn du den Partner-Abgleich mit Familie oder Freunden nutzen willst, legst du dafür ein eigenes TerminKompass-Konto mit bestätigter E-Mail-Adresse an."
+        }
       },
       {
         "@type": "Question",
         "name": "Funktioniert TerminKompass ohne Internet?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Ja, vollständig. Termine anlegen, ansehen, bearbeiten und Erinnerungen bekommen läuft auf dem Gerät. Internet brauchst du nur, wenn du einen Termin per WhatsApp verschicken willst." }
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. Termine anlegen, ansehen, bearbeiten und Erinnerungen bekommen – das läuft alles auf dem Gerät. Internet brauchst du nur für einzelne Dinge: zum Verschicken eines Termins per WhatsApp, für den Kauf von Pro und für den Partner-Abgleich, wenn du ihn einschaltest."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Muss ich die neuen Abgleichfunktionen nutzen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nein. Kalender-Abgleich und Partner-Abgleich sind freiwillig und bleiben aus, bis du sie einrichtest. Ein Update schaltet sie nicht ein. Du kannst eine davon nutzen, beide oder keine."
+        }
       },
       {
         "@type": "Question",
         "name": "Kann ich Termine vom Android-Handy aufs iPhone schicken?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Ja, in beide Richtungen. Du wählst einen Termin, eine ganze Kategorie oder alle Termine aus und verschickst sie über WhatsApp oder jede andere App. Der Empfänger tippt einmal, und die Termine landen in seinem TerminKompass. Ein gemeinsames Konto braucht ihr dafür nicht." }
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja, in beide Richtungen – auf zwei Wegen. Einmalig: Du wählst einen Termin, eine Kategorie oder alle Termine aus und verschickst sie über WhatsApp oder jede andere App. Der Empfänger tippt einmal, und die Termine landen in seinem TerminKompass. Dafür braucht niemand ein Konto. Dauerhaft: Mit dem Partner-Abgleich nutzt ihr ausgewählte Kategorien gemeinsam, auch gemischt zwischen iPhone und Android. Dafür brauchen alle Beteiligten Pro und ein eigenes Konto."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Werden dabei alle meine Termine geteilt?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nein. Beim Partner-Abgleich bestimmst du, welche Kategorien du mit wem teilst. Wählst du „alle eigenen Kategorien“, gehören auch Kategorien dazu, die du später neu anlegst. Bei einer neuen Freigabe werden die zukünftigen Termine der Kategorie geteilt, nicht deine vergangenen Einträge."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kommen Änderungen an einer einmal geschickten Kopie an?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nein. Eine per WhatsApp oder einmalig an verbundene Personen geschickte Kopie ist danach unabhängig. Willst du, dass Änderungen bei allen ankommen, nutzt ihr eine gemeinsame Kategorie im Partner-Abgleich."
+        }
       },
       {
         "@type": "Question",
         "name": "Wie bekomme ich meine bestehenden Termine in die App?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Über den Kalender-Import. Die App liest den Kalender ein, der auf deinem Gerät schon vorhanden ist, etwa iCloud oder Google Calendar. Du musst nichts abtippen und nichts exportieren." }
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Über den Kalender-Import. Die App liest einmalig den Kalender ein, der auf deinem Gerät schon vorhanden ist – etwa iCloud oder Google Calendar. Du musst nichts abtippen. Mit Pro kannst du stattdessen den Kalender-Abgleich nutzen: Dann bleiben ausgewählte Kalender und TerminKompass laufend abgeglichen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Welche Kalender werden beim Kalender-Abgleich unterstützt?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Die Kalender, die auf deinem Handy eingerichtet sind und die iOS oder Android anderen Apps zur Verfügung stellt – zum Beispiel iCloud oder Google. Welche das sind, hängt von deiner Geräteeinrichtung ab. Nur lesbare Kalender kannst du übernehmen, aber nicht beschreiben. Einige Termine lassen sich nicht sicher übertragen, etwa komplizierte Serien, Einladungen oder Termine über Nacht; sie bleiben unverändert in ihrem ursprünglichen Kalender."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kommen Änderungen sofort bei den anderen an?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Der Abgleich wird nach dem Speichern automatisch angestoßen, auch im Hintergrund. Wann das tatsächlich passiert, bestimmen aber iOS bzw. Android, Stromsparregeln und die Netzverbindung. Eine sofortige Zustellung kann ich deshalb nicht garantieren. Was du offline änderst, wird übertragen, sobald wieder eine Verbindung besteht."
+        }
       },
       {
         "@type": "Question",
         "name": "Was kostet TerminKompass?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Die App ist kostenlos und erlaubt bis zu 10 Termine. Alle Funktionen sind dabei: Mondphasen, Sternzeichen, eigene Terminfarben, eigenes Hintergrundbild, Kalender-Import, Teilen, Widget, Erinnerungen, Sicherung und CSV-Export, 12 Sprachen und vier Designs. Die Pro-Version hebt einzig das Limit auf – für unbegrenzt viele Termine und Bereiche. Kein Abo, sondern Einmalkauf." }
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Die App ist kostenlos und erlaubt bis zu 10 Termine und 10 Bereiche. Vieles ist schon dabei: Mondphasen, Sternzeichen, eigene Terminfarben, eigenes Hintergrundbild, Kalender-Import, Teilen per Datei, Widget, Erinnerungen, Backup & CSV-Export, 12 Sprachen und die vier Designs. Die Pro-Version hebt das Limit auf und enthält zusätzlich den Kalender-Abgleich. Kein Abo – einmal kaufen, fertig. Pro-Nutzer können außerdem den Partner-Abgleich nutzen – einen eigenen Online-Zusatzdienst, den ich derzeit ohne Aufpreis anbiete."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kostet der automatische Partner-Abgleich extra?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Derzeit nicht. Der automatische Partner-Abgleich wird ohne zusätzliche Gebühren für Nutzer der Pro-Version angeboten. Jeder Teilnehmer benötigt seine eigene Pro-Freischaltung. Ich möchte diesen zusätzlichen Dienst möglichst dauerhaft kostenlos anbieten und werde mich dafür einsetzen. Da sein Betrieb laufende Kosten verursacht, kann ich das jedoch nicht uneingeschränkt garantieren. Sollte ein kostenloser Weiterbetrieb irgendwann nicht mehr möglich sein, informiere ich euch rechtzeitig. Gemeinsam mit den Nutzern möchte ich dann – beispielsweise durch eine Abstimmung – entscheiden, ob der automatische Partner-Abgleich eingestellt oder mit einem kleinen, freiwilligen Abonnement weitergeführt werden soll. Falls es zu einem solchen Abo kommt, gilt es ausschließlich für den automatischen Partner-Abgleich. Diesen Dienst können dann nur noch Personen mit einem eigenen gültigen Abo nutzen. Niemand wird automatisch angemeldet oder zur Zahlung verpflichtet. Dein bestehender Pro-Einmalkauf und die übrigen App-Funktionen bleiben davon unberührt. Dazu gehören die Offline-Nutzung, lokale Erinnerungen, der Kalender-Abgleich und das bisherige manuelle Teilen über Dateien, etwa per WhatsApp. Dafür entsteht durch diese mögliche Änderung keine Abopflicht."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Muss ich später ein Abo abschließen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nein. Dein Pro-Einmalkauf wird nicht automatisch zu einem Abo. Nur falls der automatische Partner-Abgleich künftig kostenpflichtig angeboten wird und du ihn weiter nutzen möchtest, wäre dafür ein eigenes Abo erforderlich. Ohne dieses Abo entfällt dann ausschließlich der Zugang zu diesem automatischen Dienst. Die übrigen bereits erworbenen Pro-Funktionen bleiben nutzbar."
+        }
       },
       {
         "@type": "Question",
         "name": "Wo werden meine Termine gespeichert?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Ausschließlich auf deinem Gerät. Es gibt keinen Server, auf den etwas übertragen wird. Auch die Erinnerungen werden lokal ausgelöst." }
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Auf deinem Gerät. Ohne eingeschalteten Abgleich wird nichts an einen Server übertragen, und ich als Entwickler sehe deine Termine nicht. Die Erinnerungen werden lokal ausgelöst. Mit Kalender-Abgleich stehen deine Termine zusätzlich in den Kalendern, die du ausgewählt hast – deren Konten können sie zu ihrem Anbieter übertragen. Beim Partner-Abgleich werden die freigegebenen Termine Ende-zu-Ende-verschlüsselt über einen Server zugestellt; für Konto, Verbindungen und Zustellung werden dabei technische Daten verarbeitet. Einzelheiten stehen in der Datenschutzerklärung."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was passiert, wenn ich „Online“ wieder ausschalte?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Dann stoppt TerminKompass beide Abgleichdienste. Deine Termine und Erinnerungen bleiben auf dem Gerät und funktionieren wie gewohnt. Ausschalten löscht weder dein Konto noch Kopien, die andere bereits bekommen haben. Das Konto kannst du bei Bedarf gesondert in der App oder unter https://konto.mw-app.de/account/delete löschen."
+        }
       },
       {
         "@type": "Question",
         "name": "Was passiert bei einem Gerätewechsel?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Weil nichts in einer Cloud liegt, wandern die Termine nicht von selbst mit. Mit der kostenlosen Sicherungsfunktion überträgst du deinen Bestand aufs neue Gerät. Alternativ kannst du dir deine Termine über die Teilen-Funktion selbst schicken." }
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Deine Termine überträgst du mit der kostenlosen Sicherungsfunktion aufs neue Gerät. Der Partner-Abgleich ersetzt diese Sicherung nicht – private, nicht geteilte Termine liegen nur auf deinem Handy. Nutzt du den Partner-Abgleich, meldest du dich auf dem neuen Handy an; je nach Fall müssen deine Verbindungen dort neu bestätigt werden."
+        }
       },
       {
         "@type": "Question",
         "name": "Gibt es die App für iPhone und Android?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Ja, für beide. Im App Store und bei Google Play, mit demselben Funktionsumfang. Die Oberfläche gibt es in 12 Sprachen." }
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja, für beide. Im App Store und bei Google Play, mit demselben Funktionsumfang. Der Partner-Abgleich funktioniert auch gemischt zwischen beiden. Die Oberfläche gibt es in 12 Sprachen, darunter Deutsch, Englisch, Französisch, Spanisch, Polnisch, Türkisch und Arabisch."
+        }
       }
     ]
   }
@@ -973,9 +1061,34 @@ footer {
 .presse-zitat { font-size: 15.5px; line-height: 1.6; color: var(--text); font-weight: 600; }
 .presse-quelle { font-size: 12.5px; color: var(--muted); margin-top: 10px; }
 .presse-more { display: inline-block; margin-top: 12px; font-size: 13px; font-weight: 700; color: var(--orange); }
-</style>
+.pro-tag {
+  display: inline-block; vertical-align: 2px;
+  font-size: 10px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase;
+  color: #fff; background: linear-gradient(135deg, var(--orange), var(--orange2));
+  padding: 3px 8px; border-radius: 100px; margin-left: 6px;
+}
+.ways-note {
+  font-size: 13px; line-height: 1.6; color: var(--muted);
+  margin-top: 14px; text-align: center;
+}
+.sharing-desc strong { font-weight: 800; }
+.sharing-note {
+  position: relative; z-index: 1;
+  font-size: 12px; line-height: 1.6; color: rgba(255,255,255,.55);
+  margin-top: 18px; padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+.sharing-note a { color: #8ab4ff; text-decoration: underline; }
+.pricing-note {
+  font-size: 12px; line-height: 1.6; color: var(--muted);
+  margin-top: 12px;
+}
+.pricing-note a { color: var(--orange); text-decoration: underline; }
+.faq-item { scroll-margin-top: 20px; }
+.release-hint{max-width:760px;margin:0 auto;padding:10px 16px;font-size:13px;line-height:1.5;text-align:center;color:#6b4a2f;background:#fdf3e5;border-bottom:1px solid #f0dcc0;}</style>
 </head>
 <body>
+<div class="release-hint" role="note">Hinweis zum App-Update: Die neuen Kalender- und Partner-Abgleiche stehen mit dem nächsten öffentlichen TerminKompass-Update zur Verfügung. Die bisherige Offline-Nutzung bleibt erhalten.</div>
 
 <section class="hero">
   <div class="bokeh" aria-hidden="true">
@@ -1033,13 +1146,13 @@ footer {
 
     <p class="hero-sub">
       Dein Alltag, endlich im Griff.<br>
-      Offline. Ohne Konto. Ohne Abo. Einfach fertig.
+      Standardmäßig offline und ohne Konto – auf Wunsch gemeinsam.
     </p>
 
     <div class="hero-pills">
-      <span class="pill">🔒 Kein Konto</span>
-      <span class="pill">📵 Offline-first</span>
-      <span class="pill">🌍 12 Sprachen</span>
+      <span class="pill">🔒 Kein Pflichtkonto</span>
+      <span class="pill">📵 Offline nutzbar</span>
+      <span class="pill">👨‍👩‍👧 Gemeinsam planen</span>
       <span class="pill">🇩🇪 Made in Germany</span>
     </div>
 
@@ -1122,10 +1235,24 @@ footer {
 
     <div class="feature-grid">
 
+      <div class="f-tile pro-tile reveal reveal-d1">
+        <img src="../icons/pro.png" alt="Pro" class="pro-tag-icon">
+        <div class="f-icon">👨‍👩‍👧</div>
+        <div class="f-name">Gemeinsam planen</div>
+        <div class="f-desc">Kategorien mit Familie &amp; Freunden teilen – iPhone und Android gemischt. Änderungen kommen bei allen an.</div>
+      </div>
+
+      <div class="f-tile pro-tile reveal reveal-d2">
+        <img src="../icons/pro.png" alt="Pro" class="pro-tag-icon">
+        <div class="f-icon">🔄</div>
+        <div class="f-name">Kalender-Abgleich</div>
+        <div class="f-desc">iCloud, Google &amp; Co. laufend abgleichen – du wählst, welche Kalender wohin.</div>
+      </div>
+
       <div class="f-tile reveal reveal-d1">
         <div class="f-icon"><img src="../icons/kalender_import.png" alt="Kalender-Import" style="width:34px;height:34px;object-fit:contain;"></div>
         <div class="f-name">Kalender-Import</div>
-        <div class="f-desc">iCloud, Google Calendar oder andere? Einmal tippen – alle Termine drin. Baby-leicht.</div>
+        <div class="f-desc">iCloud, Google Calendar oder andere? Einmal tippen – alle Termine drin. Mit Pro auf Wunsch laufend abgleichen.</div>
       </div>
 
       <div class="f-tile reveal reveal-d2">
@@ -1135,9 +1262,9 @@ footer {
       </div>
 
       <div class="f-tile reveal reveal-d3">
-        <div class="f-icon"><img src="../icons/no_cloud.png" alt="Keine Cloud" style="width:34px;height:34px;object-fit:contain;"></div>
-        <div class="f-name">Erinnerungen ohne Cloud</div>
-        <div class="f-desc">Laufen lokal auf deinem Gerät. Kein Server, der gerade offline ist.</div>
+        <div class="f-icon"><img src="../icons/no_cloud.png" alt="Lokale Erinnerungen" style="width:34px;height:34px;object-fit:contain;"></div>
+        <div class="f-name">Erinnerungen vom Gerät</div>
+        <div class="f-desc">Werden lokal ausgelöst – auch ohne Netz und ohne Konto.</div>
       </div>
 
       <div class="f-tile reveal reveal-d4">
@@ -1155,7 +1282,7 @@ footer {
       <div class="f-tile reveal reveal-d2">
         <div class="f-icon">🌍</div>
         <div class="f-name">12 Sprachen</div>
-        <div class="f-desc">DE · EN · AR · FR · ES · PL · RO · RU · TR · UK · ID und mehr.</div>
+        <div class="f-desc">DE · EN · AR · FR · ES · PL · RO · RU · TR · UK · ID · ZH</div>
       </div>
 
       <div class="f-tile reveal reveal-d3">
@@ -1174,21 +1301,80 @@ footer {
   </div>
 </section>
 
+
+<section class="content-sec" style="background:var(--cream);">
+  <div class="content-inner">
+    <p class="section-eyebrow reveal">Du entscheidest</p>
+    <h2 class="section-h2 reveal reveal-d1">Allein offline.<br>Oder gemeinsam.</h2>
+
+    <div class="case-list">
+
+      <div class="case-card reveal reveal-d1">
+        <div class="case-ico">📵</div>
+        <div class="case-h">Persönlich planen – offline</div>
+        <p class="case-t">
+          So startet TerminKompass: Termine, Geburtstage und Erinnerungen bleiben auf
+          deinem Handy. Kein Konto, keine Anmeldung, kein Internet nötig.
+        </p>
+      </div>
+
+      <div class="case-card reveal reveal-d2">
+        <div class="case-ico">🔄</div>
+        <div class="case-h">Geräte-Kalender abgleichen <span class="pro-tag">Pro</span></div>
+        <p class="case-t">
+          Kalender, die auf deinem Handy eingerichtet sind – etwa iCloud oder Google –,
+          laufend mit TerminKompass abgleichen. Du wählst, welche Kalender in welche
+          Kategorien kommen und wohin deine eigenen Termine geschrieben werden. Vor dem
+          Start zeigt eine Vorschau, was passiert.
+        </p>
+      </div>
+
+      <div class="case-card reveal reveal-d3">
+        <div class="case-ico">👨‍👩‍👧</div>
+        <div class="case-h">Mit Familie und Freunden planen <span class="pro-tag">Pro</span></div>
+        <p class="case-t">
+          Ausgewählte Kategorien automatisch gemeinsam nutzen – auch gemischt zwischen
+          iPhone und Android. Alle können Termine eintragen und ändern, die anderen
+          bekommen es mit. Du bestimmst, was du mit wem teilst.
+        </p>
+      </div>
+
+    </div>
+    <p class="ways-note reveal">
+      Beide Abgleichfunktionen sind freiwillig und getrennt einschaltbar. Ein Update
+      schaltet nichts von selbst ein.
+    </p>
+  </div>
+</section>
+
 <div class="sharing-section reveal">
   <div class="sharing-card">
-    <p class="sharing-eyebrow">Einzigartiges Feature</p>
-    <h2 class="sharing-h">Termine teilen.<br><em>Android zu iOS.</em><br>Und zurück.</h2>
+    <p class="sharing-eyebrow">Android ↔ iPhone</p>
+    <h2 class="sharing-h">Termine teilen.<br><em>Einmal oder dauerhaft.</em></h2>
     <p class="sharing-desc">
-      Teile einzelne Termine, ganze Kategorien oder alle Termine auf einmal –
-      direkt via WhatsApp oder jede andere App. Der Empfänger importiert sie
-      mit einem Tap. Egal ob er Android oder iPhone nutzt.
+      <strong style="color:#fff;">Einmal weitergeben:</strong> Einzelne Termine, ganze
+      Kategorien oder alle Termine per WhatsApp oder jede andere App verschicken. Der
+      Empfänger importiert sie mit einem Tap. Kostenlos, ohne Konto.
+    </p>
+    <p class="sharing-desc">
+      <strong style="color:#fff;">Dauerhaft gemeinsam:</strong> Mit dem Partner-Abgleich
+      nutzt ihr ausgewählte Kategorien zusammen. Neue Termine und Änderungen kommen bei
+      allen an. Jeder Teilnehmer braucht Pro und ein eigenes TerminKompass-Konto; die
+      Termininhalte werden Ende-zu-Ende-verschlüsselt übertragen.
     </p>
     <div class="sharing-pills">
-      <span class="sharing-pill">📁 Einzelne Termine</span>
-      <span class="sharing-pill">📂 Ganze Kategorien</span>
-      <span class="sharing-pill">📦 Alle Termine</span>
+      <span class="sharing-pill">📁 Einmal als Kopie</span>
+      <span class="sharing-pill">🔄 Dauerhaft gemeinsam</span>
+      <span class="sharing-pill">🔒 Du wählst die Kategorien</span>
     </div>
     <div class="sharing-cross">🔄 Android ↔ iOS – plattformübergreifend</div>
+    <p class="sharing-note">
+      Der Partner-Abgleich ist aktuell ohne Zusatzkosten mit Pro. Ich möchte ihn kostenlos
+      weiterführen. Sollte das nicht mehr möglich sein, suchen wir gemeinsam mit den Nutzern
+      eine Lösung. Eine mögliche spätere Abopflicht beträfe ausschließlich diesen
+      automatischen Partnerdienst und nur nach deiner ausdrücklichen Buchung. Alle übrigen
+      Funktionen bleiben davon unberührt. <a href="#faq-partner-kosten">Mehr dazu in den häufigen Fragen.</a>
+    </p>
     <p style="margin-top:16px;font-size:13px;line-height:1.6;">
       <a href="../gemeinsamer-kalender-iphone-android/" style="color:#8ab4ff;text-decoration:underline;">
         Ausführlich erklärt: gemeinsamer Kalender für iPhone und Android →
@@ -1209,12 +1395,16 @@ footer {
         <div class="case-h">Die Familie mit gemischten Geräten</div>
         <p class="case-t">
           Mutter hat ein iPhone, der Sohn ein Android-Handy, die Großeltern irgendetwas
-          dazwischen. Ein gemeinsamer Kalender scheitert genau daran: Alle müssten beim
-          selben Anbieter ein Konto haben.
+          dazwischen. Ein gemeinsamer Kalender wird da schnell kompliziert, wenn alle
+          beim selben Anbieter ein Konto brauchen.
         </p>
         <p class="case-t">
-          Mit TerminKompass schickst du den Termin per WhatsApp. Der Empfänger tippt
-          einmal – und er steht in seinem Kalender. Egal welches Gerät.
+          Mit TerminKompass schickst du einen Termin einfach per WhatsApp. Der Empfänger
+          tippt einmal – und er steht in seinem Kalender. Egal welches Gerät.
+        </p>
+        <p class="case-t">
+          Oder ihr richtet mit Pro eine gemeinsame Kategorie „Familie“ ein: Wer etwas
+          einträgt oder verschiebt, bei dem kommt es auch bei den anderen an.
         </p>
       </div>
 
@@ -1243,6 +1433,10 @@ footer {
           oder was du sonst nutzt. Einmal antippen, alles drin. Danach entscheidest du
           in Ruhe, ob du bleibst.
         </p>
+        <p class="case-t">
+          Willst du deinen bisherigen Kalender weiter nutzen, gleicht Pro beide auf Wunsch
+          laufend ab.
+        </p>
       </div>
 
     </div>
@@ -1252,34 +1446,41 @@ footer {
 <section class="content-sec" style="background:var(--cream);">
   <div class="content-inner">
     <p class="section-eyebrow reveal">Ehrlich gesagt</p>
-    <h2 class="section-h2 reveal reveal-d1">Was „ohne Cloud"<br>wirklich bedeutet.</h2>
+    <h2 class="section-h2 reveal reveal-d1">Offline als Standard.<br>Online nur, wenn du willst.</h2>
 
     <div class="note-card reveal reveal-d1">
       <p class="note-lead">
         Die meisten Kalender-Apps funktionieren so: Du legst ein Konto an, deine Termine
-        liegen auf einem Server, und dafür synchronisiert sich alles automatisch zwischen
-        deinen Geräten. Bequem – und der Grund, warum du dort ein Konto brauchst.
+        liegen auf einem Server, und dafür synchronisiert sich alles automatisch. Bequem –
+        aber ohne Konto geht dort nichts.
       </p>
       <p>
-        TerminKompass macht es andersherum. Deine Termine liegen auf deinem Gerät, sonst
-        nirgends. Kein Konto, keine Anmeldung, keine Übertragung an mich oder an Dritte.
-        Auch die Erinnerungen kommen vom Gerät – die App läuft im Funkloch wie zu Hause.
+        TerminKompass startet andersherum. Deine Termine liegen auf deinem Gerät. Kein
+        Konto, keine Anmeldung, keine Übertragung an mich oder an Dritte. Auch die
+        Erinnerungen kommen vom Gerät – die App läuft im Funkloch wie zu Hause. Daran
+        ändert sich nichts, solange du nichts einschaltest.
+      </p>
+      <p>
+        Mit Pro gibt es im Bereich „Online“ zwei freiwillige Ergänzungen, die du getrennt
+        einschaltest: Der <strong>Kalender-Abgleich</strong> arbeitet mit den Kalendern auf
+        deinem Handy – ob deren Termine zusätzlich zu iCloud, Google oder einem anderen
+        Anbieter gehen, bestimmen die dort eingerichteten Konten. Für den
+        <strong>Partner-Abgleich</strong> legst du ein eigenes Konto an; nur die Kategorien,
+        die du freigibst, gehen verschlüsselt an die Menschen, mit denen du verbunden bist.
       </p>
 
       <div class="note-flag">
-        <div class="note-flag-h">Der Preis dafür</div>
+        <div class="note-flag-h">Was es nicht ist</div>
         <p>
-          Es gibt keine automatische Synchronisierung zwischen deinen eigenen Geräten.
-          Willst du dieselben Termine auf Handy und Tablet, überträgst du sie einmal über
-          die Teilen-Funktion oder die Sicherung. Wer echte Zwei-Geräte-Synchronisierung
-          braucht, ist mit einem Cloud-Kalender besser bedient – das sage ich lieber
-          vorher als hinterher.
+          Der Partner-Abgleich ist zum gemeinsamen Planen gedacht, nicht als Cloud-Sicherung.
+          Private, nicht geteilte Termine werden dadurch nicht gesichert – für einen
+          Gerätewechsel bleibt die Sicherungsfunktion der richtige Weg.
         </p>
       </div>
 
       <p>
-        Für alle anderen ist der Tausch ein guter: keine Konten, keine Abos, keine Frage,
-        wo die Daten liegen.
+        Du entscheidest: allein offline, mit Kalender-Abgleich, gemeinsam mit anderen –
+        oder alles zusammen.
       </p>
     </div>
   </div>
@@ -1385,18 +1586,18 @@ footer {
 <section class="pricing">
   <div style="max-width:540px;margin:0 auto;">
     <p class="section-eyebrow reveal">Kostenlos starten</p>
-    <h2 class="section-h2 reveal reveal-d1">Gratis. Oder alles.</h2>
+    <h2 class="section-h2 reveal reveal-d1">Gratis. Oder Pro.</h2>
     <div class="pricing-grid">
       <div class="p-tile free reveal reveal-d2">
         <span class="p-badge">Kostenlos</span>
-        <div class="p-head">Alles dabei</div>
+        <div class="p-head">Viel dabei</div>
         <ul class="p-list">
           <li>Bis zu 10 Termine &amp; 10 Bereiche</li>
           <li>🌙 Mondphasen &amp; ♈ Sternzeichen</li>
           <li>Eigene Terminfarben &amp; Hintergrundbild</li>
           <li>Kalender, Liste, Tagesansicht</li>
           <li>Lokale Erinnerungen &amp; Kalender-Import</li>
-          <li>Termine teilen (Android ↔ iOS)</li>
+          <li>Termine per Datei teilen (Android ↔ iOS)</li>
           <li>Backup &amp; CSV-Export</li>
           <li>Widget, 12 Sprachen, 4 Looks, Icon-Erkennung</li>
         </ul>
@@ -1407,13 +1608,23 @@ footer {
         <ul class="p-list">
           <li>♾️ Unbegrenzte Termine</li>
           <li>♾️ Unbegrenzte Bereiche &amp; Kategorien</li>
-          <li>Alle Funktionen – jetzt und künftig</li>
+          <li>🔄 Kalender-Abgleich mit deinen Geräte-Kalendern</li>
+          <li>👨‍👩‍👧 Partner-Abgleich mit Familie &amp; Freunden – Zusatzdienst, derzeit ohne Aufpreis*</li>
           <li>Einmalkauf statt Abo</li>
           <li>Keine Werbung, kein Tracking</li>
           <li>Von einem Menschen, nicht von einem Konzern</li>
         </ul>
       </div>
     </div>
+    <p class="pricing-note reveal">
+      * Der automatische Partner-Abgleich ist ein Online-Zusatzdienst, den ich Pro-Nutzern
+      derzeit ohne Aufpreis anbiete. Jeder Teilnehmer braucht seine eigene Pro-Freischaltung
+      und ein eigenes Konto. Verursacht der Betrieb Kosten, die ich nicht mehr tragen kann,
+      kann dieser Dienst nach rechtzeitiger Ankündigung eingestellt oder als freiwilliges Abo
+      weitergeführt werden – ein Abo entsteht nie automatisch. Der Pro-Einmalkauf und alle
+      übrigen Funktionen bleiben davon unberührt.
+      <a href="#faq-partner-kosten">Mehr dazu</a>
+    </p>
   </div>
 </section>
 
@@ -1427,78 +1638,127 @@ footer {
       <details class="faq-item reveal reveal-d1">
         <summary>Brauche ich ein Konto oder eine Anmeldung?</summary>
         <div class="faq-a">
-          <p>Nein. Du lädst die App und legst sofort los. Es gibt keine Registrierung,
-          keine E-Mail-Adresse, kein Passwort. Auch nicht für die Pro-Version.</p>
+          <p>Für die normale Nutzung nicht. Du lädst die App und legst sofort los – ohne Registrierung, E-Mail-Adresse oder Passwort. Das gilt auch für die Pro-Version und für den Kalender-Abgleich.</p>
+          <p>Nur wenn du den Partner-Abgleich mit Familie oder Freunden nutzen willst, legst du dafür ein eigenes TerminKompass-Konto mit bestätigter E-Mail-Adresse an.</p>
         </div>
       </details>
 
       <details class="faq-item reveal reveal-d2">
         <summary>Funktioniert TerminKompass ohne Internet?</summary>
         <div class="faq-a">
-          <p>Ja, vollständig. Termine anlegen, ansehen, bearbeiten und Erinnerungen
-          bekommen – alles läuft auf dem Gerät. Internet brauchst du nur, wenn du einen
-          Termin per WhatsApp verschicken willst, und auch das nur zum Versenden.</p>
+          <p>Ja. Termine anlegen, ansehen, bearbeiten und Erinnerungen bekommen – das läuft alles auf dem Gerät.</p>
+          <p>Internet brauchst du nur für einzelne Dinge: zum Verschicken eines Termins per WhatsApp, für den Kauf von Pro und für den Partner-Abgleich, wenn du ihn einschaltest.</p>
         </div>
       </details>
 
       <details class="faq-item reveal reveal-d3">
-        <summary>Kann ich Termine vom Android-Handy aufs iPhone schicken?</summary>
+        <summary>Muss ich die neuen Abgleichfunktionen nutzen?</summary>
         <div class="faq-a">
-          <p>Ja, in beide Richtungen. Du wählst einen Termin, eine ganze Kategorie oder
-          alle Termine aus und verschickst sie über WhatsApp oder jede andere App. Der
-          Empfänger tippt einmal, und die Termine landen in seinem TerminKompass.</p>
-          <p>Ein gemeinsames Konto braucht ihr dafür nicht – auch kein Google-Konto.</p>
+          <p>Nein. Kalender-Abgleich und Partner-Abgleich sind freiwillig und bleiben aus, bis du sie einrichtest. Ein Update schaltet sie nicht ein. Du kannst eine davon nutzen, beide oder keine.</p>
         </div>
       </details>
 
       <details class="faq-item reveal reveal-d4">
-        <summary>Wie bekomme ich meine bestehenden Termine in die App?</summary>
+        <summary>Kann ich Termine vom Android-Handy aufs iPhone schicken?</summary>
         <div class="faq-a">
-          <p>Über den Kalender-Import. Die App liest den Kalender ein, der auf deinem
-          Gerät schon vorhanden ist – etwa iCloud oder Google Calendar. Du musst nichts
-          abtippen und nichts exportieren.</p>
+          <p>Ja, in beide Richtungen – auf zwei Wegen. Einmalig: Du wählst einen Termin, eine Kategorie oder alle Termine aus und verschickst sie über WhatsApp oder jede andere App. Der Empfänger tippt einmal, und die Termine landen in seinem TerminKompass. Dafür braucht niemand ein Konto.</p>
+          <p>Dauerhaft: Mit dem Partner-Abgleich nutzt ihr ausgewählte Kategorien gemeinsam, auch gemischt zwischen iPhone und Android. Dafür brauchen alle Beteiligten Pro und ein eigenes Konto.</p>
         </div>
       </details>
 
       <details class="faq-item reveal reveal-d1">
-        <summary>Was kostet TerminKompass?</summary>
+        <summary>Werden dabei alle meine Termine geteilt?</summary>
         <div class="faq-a">
-          <p>Die App ist kostenlos und erlaubt bis zu 10 Termine. <strong>Alle Funktionen
-          sind dabei</strong>: Mondphasen, Sternzeichen, eigene Terminfarben, eigenes
-          Hintergrundbild, Kalender-Import, Teilen, Widget, Erinnerungen, Backup &amp;
-          CSV-Export, 12 Sprachen und die vier Designs.</p>
-          <p>Die Pro-Version hebt einzig das Limit auf – für <strong>unbegrenzt viele
-          Termine und Bereiche</strong>. <strong>Kein Abo</strong> – einmal kaufen, fertig.</p>
+          <p>Nein. Beim Partner-Abgleich bestimmst du, welche Kategorien du mit wem teilst. Wählst du „alle eigenen Kategorien“, gehören auch Kategorien dazu, die du später neu anlegst.</p>
+          <p>Bei einer neuen Freigabe werden die zukünftigen Termine der Kategorie geteilt, nicht deine vergangenen Einträge.</p>
         </div>
       </details>
 
       <details class="faq-item reveal reveal-d2">
+        <summary>Kommen Änderungen an einer einmal geschickten Kopie an?</summary>
+        <div class="faq-a">
+          <p>Nein. Eine per WhatsApp oder einmalig an verbundene Personen geschickte Kopie ist danach unabhängig. Willst du, dass Änderungen bei allen ankommen, nutzt ihr eine gemeinsame Kategorie im Partner-Abgleich.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d3">
+        <summary>Wie bekomme ich meine bestehenden Termine in die App?</summary>
+        <div class="faq-a">
+          <p>Über den Kalender-Import. Die App liest einmalig den Kalender ein, der auf deinem Gerät schon vorhanden ist – etwa iCloud oder Google Calendar. Du musst nichts abtippen.</p>
+          <p>Mit Pro kannst du stattdessen den Kalender-Abgleich nutzen: Dann bleiben ausgewählte Kalender und TerminKompass laufend abgeglichen.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d4">
+        <summary>Welche Kalender werden beim Kalender-Abgleich unterstützt?</summary>
+        <div class="faq-a">
+          <p>Die Kalender, die auf deinem Handy eingerichtet sind und die iOS oder Android anderen Apps zur Verfügung stellt – zum Beispiel iCloud oder Google. Welche das sind, hängt von deiner Geräteeinrichtung ab.</p>
+          <p>Nur lesbare Kalender kannst du übernehmen, aber nicht beschreiben. Einige Termine lassen sich nicht sicher übertragen, etwa komplizierte Serien, Einladungen oder Termine über Nacht; sie bleiben unverändert in ihrem ursprünglichen Kalender.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d1">
+        <summary>Kommen Änderungen sofort bei den anderen an?</summary>
+        <div class="faq-a">
+          <p>Der Abgleich wird nach dem Speichern automatisch angestoßen, auch im Hintergrund. Wann das tatsächlich passiert, bestimmen aber iOS bzw. Android, Stromsparregeln und die Netzverbindung. Eine sofortige Zustellung kann ich deshalb nicht garantieren.</p>
+          <p>Was du offline änderst, wird übertragen, sobald wieder eine Verbindung besteht.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d2">
+        <summary>Was kostet TerminKompass?</summary>
+        <div class="faq-a">
+          <p>Die App ist kostenlos und erlaubt bis zu 10 Termine und 10 Bereiche. Vieles ist schon dabei: Mondphasen, Sternzeichen, eigene Terminfarben, eigenes Hintergrundbild, Kalender-Import, Teilen per Datei, Widget, Erinnerungen, Backup &amp; CSV-Export, 12 Sprachen und die vier Designs.</p>
+          <p>Die Pro-Version hebt das Limit auf und enthält zusätzlich den Kalender-Abgleich. Kein Abo – einmal kaufen, fertig. Pro-Nutzer können außerdem den Partner-Abgleich nutzen – einen eigenen Online-Zusatzdienst, den ich derzeit ohne Aufpreis anbiete.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d3" id="faq-partner-kosten">
+        <summary>Kostet der automatische Partner-Abgleich extra?</summary>
+        <div class="faq-a">
+          <p>Derzeit nicht. Der automatische Partner-Abgleich wird ohne zusätzliche Gebühren für Nutzer der Pro-Version angeboten. Jeder Teilnehmer benötigt seine eigene Pro-Freischaltung.</p>
+          <p>Ich möchte diesen zusätzlichen Dienst möglichst dauerhaft kostenlos anbieten und werde mich dafür einsetzen. Da sein Betrieb laufende Kosten verursacht, kann ich das jedoch nicht uneingeschränkt garantieren.</p>
+          <p>Sollte ein kostenloser Weiterbetrieb irgendwann nicht mehr möglich sein, informiere ich euch rechtzeitig. Gemeinsam mit den Nutzern möchte ich dann – beispielsweise durch eine Abstimmung – entscheiden, ob der automatische Partner-Abgleich eingestellt oder mit einem kleinen, freiwilligen Abonnement weitergeführt werden soll.</p>
+          <p>Falls es zu einem solchen Abo kommt, gilt es ausschließlich für den automatischen Partner-Abgleich. Diesen Dienst können dann nur noch Personen mit einem eigenen gültigen Abo nutzen. Niemand wird automatisch angemeldet oder zur Zahlung verpflichtet.</p>
+          <p>Dein bestehender Pro-Einmalkauf und die übrigen App-Funktionen bleiben davon unberührt. Dazu gehören die Offline-Nutzung, lokale Erinnerungen, der Kalender-Abgleich und das bisherige manuelle Teilen über Dateien, etwa per WhatsApp. Dafür entsteht durch diese mögliche Änderung keine Abopflicht.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d4">
+        <summary>Muss ich später ein Abo abschließen?</summary>
+        <div class="faq-a">
+          <p>Nein. Dein Pro-Einmalkauf wird nicht automatisch zu einem Abo. Nur falls der automatische Partner-Abgleich künftig kostenpflichtig angeboten wird und du ihn weiter nutzen möchtest, wäre dafür ein eigenes Abo erforderlich. Ohne dieses Abo entfällt dann ausschließlich der Zugang zu diesem automatischen Dienst. Die übrigen bereits erworbenen Pro-Funktionen bleiben nutzbar.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d1">
         <summary>Wo werden meine Termine gespeichert?</summary>
         <div class="faq-a">
-          <p>Ausschließlich auf deinem Gerät. Es gibt keinen Server, auf den etwas
-          übertragen wird, und ich als Entwickler sehe deine Termine nicht. Auch die
-          Erinnerungen werden lokal ausgelöst.</p>
+          <p>Auf deinem Gerät. Ohne eingeschalteten Abgleich wird nichts an einen Server übertragen, und ich als Entwickler sehe deine Termine nicht. Die Erinnerungen werden lokal ausgelöst.</p>
+          <p>Mit Kalender-Abgleich stehen deine Termine zusätzlich in den Kalendern, die du ausgewählt hast – deren Konten können sie zu ihrem Anbieter übertragen. Beim Partner-Abgleich werden die freigegebenen Termine Ende-zu-Ende-verschlüsselt über einen Server zugestellt; für Konto, Verbindungen und Zustellung werden dabei technische Daten verarbeitet. Einzelheiten stehen in der Datenschutzerklärung.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal reveal-d2">
+        <summary>Was passiert, wenn ich „Online“ wieder ausschalte?</summary>
+        <div class="faq-a">
+          <p>Dann stoppt TerminKompass beide Abgleichdienste. Deine Termine und Erinnerungen bleiben auf dem Gerät und funktionieren wie gewohnt.</p>
+          <p>Ausschalten löscht weder dein Konto noch Kopien, die andere bereits bekommen haben. Das Konto kannst du bei Bedarf gesondert in der App oder <a href="https://konto.mw-app.de/account/delete" target="_blank" rel="noopener" style="color:var(--orange);text-decoration:underline;">über diese Seite</a> löschen.</p>
         </div>
       </details>
 
       <details class="faq-item reveal reveal-d3">
         <summary>Was passiert bei einem Gerätewechsel?</summary>
         <div class="faq-a">
-          <p>Weil nichts in einer Cloud liegt, wandern die Termine nicht von selbst mit.
-          Mit der kostenlosen Sicherungsfunktion überträgst du deinen Bestand aufs
-          neue Gerät. Alternativ kannst du dir deine Termine über die Teilen-Funktion
-          selbst schicken.</p>
-          <p>Das ist die Kehrseite des Verzichts auf ein Konto – erwähnt sei es
-          trotzdem, damit es dich nicht überrascht.</p>
+          <p>Deine Termine überträgst du mit der kostenlosen Sicherungsfunktion aufs neue Gerät. Der Partner-Abgleich ersetzt diese Sicherung nicht – private, nicht geteilte Termine liegen nur auf deinem Handy.</p>
+          <p>Nutzt du den Partner-Abgleich, meldest du dich auf dem neuen Handy an; je nach Fall müssen deine Verbindungen dort neu bestätigt werden.</p>
         </div>
       </details>
 
       <details class="faq-item reveal reveal-d4">
         <summary>Gibt es die App für iPhone und Android?</summary>
         <div class="faq-a">
-          <p>Ja, für beide. Im App Store und bei Google Play, mit demselben
-          Funktionsumfang. Die Oberfläche gibt es in 12 Sprachen, darunter Deutsch,
-          Englisch, Französisch, Spanisch, Polnisch, Türkisch und Arabisch.</p>
+          <p>Ja, für beide. Im App Store und bei Google Play, mit demselben Funktionsumfang. Der Partner-Abgleich funktioniert auch gemischt zwischen beiden. Die Oberfläche gibt es in 12 Sprachen, darunter Deutsch, Englisch, Französisch, Spanisch, Polnisch, Türkisch und Arabisch.</p>
         </div>
       </details>
 
@@ -1522,7 +1782,7 @@ footer {
 <div class="cta-wrap reveal">
   <div class="cta-card">
     <h2 class="cta-h">Jetzt kostenlos<br>ausprobieren.</h2>
-    <p class="cta-sub">Kein Konto. Keine Cloud. Einfach starten.</p>
+    <p class="cta-sub">Ohne Konto starten. Gemeinsam, wenn du willst.</p>
     <div class="cta-badges" id="cta-badges">
       <a href="https://apps.apple.com/de/app/terminkompass/id6771828426"
          class="store-btn" id="cta-ios" data-store="ios">
@@ -1549,7 +1809,7 @@ footer {
       </a>
       <a href="../itemshark/" class="m-card reveal reveal-d4">
         <div class="m-icon" style="padding:0;overflow:hidden;"><img src="../assets/itemshark-icon-opt.png" alt="ItemShark" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
-        <div><div class="m-name">ItemShark</div><div class="m-desc">Dein persönlicher Deal-Tracker</div></div>
+        <div><div class="m-name">ItemShark</div><div class="m-desc">KI-Inventar: fotografieren statt beschriften</div></div>
         <span class="m-badge">Im Store</span>
       </a>
     </div>
