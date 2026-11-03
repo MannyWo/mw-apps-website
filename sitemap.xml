@@ -30,7 +30,21 @@
   </url>
 
   <url>
+    <loc>https://mw-app.de/kalender-synchronisieren/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://mw-app.de/gemeinsamer-kalender-iphone-android/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://mw-app.de/termine-automatisch-teilen/</loc>
     <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
