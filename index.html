@@ -236,6 +236,9 @@ img { max-width: 100%; display: block; }
 .app-card-desc a { color: var(--orange); text-decoration: underline; text-underline-offset: 2px; }
 .app-card-desc a:hover { text-decoration-thickness: 2px; }
 
+.app-card-guide { display: flex; gap: 8px; align-items: flex-start; margin: -6px 0 20px; padding: 11px 14px; border-radius: 14px; background: #fff; border: 1px solid var(--border); font-size: 13px; line-height: 1.45; color: var(--muted); text-decoration: none; transition: border-color .15s; }
+.app-card-guide b { color: var(--text); }
+.app-card-guide:hover { border-color: #d6cbb9; }
 .app-card-badges { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center; }
 .app-card-links { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center; margin-top: 14px; }
 .badge-apple  { height: 40px; width: auto; border-radius: 7px; }
@@ -363,6 +366,8 @@ footer {
 .empf-zitat { font-size: 16.5px; line-height: 1.5; font-weight: 700; letter-spacing: -.015em; color: var(--text); }
 .empf-quelle { font-size: 12.5px; color: var(--muted); margin-top: 11px; line-height: 1.55; }
 .empf-btn { display: inline-flex; align-items: center; gap: 7px; margin-top: 18px; background: #4FB053; color: #fff; font-size: 14px; font-weight: 800; text-decoration: none; padding: 12px 22px; border-radius: 100px; transition: transform .2s, box-shadow .2s; }
+.empf-all { display: inline-block; margin-top: 20px; font-size: 14px; font-weight: 800; color: #2f8437; text-decoration: none; }
+.empf-all:hover { text-decoration: underline; }
 .empf-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(79,176,83,.42); }
 </style>
 </head>
@@ -482,6 +487,7 @@ footer {
           Ideal auch zum <a href="bastelmaterial-organisieren-app/">Bastelmaterial organisieren</a>.
           Grundfunktionen laufen offline &amp; kostenlos; für den KI-Scan brauchst du ein Konto und Tokens (Prepaid, kein Abo).
         </p>
+        <a class="app-card-guide" href="empfehlungen/#papierstoffiges">🎬 <span><b>Ausführliche Video-Anleitung</b> von Papierstoffiges Ingrid – freiwillig &amp; unbezahlt (Stand: Sept. 2026)</span> <span aria-hidden="true">→</span></a>
         <div class="app-card-badges">
           <a href="https://apps.apple.com/de/app/itemshark-inventar-lager/id6779683462" aria-label="ItemShark im App Store">
             <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/de-de?size=250x83"
@@ -549,6 +555,7 @@ footer {
         Testbericht lesen →
       </a>
     </div>
+    <a href="empfehlungen/" class="empf-all">Alle Empfehlungen ansehen →</a>
   </div>
 </div>
 
@@ -609,6 +616,7 @@ footer {
 <footer>
   <div class="footer-inner">
     <nav class="footer-links">
+      <a href="empfehlungen/">Empfohlen von</a>
       <a href="impressum/">Impressum</a>
       <a href="datenschutz/">Datenschutz</a>
     </nav>
