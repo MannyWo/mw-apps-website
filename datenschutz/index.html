@@ -231,12 +231,14 @@
   <p>
     Das Kontaktformular sendet Name, E-Mail-Adresse, Thema und Nachricht an eine Funktion bei
     Google Cloud / Firebase (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland),
-    die in der EU-Region europe-west1 (Belgien) läuft. Die Funktion leitet die Nachricht per E-Mail
-    über GMX (1&amp;1 Mail &amp; Media GmbH, Brauerstraße 48, 76135 Karlsruhe) an uns weiter und speichert
-    sie nicht. Zum Schutz vor Missbrauch wird deine IP-Adresse kurzzeitig (höchstens eine Stunde)
+    die in der EU-Region europe-west1 (Belgien) läuft. Damit keine Nachricht verloren geht, speichert die
+    Funktion sie in einer Datenbank (Cloud Firestore, ebenfalls Google; Speicherort USA) und leitet sie
+    per E-Mail über GMX (1&amp;1 Mail &amp; Media GmbH, Brauerstraße 48, 76135 Karlsruhe) an unser
+    E-Mail-Postfach bei Google weiter. Gespeicherte Nachrichten werden nach spätestens sechs Monaten
+    automatisch gelöscht, auf Wunsch auch früher. Zum Schutz vor Missbrauch wird deine IP-Adresse kurzzeitig (höchstens eine Stunde)
     im Arbeitsspeicher der Funktion vorgehalten, um zu viele Anfragen in kurzer Zeit zu begrenzen.
-    Google verarbeitet die Daten als Auftragsverarbeiter; eine Übermittlung in die USA ist nicht
-    ausgeschlossen und über das EU-US Data Privacy Framework sowie Standardvertragsklauseln abgesichert.
+    Google verarbeitet die Daten als Auftragsverarbeiter; die Übermittlung in die USA ist über das
+    EU-US Data Privacy Framework sowie Standardvertragsklauseln abgesichert.
   </p>
 
   <h2>7. Deine Rechte</h2>
