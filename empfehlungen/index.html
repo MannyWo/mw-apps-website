@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <title>Empfohlen von – Stimmen &amp; Presse | MW_Apps</title>
-  <meta name="description" content="Wer TerminKompass, ItemShark und JobTrace getestet und empfohlen hat: Android User, Papierstoffiges Ingrid und mehr. Freiwillig, unbezahlt, mit Link.">
+  <meta name="description" content="Wer TerminKompass, ItemShark und JobTrace getestet und empfohlen hat: Android User, Mac Life, Papierstoffiges Ingrid und mehr. Freiwillig, unbezahlt, mit Link.">
   <link rel="canonical" href="https://mw-app.de/empfehlungen/">
   <meta property="og:title" content="Empfohlen von – Stimmen &amp; Presse zu den Apps von MW_Apps">
   <meta property="og:description" content="Magazine und Creator, die unsere Apps freiwillig getestet und empfohlen haben – mit Porträt und Link.">
@@ -41,6 +41,12 @@
         "url": "https://www.youtube.com/@papierstoffiges",
         "jobTitle": "Unabhängige Stampin' Up! Demonstratorin",
         "sameAs": ["https://www.youtube.com/@papierstoffiges", "https://www.instagram.com/papierstoffiges/"]
+      },
+      {
+        "@type": "Organization",
+        "name": "Mac Life",
+        "url": "https://www.maclife.de/",
+        "description": "Apple-Magazin im Verlag falkemedia, gedruckt und online, mit News, Tests, Kaufberatung und Praxistipps."
       }
     ],
     "hasPart": [
@@ -50,6 +56,14 @@
         "url": "https://www.android-user.de/terminkompass-terminplaner-fuer-android/",
         "author": { "@type": "Person", "name": "Sarah Lindow-Zechmeister" },
         "publisher": { "@type": "Organization", "name": "Android User", "url": "https://www.android-user.de/" }
+      },
+      {
+        "@type": "Article",
+        "headline": "iPhone-Apps: Unsere App-Tipps für Oktober 2026",
+        "url": "https://www.maclife.de/news/iphone-app-tipps-oktober-2026-besten-apps-ios-100127740.html",
+        "datePublished": "2026-10-13T11:00:00+02:00",
+        "author": { "@type": "Person", "name": "Stefan Molz" },
+        "publisher": { "@type": "Organization", "name": "Mac Life", "url": "https://www.maclife.de/" }
       }
     ]
   }
@@ -119,11 +133,12 @@ img { max-width: 100%; display: block; }
 .seen { margin-top: 30px; animation: fadeUp .5s .5s ease both; }
 .seen-label { font-size: 10.5px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.35); }
 .seen-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; margin-top: 12px; }
-.seen-chip { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; background: #fff; border-radius: 14px; padding: 9px 14px; box-shadow: 0 6px 22px rgba(0,0,0,.35); transition: transform .2s; }
+.seen-chip { display: inline-flex; align-items: center; gap: 9px; height: 48px; text-decoration: none; background: #fff; border-radius: 14px; padding: 9px 14px; box-shadow: 0 6px 22px rgba(0,0,0,.35); transition: transform .2s; }
 .seen-chip:hover { transform: translateY(-2px); }
 .seen-chip img { height: 26px; width: auto; }
 .seen-chip img.seen-round { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; }
 .seen-yt { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 21px; border-radius: 6px; background: #ff0033; }
+.seen-ico { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: #3b4554; font-size: 15px; line-height: 1; }
 .seen-name { font-size: 14px; font-weight: 800; letter-spacing: -.01em; color: var(--text); }
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
@@ -160,6 +175,12 @@ img { max-width: 100%; display: block; }
 
 .card-au .card-band { height: 5px; background: linear-gradient(90deg, #4FB053, #8fd694); }
 .card-pi .card-band { height: 5px; background: linear-gradient(90deg, #f7a1c0, #d9467a); }
+.card-ml .card-band { height: 5px; background: linear-gradient(90deg, #9aa7b8, #4a5668); }
+.avatar-ml { background: #3b4554; color: #fff; font-size: 26px; }
+.quote-ml { background: linear-gradient(155deg, #f3f5f8, #e6eaf0); border-color: #d6dce5; }
+.quote-ml .quote-text { color: #26303d; }
+.quote-ml .quote-src { color: #4a5668; }
+.quote-pub { font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #4a5668; margin-bottom: 12px; }
 
 .video { display: block; position: relative; margin: 20px 22px 0; border-radius: 22px; overflow: hidden; text-decoration: none; aspect-ratio: 16 / 9; background:
   radial-gradient(circle at 18% 22%, rgba(255,255,255,.35) 0 9%, transparent 10%),
@@ -196,6 +217,7 @@ img { max-width: 100%; display: block; }
 .link-main:hover { transform: translateY(-2px); }
 .card-au .link-main { background: #4FB053; box-shadow: 0 6px 20px rgba(79,176,83,.3); }
 .card-pi .link-main { background: linear-gradient(135deg, #e2638f, #b8366a); box-shadow: 0 6px 20px rgba(184,54,106,.3); }
+.card-ml .link-main { background: #3b4554; box-shadow: 0 6px 20px rgba(59,69,84,.3); }
 .link-main small { display: block; font-size: 12px; font-weight: 600; opacity: .85; margin-top: 2px; }
 .link-sub { display: flex; align-items: center; justify-content: space-between; gap: 10px; text-decoration: none; padding: 13px 18px; border-radius: 16px; font-size: 14px; font-weight: 700; color: var(--text); background: #fff; border: 1.5px solid var(--border); transition: border-color .15s, transform .15s; }
 .link-sub:hover { border-color: var(--text); transform: translateY(-1px); }
@@ -288,7 +310,7 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
     </p>
 
     <div class="stats">
-      <div class="stat"><div class="stat-num">2</div><div class="stat-label">Empfehlungen</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Empfehlungen</div></div>
       <div class="stat"><div class="stat-num">0 €</div><div class="stat-label">bezahlt</div></div>
       <div class="stat"><div class="stat-num">100 %</div><div class="stat-label">freiwillig</div></div>
     </div>
@@ -302,6 +324,10 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
         <a class="seen-chip" href="#papierstoffiges" aria-label="Zu Papierstoffiges Ingrid springen">
           <img class="seen-round" src="../assets/presse/papierstoffiges-logo.jpg" alt="Papierstoffiges Logo" width="26" height="26">
           <span class="seen-name">Papierstoffiges</span>
+        </a>
+        <a class="seen-chip" href="#mac-life" aria-label="Zu Mac Life springen">
+          <span class="seen-ico" aria-hidden="true">📰</span>
+          <span class="seen-name">Mac Life</span>
         </a>
       </div>
     </div>
@@ -452,6 +478,58 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
           </a>
           <a class="link-sub" href="https://www.android-user.de/content-richtlinien/" target="_blank" rel="noopener">
             <span>Die Content-Richtlinien von Android User</span><span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="card card-ml reveal" id="mac-life" data-app="terminkompass">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="card-head">
+            <div class="avatar avatar-ml" aria-hidden="true">📰</div>
+            <div class="who">
+              <div class="who-name">Mac Life</div>
+              <div class="who-meta">Apple-Magazin · Print &amp; Online</div>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag tag-app"><img src="../assets/terminkompass/icon-opt.png" alt="" width="16" height="16">über TerminKompass</span>
+            <span class="tag">App-Tipp</span>
+            <span class="tag">Unbezahlt</span>
+          </div>
+        </div>
+
+        <div class="quote quote-ml">
+          <p class="quote-pub">Mac Life</p>
+          <p class="quote-text">„… ohne Registrierung, ohne Cloud, ohne Werbung.“</p>
+          <p class="quote-src">Stefan Molz · Mac Life<br>iPhone-Apps: Unsere App-Tipps für Oktober 2026</p>
+        </div>
+
+        <div class="portrait">
+          <h3 class="portrait-h">Wer sich für Mac, iPhone und iPad interessiert, kommt an Mac Life kaum vorbei.</h3>
+          <p>
+            Mac Life erscheint als gedrucktes Magazin und online im Verlag falkemedia. Die Redaktion
+            berichtet über Neuheiten aus der Apple-Welt, testet Geräte, gibt Kaufberatung und Praxistipps
+            und hat mit <strong>„Schleifenquadrat“</strong> einen eigenen Apple-Podcast. Chefredakteur
+            Stefan Molz betreut die Website seit 2007 und leitet seit 2023 auch das gedruckte Heft.
+          </p>
+          <p>
+            In den regelmäßigen <strong>„App-Tipps“</strong> stellt die Redaktion eine kleine Auswahl an
+            iPhone-Apps vor, die ihr aufgefallen sind. Im Oktober 2026 war <strong>TerminKompass</strong>
+            dabei – unbezahlt.
+          </p>
+          <div class="portrait-tip"><span aria-hidden="true">✨</span><span><b>Reinschauen lohnt sich</b> für alle, die mit Mac, iPhone oder iPad arbeiten und gut informiert bleiben wollen.</span></div>
+        </div>
+
+        <div class="links">
+          <a class="link-main" href="https://www.maclife.de/news/iphone-app-tipps-oktober-2026-besten-apps-ios-100127740.html" target="_blank" rel="noopener">
+            <span>App-Tipp: TerminKompass bei Mac Life<small>iPhone-Apps: Unsere App-Tipps für Oktober 2026</small></span><span aria-hidden="true">→</span>
+          </a>
+          <a class="link-sub" href="https://www.maclife.de/" target="_blank" rel="noopener">
+            <span>Mac Life – das Apple-Magazin</span><span aria-hidden="true">→</span>
+          </a>
+          <a class="link-sub" href="https://www.schleifenquadrat.fm/" target="_blank" rel="noopener">
+            <span>Schleifenquadrat – der Apple-Podcast von Mac Life</span><span aria-hidden="true">→</span>
           </a>
         </div>
       </article>
