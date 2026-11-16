@@ -994,6 +994,10 @@ footer {
 .emp-name { font-size: 13.5px; font-weight: 800; color: #1a0f0a; white-space: nowrap; }
 .emp-text { font-size: 13.5px; font-weight: 700; color: #1a0f0a; }
 .emp-arrow { font-size: 15px; font-weight: 700; color: #8a7a6c; }
+.emp-strip-multi { flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+.emp-strip-multi .emp-label { width: 100%; text-align: center; }
+.emp-strip-multi .emp-link { height: 38px; padding: 6px 14px; }
+.emp-ico { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: #3b4554; font-size: 12px; line-height: 1; }
 @media (hover: none) { .emp-link:hover { transform: none; } }
 </style>
 </head>
@@ -1083,11 +1087,14 @@ footer {
   </div>
 </section>
 
-<div class="emp-strip">
-  <a class="emp-link" href="../empfehlungen/#stimmen" aria-label="Empfohlen von Android User und Mac Life – alle Empfehlungen ansehen">
-    <span class="emp-label">Empfohlen von</span>
+<div class="emp-strip emp-strip-multi">
+  <span class="emp-label">Empfohlen von</span>
+  <a class="emp-link" href="../empfehlungen/#android-user" aria-label="Empfohlen von Android User – Empfehlung ansehen">
     <img class="emp-logo" src="../assets/presse/android-user-logo.png" alt="Android User" width="73" height="22">
-    <span class="emp-text" aria-hidden="true">·</span>
+    <span class="emp-arrow" aria-hidden="true">→</span>
+  </a>
+  <a class="emp-link" href="../empfehlungen/#mac-life" aria-label="Vorgestellt von Mac Life – Empfehlung ansehen">
+    <span class="emp-ico" aria-hidden="true">📰</span>
     <span class="emp-name">Mac Life</span>
     <span class="emp-arrow" aria-hidden="true">→</span>
   </a>
