@@ -59,6 +59,13 @@
       },
       {
         "@type": "Article",
+        "headline": "ItemShark: Inventar-App erfasst Kisten und Sammlungen per Foto",
+        "url": "https://www.android-user.de/itemshark-inventar-kisten-per-foto-erfassen/",
+        "datePublished": "2026-11-17",
+        "publisher": { "@type": "Organization", "name": "Android User", "url": "https://www.android-user.de/" }
+      },
+      {
+        "@type": "Article",
         "headline": "iPhone-Apps: Unsere App-Tipps für Oktober 2026",
         "url": "https://www.maclife.de/news/iphone-app-tipps-oktober-2026-besten-apps-ios-100127740.html",
         "datePublished": "2026-10-13T11:00:00+02:00",
@@ -217,6 +224,10 @@ img { max-width: 100%; display: block; }
 .link-main:hover { transform: translateY(-2px); }
 .card-au .link-main { background: #4FB053; box-shadow: 0 6px 20px rgba(79,176,83,.3); }
 .card-pi .link-main { background: linear-gradient(135deg, #e2638f, #b8366a); box-shadow: 0 6px 20px rgba(184,54,106,.3); }
+.extra { margin: 0 22px 24px; padding: 18px 18px 16px; border-radius: 20px; background: var(--cream); border: 1px solid var(--border); }
+.extra .tags { margin-top: 0; }
+.extra-t { font-size: 14px; line-height: 1.65; color: #5a4035; margin: 12px 0 14px; }
+.extra-t strong { color: var(--text); }
 .card-ml .link-main { background: #3b4554; box-shadow: 0 6px 20px rgba(59,69,84,.3); }
 .link-main small { display: block; font-size: 12px; font-weight: 600; opacity: .85; margin-top: 2px; }
 .link-sub { display: flex; align-items: center; justify-content: space-between; gap: 10px; text-decoration: none; padding: 13px 18px; border-radius: 16px; font-size: 14px; font-weight: 700; color: var(--text); background: #fff; border: 1.5px solid var(--border); transition: border-color .15s, transform .15s; }
@@ -420,7 +431,7 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
         </div>
       </article>
 
-      <article class="card card-au reveal" id="android-user" data-app="terminkompass">
+      <article class="card card-au reveal" id="android-user" data-app="terminkompass itemshark">
         <div class="card-band"></div>
         <div class="card-top">
           <div class="card-head">
@@ -478,6 +489,22 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
           </a>
           <a class="link-sub" href="https://www.android-user.de/content-richtlinien/" target="_blank" rel="noopener">
             <span>Die Content-Richtlinien von Android User</span><span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="extra">
+          <div class="tags">
+            <span class="tag tag-app"><img src="../assets/itemshark-icon-opt.png" alt="" width="16" height="16">über ItemShark</span>
+            <span class="tag">Entwickler-Vorstellung</span>
+            <span class="tag">Unbezahlt</span>
+          </div>
+          <p class="extra-t">
+            Seit November 2026 ist bei Android User auch <strong>ItemShark</strong> zu finden – als
+            <strong>Entwickler-Vorstellung</strong>: Den Text haben wir als Entwickler eingereicht, die Redaktion
+            hat ihn geprüft und veröffentlicht. Eingebunden ist dort auch die Video-Anleitung von Papierstoffiges Ingrid.
+          </p>
+          <a class="link-sub" href="https://www.android-user.de/itemshark-inventar-kisten-per-foto-erfassen/" target="_blank" rel="noopener">
+            <span>Entwickler-Vorstellung: ItemShark bei Android User</span><span aria-hidden="true">→</span>
           </a>
         </div>
       </article>
@@ -675,7 +702,8 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
       });
       cards.forEach(function (c) {
         var app = c.getAttribute('data-app');
-        c.hidden = !(f === 'alle' || app === f || app === 'alle');
+        var list = (' ' + app + ' ');
+        c.hidden = !(f === 'alle' || list.indexOf(' ' + f + ' ') > -1 || app === 'alle');
         if (!c.hidden) c.classList.add('in-view');
       });
     });

@@ -649,6 +649,8 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
 .emp-name { font-size: 13.5px; font-weight: 800; color: #1a0f0a; white-space: nowrap; }
 .emp-text { font-size: 13.5px; font-weight: 700; color: #1a0f0a; }
 .emp-arrow { font-size: 15px; font-weight: 700; color: #8a7a6c; }
+.emp-strip-pair { flex-wrap: wrap; align-items: center; gap: 10px; }
+.emp-strip-pair .emp-link { height: 42px; }
 @media (hover: none) { .emp-link:hover { transform: none; } }
 </style>
 </head>
@@ -727,11 +729,16 @@ footer { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); border-top
   </div>
 </section>
 
-<div class="emp-strip">
-  <a class="emp-link" href="../empfehlungen/#papierstoffiges" aria-label="Empfohlen von Papierstoffiges Ingrid – alle Empfehlungen ansehen">
+<div class="emp-strip emp-strip-pair">
+  <a class="emp-link" href="../empfehlungen/#papierstoffiges" aria-label="Empfohlen von Papierstoffiges Ingrid – Empfehlung ansehen">
     <span class="emp-label">Empfohlen von</span>
     <img class="emp-round" src="../assets/presse/papierstoffiges-logo.jpg" alt="Papierstoffiges Logo" width="28" height="28">
     <span class="emp-name">Papierstoffiges</span>
+    <span class="emp-arrow" aria-hidden="true">→</span>
+  </a>
+  <a class="emp-link" href="../empfehlungen/#android-user" aria-label="Vorgestellt bei Android User – Entwickler-Vorstellung ansehen">
+    <span class="emp-label">Vorgestellt bei</span>
+    <img class="emp-logo" src="../assets/presse/android-user-logo.png" alt="Android User" width="73" height="22">
     <span class="emp-arrow" aria-hidden="true">→</span>
   </a>
 </div>
